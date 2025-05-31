@@ -26,9 +26,9 @@ class StreamTableBuilder<T extends StreamTableBloc> extends StatelessWidget {
       : super(key: key);
 
   Widget build(BuildContext context) {
-    final T tableBloc = BlocProvider.of<T>(context);
+    final T? tableBloc = BlocProvider.of<T>(context);
     return StreamBuilder<StreamableTableData>(
-        stream: tableBloc.outTable,
+        stream: tableBloc?.outTable,
         builder: (context, snapshot) {
           if (!snapshot.hasData) return Container();
 
