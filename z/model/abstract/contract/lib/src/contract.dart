@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:date/index.dart';
 import 'package:context/index.dart';
 import 'package:name_context/index.dart';
@@ -23,18 +22,18 @@ class Contract extends Context {
   final bool? monthToMonth;
 
   @override
-  Set<String> get userGuids => users?.map((user) => user.guid) ?? Set<String>();
+  Set<String> get userGuids => users?.map((user) => user.guid) as Set<String>? ?? Set<String>();
 
   @override
-  Set<String> get formerUserGuids => formerUsers?.map((user) => user.guid);
+  Set<String> get formerUserGuids => formerUsers?.map((user) => user.guid) as Set<String>? ?? Set<String>();
 
   @override
   Set<NameUser> get nameUsers {
-    return users?.followedBy(formerUsers).toSet();
+    return users?.followedBy(formerUsers ?? Set<ContractUser>()).toSet() as Set<NameUser>? ?? Set<NameUser>();
   }
 
   @override
-  Set<NameContext> get nameContexts => Set.of([domain]);
+  Set<NameContext> get nameContexts => Set.of([domain as NameContext]);
 
   Contract(
       { String? guid,
@@ -78,9 +77,9 @@ class Contract extends Context {
     final counts = map[_key.counts] as Map;
 
     final users =
-        (map[_key.users] as List ?? []).map((map) => ContractUser.fromMap(map));
+        (map[_key.users] as List? ?? []).map((map) => ContractUser.fromMap(map));
 
-    final formerUsers = (map[_key.formerUsers] as List ?? [])
+    final formerUsers = (map[_key.formerUsers] as List? ?? [])
         .map((map) => ContractUser.fromMap(map))
         .toSet();
 
@@ -91,16 +90,16 @@ class Contract extends Context {
         unreadCommentableObjectCount: context.unreadCommentableObjectCount,
         pinnedCommentableObjectCount: context.pinnedCommentableObjectCount,
         invoiceCount: counts[_key.invoice] ?? 0,
-        startDate: Date.fromSecondsSinceEpoch(map[_key.startTimestamp]),
-        endDate: Date.fromSecondsSinceEpoch(map[_key.endTimestamp]),
-        name: map[_key.name],
-        amount: map[_key.amount],
+        startDate: Date.fromSecondsSinceEpoch(map[_key.startTimestamp] as int),
+        endDate: Date.fromSecondsSinceEpoch(map[_key.endTimestamp] as int),
+        name: map[_key.name] as String?,
+        amount: map[_key.amount] as int?,
         users: users.toSet(),
         formerUsers: formerUsers.toSet(),
-        schedule: Schedule.fromMap(map[_key.schedule]),
-        domain: NameContractDomain.fromMap(map[_key.domain]),
-        feePayerType: FeePayerType.fromString(map[_key.feePayerKind]),
-        monthToMonth: map[_key.monthToMonth]);
+        schedule: Schedule.fromMap(map[_key.schedule] as Map<String, Object>),
+        domain: NameContractDomain.fromMap(map[_key.domain] as Map<String, Object>),
+        feePayerType: FeePayerType.fromString(map[_key.feePayerKind] as String),
+        monthToMonth: map[_key.monthToMonth] as bool?);
   }
 
   Map<String, Object?> toMap() {
@@ -112,10 +111,10 @@ class Contract extends Context {
       _key.endTimestamp: endDate?.secondsSinceEpoch,
       _key.name: name,
       _key.amount: amount,
-      _key.users: users.map((user) => user.toMap()),
-      _key.formerUsers: users.map((formerUsers) => formerUsers.toMap()),
-      _key.schedule: schedule.toMap(),
-      _key.domain: domain.toMap(),
+      _key.users: users?.map((user) => user.toMap()) as Object,
+      _key.formerUsers: users?.map((formerUsers) => formerUsers.toMap()) as Object,
+      _key.schedule: schedule?.toMap() as Object,
+      _key.domain: domain?.toMap() as Object,
       _key.feePayerKind: feePayerType.toString(),
       _key.monthToMonth: monthToMonth
     });
