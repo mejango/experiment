@@ -8,17 +8,17 @@ class DeviceScreen extends StatefulWidget {
   final int largeMinWidth;
 
   DeviceScreen(
-      {@required this.child,
+      {required this.child,
       this.mediumMinWidth = 500,
       this.largeMinWidth = 1000});
 
-  static InheritedDeviceScreen of(BuildContext context,
+  static InheritedDeviceScreen? of(BuildContext context,
       {bool shouldRebuild = true}) {
     final inheritedWidget = (shouldRebuild
-        ? context.inheritFromWidgetOfExactType(_InheritedDeviceScreen)
-        : context.ancestorWidgetOfExactType(_InheritedDeviceScreen));
+        ? context.dependOnInheritedWidgetOfExactType<_InheritedDeviceScreen>()
+        : context.getElementForInheritedWidgetOfExactType<_InheritedDeviceScreen>()?.widget as _InheritedDeviceScreen);
 
-    return (inheritedWidget as _InheritedDeviceScreen).data;
+    return inheritedWidget?.data;
   }
 
   @override
@@ -26,7 +26,7 @@ class DeviceScreen extends StatefulWidget {
 }
 
 class InheritedDeviceScreen extends State<DeviceScreen> {
-  DeviceScreenOption _current;
+  late DeviceScreenOption _current;
   DeviceScreenOption get current => _current;
 
   DeviceScreenOption _deviceScreenOf(BuildContext context) {
@@ -51,7 +51,7 @@ class InheritedDeviceScreen extends State<DeviceScreen> {
 class _InheritedDeviceScreen extends InheritedWidget {
   final InheritedDeviceScreen data;
 
-  _InheritedDeviceScreen({@required this.data, @required Widget child})
+  _InheritedDeviceScreen({required this.data, required Widget child})
       : super(child: child);
 
   @override

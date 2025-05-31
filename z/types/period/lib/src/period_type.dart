@@ -5,7 +5,7 @@ enum _PeriodTypeOption { daily, weekly, monthly }
 class PeriodType {
   final _PeriodTypeOption _value;
 
-  String get inlineString {
+  String? get inlineString {
     switch (_value) {
       case _PeriodTypeOption.daily:
         return "day";
@@ -17,7 +17,7 @@ class PeriodType {
     return null;
   }
 
-  String get whenString {
+  String? get whenString {
     switch (_value) {
       case _PeriodTypeOption.daily:
         return "daily";

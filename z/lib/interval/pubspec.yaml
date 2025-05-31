@@ -15,7 +15,7 @@ dependencies:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
-      path: types/period_type
+      path: z/types/period
   ordinal_suffix_string_from_int:
     git:
       url: git@github.com:mejango/experiment.git

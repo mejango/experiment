@@ -7,11 +7,11 @@ import 'package:path_provider/path_provider.dart';
 
 //For more on SplayTrees, see https://api.dartlang.org/stable/2.1.0/dart-collection/SplayTreeMap-class.html.
 class Disk {
-  static SplayTreeMap _loadedDiskMap;
+  static SplayTreeMap? _loadedDiskMap;
 
-  static SplayTreeMap get read => _loadedDiskMap;
+  static SplayTreeMap? get read => _loadedDiskMap;
 
-  static Future<SplayTreeMap> get load async {
+  static Future<SplayTreeMap?> get load async {
     if (read != null) return Future.value(read);
 
     final file = await _localFile;

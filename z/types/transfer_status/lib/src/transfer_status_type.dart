@@ -11,7 +11,7 @@ enum _TransferStatusTypeOption {
 
 class TransferStatusType {
   final _TransferStatusTypeOption _value;
-  String get tag {
+  String? get tag {
     switch (_value) {
       case _TransferStatusTypeOption.processed:
         return "Processed";
@@ -30,7 +30,7 @@ class TransferStatusType {
     return null;
   }
 
-  String get title {
+  String? get title {
     switch (_value) {
       case _TransferStatusTypeOption.processed:
         return "Transaction complete";

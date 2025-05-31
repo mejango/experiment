@@ -19,7 +19,7 @@ class FormValidationException implements Exception {
         "Looks like this employer identificiation number (EIN) isn't valid. Reach out to us if you think we've got it wrong.",
       );
 
-  factory FormValidationException.longPassword({@required int max}) =>
+  factory FormValidationException.longPassword({required int max}) =>
       FormValidationException(
         "This password is too long. Try something under $max characters.",
       );
@@ -33,31 +33,31 @@ class FormValidationException implements Exception {
       );
 
   factory FormValidationException.tooLongString({
-    @required String fieldTitle,
-    @required int max,
+    required String fieldTitle,
+    required int max,
   }) =>
       FormValidationException(
         "$fieldTitle is too long. Try something under $max characters.",
       );
 
   factory FormValidationException.tooShortString({
-    @required String fieldTitle,
-    @required int min,
+    required String fieldTitle,
+    required int min,
   }) =>
       FormValidationException(
         "$fieldTitle is too short. Try something with at least $min characters.",
       );
 
   factory FormValidationException.maxValue({
-    @required String fieldTitle,
-    @required double maxValue,
+    required String fieldTitle,
+    required double maxValue,
   }) =>
       FormValidationException(
         "$fieldTitle must be less than $maxValue",
       );
 
   factory FormValidationException.emptyNotAllowed(
-          {@required String fieldTitle}) =>
+          {required String fieldTitle}) =>
       FormValidationException(
         "$fieldTitle can't be empty.",
       );

@@ -15,7 +15,7 @@ class EventMetaValueType {
 
   String toString() => stringFromEnumString(_value.toString());
 
-  String decode(dynamic value) {
+  String? decode(dynamic value) {
     switch (_value) {
       case _EventMetaValueTypeOption.timestamp:
         return Date.fromSecondsSinceEpoch(value).toAbbreviatedString;

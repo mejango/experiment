@@ -5,11 +5,11 @@ class IconReference {
   final double size;
 
   IconReference({
-    @required this.iconData,
-    this.size,
+    required this.iconData,
+    required this.size,
   });
 
-  Icon buildWidget({Color color}) {
+  Icon buildWidget({required Color color}) {
     return Icon(
       iconData,
       size: size,

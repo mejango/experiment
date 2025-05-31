@@ -12,7 +12,6 @@ class BankType {
       case _BankTypeOption.savings:
         return "Savings";
     }
-    return null;
   }
 
   const BankType._internal(this._value);

@@ -62,9 +62,9 @@ class UsStateOption {
 
     final option = _UsStateOption.values.firstWhere(
       (value) =>
-          UsStateOption._internal(value).toAbbreviatedString().toLowerCase() ==
+          UsStateOption._internal(value).toAbbreviatedString()?.toLowerCase() ==
               _string ||
-          UsStateOption._internal(value).toFullString().toLowerCase() ==
+          UsStateOption._internal(value).toFullString()?.toLowerCase() ==
               _string,
     );
 
@@ -180,7 +180,6 @@ class UsStateOption {
       case _UsStateOption.wyoming:
         return 'Wyoming';
     }
-    return null;
   }
 
   String toAbbreviatedString() {
@@ -288,7 +287,6 @@ class UsStateOption {
       case _UsStateOption.wyoming:
         return 'WY';
     }
-    return null;
   }
 
   static List<String> get fullStringOptions => _UsStateOption.values

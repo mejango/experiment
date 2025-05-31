@@ -55,7 +55,7 @@ void triggerHaptic(HapticOption option) {
 
 void hapticAction(
   HapticOption option, {
-  @required void Function() action,
+  required void Function() action,
 }) {
   triggerHaptic(option);
 

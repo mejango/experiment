@@ -1,6 +1,6 @@
 class LabeledValue<T> {
-  String label;
-  T value;
+  final String label;
+  final T value;
 
-  LabeledValue({this.label, this.value});
+  LabeledValue({required this.label, required this.value});
 }

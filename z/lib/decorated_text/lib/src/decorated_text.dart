@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 class StyleDecoratedText extends _DecoratedText {
   final TextStyle defaultStyle;
 
-  StyleDecoratedText({String text, this.defaultStyle}) : super(text: text);
+  StyleDecoratedText({required String text, required this.defaultStyle})
+      : super(text: text);
 
-  addSection({@required String text, TextStyle style}) {
+  addSection({required String text, required TextStyle style}) {
     final section = _StyleTextSection(text: text, style: style ?? defaultStyle);
     super._addSection(section);
   }
@@ -25,18 +26,17 @@ class StyleDecoratedText extends _DecoratedText {
 class WeightDecoratedText extends _DecoratedText {
   final TextStyle thinStyle;
 
-  WeightDecoratedText({String text, this.thinStyle}) : super(text: text);
+  WeightDecoratedText({required String text, required this.thinStyle}) : super(text: text);
 
-  addSection({@required String text, bool thin = false}) {
+  addSection({required String text, bool thin = false}) {
     final section = _WeightTextSection(text: text, thin: thin);
     super._addSection(section);
   }
 
   RichText generateWidget(
-      {@required TextStyle defaultStyle,
-      @required TextStyle thinStyle,
-      double textScaleFactor = 1,
-      num tex}) {
+      {required TextStyle defaultStyle,
+      required TextStyle thinStyle,
+      double textScaleFactor = 1}) {
     final children = _sections.map((section) {
       return TextSpan(
           text: section.text,
@@ -55,15 +55,15 @@ abstract class _DecoratedText {
 
   var _sections = <_TextSection>[];
 
-  _DecoratedText({this.text});
+  _DecoratedText({required this.text});
 
   RichText _generateWidgetFromChildren(
-      {List<TextSpan> children,
-      TextStyle defaultStyle,
-      double textScaleFactor}) {
+      {required List<TextSpan> children,
+      required TextStyle defaultStyle,
+       double? textScaleFactor}) {
     final spacedChildren = _addSpaces(children);
     final richTextWidget = RichText(
-        textScaleFactor: textScaleFactor,
+        textScaler: textScaleFactor != null ? TextScaler.linear(textScaleFactor) : TextScaler.noScaling,
         text:
             TextSpan(text: "", style: defaultStyle, children: spacedChildren));
     return richTextWidget;
@@ -89,17 +89,17 @@ abstract class _DecoratedText {
 class _StyleTextSection extends _TextSection {
   final TextStyle style;
 
-  _StyleTextSection({String text, @required this.style}) : super(text: text);
+  _StyleTextSection({required String text, required this.style}) : super(text: text);
 }
 
 class _WeightTextSection extends _TextSection {
   final bool thin;
 
-  _WeightTextSection({String text, @required this.thin}) : super(text: text);
+  _WeightTextSection({required String text, required this.thin}) : super(text: text);
 }
 
 abstract class _TextSection {
   final String text;
 
-  _TextSection({@required this.text});
+  _TextSection({required this.text});
 }

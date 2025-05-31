@@ -14,7 +14,7 @@ class InvoiceType {
     }
   }
 
-  String get displayString {
+  String? get displayString {
     switch (this.toString()) {
       case "contractual":
         return "Rent";

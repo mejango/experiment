@@ -1,8 +1,8 @@
 import 'package:period_type/index.dart';
 
 class FrequencyType {
-  int interval;
-  PeriodType frequency;
+  final int interval;
+  final PeriodType frequency;
 
-  FrequencyType({this.interval, this.frequency});
+  FrequencyType({required this.interval, required this.frequency});
 }
