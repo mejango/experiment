@@ -15,8 +15,8 @@ dependencies:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: z/model/key
-  data_chunk:
-    path: ../../data_chunk
+  # data_chunk:
+  #   path: ../../data_chunk
 
 dev_dependencies:
   flutter_test:
