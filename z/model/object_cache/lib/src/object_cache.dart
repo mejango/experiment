@@ -82,10 +82,10 @@ class ModelObjectCache {
     return await endBatchSaving();
   }
 
-  Map<ModelObject, Object>? _readModelCache(SplayTreeMap? cache, Type key) {
+  Map<ModelObject, Object?>? _readModelCache(SplayTreeMap? cache, Type key) {
     //Get the sub-cache partaining to model objects of the passed in type. If it doesn't exist, create it.
     final modelObjectCache =
-        cache?[key] as Map<ModelObject, Object> ?? Map<ModelObject, Object>();
+        cache?[key] as Map<ModelObject, Object?>? ?? Map<ModelObject, Object?>();
 
     return modelObjectCache;
   }

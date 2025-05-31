@@ -1,11 +1,11 @@
 class Address {
-  final String address1;
-  final String address2;
-  final String address3;
-  final String city;
-  final String stateProvinceRegion;
-  final String postalCode;
-  final String country;
+  final String? address1;
+  final String? address2;
+  final String? address3;
+  final String? city;
+  final String? stateProvinceRegion;
+  final String? postalCode;
+  final String? country;
 
   Address({
     this.address1,
@@ -17,7 +17,7 @@ class Address {
     this.country,
   });
 
-  Map<String, Object> get asMap => {
+  Map<String, Object?> get asMap => {
         'address1': address1,
         'address2': address2,
         'address3': address3,

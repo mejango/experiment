@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:fee_payer_type/index.dart';
 import 'package:privacy_type/index.dart';
 

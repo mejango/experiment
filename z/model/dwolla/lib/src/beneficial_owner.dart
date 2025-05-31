@@ -4,12 +4,12 @@ import '_utils.dart';
 import './address.dart';
 
 class BeneficialOwner {
-  final String firstName;
-  final String lastName;
-  final String ssn;
-  final DateTime dateOfBirth;
-  final Address address;
-  final Passport passport;
+  final String? firstName;
+  final String? lastName;
+  final String? ssn;
+  final DateTime? dateOfBirth;
+  final Address? address;
+  final Passport? passport;
 
   BeneficialOwner({
     this.firstName,
@@ -20,12 +20,12 @@ class BeneficialOwner {
     this.passport,
   });
 
-  Map<String, Object> get asMap => {
+  Map<String, Object?> get asMap => {
         'firstName': firstName,
         'lastName': lastName,
         'ssn': ssn,
-        'dateOfBirth': formatDateOfBirth(dateOfBirth),
-        'address': address.asMap,
-        'passport': passport.asMap,
+        'dateOfBirth': dateOfBirth != null ? formatDateOfBirth(dateOfBirth!) : null,
+        'address': address?.asMap,
+        'passport': passport?.asMap,
       };
 }
