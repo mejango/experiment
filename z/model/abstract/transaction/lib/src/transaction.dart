@@ -10,23 +10,23 @@ import 'package:task_reference/index.dart';
 import 'package:key/index.dart' as _key;
 
 class Transaction extends Completion {
-  final int amount;
+  final int? amount;
 
   Transaction(
-      {Set<NameUser> contractDomainUsers,
-      Set<NameUser> contractUsers,
-      Set<NameUser> formerContractUsers,
-      Set<Stub> contractStubs,
-      Set<Stub> formerContractStubs,
-      String contractPropertyName,
-      FeePayerType feePayerType,
-      String clientReferenceId,
-      String name,
-      String note,
-      PrivacyType privacyType,
-      Set<UserReference> completingUsers,
-      TaskReference task,
-      Expense completionPrize,
+      {Set<NameUser>? contractDomainUsers,
+      Set<NameUser>? contractUsers,
+      Set<NameUser>? formerContractUsers,
+      Set<Stub>? contractStubs,
+      Set<Stub>? formerContractStubs,
+      String? contractPropertyName,
+      FeePayerType? feePayerType,
+      String? clientReferenceId,
+      String? name,
+      String? note,
+      PrivacyType? privacyType,
+      Set<UserReference>? completingUsers,
+      TaskReference? task,
+      Expense? completionPrize,
       this.amount})
       : super(
             contractDomainUsers: contractDomainUsers,
@@ -44,7 +44,7 @@ class Transaction extends Completion {
             task: task,
             completionPrize: completionPrize);
 
-  factory Transaction.fromMap(Map<String, Object> map) {
+  factory Transaction.fromMap(Map<String?, Object?> map) {
     final completion = Completion.fromMap(map);
 
     return Transaction(
@@ -65,7 +65,7 @@ class Transaction extends Completion {
         amount: map[_key.amount]);
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
     map.addAll({
       _key.amount: amount,

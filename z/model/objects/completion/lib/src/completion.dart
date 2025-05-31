@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
-import 'package:feed_object/index.dart';
 import 'package:fee_payer_type/index.dart';
+import 'package:feed_object/index.dart';
 import 'package:privacy_type/index.dart';
 import 'package:expense/index.dart';
 import 'package:user_reference/index.dart';

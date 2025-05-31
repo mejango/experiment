@@ -14,25 +14,25 @@ import 'package:name_formatter/index.dart';
 import 'package:key/index.dart' as _key;
 
 class OneToOneTransaction extends Transaction {
-  final BankOwnerReference receiver;
-  final BankOwnerReference sender;
+  final BankOwnerReference? receiver;
+  final BankOwnerReference? sender;
 
   OneToOneTransaction(
-      {Set<NameUser> contractDomainUsers,
-      Set<NameUser> contractUsers,
-      Set<NameUser> formerContractUsers,
-      Set<Stub> contractStubs,
-      Set<Stub> formerContractStubs,
-      String contractPropertyName,
-      FeePayerType feePayerType,
-      String clientReferenceId,
-      String name,
-      String note,
-      PrivacyType privacyType,
-      Set<UserReference> completingUsers,
-      TaskReference task,
-      Expense completionPrize,
-      int amount,
+      {Set<NameUser>? contractDomainUsers,
+      Set<NameUser>? contractUsers,
+      Set<NameUser>? formerContractUsers,
+      Set<Stub>? contractStubs,
+      Set<Stub>? formerContractStubs,
+      String? contractPropertyName,
+      FeePayerType? feePayerType,
+      String? clientReferenceId,
+      String? name,
+      String? note,
+      PrivacyType? privacyType,
+      Set<UserReference>? completingUsers,
+      TaskReference? task,
+      Expense? completionPrize,
+      int? amount,
       this.receiver,
       this.sender})
       : super(
@@ -52,7 +52,7 @@ class OneToOneTransaction extends Transaction {
             completionPrize: completionPrize,
             amount: amount);
 
-  factory OneToOneTransaction.fromMap(Map<String, Object> map) {
+  factory OneToOneTransaction.fromMap(Map<String?, Object?> map) {
     final transaction = Transaction.fromMap(map);
 
     return OneToOneTransaction(
@@ -75,29 +75,29 @@ class OneToOneTransaction extends Transaction {
     );
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
-    map.addAll({_key.receiver: receiver.toMap(), _key.sender: sender.toMap()});
+    map.addAll({_key.receiver: receiver?.toMap(), _key.sender: sender?.toMap()});
     return map;
   }
 
-  String formattedSender(
-      {String sessionOwnerGuid,
+  String? formattedSender(
+      {required String sessionOwnerGuid,
       required NameDefiningObject nameDefiningObject,
       bool firstPerson = false}) {
-    return formatNames(
-        guids: [sender.guid],
+    return sender?.guid == null ? null : formatNames(
+        guids: [sender!.guid!],
         sessionOwnerGuid: sessionOwnerGuid,
         nameDefiningObject: nameDefiningObject,
         firstPerson: firstPerson);
   }
 
-  String formattedReceiver(
-      {String sessionOwnerGuid,
+  String? formattedReceiver(
+      {required String sessionOwnerGuid,
       required NameDefiningObject nameDefiningObject,
       bool firstPerson = false}) {
-    return formatNames(
-        guids: [receiver.guid],
+    return receiver?.guid == null ? null : formatNames(
+        guids: [receiver!.guid!],
         sessionOwnerGuid: sessionOwnerGuid,
         nameDefiningObject: nameDefiningObject,
         firstPerson: firstPerson);

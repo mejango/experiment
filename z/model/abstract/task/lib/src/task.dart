@@ -15,36 +15,36 @@ import 'package:name_formatter/index.dart';
 import 'package:key/index.dart' as _key;
 
 class Task extends CommentableObject {
-  final Set<UserReference> participants;
-  final Set<UserReference> completingUsers;
-  final Set<UserReference> assignedUsers;
-  final Date latestActivation;
-  final Date latestCompletion;
-  final Set<CompletionCount> completionCounts;
-  final Schedule schedule;
-  final Date deadline;
-  final AssignmentType assignmentType;
-  final DateParts deadlineParts;
-  final bool currentlyCompleted;
-  final int completionCount;
-  final int completionPrize;
+  final Set<UserReference>? participants;
+  final Set<UserReference>? completingUsers;
+  final Set<UserReference>? assignedUsers;
+  final Date? latestActivation;
+  final Date? latestCompletion;
+  final Set<CompletionCount>? completionCounts;
+  final Schedule? schedule;
+  final Date? deadline;
+  final AssignmentType? assignmentType;
+  final DateParts? deadlineParts;
+  final bool? currentlyCompleted;
+  final int? completionCount;
+  final int? completionPrize;
 
   Task(
-      {Set<NameUser> contractDomainUsers,
-      Set<NameUser> contractUsers,
-      Set<NameUser> formerContractUsers,
-      Set<Stub> contractStubs,
-      Set<Stub> formerContractStubs,
-      String contractPropertyName,
-      FeePayerType feePayerType,
-      String clientReferenceId,
-      int commentCount,
-      String name,
-      String note,
-      Date latestActivity,
-      bool unread,
-      bool pinned,
-      Set<UserReference> subscribers,
+      {Set<NameUser>? contractDomainUsers,
+      Set<NameUser>? contractUsers,
+      Set<NameUser>? formerContractUsers,
+      Set<Stub>? contractStubs,
+      Set<Stub>? formerContractStubs,
+      String? contractPropertyName,
+      FeePayerType? feePayerType,
+      String? clientReferenceId,
+      int? commentCount,
+      String? name,
+      String? note,
+      Date? latestActivity,
+      bool? unread,
+      bool? pinned,
+      Set<UserReference>? subscribers,
       this.participants,
       this.completingUsers,
       this.assignedUsers,
@@ -75,7 +75,7 @@ class Task extends CommentableObject {
             pinned: pinned,
             subscribers: subscribers);
 
-  factory Task.fromMap(Map<String, Object> map) {
+  factory Task.fromMap(Map<String?, Object?> map) {
     final commentableObject = CommentableObject.fromMap(map);
 
     final participants = (map[_key.participants] as List)
@@ -122,75 +122,75 @@ class Task extends CommentableObject {
         completionPrize: map[_key.completionPrize]);
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
     (map[_key.counts] as Map).addAll({_key.completion: completionCount});
 
     map.addAll({
-      _key.participants: participants.map((participant) => participant.toMap()),
+      _key.participants: participants?.map((participant) => participant.toMap()) as Object,
       _key.completingUsers:
-          completingUsers.map((completingUser) => completingUser.toMap()),
+          completingUsers?.map((completingUser) => completingUser.toMap()) as Object,
       _key.assignedUsers:
-          assignedUsers.map((assignedUser) => assignedUser.toMap()),
-      _key.latestActivation: latestActivation.secondsSinceEpoch,
-      _key.latestCompletion: latestCompletion.secondsSinceEpoch,
+          assignedUsers?.map((assignedUser) => assignedUser.toMap()) as Object,
+      _key.latestActivation: latestActivation?.secondsSinceEpoch as Object,
+      _key.latestCompletion: latestCompletion?.secondsSinceEpoch as Object,
       _key.completionCounts:
-          completionCounts.map((completionCount) => completionCount.toMap()),
-      _key.schedule: schedule.toMap(),
-      _key.deadline: deadline.secondsSinceEpoch,
-      _key.assigmentKind: assignmentType.toString(),
-      _key.deadlineParts: deadlineParts.toMap(),
-      _key.currentlyCompleted: currentlyCompleted,
-      _key.completionPrize: completionPrize
+          completionCounts?.map((completionCount) => completionCount.toMap()) as Object,
+      _key.schedule: schedule?.toMap() as Object,
+      _key.deadline: deadline?.secondsSinceEpoch as Object,
+      _key.assigmentKind: assignmentType?.toString() as Object,
+      _key.deadlineParts: deadlineParts?.toMap() as Object,
+      _key.currentlyCompleted: currentlyCompleted as Object,
+      _key.completionPrize: completionPrize as Object
     });
     return map;
   }
 
-  CompletionCount completionCountForGuid(String guid) {
+  CompletionCount? completionCountForGuid(String guid) {
     return completionCounts
-        .where((completionCount) => completionCount.user.guid == guid)
-        .first;
+        ?.where((completionCount) => completionCount.user.guid == guid)
+        .firstOrNull;
   }
 
   bool assignedToUser(String guid) {
-    return assignedUsers.any((assignedUser) => assignedUser.guid == guid);
+    return assignedUsers?.any((assignedUser) => assignedUser.guid == guid) ?? false;
   }
 
-  String formattedAssignedUser(
-      {String sessionOwnerGuid,
+  String? formattedAssignedUser(
+      {required String sessionOwnerGuid,
       required NameDefiningObject nameDefiningObject,
       bool firstPerson = false}) {
     return formatNames(
-        guids: assignedUsers.map((user) => user.guid),
+        guids: assignedUsers?.map((user) => user.guid) as List<String>,
         sessionOwnerGuid: sessionOwnerGuid,
         nameDefiningObject: nameDefiningObject,
         firstPerson: firstPerson);
   }
 
-  String formattedParticipants(
-      {String sessionOwnerGuid,
+  String? formattedParticipants(
+      {required String sessionOwnerGuid,
       required NameDefiningObject nameDefiningObject,
       bool firstPerson = false}) {
     return formatNames(
-        guids: participants.map((user) => user.guid),
+        guids: participants?.map((user) => user.guid) as List<String>,
         sessionOwnerGuid: sessionOwnerGuid,
         nameDefiningObject: nameDefiningObject,
         firstPerson: firstPerson);
   }
 
-  String formattedCompletingUsers(
-      {String sessionOwnerGuid,
+  String? formattedCompletingUsers(
+      {required String sessionOwnerGuid,
       required NameDefiningObject nameDefiningObject,
       bool firstPerson = false}) {
     return formatNames(
-        guids: completingUsers.map((user) => user.guid),
+        guids: completingUsers?.map((user) => user.guid) as List<String>,
         sessionOwnerGuid: sessionOwnerGuid,
         nameDefiningObject: nameDefiningObject,
         firstPerson: firstPerson);
   }
 
-  String title({Context context, String sessionOwnerGuid}) {
-    String text = name;
+  String? title({required Context context, required String sessionOwnerGuid}) {
+    String? text = name;
     final propertyTitle = this
         .propertyTitle(context: context, sessionOwnerGuid: sessionOwnerGuid);
     if (propertyTitle != null) text += propertyTitle;
@@ -198,10 +198,10 @@ class Task extends CommentableObject {
     return text;
   }
 
-  String propertyTitle({Context context, String sessionOwnerGuid}) {
+  String? propertyTitle({required Context context, required String sessionOwnerGuid}) {
     if (contractPropertyName == null ||
         !context.userGuids.contains(sessionOwnerGuid)) return null;
-    return " at " + contractPropertyName;
+    return " at " + contractPropertyName!;
   }
 }
 
