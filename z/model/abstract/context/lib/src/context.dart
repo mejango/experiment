@@ -1,5 +1,4 @@
 import 'package:date/index.dart';
-import 'package:meta/meta.dart';
 
 import 'package:model_object/index.dart';
 import 'package:name_defining_object/index.dart';

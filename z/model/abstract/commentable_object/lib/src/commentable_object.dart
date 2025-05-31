@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:date/index.dart';
 import 'package:feed_object/index.dart';
 import 'package:user_reference/index.dart';
@@ -48,21 +47,21 @@ class CommentableObject extends FeedObject {
     final feedObject = FeedObject.fromMap(map);
     final counts = map[_key.counts] as Map;
     return CommentableObject(
-        contractDomainUsers: feedObject.contractDomainUsers.toSet(),
-        contractUsers: feedObject.contractUsers.toSet(),
-        formerContractUsers: feedObject.formerContractUsers.toSet(),
-        contractStubs: feedObject.contractStubs.toSet(),
-        formerContractStubs: feedObject.formerContractStubs.toSet(),
+        contractDomainUsers: feedObject.contractDomainUsers?.toSet(),
+        contractUsers: feedObject.contractUsers?.toSet(),
+        formerContractUsers: feedObject.formerContractUsers?.toSet(),
+        contractStubs: feedObject.contractStubs?.toSet(),
+        formerContractStubs: feedObject.formerContractStubs?.toSet(),
         contractPropertyName: feedObject.contractPropertyName,
         feePayerType: feedObject.feePayerType,
         clientReferenceId: feedObject.clientReferenceId,
         commentCount: counts[_key.comment],
-        name: map[_key.name],
-        note: map[_key.note],
-        latestActivity: map[_key.latestActivity],
-        unread: map[_key.unread],
-        pinned: map[_key.pinned],
-        subscribers: map[_key.subscribers]);
+        name: map[_key.name] as String?,
+        note: map[_key.note] as String?,
+        latestActivity: map[_key.latestActivity] as Date?,
+        unread: map[_key.unread] as bool?,
+        pinned: map[_key.pinned] as bool?,
+        subscribers: map[_key.subscribers] as Set<UserReference>?);
   }
 
   Map<String, Object?> toMap() {
@@ -71,20 +70,20 @@ class CommentableObject extends FeedObject {
       _key.counts: {_key.comment: commentCount},
       _key.name: name,
       _key.note: note,
-      _key.latestActivity: latestActivity.secondsSinceEpoch,
+      _key.latestActivity: latestActivity?.secondsSinceEpoch,
       _key.unread: unread,
       _key.pinned: pinned,
-      _key.subscribers: subscribers.map((subscriber) => subscriber.toMap())
+      _key.subscribers: subscribers?.map((subscriber) => subscriber.toMap()) as Object?
     });
     return map;
   }
 
-  String formattedSubscribers(
-      {String sessionOwnerGuid,
+  String? formattedSubscribers(
+      {required String sessionOwnerGuid,
       required NameDefiningObject nameDefiningObject,
       bool firstPerson = false}) {
     return formatNames(
-        guids: subscribers.map((user) => user.guid),
+        guids: subscribers?.map((user) => user.guid) as List<String>? ?? [],
         sessionOwnerGuid: sessionOwnerGuid,
         nameDefiningObject: nameDefiningObject,
         firstPerson: firstPerson);
