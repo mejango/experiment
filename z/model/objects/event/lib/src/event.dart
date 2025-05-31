@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:fee_payer_type/index.dart';
 import 'package:event_type/index.dart';
 import 'package:event_object_type/index.dart';
@@ -12,24 +11,24 @@ import 'package:name_formatter/index.dart';
 import 'package:key/index.dart' as _key;
 
 class Event extends FeedObject {
-  final String detail;
-  final String secondaryDetail;
-  final Set<UserReference> actingUsers;
-  final Set<UserReference> affectedUsers;
-  final EventType type;
-  final EventObjectType objectType;
-  final String objectGuid;
-  final Set<Metadata> metadata;
+  final String? detail;
+  final String? secondaryDetail;
+  final Set<UserReference>? actingUsers;
+  final Set<UserReference>? affectedUsers;
+  final EventType? type;
+  final EventObjectType? objectType;
+  final String? objectGuid;
+  final Set<Metadata>? metadata;
 
   Event(
-      {Set<NameUser> contractDomainUsers,
-      Set<NameUser> contractUsers,
-      Set<NameUser> formerContractUsers,
-      Set<Stub> contractStubs,
-      Set<Stub> formerContractStubs,
-      String contractPropertyName,
-      FeePayerType feePayerType,
-      String clientReferenceId,
+      {Set<NameUser>? contractDomainUsers,
+      Set<NameUser>? contractUsers,
+      Set<NameUser>? formerContractUsers,
+      Set<Stub>? contractStubs,
+      Set<Stub>? formerContractStubs,
+      String? contractPropertyName,
+      FeePayerType? feePayerType,
+      String? clientReferenceId,
       this.detail,
       this.secondaryDetail,
       this.actingUsers,
@@ -48,9 +47,7 @@ class Event extends FeedObject {
             feePayerType: feePayerType,
             clientReferenceId: clientReferenceId);
 
-  factory Event.fromMap(Map<String, Object> map) {
-    assert(map != null);
-
+  factory Event.fromMap(Map<String?, Object?> map) {
     final feedObject = FeedObject.fromMap(map);
 
     final actingUsers = (map[_key.actingUsers] as List)
@@ -71,53 +68,53 @@ class Event extends FeedObject {
         contractPropertyName: feedObject.contractPropertyName,
         feePayerType: feedObject.feePayerType,
         clientReferenceId: feedObject.clientReferenceId,
-        detail: map[_key.detail],
-        secondaryDetail: map[_key.secondaryDetail],
+        detail: map[_key.detail] as String?,
+        secondaryDetail: map[_key.secondaryDetail] as String?,
         actingUsers: actingUsers.toSet(),
         affectedUsers: affectedUsers.toSet(),
-        type: EventType.fromString(map[_key.kind]),
-        objectType: EventObjectType.fromString(map[_key.objectKind]),
-        objectGuid: map[_key.objectGuid],
-        metadata: metadata);
+        type: EventType.fromString(map[_key.kind] as String? ?? ''),
+        objectType: EventObjectType.fromString(map[_key.objectKind] as String? ?? ''),
+        objectGuid: map[_key.objectGuid] as String?,
+        metadata: metadata.toSet());
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
     map.addAll({
       _key.detail: detail,
       _key.secondaryDetail: secondaryDetail,
-      _key.actingUsers: actingUsers.map((actingUser) => actingUser.toMap()),
+      _key.actingUsers: actingUsers?.map((actingUser) => actingUser.toMap()),
       _key.affectedUsers:
-          affectedUsers.map((affectedUser) => affectedUser.toMap()),
-      _key.kind: type.toString(),
-      _key.objectKind: objectType.toString(),
+          affectedUsers?.map((affectedUser) => affectedUser.toMap()),
+      _key.kind: type?.toString(),
+      _key.objectKind: objectType?.toString(),
       _key.objectGuid: objectGuid,
-      _key.meta: metadata.map((metadata) => metadata.toMap())
+      _key.meta: metadata?.map((metadata) => metadata.toMap())
     });
     return map;
   }
 
-  String formattedActingUsers(
-      {String sessionOwnerGuid,
+  String? formattedActingUsers(
+      {String? sessionOwnerGuid,
       required NameDefiningObject nameDefiningObject,
       bool firstPerson = false,
       bool useNicknames = true}) {
     return formatNames(
-        guids: actingUsers.map((user) => user.guid),
-        sessionOwnerGuid: sessionOwnerGuid,
+        guids: actingUsers?.map((user) => user.guid ?? '') as List<String>? ?? [],
+        sessionOwnerGuid: sessionOwnerGuid ?? '',
         nameDefiningObject: nameDefiningObject,
         useNicknames: useNicknames,
         firstPerson: firstPerson);
   }
 
-  String formattedAffectedUsers(
-      {String sessionOwnerGuid,
+  String? formattedAffectedUsers(
+      {String? sessionOwnerGuid,
       required NameDefiningObject nameDefiningObject,
       bool firstPerson = false,
       bool useNicknames = true}) {
     return formatNames(
-        guids: affectedUsers.map((user) => user.guid),
-        sessionOwnerGuid: sessionOwnerGuid,
+        guids: affectedUsers?.map((user) => user.guid ?? '') as List<String>? ?? [],
+        sessionOwnerGuid: sessionOwnerGuid ?? '',
         nameDefiningObject: nameDefiningObject,
         useNicknames: useNicknames,
         firstPerson: firstPerson);

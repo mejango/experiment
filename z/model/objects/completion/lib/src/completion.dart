@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:fee_payer_type/index.dart';
 import 'package:feed_object/index.dart';
 import 'package:privacy_type/index.dart';
@@ -59,12 +58,12 @@ class Completion extends FeedObject {
         contractPropertyName: feedObject.contractPropertyName,
         feePayerType: feedObject.feePayerType,
         clientReferenceId: feedObject.clientReferenceId,
-        name: map[_key.name],
-        note: map[_key.note],
-        privacyType: PrivacyType.fromString(map[_key.privacyKind]),
+        name: map[_key.name] as String?,
+        note: map[_key.note] as String?,
+        privacyType: PrivacyType.fromString(map[_key.privacyKind] as String? ?? ''),
         completingUsers: completingUsers.toSet(),
-        task: TaskReference.fromMap(map[_key.task]),
-        completionPrize: Expense.fromMap(map[_key.prizeCompletion]));
+        task: TaskReference.fromMap(map[_key.task] as Map<String, Object?>? ?? {}),
+        completionPrize: Expense.fromMap(map[_key.prizeCompletion] as Map<String, Object>? ?? {}));
   }
 
   Map<String, Object?> toMap() {

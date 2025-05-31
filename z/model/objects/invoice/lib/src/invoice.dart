@@ -121,7 +121,7 @@ class Invoice extends Task {
         type: InvoiceType.fromString(map[_key.kind] as String? ?? ''),
         amount: map[_key.amount] as int?,
         paid: map[_key.paid] as int?,
-        payers: payers?.toSet(),
+        payers: payers.toSet(),
         overridePaymentBuffer: map[_key.overridePaymentBuffer] as bool?);
   }
 
@@ -132,7 +132,7 @@ class Invoice extends Task {
       _key.kind: type.toString(),
       _key.amount: amount,
       _key.paid: paid,
-      _key.payers: payers.map((payer) => payer.toMap()),
+      _key.payers: payers?.map((payer) => payer.toMap()),
       _key.overridePaymentBuffer: overridePaymentBuffer
     });
     return map;

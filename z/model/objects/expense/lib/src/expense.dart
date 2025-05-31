@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:expense_type/index.dart';
 import 'package:fee_payer_type/index.dart';
 import 'package:privacy_type/index.dart';
@@ -15,28 +14,28 @@ import 'package:name_formatter/index.dart';
 import 'package:key/index.dart' as _key;
 
 class Expense extends Transaction {
-  final Set<Splitter> payers;
-  final Set<Splitter> splitters;
-  final Set<ExpensePart> parts;
-  final ThreadReference thread;
-  final ExpenseType type;
+  final Set<Splitter>? payers;
+  final Set<Splitter>? splitters;
+  final Set<ExpensePart>? parts;
+  final ThreadReference? thread;
+  final ExpenseType? type;
 
   Expense(
-      {Set<NameUser> contractDomainUsers,
-      Set<NameUser> contractUsers,
-      Set<NameUser> formerContractUsers,
-      Set<Stub> contractStubs,
-      Set<Stub> formerContractStubs,
-      String contractPropertyName,
-      FeePayerType feePayerType,
-      String clientReferenceId,
-      String name,
-      String note,
-      PrivacyType privacyType,
-      Set<UserReference> completingUsers,
-      TaskReference task,
-      Expense completionPrize,
-      int amount,
+      {Set<NameUser>? contractDomainUsers,
+      Set<NameUser>? contractUsers,
+      Set<NameUser>? formerContractUsers,
+      Set<Stub>? contractStubs,
+      Set<Stub>? formerContractStubs,
+      String? contractPropertyName,
+      FeePayerType? feePayerType,
+      String? clientReferenceId,
+      String? name,
+      String? note,
+      PrivacyType? privacyType,
+      Set<UserReference>? completingUsers,
+      TaskReference? task,
+      int? completionPrize,
+      int? amount,
       this.payers,
       this.splitters,
       this.parts,
@@ -56,17 +55,15 @@ class Expense extends Transaction {
             privacyType: privacyType,
             completingUsers: completingUsers,
             task: task,
-            completionPrize: completionPrize,
+            completionPrize: completionPrize as Expense?,
             amount: amount);
 
-  factory Expense.fromMap(Map<String, Object> map) {
-    assert(map != null);
-
+  factory Expense.fromMap(Map<String?, Object?> map) {
     final transaction = Transaction.fromMap(map);
     final payers =
-        (map[_key.payers] as List).map((map) => Splitter.fromMap(map));
+        (map[_key.payers] as List? ?? []).map((map) => Splitter.fromMap(map));
     final splitters =
-        (map[_key.splitters] as List).map((map) => Splitter.fromMap(map));
+        (map[_key.splitters] as List? ?? []).map((map) => Splitter.fromMap(map));
     final parts =
         (map[_key.parts] as List).map((map) => ExpensePart.fromMap(map));
 
@@ -84,46 +81,46 @@ class Expense extends Transaction {
         privacyType: transaction.privacyType,
         completingUsers: transaction.completingUsers,
         task: transaction.task,
-        completionPrize: transaction.completionPrize,
+        completionPrize: transaction.completionPrize as int?,
         payers: payers.toSet(),
         splitters: splitters.toSet(),
         parts: parts.toSet(),
-        thread: ThreadReference.fromMap(map[_key.thread]),
-        type: ExpenseType.fromString(map[_key.kind]));
+        thread: ThreadReference.fromMap(map[_key.thread] as Map<String, Object?>? ?? {}),
+        type: ExpenseType.fromString(map[_key.kind] as String? ?? ''));
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
     map.addAll({
-      _key.payers: payers.map((payer) => payer.toMap()),
-      _key.splitters: splitters.map((splitter) => splitter.toMap()),
-      _key.parts: parts.map((part) => part.toMap()),
-      _key.thread: thread.toMap(),
+      _key.payers: payers?.map((payer) => payer.toMap()),
+      _key.splitters: splitters?.map((splitter) => splitter.toMap()),
+      _key.parts: parts?.map((part) => part.toMap()),
+      _key.thread: thread?.toMap(),
       _key.kind: type.toString()
     });
     return map;
   }
 
   String formattedPayers({
-    String sessionOwnerGuid,
+    String? sessionOwnerGuid,
     required NameDefiningObject nameDefiningObject,
     bool firstPerson = false,
   }) {
     return formatNames(
-        guids: payers.map((payer) => payer.bankOwner.guid),
-        sessionOwnerGuid: sessionOwnerGuid,
+        guids: payers?.map((payer) => payer.bankOwner?.guid ?? '') as List<String>? ?? [],
+        sessionOwnerGuid: sessionOwnerGuid ?? '',
         nameDefiningObject: nameDefiningObject,
         firstPerson: firstPerson);
   }
 
-  String formattedSplitter({
-    String sessionOwnerGuid,
+  String? formattedSplitter({
+    String? sessionOwnerGuid,
     required NameDefiningObject nameDefiningObject,
     bool firstPerson = false,
   }) {
     return formatNames(
-        guids: splitters.map((splitter) => splitter.bankOwner.guid),
-        sessionOwnerGuid: sessionOwnerGuid,
+        guids: splitters?.map((splitter) => splitter.bankOwner?.guid ?? '') as List<String>? ?? [],
+        sessionOwnerGuid: sessionOwnerGuid ?? '',
         nameDefiningObject: nameDefiningObject,
         firstPerson: firstPerson);
   }
