@@ -1,5 +1,3 @@
-import 'package:string_from_enum_string/index.dart';
-
 enum InvoiceStatusOption { paid, unpaid, overdue }
 
 class InvoiceStatus {

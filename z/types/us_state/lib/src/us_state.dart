@@ -1,5 +1,3 @@
-import '../index.dart';
-
 enum _UsStateOption {
   alabama,
   alaska,
@@ -62,9 +60,9 @@ class UsStateOption {
 
     final option = _UsStateOption.values.firstWhere(
       (value) =>
-          UsStateOption._internal(value).toAbbreviatedString()?.toLowerCase() ==
+          UsStateOption._internal(value).toAbbreviatedString().toLowerCase() ==
               _string ||
-          UsStateOption._internal(value).toFullString()?.toLowerCase() ==
+          UsStateOption._internal(value).toFullString().toLowerCase() ==
               _string,
     );
 

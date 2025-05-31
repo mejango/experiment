@@ -7,7 +7,7 @@ class StyleDecoratedText extends _DecoratedText {
       : super(text: text);
 
   addSection({required String text, required TextStyle style}) {
-    final section = _StyleTextSection(text: text, style: style ?? defaultStyle);
+    final section = _StyleTextSection(text: text, style: style);
     super._addSection(section);
   }
 
@@ -15,7 +15,7 @@ class StyleDecoratedText extends _DecoratedText {
     final children = _sections.map((section) {
       return TextSpan(
           text: section.text,
-          style: (section as _StyleTextSection).style ?? defaultStyle);
+          style: (section as _StyleTextSection).style);
     }).toList();
 
     return super._generateWidgetFromChildren(

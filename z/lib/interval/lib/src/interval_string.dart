@@ -1,6 +1,6 @@
 import 'package:ordinal_suffix_string_from_int/index.dart';
 
-String toIntervalString(int interval, {bool capitalize}) {
+String toIntervalString(int interval, {bool capitalize = false}) {
   final String ordinalSuffix = ordinalSuffixString(interval);
 
   String string;
@@ -19,7 +19,7 @@ String toIntervalString(int interval, {bool capitalize}) {
       break;
   }
 
-  if (capitalize ?? false)
+  if (capitalize)
     return string[0].toUpperCase() + string.substring(1);
   else
     return string;

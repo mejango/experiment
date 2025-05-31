@@ -8,7 +8,7 @@ import 'row.dart';
 import '../util/index.dart';
 
 class StreamableTableData extends StreamableData {
-  final StreamableTableHeaderData headerData;
+  final StreamableTableHeaderData? headerData;
   final Axis scrollDirection;
   final bool reverse;
 
@@ -21,20 +21,20 @@ class StreamableTableData extends StreamableData {
 
   StreamableTableData(
       {this.headerData,
-      this.sectionData,
-      Axis scrollDirection,
-      bool reverse,
-      List<StreamableTableRowData> rowData})
-      : reverse = reverse ?? false,
-        scrollDirection = scrollDirection ?? Axis.vertical {
+      this.sectionData = const [],
+      Axis scrollDirection = Axis.vertical,
+      bool reverse = false,
+      List<StreamableTableRowData> rowData = const []})
+      : reverse = reverse,
+        scrollDirection = scrollDirection {
     _sortWithRowData(rowData);
   }
 
   StreamableTableData.withoutSections(
-      {StreamableTableHeaderData headerData,
-      bool reverse,
-      Axis scrollDirection,
-      List<StreamableTableRowData> rowData})
+      {StreamableTableHeaderData? headerData,
+      bool reverse = false,
+      Axis scrollDirection = Axis.vertical,
+      List<StreamableTableRowData> rowData = const []})
       : this(
             headerData: headerData,
             sectionData: [
@@ -94,7 +94,7 @@ class StreamableTableData extends StreamableData {
     }
   }
 
-  TableLocation tableLocationOfRowData(StreamableTableRowData rowData) {
+  TableLocation? tableLocationOfRowData(StreamableTableRowData rowData) {
     for (int i = 0; i < sectionData.length; i++) {
       final sectionData = this.sectionData[i];
       final rowIndex = sectionData.indexOfRowData(rowData);

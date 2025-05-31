@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart';
-
 class FormValidationException implements Exception {
   final String message;
 

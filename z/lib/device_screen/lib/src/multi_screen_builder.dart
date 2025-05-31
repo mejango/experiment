@@ -4,16 +4,16 @@ import 'device_screen.dart';
 
 mixin MultiScreenBuilder {
   Widget? build(BuildContext context) {
-    switch ( DeviceScreen.of(context)) {
+    switch ( DeviceScreen.of(context)?.current) {
       case DeviceScreenOption.small:
         return buildSmall(context);
       case DeviceScreenOption.medium:
         return buildMedium(context);
       case DeviceScreenOption.large:
         return buildLarge(context);
+      default:
+        return null;
     }
-
-    return null;
   }
 
   Widget? buildLarge(BuildContext context) => buildMedium(context);

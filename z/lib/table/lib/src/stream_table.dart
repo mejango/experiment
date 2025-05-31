@@ -16,9 +16,12 @@ abstract class StreamTable<
 
   Widget build(BuildContext context) {
     final table = StreamTableBuilder(
-      buildRow: buildRow,
-      buildSectionHeader: buildSectionHeader,
-      buildTableHeader: buildTableHeader,
+      buildRow: ({required StreamableTableRowData rowData, int? rowIndex, int? sectionIndex}) => 
+          buildRow(rowData: rowData as T, rowIndex: rowIndex, sectionIndex: sectionIndex),
+      buildSectionHeader: ({required StreamableTableSectionHeaderData headerData, int? sectionIndex}) => 
+          buildSectionHeader(headerData: headerData as U, sectionIndex: sectionIndex),
+      buildTableHeader: ({required StreamableTableHeaderData headerData}) => 
+          buildTableHeader(headerData: headerData as V),
       showsHeaderForEmptyTable: showsHeaderForEmptyTable,
       showsHeadersForEmptySections: showsHeadersForEmptySections,
     );
@@ -28,7 +31,7 @@ abstract class StreamTable<
     );
   }
 
-  Widget buildRow({T rowData, int rowIndex, int sectionIndex}) => null;
-  Widget buildSectionHeader({U headerData, int sectionIndex}) => null;
-  SliverPersistentHeader buildTableHeader({V headerData}) => null;
+  Widget? buildRow({required T rowData, int? rowIndex, int? sectionIndex}) => null;
+  Widget? buildSectionHeader({required U headerData, int? sectionIndex}) => null;
+  SliverPersistentHeader? buildTableHeader({required V headerData}) => null;
 }

@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 class KeyboardAccessory extends StatefulWidget {
   final Widget child;
 
-  KeyboardAccessory({this.child});
+  KeyboardAccessory({required this.child});
 
-  static InheritedKeyboardAccessory of(BuildContext context,
+  static InheritedKeyboardAccessory? of(BuildContext context,
       {bool shouldRebuild = true}) {
     final inheritedWidget = shouldRebuild
         ? context
             .dependOnInheritedWidgetOfExactType<_InheritedKeyboardAccessory>()
         : context.findAncestorWidgetOfExactType<_InheritedKeyboardAccessory>();
 
-    return inheritedWidget.data;
+    return inheritedWidget?.data;
   }
 
   @override
@@ -20,11 +20,11 @@ class KeyboardAccessory extends StatefulWidget {
 }
 
 class InheritedKeyboardAccessory extends State<KeyboardAccessory> {
-  Widget _child;
+  late Widget? _child;
 
   bool _isHidden = false;
 
-  set child(Widget child) {
+  set child(Widget? child) {
     setState(() {
       _child = child;
       _isHidden = false;
@@ -37,7 +37,7 @@ class InheritedKeyboardAccessory extends State<KeyboardAccessory> {
   Widget build(BuildContext context) {
     List<Widget> children = [Expanded(child: widget.child)];
 
-    if (!_isHidden && _child != null) children.add(_child);
+    if (!_isHidden && _child != null) children.add(_child!);
 
     return _InheritedKeyboardAccessory(
       data: this,
@@ -52,7 +52,7 @@ class InheritedKeyboardAccessory extends State<KeyboardAccessory> {
 class _InheritedKeyboardAccessory extends InheritedWidget {
   final InheritedKeyboardAccessory data;
 
-  _InheritedKeyboardAccessory({@required this.data, @required Widget child})
+  _InheritedKeyboardAccessory({required this.data, required Widget child})
       : super(child: child);
 
   @override

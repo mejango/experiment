@@ -11,9 +11,9 @@ import '_phone_number_string_mask.dart';
 
 String applyMask(
   MaskOption option, {
-  @required String text,
+  required String text,
   bool isEditing = false,
-  @required BuildContext context,
+  required BuildContext context,
 }) {
   StringMask mask;
 
@@ -44,8 +44,8 @@ MoneyStringMask _makeMoneyStringMask(
     BuildContext context, bool isEditing, bool withDecimals) {
   final locale = Localizations.localeOf(context);
   final format =
-      NumberFormat(null, locale.languageCode + '_' + locale.countryCode);
-  final symbol = format.simpleCurrencySymbol(format.currencyName);
+      NumberFormat(null, locale.languageCode + '_' + (locale.countryCode ?? ''));
+  final symbol = format.simpleCurrencySymbol(format.currencyName ?? '');
   final decimalSeperator = format.symbols.DECIMAL_SEP;
   final thousandsSeperator = format.symbols.GROUP_SEP;
   return MoneyStringMask(

@@ -13,86 +13,86 @@ dependencies:
     sdk: flutter
   stream:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/stream
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/stream
   mask:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/mask
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/mask
   date:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/date
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/date
   form_validation_exception:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/form_validation_exception
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/form_validation_exception
   typedefs:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/typedefs
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/typedefs
   ordinal_suffix_string_from_int:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/ordinal_suffix_string_from_int
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/ordinal_suffix_string_from_int
   standard_icon_library:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: icons/standard
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/icons/standard
   interval:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/interval
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/interval
   period_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/period
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/period
   us_state_options:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/us_state
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/us_state
   fee_payer_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/fee_payer
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/fee_payer
   labeled_value:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: labeled_value
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/labeled_value
   small_icon_library:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: icons/small
-  dwolla_model:
-    git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/dwolla
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/icons/small
+  # dwolla_model:
+  #   git:
+  #     url: git@github.com:mejango/experiment.git
+  #     ref: main
+  #     path: z/model/dwolla
 
-dependency_overrides:
-  mask:
-    path: ../../lib/mask
-  dwolla_types:
-    path: ../../types/dwolla
-  dwolla_model:
-    path: ../../model/dwolla
-  us_state_options:
-    path: ../../types/us_state
-  form_validation_exception:
-    path: ../../lib/form_validation_exception
+# dependency_overrides:
+#   mask:
+#     path: ../../z/lib/mask
+#   dwolla_types:
+#     path: ../../z/types/dwolla
+#   # dwolla_model:
+#   #   path: ../../model/dwolla
+#   us_state_options:
+#     path: ../../z/types/us_state
+#   form_validation_exception:
+#     path: ../../z/lib/form_validation_exception
 
 dev_dependencies:
   flutter_test:

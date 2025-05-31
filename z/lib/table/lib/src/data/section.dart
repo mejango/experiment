@@ -5,24 +5,24 @@ import 'section_header.dart';
 
 class StreamableTableSectionData<S extends StreamableTableRowData>
     extends StreamableTableRowData {
-  final StreamableTableSectionHeaderData headerData;
+  final StreamableTableSectionHeaderData? headerData;
 
   final rowData = <S>[];
 
-  Function(S, S) sort;
-  bool Function(S) criteria;
+  Function(S, S)? sort;
+  bool Function(S)? criteria;
 
   StreamableTableSectionData({this.headerData, this.sort, this.criteria});
 
   StreamableTableSectionData.withTitle(String title,
-      {Function(S, S) sort, Function(S) criteria})
+      {Function(S, S)? sort, bool Function(S)? criteria})
       : this(
             headerData: StreamableTableSectionHeaderData(title: title),
             sort: sort,
             criteria: criteria);
 
   void addRowData(StreamableTableRowData rowData) {
-    this.rowData.add(rowData);
+    this.rowData.add(rowData as S);
   }
 
   void removeRowDataAtIndex(int index) {
@@ -30,7 +30,7 @@ class StreamableTableSectionData<S extends StreamableTableRowData>
   }
 
   void replaceIndex(int index, StreamableTableRowData rowData) {
-    this.rowData.replaceRange(index, index + 1, [rowData]);
+    this.rowData.replaceRange(index, index + 1, [rowData as S]);
   }
 
   int indexOfRowData(StreamableTableRowData rowData) {
@@ -39,10 +39,10 @@ class StreamableTableSectionData<S extends StreamableTableRowData>
   }
 
   void sortRowData() {
-    insertionSort<S>(rowData, compare: sort);
+    insertionSort<S>(rowData, compare: sort as int Function(S, S)?);
   }
 
   bool acceptsRow(StreamableTableRowData rowData) {
-    return criteria(rowData);
+    return criteria?.call(rowData as S) ?? false;
   }
 }

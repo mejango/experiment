@@ -39,7 +39,7 @@ abstract class StringMask {
         valueCharIndex += 1;
         maskCharIndex += 1;
       } else if (this._translator.containsKey(maskChar)) {
-        if (this._translator[maskChar].hasMatch(valueChar)) {
+        if (this._translator[maskChar]?.hasMatch(valueChar) ?? false) {
           result += valueChar;
           maskCharIndex += 1;
         }

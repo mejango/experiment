@@ -8,7 +8,7 @@ mixin Tappable<T extends StatefulWidget> on State<T> {
   bool tapped = false;
 
   setTapped(bool val) async {
-    if (val == false && minTapDuration != null) {
+    if (val == false) {
       await Future.delayed(minTapDuration);
     }
     setState(() {
@@ -16,14 +16,14 @@ mixin Tappable<T extends StatefulWidget> on State<T> {
     });
   }
 
-  _onTap(void Function() onTap) async {
-    if (minTapDuration != null) await Future.delayed(minTapDuration);
-    onTap();
+  _onTap(void Function()? onTap) async {
+    await Future.delayed(minTapDuration);
+    onTap?.call();
   }
 
   GestureDetector buildTappedAwareGestureDetector({
-    Widget child,
-    void Function() onTap,
+    Widget? child,
+    void Function()? onTap,
   }) {
     return GestureDetector(
       onTapDown: (_) => setTapped(true),

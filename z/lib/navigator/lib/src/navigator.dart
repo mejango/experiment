@@ -6,7 +6,7 @@ import 'package:typedefs/index.dart';
 
 typedef GoToArtboard = Future<T> Function<T>(
   Artboard<T> artboard, {
-  @required BuildContext context,
+  required BuildContext context,
 });
 
 typedef PopTo = bool Function<T>([T result]);
@@ -15,28 +15,27 @@ class ArtboardNavigator extends StatefulWidget {
   final Widget child;
   final GoToArtboard goTo;
   final PopTo pop;
-  final FlagListener onNavButtonVisibilityChange;
+  final FlagListener? onNavButtonVisibilityChange;
 
   ArtboardNavigator({
-    @required this.child,
-    @required this.goTo,
-    @required this.pop,
+    required this.child,
+    required this.goTo,
+    required this.pop,
     this.onNavButtonVisibilityChange,
   });
 
   @override
   State<StatefulWidget> createState() => InheritedArtboardNavigator();
 
-  static InheritedArtboardNavigator of(
+  static InheritedArtboardNavigator? of(
     BuildContext context, {
     bool shouldRebuild = false,
   }) {
     final inheritedWidget = shouldRebuild
-        ? context
-            .dependOnInheritedWidgetOfExactType<_InheritedArtboardNavigator>()
+        ? context.dependOnInheritedWidgetOfExactType<_InheritedArtboardNavigator>()
         : context.findAncestorWidgetOfExactType<_InheritedArtboardNavigator>();
 
-    return inheritedWidget.data;
+    return inheritedWidget?.data;
   }
 }
 
@@ -48,11 +47,11 @@ class InheritedArtboardNavigator extends State<ArtboardNavigator> {
     );
   }
 
-  bool pop<T>([T result]) => widget.pop(result);
+  bool pop<T>([T? result]) => widget.pop(result);
 
   void toggleNavButtonsHidden(bool isHidden) {
     if (widget.onNavButtonVisibilityChange == null) return;
-    widget.onNavButtonVisibilityChange(isHidden);
+    widget.onNavButtonVisibilityChange!(isHidden);
   }
 
   @override
@@ -68,8 +67,8 @@ class _InheritedArtboardNavigator extends InheritedWidget {
   final InheritedArtboardNavigator data;
 
   _InheritedArtboardNavigator({
-    @required this.data,
-    @required Widget child,
+    required this.data,
+    required Widget child,
   }) : super(child: child);
 
   @override

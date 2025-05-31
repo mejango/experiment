@@ -6,7 +6,7 @@ import 'data/index.dart';
 import 'util/index.dart';
 
 class StreamTableBloc implements BlocBase {
-  StreamableTableData _tableData;
+  late StreamableTableData _tableData;
 
   //The stream responsible for communicating changes to the entire table.
   final _tableController = StreamController<StreamableTableData>();

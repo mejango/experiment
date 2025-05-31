@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 enum HapticOption { light, medium, heavy, click }
@@ -55,7 +54,7 @@ void triggerHaptic(HapticOption option) {
 
 void hapticAction(
   HapticOption option, {
-  required void Function() action,
+  required void Function()? action,
 }) {
   triggerHaptic(option);
 

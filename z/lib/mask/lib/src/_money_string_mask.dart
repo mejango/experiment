@@ -13,7 +13,7 @@ class MoneyStringMask extends StringMask {
   final int precision;
 
   MoneyStringMask({
-    this.isEditing,
+    this.isEditing = false,
     this.withDecimals = true,
     this.decimalSeparator = ',',
     this.groupSeparator = '.',
@@ -29,8 +29,8 @@ class MoneyStringMask extends StringMask {
 
     String body = _makeBody(text, isEditing);
 
-    if (leftSymbol != null) body = leftSymbol + body;
-    if (rightSymbol != null) body = body + rightSymbol;
+    if (leftSymbol.isNotEmpty) body = leftSymbol + body;
+    if (rightSymbol.isNotEmpty) body = body + rightSymbol;
 
     return body;
   }

@@ -8,8 +8,8 @@ class Network {
   static const _jsonContentType = 'application/json';
   static const _jsonAccept = 'application/json';
 
-  static Future<Map> get({String address}) async {
-    final response = await http.get(Uri.encodeFull(address));
+  static Future<Map> get({required String address}) async {
+    final response = await http.get(Uri.parse(address));
 
     print("GET response: $response");
     switch (response.statusCode) {
@@ -23,9 +23,9 @@ class Network {
   }
 
   static Future<PostResponse> post({
-    String address,
-    Map<String, Object> params,
-    Map<String, String> headers,
+    required String address,
+    Map<String, Object>? params,
+    Map<String, String>? headers,
   }) async {
     print("POST address: $address");
     print("POST params: $params");
@@ -43,7 +43,7 @@ class Network {
     }
 
     final response = await http.post(
-      Uri.encodeFull(address),
+      Uri.parse(address),
       body: json.encode(params),
       headers: headers,
     );
@@ -51,7 +51,7 @@ class Network {
     final decodedBodyBytes = utf8.decode(response.bodyBytes);
 
     final PostResponse postResponse = PostResponse(
-      body: (decodedBodyBytes != null && decodedBodyBytes.isNotEmpty) ? json.decode(decodedBodyBytes) : null,
+      body: (decodedBodyBytes.isNotEmpty) ? json.decode(decodedBodyBytes) : null,
       headers: response.headers,
       statusCode: response.statusCode,
     );

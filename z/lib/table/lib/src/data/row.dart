@@ -1,5 +1,5 @@
 import 'package:stream/index.dart';
 
 class StreamableTableRowData extends StreamableData {
-  StreamableTableRowData({String key}) : super(key: key);
+  StreamableTableRowData({String? key}) : super(key: key);
 }

@@ -4,8 +4,8 @@ class PostResponse {
   final int statusCode;
 
   PostResponse({
-    this.body,
-    this.headers,
-    this.statusCode,
+    required this.body,
+    required this.headers,
+    required this.statusCode,
   });
 }

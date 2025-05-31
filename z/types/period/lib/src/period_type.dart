@@ -5,7 +5,7 @@ enum _PeriodTypeOption { daily, weekly, monthly }
 class PeriodType {
   final _PeriodTypeOption _value;
 
-  String? get inlineString {
+  String get inlineString {
     switch (_value) {
       case _PeriodTypeOption.daily:
         return "day";
@@ -14,10 +14,9 @@ class PeriodType {
       case _PeriodTypeOption.monthly:
         return "month";
     }
-    return null;
   }
 
-  String? get whenString {
+  String get whenString {
     switch (_value) {
       case _PeriodTypeOption.daily:
         return "daily";
@@ -26,7 +25,6 @@ class PeriodType {
       case _PeriodTypeOption.monthly:
         return "monthly";
     }
-    return null;
   }
 
   const PeriodType._internal(this._value);
