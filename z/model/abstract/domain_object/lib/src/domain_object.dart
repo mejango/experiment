@@ -40,7 +40,7 @@ class DomainObject extends ModelObject with NameDefiningObject {
       this.contractPropertyName,
       this.feePayerType});
 
-  factory DomainObject.fromMap(Map<String, Object> map) {
+  factory DomainObject.fromMap(Map<String?, Object?> map) {
     final contract = map[_key.contract] as Map;
     final property = contract[_key.property] as Map;
 
