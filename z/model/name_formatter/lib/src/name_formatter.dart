@@ -14,7 +14,7 @@ String formatNames(
         sessionOwnerGuid: sessionOwnerGuid,
         useNicknames: useNicknames,
       )
-      .toSet()
+      ?.toSet()
       .toList();
 
   final orderedNames = [];
@@ -22,6 +22,7 @@ String formatNames(
   final allUserGuids = nameDefiningObject?.userGuids;
   if (orderedGuids != null &&
       orderedGuids.isNotEmpty &&
+      useAllText != null &&
       useAllText &&
       allUserGuids != null &&
       allUserGuids.every((guid) => orderedGuids.contains(guid))) {
