@@ -10,23 +10,23 @@ import 'package:key/index.dart' as _key;
 import 'package:name_formatter/index.dart';
 
 class CommentableObject extends FeedObject {
-  final int commentCount;
-  final String name;
-  final String note;
-  final Date latestActivity;
-  final bool unread;
-  final bool pinned;
-  final Set<UserReference> subscribers;
+  final int? commentCount;
+  final String? name;
+  final String? note;
+  final Date? latestActivity;
+  final bool? unread;
+  final bool? pinned;
+  final Set<UserReference>? subscribers;
 
   CommentableObject(
-      {Set<NameUser> contractDomainUsers,
-      Set<NameUser> contractUsers,
-      Set<NameUser> formerContractUsers,
-      Set<Stub> contractStubs,
-      Set<Stub> formerContractStubs,
-      String contractPropertyName,
-      FeePayerType feePayerType,
-      String clientReferenceId,
+      {Set<NameUser>? contractDomainUsers,
+      Set<NameUser>? contractUsers,
+      Set<NameUser>? formerContractUsers,
+      Set<Stub>? contractStubs,
+      Set<Stub>? formerContractStubs,
+      String? contractPropertyName,
+      FeePayerType? feePayerType,
+      String? clientReferenceId,
       this.commentCount,
       this.name,
       this.note,
@@ -44,7 +44,7 @@ class CommentableObject extends FeedObject {
             feePayerType: feePayerType,
             clientReferenceId: clientReferenceId);
 
-  factory CommentableObject.fromMap(Map<String, Object> map) {
+  factory CommentableObject.fromMap(Map<String?, Object?> map) {
     final feedObject = FeedObject.fromMap(map);
     final counts = map[_key.counts] as Map;
     return CommentableObject(
@@ -65,7 +65,7 @@ class CommentableObject extends FeedObject {
         subscribers: map[_key.subscribers]);
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
     map.addAll({
       _key.counts: {_key.comment: commentCount},

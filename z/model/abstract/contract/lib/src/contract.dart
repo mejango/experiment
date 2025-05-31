@@ -37,22 +37,22 @@ class Contract extends Context {
   Set<NameContext> get nameContexts => Set.of([domain]);
 
   Contract(
-      {required String guid,
-      required Date dateCreated,
-      required String creatorGuid,
-      required int unreadCommentableObjectCount,
-      required int pinnedCommentableObjectCount,
-      required this.startDate,
-      required this.endDate,
-      required this.amount,
+      { String? guid,
+      Date? dateCreated,
+      String? creatorGuid,
+      int? unreadCommentableObjectCount,
+      int? pinnedCommentableObjectCount,
+      this.startDate,
+      this.endDate,
+      this.amount,
       this.name,
-      required this.users,
-      required this.formerUsers,
-      required this.schedule,
+      this.users,
+      this.formerUsers,
+      this.schedule,
       this.domain,
-      required this.invoiceCount,
-      required this.feePayerType,
-      required this.monthToMonth})
+      this.invoiceCount,
+      this.feePayerType,
+      this.monthToMonth})
       :
         //Contracts will always be user made.
         assert(creatorGuid != null),
