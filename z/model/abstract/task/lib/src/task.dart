@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:fee_payer_type/index.dart';
 import 'package:assignment_type/index.dart';
 import 'package:date/index.dart';
@@ -109,17 +108,17 @@ class Task extends CommentableObject {
         completingUsers: completingUsers.toSet(),
         assignedUsers: assignedUsers.toSet(),
         latestActivation:
-            Date.fromSecondsSinceEpoch(map[_key.latestActivation]),
+            Date.fromSecondsSinceEpoch(map[_key.latestActivation] as int),
         latestCompletion:
-            Date.fromSecondsSinceEpoch(map[_key.latestCompletion]),
+            Date.fromSecondsSinceEpoch(map[_key.latestCompletion] as int),
         completionCounts: completionCounts.toSet(),
-        schedule: Schedule.fromMap(map[_key.schedule]),
-        deadline: Date.fromSecondsSinceEpoch(map[_key.deadline]),
-        assignmentType: AssignmentType.fromString(map[_key.assigmentKind]),
-        deadlineParts: DateParts.fromMap(map[_key.deadlineParts]),
-        currentlyCompleted: map[_key.currentlyCompleted],
-        completionCount: counts[_key.completion],
-        completionPrize: map[_key.completionPrize]);
+        schedule: Schedule.fromMap(map[_key.schedule] as Map<String, Object>),
+        deadline: Date.fromSecondsSinceEpoch(map[_key.deadline] as int),
+        assignmentType: AssignmentType.fromString(map[_key.assigmentKind] as String),
+        deadlineParts: DateParts.fromMap(map[_key.deadlineParts] as Map<String, Object>),
+        currentlyCompleted: map[_key.currentlyCompleted] as bool?,
+        completionCount: counts[_key.completion] as int?,
+        completionPrize: map[_key.completionPrize] as int?);
   }
 
   Map<String, Object?> toMap() {
@@ -148,7 +147,7 @@ class Task extends CommentableObject {
 
   CompletionCount? completionCountForGuid(String guid) {
     return completionCounts
-        ?.where((completionCount) => completionCount.user.guid == guid)
+        ?.where((completionCount) => completionCount.user?.guid == guid)
         .firstOrNull;
   }
 
@@ -190,7 +189,7 @@ class Task extends CommentableObject {
   }
 
   String? title({required Context context, required String sessionOwnerGuid}) {
-    String? text = name;
+    String text = name ?? "";
     final propertyTitle = this
         .propertyTitle(context: context, sessionOwnerGuid: sessionOwnerGuid);
     if (propertyTitle != null) text += propertyTitle;

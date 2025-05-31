@@ -62,7 +62,7 @@ class Transaction extends Completion {
         completingUsers: completion.completingUsers,
         task: completion.task,
         completionPrize: completion.completionPrize,
-        amount: map[_key.amount]);
+        amount: map[_key.amount] as int?);
   }
 
   Map<String, Object?> toMap() {

@@ -1,43 +1,40 @@
 import 'package:date/index.dart';
-import 'package:meta/meta.dart';
 import 'package:stub_type/index.dart';
 import 'package:model_object/index.dart';
 import 'package:key/index.dart' as _key;
 
 class Stub extends ModelObject {
-  final String name;
-  final StubType type;
-  final String objectGuid;
+  final String? name;
+  final StubType? type;
+  final String? objectGuid;
 
   const Stub({
-    required String guid,
-    required Date dateCreated,
-    required String creatorGuid,
+    String? guid,
+    Date? dateCreated,
+    String? creatorGuid,
     required this.name,
     required this.type,
     this.objectGuid,
-  })  : assert(name != null),
-        assert(type != null),
-        super(guid: guid, dateCreated: dateCreated, creatorGuid: creatorGuid);
+  }) : super(guid: guid, dateCreated: dateCreated, creatorGuid: creatorGuid);
 
-  factory Stub.fromMap(Map<String, Object> map) {
+  factory Stub.fromMap(Map<String?, Object?> map) {
     assert(map != null);
 
     final object = ModelObject.fromMap(map);
-    final name = map[_key.name];
-    final objectGuid = map[_key.object];
+    final name = map[_key.name] as String?;
+    final objectGuid = map[_key.object] as String?;
 
     return Stub(
         guid: object.guid,
         dateCreated: object.dateCreated,
         creatorGuid: object.creatorGuid,
         name: name,
-        type: StubType.fromString(map[_key.kind]),
+        type: StubType.fromString(map[_key.kind] as String),
         objectGuid: objectGuid);
   }
 
   @override
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
     map.addAll({
       _key.name: name,

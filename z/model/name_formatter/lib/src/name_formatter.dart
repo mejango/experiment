@@ -6,9 +6,9 @@ String formatNames(
     {required List<String> guids,
     required String sessionOwnerGuid,
     NameDefiningObject? nameDefiningObject,
-    bool useNicknames = true,
-    bool useAllText = true,
-    bool firstPerson = false}) {
+    bool? useNicknames = true,
+    bool? useAllText = true,
+    bool? firstPerson = false}) {
   final orderedGuids = nameDefiningObject?.orderedUserGuids(
         guids: guids,
         sessionOwnerGuid: sessionOwnerGuid,

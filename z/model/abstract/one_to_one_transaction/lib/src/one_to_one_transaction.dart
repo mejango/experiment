@@ -70,8 +70,8 @@ class OneToOneTransaction extends Transaction {
       completingUsers: transaction.completingUsers,
       task: transaction.task,
       completionPrize: transaction.completionPrize,
-      receiver: BankOwnerReference.fromMap(map[_key.receiver]),
-      sender: BankOwnerReference.fromMap(map[_key.sender]),
+      receiver: BankOwnerReference.fromMap(map[_key.receiver] as Map<String, Object>),
+      sender: BankOwnerReference.fromMap(map[_key.sender] as Map<String, Object>),
     );
   }
 
