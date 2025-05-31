@@ -12,22 +12,22 @@ import 'package:name_formatter/index.dart';
 import 'package:key/index.dart' as _key;
 
 class Completion extends FeedObject {
-  final String name;
-  final String note;
-  final PrivacyType privacyType;
-  final Set<UserReference> completingUsers;
-  final TaskReference task;
-  final Expense completionPrize;
+  final String? name;
+  final String? note;
+  final PrivacyType? privacyType;
+  final Set<UserReference>? completingUsers;
+  final TaskReference? task;
+  final Expense? completionPrize;
 
   Completion(
-      {Set<NameUser> contractDomainUsers,
-      Set<NameUser> contractUsers,
-      Set<NameUser> formerContractUsers,
-      Set<Stub> contractStubs,
-      Set<Stub> formerContractStubs,
-      String contractPropertyName,
-      FeePayerType feePayerType,
-      String clientReferenceId,
+      {Set<NameUser>? contractDomainUsers,
+      Set<NameUser>? contractUsers,
+      Set<NameUser>? formerContractUsers,
+      Set<Stub>? contractStubs,
+      Set<Stub>? formerContractStubs,
+      String? contractPropertyName,
+      FeePayerType? feePayerType,
+      String? clientReferenceId,
       this.name,
       this.note,
       this.privacyType,
@@ -44,9 +44,7 @@ class Completion extends FeedObject {
             feePayerType: feePayerType,
             clientReferenceId: clientReferenceId);
 
-  factory Completion.fromMap(Map<String, Object> map) {
-    assert(map != null);
-
+  factory Completion.fromMap(Map<String?, Object?> map) {
     final feedObject = FeedObject.fromMap(map);
 
     final completingUsers = (map[_key.completingUsers] as List)
@@ -69,27 +67,27 @@ class Completion extends FeedObject {
         completionPrize: Expense.fromMap(map[_key.prizeCompletion]));
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
     map.addAll({
       _key.name: name,
       _key.note: note,
-      _key.privacyKind: privacyType.toString(),
+      _key.privacyKind: privacyType?.toString(),
       _key.completingUsers:
-          completingUsers.map((completingUser) => completingUser.toMap()),
-      _key.task: task.toMap(),
-      _key.prizeCompletion: completionPrize.toMap()
+          completingUsers?.map((completingUser) => completingUser.toMap()),
+      _key.task: task?.toMap(),
+      _key.prizeCompletion: completionPrize?.toMap()
     });
     return map;
   }
 
   String formattedCompletingUsers({
-    String sessionOwnerGuid,
+    required String sessionOwnerGuid,
     required NameDefiningObject nameDefiningObject,
     bool firstPerson = false,
   }) {
     return formatNames(
-        guids: completingUsers.map((user) => user.guid),
+        guids: completingUsers?.map((user) => user.guid) as List<String>,
         sessionOwnerGuid: sessionOwnerGuid,
         nameDefiningObject: nameDefiningObject,
         firstPerson: firstPerson);
