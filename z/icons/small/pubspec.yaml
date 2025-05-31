@@ -1,0 +1,21 @@
+name: small_icon_library
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  icon_reference:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/icons/icon_reference
+
+dependency_overrides:
+  standard_icon_library:
+    path: ../standard
