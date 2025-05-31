@@ -5,10 +5,10 @@ import '_mixins/on_tap_listener_adder.dart';
 
 class FormTimePickerFieldData extends StreamableFormFieldData<TimeOfDay> with OnTapListenerAdder {
   FormTimePickerFieldData({
-    String title,
-    TimeOfDay selectedTime,
-    double size,
-    bool isVisible,
+    required String title,
+    TimeOfDay? selectedTime,
+    double? size,
+    bool? isVisible,
   }) : super(
           title: title,
           initialValue: selectedTime,

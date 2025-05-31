@@ -10,12 +10,12 @@ class FormEinFieldData extends FormTextFieldData {
       r"^([07][1-7]|1[0-6]|2[0-7]|[35][0-9]|[468][0-8]|9[0-589])-?\d{7}$");
 
   FormEinFieldData({
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    bool isRequired,
-    String exceptionTitle,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    bool? isRequired,
+    String? exceptionTitle,
   }) : super(
           mask: MaskOption.ein,
           title: 'EIN',
@@ -32,7 +32,7 @@ class FormEinFieldData extends FormTextFieldData {
 
   @override
   Future<void> validate() async {
-    if (!regEx.hasMatch(value)) {
+    if (value == null || !regEx.hasMatch(value!)) {
       throw FormValidationException.badEin();
     }
     super.validate();

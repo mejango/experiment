@@ -4,12 +4,12 @@ import 'text_field.dart';
 
 class FormUsZipCodeTextFieldData extends FormTextFieldData {
   FormUsZipCodeTextFieldData({
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    bool isRequired,
-    String exceptionTitle,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    bool? isRequired,
+    String? exceptionTitle,
   }) : super(
           title: "Zip Code",
           placeholder: '01234',

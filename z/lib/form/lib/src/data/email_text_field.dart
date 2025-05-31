@@ -10,12 +10,12 @@ class FormEmailTextFieldData extends FormTextFieldData {
       r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
 
   FormEmailTextFieldData({
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    bool isRequired,
-    String exceptionTitle,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    bool? isRequired,
+    String? exceptionTitle,
   }) : super(
           title: 'Email',
           placeholder: 'address@email.com',
@@ -30,7 +30,7 @@ class FormEmailTextFieldData extends FormTextFieldData {
 
   @override
   Future<void> validate() async {
-    if (!regEx.hasMatch(value)) {
+    if (value == null || !regEx.hasMatch(value!)) {
       throw FormValidationException.badEmail();
     }
     super.validate();

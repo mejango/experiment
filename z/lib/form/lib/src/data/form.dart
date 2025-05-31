@@ -2,27 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:form/index.dart';
 import 'package:stream/index.dart';
 
-import 'section.dart';
-import 'field.dart';
-
 import '_utils/location.dart';
 
 class StreamableFormData extends StreamableData {
   final List<StreamableFormSectionData> sectionData;
-  final Widget submitKeyboardAccessory;
-  final double sectionVerticalSpacing;
-  final double fieldVerticalSpacing;
-  final double fieldHorizontalSpacing;
-  final canSubmitWithKeyboardRaised;
+  final Widget? submitKeyboardAccessory;
+  final double? sectionVerticalSpacing;
+  final double? fieldVerticalSpacing;
+  final double? fieldHorizontalSpacing;
+  final bool? canSubmitWithKeyboardRaised;
 
   List<StreamableFormFieldData> get fieldData => sectionData
-      .expand(
-        (sectionData) => sectionData.fieldData,
-      )
+      .expand((sectionData) => sectionData.fieldData as Iterable<StreamableFormFieldData>)
       .toList();
 
   StreamableFormData({
-    this.sectionData,
+    required this.sectionData,
     this.fieldHorizontalSpacing,
     this.fieldVerticalSpacing,
     this.submitKeyboardAccessory,
@@ -31,7 +26,7 @@ class StreamableFormData extends StreamableData {
   });
 
   StreamableFormData.withFields({
-    List<StreamableFormFieldData> fieldData,
+    required List<StreamableFormFieldData> fieldData,
     this.fieldHorizontalSpacing,
     this.fieldVerticalSpacing,
     this.sectionVerticalSpacing,
@@ -39,15 +34,15 @@ class StreamableFormData extends StreamableData {
     this.submitKeyboardAccessory,
   }) : sectionData = [
           StreamableFormSectionData(
-            fieldData: fieldData ?? [],
+            fieldData: fieldData,
           )
         ];
 
   void updateFieldData(StreamableFormFieldData fieldData) {
     final formLocation = formLocationOfFieldData(fieldData);
-    final sectionData = this.sectionData[formLocation.sectionIndex];
+    final sectionData = this.sectionData[formLocation?.sectionIndex];
     sectionData.replace(
-      index: formLocation.fieldIndex,
+      index: formLocation?.fieldIndex ?? 0,
       fieldData: fieldData,
     );
   }
@@ -76,7 +71,7 @@ class StreamableFormData extends StreamableData {
 
   void addFieldDataBefore(
     StreamableFormFieldData fieldData,
-    StreamableFormFieldData beforeFieldData,
+    StreamableFormFieldData? beforeFieldData,
   ) {
     final beforeFieldDataFormLocation =
         formLocationOfFieldData(beforeFieldData);
@@ -88,13 +83,13 @@ class StreamableFormData extends StreamableData {
 
   void batchAddFieldDataBefore(
     List<StreamableFormFieldData> fieldData,
-    StreamableFormFieldData beforeFieldData,
+    StreamableFormFieldData? beforeFieldData,
   ) {
     final beforeFieldDataFormLocation =
         formLocationOfFieldData(beforeFieldData);
-    if (beforeFieldDataFormLocation.fieldIndex < 0) return;
+    if (beforeFieldDataFormLocation?.fieldIndex == null || beforeFieldDataFormLocation?.fieldIndex! < 0) return;
     final sectionData =
-        this.sectionData[beforeFieldDataFormLocation.sectionIndex];
+        this.sectionData[beforeFieldDataFormLocation!.sectionIndex];
     sectionData.batchAddFieldData(
       fieldData: fieldData,
       index: beforeFieldDataFormLocation.fieldIndex,
@@ -103,23 +98,23 @@ class StreamableFormData extends StreamableData {
 
   void addFieldDataAfter(
     StreamableFormFieldData fieldData,
-    StreamableFormFieldData afterFieldData,
+    StreamableFormFieldData? afterFieldData,
   ) {
     final afterFieldDataFormLocation = formLocationOfFieldData(afterFieldData);
     final insertFormLocation = FormLocation(
-      sectionIndex: afterFieldDataFormLocation.sectionIndex,
-      fieldIndex: afterFieldDataFormLocation.fieldIndex + 1,
+      sectionIndex: afterFieldDataFormLocation?.sectionIndex ?? 0,
+      fieldIndex: afterFieldDataFormLocation?.fieldIndex ?? 0,
     );
 
     _addFieldDataAt(fieldData, insertFormLocation);
   }
 
   void batchAddFieldDataAfter(List<StreamableFormFieldData> fieldData,
-      StreamableFormFieldData afterFieldData) {
+      StreamableFormFieldData? afterFieldData) {
     final afterFieldDataFormLocation = formLocationOfFieldData(afterFieldData);
     final insertFormLocation = FormLocation(
-      sectionIndex: afterFieldDataFormLocation.sectionIndex,
-      fieldIndex: afterFieldDataFormLocation.fieldIndex + 1,
+      sectionIndex: afterFieldDataFormLocation?.sectionIndex ?? 0,
+      fieldIndex: afterFieldDataFormLocation?.fieldIndex ?? 0,
     );
 
     _batchAddFieldDataAt(fieldData, insertFormLocation);
@@ -127,7 +122,7 @@ class StreamableFormData extends StreamableData {
 
   void addSectionData(
     StreamableFormSectionData sectionData, {
-    int index,
+    int? index,
   }) {
     final last = this.sectionData.length;
     _addSectionDataAt(sectionData, index ?? last);
@@ -135,7 +130,7 @@ class StreamableFormData extends StreamableData {
 
   void batchAddSectionData(
     List<StreamableFormSectionData> sectionData, {
-    int index,
+    int? index,
   }) {
     final last = this.sectionData.length;
     _batchAddSectionDataAt(sectionData, index ?? last);
@@ -188,11 +183,12 @@ class StreamableFormData extends StreamableData {
     this.sectionData.removeAt(index);
   }
 
-  FormLocation formLocationOfFieldData(StreamableFormFieldData fieldData) {
+  FormLocation? formLocationOfFieldData(StreamableFormFieldData? fieldData) {
+    if (fieldData == null) return null;
     for (int i = 0; i < sectionData.length; i++) {
       final sectionData = this.sectionData[i];
       final fieldIndex = sectionData.indexOfFieldData(fieldData);
-      if (fieldIndex < 0) continue;
+      if (fieldIndex == null || fieldIndex < 0) continue;
 
       return FormLocation(fieldIndex: fieldIndex, sectionIndex: i);
     }
@@ -200,8 +196,8 @@ class StreamableFormData extends StreamableData {
   }
 
   void _replace({
-    @required int index,
-    StreamableFormSectionData sectionData,
+    required int index,
+    required StreamableFormSectionData sectionData,
   }) {
     this.sectionData.replaceRange(
       index,
@@ -212,10 +208,10 @@ class StreamableFormData extends StreamableData {
 
   void _addFieldDataAt(
     StreamableFormFieldData fieldData,
-    FormLocation formLocation,
+    FormLocation? formLocation,
   ) {
-    if (formLocation.fieldIndex < 0) return;
-    final sectionData = this.sectionData[formLocation.sectionIndex];
+    if (formLocation?.fieldIndex == null || formLocation?.fieldIndex! < 0) return;
+    final sectionData = this.sectionData[formLocation!.sectionIndex];
     sectionData.addFieldData(
       fieldData: fieldData,
       index: formLocation.fieldIndex,

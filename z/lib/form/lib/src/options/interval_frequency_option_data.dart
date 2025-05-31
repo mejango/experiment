@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:stream/index.dart';
 import 'package:period_type/index.dart';
 
@@ -7,5 +6,5 @@ class FormIntervalFrequencyOptionData extends StreamableData {
   PeriodType frequency;
 
   FormIntervalFrequencyOptionData(
-      {@required this.interval, @required this.frequency});
+      {required this.interval, required this.frequency});
 }

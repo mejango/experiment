@@ -4,24 +4,24 @@ import 'package:mask/index.dart';
 import 'composition_field.dart';
 
 abstract class FormTextFieldData extends FormCompositionFieldData {
-  MaskOption mask;
+  MaskOption? mask;
 
   FormTextFieldData({
     this.mask,
-    @required String title,
-    String placeholder,
-    String initialValue,
-    TextInputType keyboardType,
-    Function onInvalid,
-    double size,
-    bool isRemovable,
-    bool isVisible,
-    bool autofocus,
-    bool isOptional,
-    int max,
-    int min,
-    double maxValue,
-    String exceptionTitle,
+    required String title,
+    String? placeholder,
+    String? initialValue,
+    TextInputType? keyboardType,
+    Function? onInvalid,
+    double? size,
+    bool? isRemovable,
+    bool? isVisible,
+    bool? autofocus,
+    bool? isOptional,
+    int? max,
+    int? min,
+    double? maxValue,
+    String? exceptionTitle,
   }) : super(
           title: title,
           placeholder: placeholder,

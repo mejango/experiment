@@ -24,26 +24,26 @@ abstract class StreamForm extends StatelessWidget {
     );
   }
 
-  Widget buildField<T extends StreamableFormFieldData>({
-    @required T fieldData,
-    @required StreamableFormData formData,
-    @required int fieldIndex,
-    @required int sectionIndex,
-    @required BuildContext context,
+  Widget? buildField<T extends StreamableFormFieldData>({
+    required T fieldData,
+    required StreamableFormData formData,
+    required int fieldIndex,
+    required int sectionIndex,
+    required BuildContext context,
   }) =>
       null;
 
-  Widget buildFormSectionHeader<T extends StreamableFormSectionHeaderData>({
-    @required T headerData,
-    @required int sectionIndex,
-    @required BuildContext context,
+  Widget? buildFormSectionHeader<T extends StreamableFormSectionHeaderData>({
+    required T headerData,
+    required int sectionIndex,
+    required BuildContext context,
   }) =>
       null;
 
-  Widget buildFormSectionButton<T extends StreamableFormSectionButtonData>({
-    @required T buttonData,
-    @required int sectionIndex,
-    @required BuildContext context,
+  Widget? buildFormSectionButton<T extends StreamableFormSectionButtonData>({
+    required T buttonData,
+    required int sectionIndex,
+    required BuildContext context,
   }) =>
       null;
 }

@@ -4,12 +4,12 @@ import 'text_field.dart';
 
 class FormAddressTextFieldData extends FormTextFieldData {
   FormAddressTextFieldData({
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    bool isRequired,
-    String exceptionTitle,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    bool? isRequired,
+    String? exceptionTitle,
   }) : super(
           title: 'Address',
           placeholder: '2760 Utah St.',

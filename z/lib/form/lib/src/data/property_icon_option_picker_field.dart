@@ -1,9 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:form/index.dart';
 import 'package:standard_icon_library/index.dart';
-
-import 'icon_option_picker_field.dart';
-import '../options/labeled_icon.dart';
 
 class FormPropertyIconOptionPickerFieldData extends FormIconPickerFieldData {
   static final List<StandardIcon> _propertyIconOptions = [
@@ -30,15 +26,15 @@ class FormPropertyIconOptionPickerFieldData extends FormIconPickerFieldData {
   static List<FormLabeledIcon>
       _createFormLabeledIcon() {
     return _propertyIconOptions.map(
-      (icon) => FormLabeledIcon(icon: icon),
+      (icon) => FormLabeledIcon(title: "Property", icon: icon),
     ).toList();
   }
 
   FormPropertyIconOptionPickerFieldData({
-    @required String title,
-    FormLabeledIcon selectedOption,
-    double size,
-    bool isVisible,
+    required String title,
+    FormLabeledIcon? selectedOption,
+    double? size,
+    bool? isVisible,
   }) : super(
           title: title,
           options: _createFormLabeledIcon(),

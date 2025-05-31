@@ -4,12 +4,12 @@ import 'text_field.dart';
 
 class FormCityTextFieldData extends FormTextFieldData {
   FormCityTextFieldData({
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    bool isRequired,
-    String exceptionTitle,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    bool? isRequired,
+    String? exceptionTitle,
   }) : super(
           title: "City",
           placeholder: 'Raleigh',

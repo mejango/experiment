@@ -16,12 +16,12 @@ class FormPasswordTextFieldData extends FormTextFieldData {
   FormPasswordTextFieldData({
     String title = "Password",
     String placeholder = "8+ letters, numbers & symbols",
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    ValueChanged<String> onSubmitted,
-    String exceptionTitle,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    ValueChanged<String>? onSubmitted,
+    String? exceptionTitle,
   }) : super(
           title: title,
           placeholder: placeholder,
@@ -35,10 +35,11 @@ class FormPasswordTextFieldData extends FormTextFieldData {
         );
 
   Future<void> validate() async {
-    if (!value.contains(RegExp(numberSet)) ||
-        !value.contains(RegExp(letterSet)) ||
-        !value.contains(RegExp(symbolSet)) ||
-        !value.contains(characterSet)) {
+    if (value == null ||
+        !value!.contains(RegExp(numberSet)) ||
+        !value!.contains(RegExp(letterSet)) ||
+        !value!.contains(RegExp(symbolSet)) ||
+        !value!.contains(characterSet)) {
       throw FormValidationException.unsafePassword();
     }
     super.validate();

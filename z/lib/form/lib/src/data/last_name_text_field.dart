@@ -4,12 +4,12 @@ import 'text_field.dart';
 
 class FormLastNameTextFieldData extends FormTextFieldData {
   FormLastNameTextFieldData({
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    bool isRequired,
-    String exceptionTitle,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    bool? isRequired,
+    String? exceptionTitle,
   }) : super(
           title: "Last Name",
           placeholder: 'Last',

@@ -4,15 +4,15 @@ class FormShortTextFieldData extends FormTextFieldData {
   static const _shortTextFieldMaxLength = 40;
 
   FormShortTextFieldData({
-    String title,
-    String placeholder,
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    bool isRequired,
-    bool isRemovable,
-    String exceptionTitle,
+    required String title,
+    String? placeholder,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    bool? isRequired,
+    bool? isRemovable,
+    String? exceptionTitle,
   }) : super(
           title: title,
           placeholder: placeholder,

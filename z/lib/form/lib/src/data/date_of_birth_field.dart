@@ -1,3 +1,4 @@
+import 'package:date/index.dart';
 import 'package:form/index.dart';
 
 import 'date_picker_field.dart';
@@ -10,12 +11,12 @@ class FormDateOfBirthFieldData extends FormDatePickerFieldData {
   );
 
   FormDateOfBirthFieldData({
-    DateTime initialValue,
-    DateTime startBound,
-    DateTime endBound,
-    double size,
-    bool isVisible,
-    String exceptionTitle,
+    Date? initialValue,
+    DateTime? startBound,
+    DateTime? endBound,
+    double? size,
+    bool? isVisible,
+    String? exceptionTitle,
   }) : super(
           title: 'Date of Birth',
           initialValue: initialValue,

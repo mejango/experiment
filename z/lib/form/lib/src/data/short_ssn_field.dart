@@ -9,12 +9,12 @@ class FormShortSsnFieldData extends FormTextFieldData {
   static const _maxLength = 4;
 
   FormShortSsnFieldData({
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    bool isRequired,
-    String exceptionTitle,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    bool? isRequired,
+    String? exceptionTitle,
   }) : super(
           title: 'SSN (last 4)',
           mask: MaskOption.shortSsn,

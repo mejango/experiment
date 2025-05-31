@@ -8,14 +8,14 @@ class FormPostalCodeFieldData extends FormTextFieldData {
   static const _maxLength = 5;
 
   FormPostalCodeFieldData({
-    String title,
-    String placeholder,
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    bool isRequired,
-    String exceptionTitle,
+    required String title,
+    String? placeholder,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    bool? isRequired,
+    String? exceptionTitle,
   }) : super(
           title: title,
           placeholder: placeholder,

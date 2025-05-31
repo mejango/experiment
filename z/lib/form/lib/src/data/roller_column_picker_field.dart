@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:form/index.dart';
 import 'package:labeled_value/index.dart';
 
@@ -10,12 +9,12 @@ class FormRollerColumnPickerFieldData<T>
   final bool infiniteScroll;
 
   FormRollerColumnPickerFieldData({
-    String title,
-    LabeledValue<T> selectedValue,
-    @required this.options,
-    double size,
-    bool isVisible,
-    bool infiniteScroll,
+    required String title,
+    LabeledValue<T>? selectedValue,
+    required this.options,
+    double? size,
+    bool? isVisible,
+    bool? infiniteScroll,
   })  : this.infiniteScroll = infiniteScroll ?? false,
         super(
           title: title,

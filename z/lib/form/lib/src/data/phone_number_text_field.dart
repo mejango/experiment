@@ -8,11 +8,11 @@ import 'text_field.dart';
 
 class FormPhoneNumberTextFieldData extends FormTextFieldData {
   FormPhoneNumberTextFieldData({
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    String exceptionTitle,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    String? exceptionTitle,
   }) : super(
           mask: MaskOption.phoneNumber,
           title: 'Phone number',
@@ -26,7 +26,7 @@ class FormPhoneNumberTextFieldData extends FormTextFieldData {
         );
 
   Future<void> validate() async {
-    if (value.length < 5) {
+    if (value == null || value!.length < 5) {
       throw FormValidationException.badPhoneNumber();
     }
     // /call Roof API to validate phone number;

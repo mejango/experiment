@@ -15,10 +15,10 @@ class FormDayOfWeekPickerFieldData
   ];
 
   FormDayOfWeekPickerFieldData({
-    String title,
-    LabeledValue<int> selectedDay,
-    double size,
-    bool isVisible,
+    required String title,
+    LabeledValue<int>? selectedDay,
+    double? size,
+    bool? isVisible,
   }) : super(
           title: title,
           options: dayOfWeekOptions,

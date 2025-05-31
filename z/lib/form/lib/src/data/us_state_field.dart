@@ -15,9 +15,9 @@ class FormUsStateTextFieldData
           .toList();
 
   FormUsStateTextFieldData({
-    String initialValue,
-    double size,
-    bool isVisible,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
   }) : super(
           title: 'State',
           options: usStateOptions,

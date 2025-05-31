@@ -4,5 +4,5 @@ class FormLabeledValue<T> extends StreamableData {
   String label;
   T value;
 
-  FormLabeledValue({this.label, this.value}) : super();
+  FormLabeledValue({required this.label, required this.value}) : super();
 }

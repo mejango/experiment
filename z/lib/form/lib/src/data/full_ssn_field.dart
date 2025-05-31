@@ -9,12 +9,12 @@ class FormFullSsnFieldData extends FormTextFieldData {
       RegExp(r"^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$");
 
   FormFullSsnFieldData({
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    bool isRequired,
-    String exceptionTitle,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    bool? isRequired,
+    String? exceptionTitle,
   }) : super(
           mask: MaskOption.ssn,
           title: 'SSN',
@@ -31,7 +31,7 @@ class FormFullSsnFieldData extends FormTextFieldData {
 
   @override
   Future<void> validate() async {
-    if (!regEx.hasMatch(value)) {
+    if (value == null || !regEx.hasMatch(value!)) {
       throw FormValidationException.badSsn();
     }
     super.validate();

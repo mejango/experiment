@@ -10,22 +10,22 @@ import 'data/form.dart';
 
 class StreamFormBuilder<T extends StreamFormBloc> extends StatelessWidget {
   final _FieldBuilder buildField;
-  final _FormSectionHeaderBuilder buildSectionHeader;
-  final _FormSectionButtonBuilder buildSectionButton;
+  final _FormSectionHeaderBuilder? buildSectionHeader;
+  final _FormSectionButtonBuilder? buildSectionButton;
 
   Widget get _empty => Container();
 
   StreamFormBuilder({
-    Key key,
-    @required this.buildField,
+    Key? key,
+    required this.buildField,
     this.buildSectionHeader,
     this.buildSectionButton,
   }) : super(key: key);
 
   Widget build(BuildContext context) {
-    final T formBloc = BlocProvider.of<T>(context);
-    return StreamBuilder<StreamableFormData>(
-      stream: formBloc.outForm,
+    final T? formBloc = BlocProvider.of<T>(context);
+    return StreamBuilder<StreamableFormData?>(
+      stream: formBloc?.outForm,
       builder: (context, snapshot) {
         if (!snapshot.hasData)
           return Container(
@@ -41,14 +41,14 @@ class StreamFormBuilder<T extends StreamFormBloc> extends StatelessWidget {
   }
 
   Widget _createForm({
-    @required BuildContext context,
-    @required StreamableFormData formData,
+    required BuildContext context,
+    StreamableFormData? formData,
   }) {
     final rows = <Widget>[];
 
     //Add each sections that accept streamable updates.
-    for (var i = 0; i < formData.sectionData.length; i++) {
-      final sectionData = formData.sectionData[i];
+    for (var i = 0; i < (formData?.sectionData.length ?? 0); i++) {
+      final sectionData = formData!.sectionData[i];
 
       if (i > 0) {
         rows.add(
@@ -91,18 +91,18 @@ class StreamFormBuilder<T extends StreamFormBloc> extends StatelessWidget {
   }
 
   Widget _createSectionHeader({
-    @required StreamableFormSectionData sectionData,
-    @required int sectionIndex,
-    @required BuildContext context,
+    required StreamableFormSectionData sectionData,
+    required int sectionIndex,
+    required BuildContext context,
   }) {
     final shouldShowSectionHeader = sectionData.headerData != null &&
-        (sectionData.fieldData.isNotEmpty || sectionData.buttonData != null) &&
+        ((sectionData.fieldData?.isNotEmpty ?? false) || sectionData.buttonData != null) &&
         buildSectionHeader != null;
 
     if (!shouldShowSectionHeader) return _empty;
 
-    return buildSectionHeader(
-          headerData: sectionData.headerData,
+    return buildSectionHeader!(
+          headerData: sectionData.headerData!,
           sectionIndex: sectionIndex,
           context: context,
         ) ??
@@ -110,17 +110,17 @@ class StreamFormBuilder<T extends StreamFormBloc> extends StatelessWidget {
   }
 
   Widget _createSectionButton({
-    @required StreamableFormSectionData sectionData,
-    @required int sectionIndex,
-    @required BuildContext context,
+    required StreamableFormSectionData sectionData,
+    required int sectionIndex,
+    required BuildContext context,
   }) {
     final shouldShowSectionButton =
         sectionData.buttonData != null && buildSectionButton != null;
 
     if (!shouldShowSectionButton) return _empty;
 
-    return buildSectionButton(
-          buttonData: sectionData.buttonData,
+    return buildSectionButton!(
+          buttonData: sectionData.buttonData!,
           sectionIndex: sectionIndex,
           context: context,
         ) ??
@@ -128,10 +128,10 @@ class StreamFormBuilder<T extends StreamFormBloc> extends StatelessWidget {
   }
 
   List<Row> _createSectionRows({
-    @required StreamableFormSectionData sectionData,
-    @required StreamableFormData formData,
-    @required int sectionIndex,
-    @required BuildContext context,
+    required StreamableFormSectionData sectionData,
+    required StreamableFormData formData,
+    required int sectionIndex,
+    required BuildContext context,
   }) {
     final rows = <Row>[];
 
@@ -145,8 +145,8 @@ class StreamFormBuilder<T extends StreamFormBloc> extends StatelessWidget {
       height: formData.fieldVerticalSpacing,
     );
 
-    for (var i = 0; i < sectionData.fieldData.length; i++) {
-      final fieldData = sectionData.fieldData[i];
+    for (var i = 0; i < (sectionData.fieldData?.length ?? 0); i++) {
+      final fieldData = sectionData.fieldData![i];
 
       final field = _createField(
         fieldData: fieldData,
@@ -156,7 +156,7 @@ class StreamFormBuilder<T extends StreamFormBloc> extends StatelessWidget {
         context: context,
       );
 
-      bool isLastField = i == sectionData.fieldData.length - 1;
+      bool isLastField = i == (sectionData.fieldData?.length ?? 0) - 1;
       double percentRowWillFill = percentRowFilled + fieldData.fieldSize;
 
       if (percentRowWillFill <= 1) {
@@ -210,11 +210,11 @@ class StreamFormBuilder<T extends StreamFormBloc> extends StatelessWidget {
   }
 
   Widget _createField<T extends StreamableFormFieldData>({
-    @required T fieldData,
-    @required StreamableFormData formData,
-    @required int fieldIndex,
-    @required int sectionIndex,
-    @required BuildContext context,
+    required T fieldData,
+    required StreamableFormData formData,
+    required int fieldIndex,
+    required int sectionIndex,
+    required BuildContext context,
   }) {
     final field = buildField<T>(
           fieldData: fieldData,
@@ -235,22 +235,22 @@ class StreamFormBuilder<T extends StreamFormBloc> extends StatelessWidget {
   }
 }
 
-typedef _FieldBuilder = Widget Function<T extends StreamableFormFieldData>({
-  @required T fieldData,
-  @required StreamableFormData formData,
-  @required int fieldIndex,
-  @required int sectionIndex,
-  @required BuildContext context,
+typedef _FieldBuilder = Widget? Function<T extends StreamableFormFieldData>({
+  required T fieldData,
+  required StreamableFormData formData,
+  required int fieldIndex,
+  required int sectionIndex,
+  required BuildContext context,
 });
 
-typedef _FormSectionHeaderBuilder = Widget Function({
-  @required StreamableFormSectionHeaderData headerData,
-  @required int sectionIndex,
-  @required BuildContext context,
+typedef _FormSectionHeaderBuilder = Widget? Function({
+  required StreamableFormSectionHeaderData headerData,
+  required int sectionIndex,
+  required BuildContext context,
 });
 
-typedef _FormSectionButtonBuilder = Widget Function({
-  @required StreamableFormSectionButtonData buttonData,
-  @required int sectionIndex,
-  @required BuildContext context,
+typedef _FormSectionButtonBuilder = Widget? Function({
+  required StreamableFormSectionButtonData buttonData,
+  required int sectionIndex,
+  required BuildContext context,
 });

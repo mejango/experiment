@@ -9,11 +9,11 @@ class FormCurrencyTextFieldData extends FormTextFieldData {
   FormCurrencyTextFieldData({
     String title = "Amount",
     String placeholder = "0.00",
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    String exceptionTitle,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    String? exceptionTitle,
   }) : super(
           mask: MaskOption.money,
           title: title,

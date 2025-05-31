@@ -4,17 +4,17 @@ import 'composition_field.dart';
 
 class FormTextAreaData extends FormCompositionFieldData {
   FormTextAreaData(
-      {@required String title,
-      String placeholder,
-      String initialValue,
-      double size,
-      bool isVisible,
-      bool autofocus,
-      TextInputType keyboardType,
-      bool isOptional,
-      int max = 750,
-      int min,
-      String exceptionTitle})
+      {required String title,
+      String? placeholder,
+      String? initialValue,
+      double? size,
+      bool? isVisible,
+      bool? autofocus,
+      TextInputType? keyboardType,
+      bool? isOptional,
+      int? max = 750,
+      int? min,
+      String? exceptionTitle})
       : super(
             title: title,
             placeholder: placeholder,

@@ -6,10 +6,10 @@ import 'option_picker_field.dart';
 
 class FormFeePayerPickerFieldData extends FormOptionPickerFieldData {
   FormFeePayerPickerFieldData({
-    String title,
-    List<FormLabeledValue<FeePayerType>> initialValue,
-    double size,
-    bool isVisible,
+    required String title,
+    List<FormLabeledValue<FeePayerType>>? initialValue,
+    double? size,
+    bool? isVisible,
   }) : super(
           title: title,
           size: size,

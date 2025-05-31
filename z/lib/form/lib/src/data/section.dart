@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:form/index.dart';
 import 'package:stream/index.dart';
 
@@ -6,10 +5,10 @@ import 'field.dart';
 import 'section_header.dart';
 
 class StreamableFormSectionData extends StreamableData {
-  final StreamableFormSectionHeaderData headerData;
+  final StreamableFormSectionHeaderData? headerData;
 
-  final List<StreamableFormFieldData> fieldData;
-  final StreamableFormSectionButtonData buttonData;
+  final List<StreamableFormFieldData>? fieldData;
+  final StreamableFormSectionButtonData? buttonData;
 
   StreamableFormSectionData({
     this.headerData,
@@ -18,10 +17,10 @@ class StreamableFormSectionData extends StreamableData {
   });
 
   void replace({
-    @required int index,
-    StreamableFormFieldData fieldData,
+    required int index,
+    required StreamableFormFieldData fieldData,
   }) {
-    final currentFieldDataAtIndex = this.fieldData[index];
+    final currentFieldDataAtIndex = this.fieldData?[index];
 
     if (currentFieldDataAtIndex == null) return;
 
@@ -31,39 +30,39 @@ class StreamableFormSectionData extends StreamableData {
   }
 
   void addFieldData({
-    @required StreamableFormFieldData fieldData,
-    int index,
+    required StreamableFormFieldData fieldData,
+    int index = 0
   }) {
-    if (this.fieldData.contains(fieldData)) {
+    if (this.fieldData?.contains(fieldData) ?? false) {
       fieldData.isVisible = true;
     } else {
-      this.fieldData.insert(index, fieldData);
+      this.fieldData?.insert(index, fieldData);
     }
   }
 
   void batchAddFieldData({
-    @required List<StreamableFormFieldData> fieldData,
-    int index,
+    required List<StreamableFormFieldData> fieldData,
+    int index = 0,
   }) {
     List<StreamableFormFieldData> fieldsToInsert = [];
     for (final data in fieldData) {
-      if (this.fieldData.contains(data)) {
+      if (this.fieldData?.contains(data) ?? false) {
         data.isVisible = true;
       } else {
         fieldsToInsert.add(data);
       }
     }
-    this.fieldData.insertAll(index, fieldsToInsert);
+    this.fieldData?.insertAll(index, fieldsToInsert);
   }
 
   void removeFieldDataAtIndex(int index) {
-    fieldData[index].isVisible = false;
-    this.fieldData.removeAt(index);
+    fieldData?[index].isVisible = false;
+    this.fieldData?.removeAt(index);
   }
 
-  int indexOfFieldData(StreamableFormFieldData fieldData) {
-    final dataIndex = this.fieldData.indexWhere(
-          (row) => row.key == fieldData.key,
+  int? indexOfFieldData(StreamableFormFieldData? fieldData) {
+    final dataIndex = this.fieldData?.indexWhere(
+          (row) => row.key == fieldData?.key,
         );
     return dataIndex;
   }

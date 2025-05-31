@@ -6,17 +6,17 @@ import 'text_field.dart';
 
 class FormIntegerTextFieldData extends FormTextFieldData {
   FormIntegerTextFieldData({
-    String title,
-    String placeholder,
-    String initialValue,
-    double size,
-    bool isRequired,
-    bool autofocus,
-    String exceptionTitle,
-    double min,
-    double max,
-    double maxValue,
-    bool isVisible,
+    required String title,
+    String? placeholder,
+    String? initialValue,
+    double? size,
+    bool? isRequired,
+    bool? autofocus,
+    String? exceptionTitle,
+    double? min,
+    double? max,
+    double? maxValue,
+    bool? isVisible,
   }) : super(
           title: title,
           placeholder: placeholder,

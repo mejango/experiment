@@ -4,12 +4,12 @@ import 'text_field.dart';
 
 class FormFirstNameTextFieldData extends FormTextFieldData {
   FormFirstNameTextFieldData({
-    String initialValue,
-    double size,
-    bool isVisible,
-    bool autofocus,
-    bool isRequired,
-    String exceptionTitle,
+    String? initialValue,
+    double? size,
+    bool? isVisible,
+    bool? autofocus,
+    bool? isRequired,
+    String? exceptionTitle,
   }) : super(
           title: "First Name",
           placeholder: 'First',

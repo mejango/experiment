@@ -6,19 +6,19 @@ import '../options/labeled_value.dart';
 class FormOptionPickerFieldData<T>
     extends StreamableFormFieldData<List<FormLabeledValue<T>>>
     with OnTapListenerAdder {
-  String emptyText;
-  List<FormLabeledValue<T>> selectedOptions;
-  List<FormLabeledValue<T>> options;
-  bool isMultiSelect;
+  String? emptyText;
+  List<FormLabeledValue<T>>? selectedOptions;
+  List<FormLabeledValue<T>>? options;
+  bool? isMultiSelect;
 
   FormOptionPickerFieldData({
     this.emptyText = "Nothing selected",
     this.options,
     this.isMultiSelect,
-    String title,
-    List<FormLabeledValue<T>> selectedOptions,
-    double size,
-    bool isVisible,
+    required String title,
+    List<FormLabeledValue<T>>? selectedOptions,
+    double? size,
+    bool? isVisible,
   }) : super(
           title: title,
           initialValue: selectedOptions,

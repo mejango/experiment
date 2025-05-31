@@ -24,7 +24,7 @@ abstract class StreamableFormFieldData<T> extends StreamableData {
   List<ValueChanged<bool>> _onFocusChangedListeners = [];
   bool _isTracked = false;
   bool isEnabled;
-  T value;
+  T? value;
   bool _isInFocus;
 
   void addOnChangedListener(ValueChanged<T> fn) {
@@ -38,16 +38,16 @@ abstract class StreamableFormFieldData<T> extends StreamableData {
   }
 
   StreamableFormFieldData({
-    @required this.title,
-    T initialValue,
-    bool isRemovable,
-    double size,
-    bool isEnabled,
-    bool isVisible,
-  })  : size = size ?? 1,
+    required this.title,
+    T? initialValue,
+    bool? isRemovable,
+    double? size,
+    bool? isEnabled,
+    bool? isVisible,
+  })  : value = initialValue,
         isRemovable = isRemovable ?? false,
+        size = size ?? 1,
         isEnabled = isEnabled ?? true,
-        value = initialValue,
         _isInFocus = false,
         super(isVisible: isVisible);
 

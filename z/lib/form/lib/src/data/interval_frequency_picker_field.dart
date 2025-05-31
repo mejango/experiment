@@ -31,10 +31,10 @@ class FormIntervalFrequencyPickerFieldData
   ];
 
   FormIntervalFrequencyPickerFieldData({
-    String title,
-    FormIntervalFrequencyOptionData selectedSchedule,
-    double size,
-    bool isVisible,
+    required String title,
+    FormIntervalFrequencyOptionData? selectedSchedule,
+    double? size,
+    bool? isVisible,
   }) : super(
           title: title,
           initialValue: selectedSchedule,
