@@ -1,0 +1,11 @@
+name: decorated_text
+description: A helper to decorate ranges of a string.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter

@@ -1,0 +1,30 @@
+name: keyboard_accessory_bar_builder
+description: Keyboard accessory bar functionality for artboards.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  multi_image_picker: ^4.6.1
+  flutter:
+    sdk: flutter
+  haptics:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/haptics
+  semantic_theme:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: semantic_theme
+
+dependency_overrides:
+  semantic_theme:
+    path: ../../semantic_theme
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

@@ -1,0 +1,64 @@
+name: lease
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  contract:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/abstract/contract
+  fee_payer_type:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: types/fee_payer
+  invoice_options:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: types/invoice
+  contract_user:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/properties/contract_user
+  name_contract_domain:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/properties/name_contract_domain
+  name_property:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/properties/name_property
+  late_fee:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/properties/late_fee
+  schedule:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/properties/schedule
+  date:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/date
+  key:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/key
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

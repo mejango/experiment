@@ -1,0 +1,21 @@
+name: cache
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.2.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  disk:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/disk
+  data_chunk:
+    path: ../../model/data_chunk
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

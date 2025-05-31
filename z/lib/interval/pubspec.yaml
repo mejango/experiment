@@ -1,0 +1,26 @@
+name: interval
+description: Creates strings from interval values.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  period_type:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: types/period
+  ordinal_suffix_string_from_int:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/ordinal_suffix_string_from_int
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

@@ -1,0 +1,34 @@
+name: roller_column_builder
+description: Picker with vertical endless scrolling list view.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  labeled_value:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: labeled_value
+  haptics:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/haptics
+  semantic_theme:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: semantic_theme
+
+dependency_overrides:
+  semantic_theme:
+    path: ../../semantic_theme
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

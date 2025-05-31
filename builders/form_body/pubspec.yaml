@@ -1,0 +1,216 @@
+name: form_body_builder
+description: Form functionality for artboards.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.2.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  keyboard_accessory_bar_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/keyboard_accessory_bar
+  date_picker_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/date_picker
+  standard_icon_library:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: icons/standard
+  small_icon_library:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: icons/small
+  x_small_icon_library:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: icons/x_small
+  mask:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/mask
+  form:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/form
+  keyboard_accessory:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/keyboard_accessory
+  date:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/date
+  haptics:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/haptics
+  ordinal_suffix_string_from_int:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/ordinal_suffix_string_from_int
+  form_validation_exception:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/form_validation_exception
+  form_submission_exception:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/form_submission_exception
+  typedefs:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/typedefs
+  artboard:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/artboard
+  navigator:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/navigator
+  labeled_value:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: labeled_value
+  labeled_icon:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: labeled_icon
+  frequency:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: frequency
+  time_picker_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/time_picker
+  interval_frequency_picker_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/interval_frequency_picker
+  roller_column_picker_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/roller_column_picker
+  tag_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/tag
+  button_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/button
+  tag_editor_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/tag_editor
+  meta_form_artboard_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/meta_form
+  icon_picker_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/icon_picker
+  option_picker_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/option_picker
+  semantic_theme:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: semantic_theme
+  key_value_row_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/key_value_row
+  header_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/header
+
+dependency_overrides:
+  header_builder:
+    path: ../header
+  haptics:
+    path: ../../lib/haptics
+  button_builder:
+    path: ../../builders/button
+  vertically_centered_text_builder:
+    path: ../../builders/vertically_centered_text
+  key_value_row_builder:
+    path: ../key_value_row
+  meta_form_artboard_builder:
+    path: ../meta_form
+  dwolla_model:
+    path: ../../model/dwolla
+  us_state_options:
+    path: ../../types/us_state
+  dwolla_types:
+    path: ../../types/dwolla
+  form:
+    path: ../../lib/form
+  tappable:
+    path: ../../lib/tappable
+  form_submission_exception:
+    path: ../../lib/form_submission_exception
+  semantic_theme:
+    path: ../../semantic_theme
+  keyboard_accessory_bar_builder:
+    path: ../keyboard_accessory_bar
+  date_picker_builder:
+    path: ../date_picker
+  time_picker_builder:
+    path: ../time_picker
+  interval_frequency_picker_builder:
+    path: ../interval_frequency_picker
+  roller_column_picker_builder:
+    path: ../roller_column_picker
+  tag_builder:
+    path: ../tag
+  tag_editor_builder:
+    path: ../tag_editor
+  icon_picker_builder:
+    path: ../icon_picker
+  option_picker_builder:
+    path: ../option_picker
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

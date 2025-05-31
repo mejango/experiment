@@ -1,0 +1,16 @@
+name: disk
+description: Read and write to disk.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+  
+dependencies:
+  flutter:
+    sdk: flutter
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

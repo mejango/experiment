@@ -1,0 +1,29 @@
+name: late_fee
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  domain_type:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: types/domain
+  mappable:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/mixins/mappable
+  key:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/key
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

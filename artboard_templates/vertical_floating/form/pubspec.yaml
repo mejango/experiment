@@ -1,0 +1,168 @@
+name: form_vertical_floating_artboard_template
+description: A vertical floating frame with a form for building a widget hierarchy in.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  vertical_floating_artboard_scaffold:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: artboard_scaffolds/vertical_floating
+  form_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/form
+  form_body_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/form_body
+  artboard:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/artboard
+  navigator:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/navigator
+  date:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/date
+  date_picker_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/date_picker
+  option_picker_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/option_picker
+  time_picker_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/time_picker
+  icon_picker_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/icon_picker
+  icon_picker_artboard:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: artboards/icon_picker
+  meta_form_artboard:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: artboards/meta_form
+  labeled_icon:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: labeled_icon
+  labeled_value:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: labeled_value
+  frequency:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: frequency
+  interval_frequency_picker_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/interval_frequency_picker
+  roller_column_picker_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/roller_column_picker
+  roller_column_picker_artboard:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: artboards/roller_column_picker
+  button_builder:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: builders/button
+  date_picker_artboard:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: artboards/date_picker
+  option_picker_artboard:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: artboards/option_picker
+  time_picker_artboard:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: artboards/time_picker
+  interval_frequency_picker_artboard:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: artboards/interval_frequency_picker
+  tag_editor_artboard:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: artboards/tag_editor
+
+dependency_overrides:
+  roller_column_picker_artboard:
+    path: ../../../artboards/roller_column_picker
+  tappable:
+    path: ../../../lib/tappable
+  vertically_centered_text_builder:
+    path: ../../../builders/vertically_centered_text
+  icon_button_builder:
+    path: ../../../builders/icon_button
+  vertical_floating_artboard_scaffold:
+    path: ../../../artboard_scaffolds/vertical_floating
+  interval_frequency_picker_builder:
+    path: ../../../builders//interval_frequency_picker
+  roller_column_picker_builder:
+    path: ../../../builders/roller_column_picker
+  button_builder:
+    path: ../../../builders/button
+  date_picker_builder:
+    path: ../../../builders/date_picker
+  option_picker_builder:
+    path: ../../../builders/option_picker
+  time_picker_builder:
+    path: ../../../builders/time_picker
+  icon_picker_builder:
+    path: ../../../builders/icon_picker
+  meta_form_artboard:
+    path: ../../../artboards/meta_form
+  meta_form_artboard_builder:
+    path: ../../../builders/meta_form
+  form_builder:
+    path: ../../../builders/form
+  form_body_builder:
+    path: ../../../builders/form_body
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

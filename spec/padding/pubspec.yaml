@@ -1,0 +1,20 @@
+name: padding
+description: Padding definitions.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  distance:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: spec/distance
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

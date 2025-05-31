@@ -1,0 +1,40 @@
+name: app_data
+description: An interface to interact with app data.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  device_info: ^0.4.0+1
+  network:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/network
+  synchronizer:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: synchronizer
+  session:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: session
+  public:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/objects/public
+
+dependency_overrides:
+  network:
+    path: ../lib/network
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

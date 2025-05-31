@@ -1,0 +1,33 @@
+name: empty_vertical_floating_artboard_template
+description: An empty vertical floating frame for building a widget hierarchy in.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  artboard:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/artboard
+  vertical_floating_artboard_button_option:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: options/vertical_floating_artboard_button
+  vertical_floating_artboard_scaffold:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: artboard_scaffolds/vertical_floating
+
+dependency_overrides:
+  vertical_floating_artboard_scaffold:
+    path: ../../../artboard_scaffolds/vertical_floating
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
