@@ -18,8 +18,6 @@ class Stub extends ModelObject {
   }) : super(guid: guid, dateCreated: dateCreated, creatorGuid: creatorGuid);
 
   factory Stub.fromMap(Map<String?, Object?> map) {
-    assert(map != null);
-
     final object = ModelObject.fromMap(map);
     final name = map[_key.name] as String?;
     final objectGuid = map[_key.object] as String?;

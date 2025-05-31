@@ -188,7 +188,7 @@ class Task extends CommentableObject {
         firstPerson: firstPerson);
   }
 
-  String? title({required Context context, required String sessionOwnerGuid}) {
+  String? title({Context? context, required String sessionOwnerGuid}) {
     String text = name ?? "";
     final propertyTitle = this
         .propertyTitle(context: context, sessionOwnerGuid: sessionOwnerGuid);
@@ -197,8 +197,9 @@ class Task extends CommentableObject {
     return text;
   }
 
-  String? propertyTitle({required Context context, required String sessionOwnerGuid}) {
+  String? propertyTitle({Context? context, required String sessionOwnerGuid}) {
     if (contractPropertyName == null ||
+        context == null ||
         !context.userGuids.contains(sessionOwnerGuid)) return null;
     return " at " + contractPropertyName!;
   }

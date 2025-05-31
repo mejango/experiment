@@ -1,119 +1,95 @@
-import 'package:meta/meta.dart';
 import 'package:key/index.dart' as _key;
 
 class PublicCompletion {
-  final String who;
-  final String name;
-  final String roof;
-  final String note;
+  final String? who;
+  final String? name;
+  final String? roof;
+  final String? note;
 
   PublicCompletion(
-      {required this.who,
-      required this.name,
-      required this.roof,
-      this.note});
+      {this.who, this.name, this.roof, this.note});
 
-  factory PublicCompletion.fromMap(Map<String, Object> map) {
-    assert(map != null);
-
+  factory PublicCompletion.fromMap(Map<String?, Object?> map) {
     return PublicCompletion(
-      who: map[_key.who],
-      name: map[_key.name],
-      roof: map[_key.roof],
-      note: map[_key.note],
+      who: map[_key.who] as String?,
+      name: map[_key.name] as String?,
+      roof: map[_key.roof] as String?,
+      note: map[_key.note] as String?,
     );
   }
 }
 
 class PublicExpense {
-  final String who;
-  final String note;
-  final String roof;
+  final String? who;
+  final String? note;
+  final String? roof;
 
-  PublicExpense({required this.who, required this.roof, required this.note});
+  PublicExpense({this.who, this.roof, this.note});
 
-  factory PublicExpense.fromMap(Map<String, Object> map) {
-    assert(map != null);
-
+  factory PublicExpense.fromMap(Map<String?, Object?> map) {
     return PublicExpense(
-      who: map[_key.who],
-      roof: map[_key.roof],
-      note: map[_key.note],
+      who: map[_key.who] as String?,
+      roof: map[_key.roof] as String?,
+      note: map[_key.note] as String?,
     );
   }
 }
 
 class PublicTransfer {
-  final String payer;
-  final String receiver;
-  final String note;
-  final String roof;
+  final String? payer;
+  final String? receiver;
+  final String? note;
+  final String? roof;
 
   PublicTransfer(
-      {required this.payer,
-      required this.receiver,
-      required this.roof,
-      this.note});
+      {this.payer, this.receiver, this.roof, this.note});
 
-  factory PublicTransfer.fromMap(Map<String, Object> map) {
-    assert(map != null);
-
+  factory PublicTransfer.fromMap(Map<String?, Object?> map) {
     return PublicTransfer(
-      payer: map[_key.payer],
-      receiver: map[_key.receiver],
-      roof: map[_key.roof],
-      note: map[_key.note],
+      payer: map[_key.payer] as String?,
+      receiver: map[_key.receiver] as String?,
+      roof: map[_key.roof] as String?,
+      note: map[_key.note] as String?,
     );
   }
 }
 
 class PublicLandlordTransfer {
-  final String who;
-  final String home;
-  final String name;
-  final String note;
-  final String landlord;
+  final String? who;
+  final String? home;
+  final String? name;
+  final String? note;
+  final String? landlord;
 
   PublicLandlordTransfer(
-      {required this.who,
-      required this.home,
-      required this.name,
-      required this.landlord,
-      required this.note});
+      {this.who, this.home, this.name, this.landlord, this.note});
 
-  factory PublicLandlordTransfer.fromMap(Map<String, Object> map) {
-    assert(map != null);
-
+  factory PublicLandlordTransfer.fromMap(Map<String?, Object?> map) {
     return PublicLandlordTransfer(
-      who: map[_key.who],
-      home: map[_key.home],
-      name: map[_key.name],
-      landlord: map[_key.landlord],
-      note: map[_key.note],
+      who: map[_key.who] as String?,
+      home: map[_key.home] as String?,
+      name: map[_key.name] as String?,
+      landlord: map[_key.landlord] as String?,
+      note: map[_key.note] as String?,
     );
   }
 }
 
 class PublicMaintenanceRequest {
-  final String who;
-  final String home;
-  final String name;
-  final String note;
+  final String? who;
+  final String? home;
+  final String? name;
+  final String? note;
 
   PublicMaintenanceRequest(
-      {required this.who,
-      required this.home,
-      required this.name,
-      required this.note});
+      {this.who, this.home, this.name, this.note});
 
-  factory PublicMaintenanceRequest.fromMap(Map<String, Object> map) {
-    assert(map != null);
-
+  factory PublicMaintenanceRequest.fromMap(Map<String?, Object?> map) {
     return PublicMaintenanceRequest(
-      who: map[_key.who],
-      home: map[_key.home],
-      name: map[_key.name],
-      note: map[_key.note],
+      who: map[_key.who] as String?,
+      home: map[_key.home] as String?,
+      name: map[_key.name] as String?,
+      note: map[_key.note] as String?,
     );
   }
 }

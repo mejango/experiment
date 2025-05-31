@@ -11,40 +11,40 @@ import 'package:schedule/index.dart';
 import 'package:key/index.dart' as _key;
 
 class ServiceRequest extends Task {
-  final bool permissionToEnter;
-  final String permissionToEnterNote;
-  final bool isEmergency;
-  final bool seen;
+  final bool? permissionToEnter;
+  final String? permissionToEnterNote;
+  final bool? isEmergency;
+  final bool? seen;
 
   ServiceRequest(
-      {Set<NameUser> contractDomainUsers,
-      Set<NameUser> contractUsers,
-      Set<NameUser> formerContractUsers,
-      Set<Stub> contractStubs,
-      Set<Stub> formerContractStubs,
-      String contractPropertyName,
-      FeePayerType feePayerType,
-      String clientReferenceId,
-      int commentCount,
-      String name,
-      String note,
-      Date latestActivity,
-      bool unread,
-      bool pinned,
-      Set<UserReference> subscribers,
-      Set<UserReference> participants,
-      Set<UserReference> completingUsers,
-      Set<UserReference> assignedUsers,
-      Date latestActivation,
-      Date latestCompletion,
-      Set<CompletionCount> completionCounts,
-      Schedule schedule,
-      Date deadline,
-      AssignmentType assignmentType,
-      DateParts deadlineParts,
-      bool currentlyCompleted,
-      int completionCount,
-      int completionPrize,
+      {Set<NameUser>? contractDomainUsers,
+      Set<NameUser>? contractUsers,
+      Set<NameUser>? formerContractUsers,
+      Set<Stub>? contractStubs,
+      Set<Stub>? formerContractStubs,
+      String? contractPropertyName,
+      FeePayerType? feePayerType,
+      String? clientReferenceId,
+      int? commentCount,
+      String? name,
+      String? note,
+      Date? latestActivity,
+      bool? unread,
+      bool? pinned,
+      Set<UserReference>? subscribers,
+      Set<UserReference>? participants,
+      Set<UserReference>? completingUsers,
+      Set<UserReference>? assignedUsers,
+      Date? latestActivation,
+      Date? latestCompletion,
+      Set<CompletionCount>? completionCounts,
+      Schedule? schedule,
+      Date? deadline,
+      AssignmentType? assignmentType,
+      DateParts? deadlineParts,
+      bool? currentlyCompleted,
+      int? completionCount,
+      int? completionPrize,
       this.permissionToEnter,
       this.permissionToEnterNote,
       this.isEmergency,
@@ -80,8 +80,6 @@ class ServiceRequest extends Task {
             completionPrize: completionPrize);
 
   factory ServiceRequest.fromMap(Map<String, Object> map) {
-    assert(map != null);
-
     final task = Task.fromMap(map);
 
     return ServiceRequest(
@@ -113,13 +111,13 @@ class ServiceRequest extends Task {
         currentlyCompleted: task.currentlyCompleted,
         completionCount: task.completionCount,
         completionPrize: task.completionPrize,
-        permissionToEnter: map[_key.permissionToEnter],
-        permissionToEnterNote: map[_key.permissionToEnterNote],
-        isEmergency: map[_key.isEmergency],
-        seen: map[_key.seen]);
+        permissionToEnter: map[_key.permissionToEnter] as bool?,
+        permissionToEnterNote: map[_key.permissionToEnterNote] as String?,
+        isEmergency: map[_key.isEmergency] as bool?,
+        seen: map[_key.seen] as bool?);
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
 
     map.addAll({

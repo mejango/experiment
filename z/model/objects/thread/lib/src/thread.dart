@@ -8,24 +8,24 @@ import 'package:date/index.dart';
 import 'package:key/index.dart' as _key;
 
 class Thread extends CommentableObject {
-  final ThreadType type;
+  final ThreadType? type;
 
   Thread(
-      {Set<NameUser> contractDomainUsers,
-      Set<NameUser> contractUsers,
-      Set<NameUser> formerContractUsers,
-      Set<Stub> contractStubs,
-      Set<Stub> formerContractStubs,
-      String contractPropertyName,
-      FeePayerType feePayerType,
-      String clientReferenceId,
-      int commentCount,
-      String name,
-      String note,
-      Date latestActivity,
-      bool unread,
-      bool pinned,
-      Set<UserReference> subscribers,
+      {Set<NameUser>? contractDomainUsers,
+      Set<NameUser>? contractUsers,
+      Set<NameUser>? formerContractUsers,
+      Set<Stub>? contractStubs,
+      Set<Stub>? formerContractStubs,
+      String? contractPropertyName,
+      FeePayerType? feePayerType,
+      String? clientReferenceId,
+      int? commentCount,
+      String? name,
+      String? note,
+      Date? latestActivity,
+      bool? unread,
+      bool? pinned,
+      Set<UserReference>? subscribers,
       this.type})
       : super(
             contractDomainUsers: contractDomainUsers,
@@ -44,9 +44,7 @@ class Thread extends CommentableObject {
             pinned: pinned,
             subscribers: subscribers);
 
-  factory Thread.fromMap(Map<String, Object> map) {
-    assert(map != null);
-
+  factory Thread.fromMap(Map<String?, Object?> map) {
     final commentableObject = CommentableObject.fromMap(map);
     return Thread(
         contractDomainUsers: commentableObject.contractDomainUsers,
@@ -64,12 +62,12 @@ class Thread extends CommentableObject {
         unread: commentableObject.unread,
         pinned: commentableObject.pinned,
         subscribers: commentableObject.subscribers,
-        type: ThreadType.fromString(map[_key.kind]));
+        type: ThreadType.fromString(map[_key.kind] as String? ?? ""));
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
-    map.addAll({_key.kind: type.toString()});
+    map.addAll({_key.kind: type?.toString()});
     return map;
   }
 }

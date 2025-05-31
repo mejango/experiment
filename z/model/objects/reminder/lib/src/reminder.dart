@@ -1,7 +1,7 @@
 import 'package:task/index.dart';
 
 class Reminder extends Task {
-  factory Reminder.fromMap(Map<String, Object> map) {
-    return Task.fromMap(map);
+  factory Reminder.fromMap(Map<String?, Object?> map) {
+    return Task.fromMap(map) as Reminder;
   }
 }

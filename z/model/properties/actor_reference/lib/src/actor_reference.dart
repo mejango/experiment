@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:domain_type/index.dart';
 import 'package:mappable/index.dart';
 import 'package:key/index.dart' as _key;

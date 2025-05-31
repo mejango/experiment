@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:domain/index.dart';
 import 'package:date/index.dart';
 import 'package:billing/index.dart';
@@ -12,34 +11,34 @@ const _MAP_DAYS_IN_MONTH = 30;
 const _MAP_DAYS_IN_YEAR = 365;
 
 class Organization extends Domain {
-  final int propertyCount;
-  final int emergencyServiceRequestCount;
-  final int unseenServiceRequestCount;
-  final int incompleteServiceRequestCount;
-  final int overdueAmount;
-  final int earnedAllTimeAmount;
-  final int earnedWeekAmount;
-  final int earnedMonthAmount;
-  final int earnedYearAmount;
-  final int owedAllTimeAmount;
-  final int owedWeekAmount;
-  final int owedMonthAmount;
-  final int owedYearAmount;
-  final Billing billing;
+  final int? propertyCount;
+  final int? emergencyServiceRequestCount;
+  final int? unseenServiceRequestCount;
+  final int? incompleteServiceRequestCount;
+  final int? overdueAmount;
+  final int? earnedAllTimeAmount;
+  final int? earnedWeekAmount;
+  final int? earnedMonthAmount;
+  final int? earnedYearAmount;
+  final int? owedAllTimeAmount;
+  final int? owedWeekAmount;
+  final int? owedMonthAmount;
+  final int? owedYearAmount;
+  final Billing? billing;
 
   Organization(
-      {required String guid,
-      required Date dateCreated,
-      required String creatorGuid,
-      required int unreadCommentableObjectCount,
-      required int pinnedCommentableObjectCount,
-      required String name,
-      required Set<DomainUser> users,
-      required Set<DomainUser> formerUsers,
-      required Location location,
-      required int expenseCount,
-      required int reminderCount,
-      required int transferCount,
+      {String? guid,
+      Date? dateCreated,
+      String? creatorGuid,
+      int? unreadCommentableObjectCount,
+      int? pinnedCommentableObjectCount,
+      String? name,
+      Set<DomainUser>? users,
+      Set<DomainUser>? formerUsers,
+      Location? location,
+      int? expenseCount,
+      int? reminderCount,
+      int? transferCount,
       required this.propertyCount,
       required this.emergencyServiceRequestCount,
       required this.unseenServiceRequestCount,
@@ -54,20 +53,7 @@ class Organization extends Domain {
       required this.owedMonthAmount,
       required this.owedYearAmount,
       required this.billing})
-      : assert(propertyCount != null), 
-      assert(emergencyServiceRequestCount != null), 
-      assert(unseenServiceRequestCount != null),
-      assert(incompleteServiceRequestCount != null),
-      assert(overdueAmount != null),
-      assert(earnedAllTimeAmount != null),
-      assert(earnedWeekAmount != null),
-      assert(earnedMonthAmount != null),
-      assert(earnedYearAmount != null),
-      assert(owedAllTimeAmount != null),
-      assert(owedWeekAmount != null),
-      assert(owedMonthAmount != null),
-      assert(owedYearAmount != null),
-      assert(billing != null), super(
+      : super(
         guid: guid,
         dateCreated: dateCreated,
         creatorGuid: creatorGuid,
@@ -81,13 +67,11 @@ class Organization extends Domain {
             reminderCount: reminderCount,
             transferCount: transferCount);
 
-  factory Organization.fromMap(Map<String, Object> map) {
-    assert(map != null);
-
+  factory Organization.fromMap(Map<String?, Object?> map) {
     final domain = Domain.fromMap(map);
-    final counts = map[_key.counts] as Map ?? {};
-    final earnedAmounts = map[_key.earned] as List ?? [];
-    final owedAmounts = map[_key.owed] as List ?? [];
+    final counts = map[_key.counts] as Map? ?? {};
+    final earnedAmounts = map[_key.earned] as List? ?? [];
+    final owedAmounts = map[_key.owed] as List? ?? [];
 
     return Organization(
       guid: domain.guid,
@@ -115,12 +99,12 @@ class Organization extends Domain {
         earnedMonthAmount: (earnedAmounts.firstWhere((amount) => amount[_key.dayBound] == _MAP_DAYS_IN_MONTH) ?? {})[_key.amount] ?? 0,
         earnedYearAmount: (earnedAmounts.firstWhere((amount) => amount[_key.dayBound] == _MAP_DAYS_IN_YEAR) ?? {})[_key.amount] ?? 0,
         earnedAllTimeAmount: (earnedAmounts.firstWhere((amount) => amount[_key.dayBound] == null) ?? {})[_key.amount] ?? 0,
-        billing: Billing.fromMap(map[_key.billing]));
+        billing: Billing.fromMap(map[_key.billing] as Map<String, Object?>? ?? {}));
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
-    (map[_key.counts] as Map).addAll({
+    (map[_key.counts] as Map? ?? {}).addAll({
       _key.property: propertyCount,
       _key.emergencyServiceRequest: emergencyServiceRequestCount,
       _key.unseenServiceRequest: unseenServiceRequestCount,
@@ -168,7 +152,7 @@ class Organization extends Domain {
           _key.amount: owedAllTimeAmount
         }
       ]},
-      _key.billing: billing.toMap()
+      _key.billing: billing?.toMap()
     });
 
     return map;

@@ -14,41 +14,41 @@ import 'package:schedule/index.dart';
 import 'package:key/index.dart' as _key;
 
 class Invoice extends Task {
-  final InvoiceType type;
-  final int amount;
-  final int paid;
-  final Set<Payer> payers;
-  final bool overridePaymentBuffer;
+  final InvoiceType? type;
+  final int? amount;
+  final int? paid;
+  final Set<Payer>? payers;
+  final bool? overridePaymentBuffer;
 
   Invoice(
-      {Set<NameUser> contractDomainUsers,
-      Set<NameUser> contractUsers,
-      Set<NameUser> formerContractUsers,
-      Set<Stub> contractStubs,
-      Set<Stub> formerContractStubs,
-      String contractPropertyName,
-      FeePayerType feePayerType,
-      String clientReferenceId,
-      int commentCount,
-      String name,
-      String note,
-      Date latestActivity,
-      bool unread,
-      bool pinned,
-      Set<UserReference> subscribers,
-      Set<UserReference> participants,
-      Set<UserReference> completingUsers,
-      Set<UserReference> assignedUsers,
-      Date latestActivation,
-      Date latestCompletion,
-      Set<CompletionCount> completionCounts,
-      Schedule schedule,
-      Date deadline,
-      AssignmentType assignmentType,
-      DateParts deadlineParts,
-      bool currentlyCompleted,
-      int completionCount,
-      int completionPrize,
+      {Set<NameUser>? contractDomainUsers,
+      Set<NameUser>? contractUsers,
+      Set<NameUser>? formerContractUsers,
+      Set<Stub>? contractStubs,
+      Set<Stub>? formerContractStubs,
+      String? contractPropertyName,
+      FeePayerType? feePayerType,
+      String? clientReferenceId,
+      int? commentCount,
+      String? name,
+      String? note,
+      Date? latestActivity,
+      bool? unread,
+      bool? pinned,
+      Set<UserReference>? subscribers,
+      Set<UserReference>? participants,
+      Set<UserReference>? completingUsers,
+      Set<UserReference>? assignedUsers,
+      Date? latestActivation,
+      Date? latestCompletion,
+      Set<CompletionCount>? completionCounts,
+      Schedule? schedule,
+      Date? deadline,
+      AssignmentType? assignmentType,
+      DateParts? deadlineParts,
+      bool? currentlyCompleted,
+      int? completionCount,
+      int? completionPrize,
       this.type,
       this.amount,
       this.paid,
@@ -84,9 +84,7 @@ class Invoice extends Task {
             completionCount: completionCount,
             completionPrize: completionPrize);
 
-  factory Invoice.fromMap(Map<String, Object> map) {
-    assert(map != null);
-
+  factory Invoice.fromMap(Map<String?, Object?> map) {
     final task = Task.fromMap(map);
 
     final payers = (map[_key.payers] as List).map((map) => Payer.fromMap(map));
@@ -120,14 +118,14 @@ class Invoice extends Task {
         currentlyCompleted: task.currentlyCompleted,
         completionCount: task.completionCount,
         completionPrize: task.completionPrize,
-        type: InvoiceType.fromString(map[_key.kind]),
-        amount: map[_key.amount],
-        paid: map[_key.paid],
-        payers: payers.toSet(),
-        overridePaymentBuffer: map[_key.overridePaymentBuffer]);
+        type: InvoiceType.fromString(map[_key.kind] as String? ?? ''),
+        amount: map[_key.amount] as int?,
+        paid: map[_key.paid] as int?,
+        payers: payers?.toSet(),
+        overridePaymentBuffer: map[_key.overridePaymentBuffer] as bool?);
   }
 
-  Map<String, Object> toMap() {
+    Map<String, Object?> toMap() {
     final map = super.toMap();
 
     map.addAll({
@@ -140,18 +138,18 @@ class Invoice extends Task {
     return map;
   }
 
-  Payer payerForGuid(String guid) {
-    return payers.firstWhere((payer) => payer.bankOwner.guid == guid);
+  Payer? payerForGuid(String guid) {
+    return payers?.firstWhere((payer) => payer.bankOwner?.guid == guid);
   }
 
   @override
-  String title({Context context, String sessionOwnerGuid}) {
-    String text = name;
+  String? title({Context? context, String? sessionOwnerGuid}) {
+    String text = name ?? '';
     if (deadline != null) {
-      text += " due " + deadline.toLongString;
+      text += " due " + deadline!.toLongString;
     }
     final propertyTitle = this
-        .propertyTitle(context: context, sessionOwnerGuid: sessionOwnerGuid);
+        .propertyTitle(context: context, sessionOwnerGuid: sessionOwnerGuid ?? '');
     if (propertyTitle != null) text += propertyTitle;
 
     return text;

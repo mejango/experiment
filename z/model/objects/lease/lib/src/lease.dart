@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:contract/index.dart';
 import 'package:fee_payer_type/index.dart';
 import 'package:invoice_options/index.dart';
@@ -11,43 +10,39 @@ import 'package:schedule/index.dart';
 import 'package:key/index.dart' as _key;
 
 class Lease extends Contract {
-  final LateFee lateFee;
-  final NameProperty property;
-  final Date nextInvoiceDeadline;
-  final InvoiceType nextInvoiceType;
-  final int openServiceRequestCount;
-  final int serviceRequestCompletionCount;
-  final int serviceRequestCount;
+  final LateFee? lateFee;
+  final NameProperty? property;
+  final Date? nextInvoiceDeadline;
+  final InvoiceType? nextInvoiceType;
+  final int? openServiceRequestCount;
+  final int? serviceRequestCompletionCount;
+  final int? serviceRequestCount;
 
   Lease(
-      {required String guid,
-      required Date dateCreated,
-      required String creatorGuid,
-      required int unreadCommentableObjectCount,
-      required int pinnedCommentableObjectCount,
-      required Date startDate,
-      required Date endDate,
-      String name,
-      required int amount,
-      required Set<ContractUser> users,
-      required Set<ContractUser> formerUsers,
-      required Schedule schedule,
-      NameContractDomain domain,
-      required int invoiceCount,
-      required FeePayerType feePayerType,
-      required bool monthToMonth,
+      { String? guid,
+      Date? dateCreated,
+      String? creatorGuid,
+      int? unreadCommentableObjectCount,
+      int? pinnedCommentableObjectCount,
+      Date? startDate,
+      Date? endDate,
+      String? name,
+      int? amount,
+      Set<ContractUser>? users,
+      Set<ContractUser>? formerUsers,
+      Schedule? schedule,
+      NameContractDomain? domain,
+      int? invoiceCount,
+      FeePayerType? feePayerType,
+      bool? monthToMonth,
       this.lateFee,
       required this.property,
       this.nextInvoiceDeadline,
       this.nextInvoiceType,
       required this.openServiceRequestCount,
       required this.serviceRequestCompletionCount,
-      required this.serviceRequestCount})
-      : assert(property != null),
-        assert(openServiceRequestCount != null),
-        assert(serviceRequestCompletionCount != null),
-        assert(serviceRequestCount != null),
-        super(
+      this.serviceRequestCount})
+      : super(
             guid: guid,
             dateCreated: dateCreated,
             creatorGuid: creatorGuid,
@@ -65,11 +60,10 @@ class Lease extends Contract {
             feePayerType: feePayerType,
             monthToMonth: monthToMonth);
 
-  factory Lease.fromMap(Map<String, Object> map) {
-    assert(map != null);
+  factory Lease.fromMap(Map<String?, Object?> map) {
 
     final contract = Contract.fromMap(map);
-    final counts = map[_key.counts] as Map;
+    final counts = map[_key.counts] as Map? ?? {};
 
     return Lease(
         guid: contract.guid,
@@ -88,30 +82,30 @@ class Lease extends Contract {
         invoiceCount: contract.invoiceCount,
         feePayerType: contract.feePayerType,
         monthToMonth: contract.monthToMonth,
-        lateFee: LateFee.fromMap(map[_key.lateFee]),
-        property: NameProperty.fromMap(map[_key.property]),
+        lateFee: LateFee.fromMap(map[_key.lateFee] as Map<String, Object?>? ?? {}),
+        property: NameProperty.fromMap(map[_key.property] as Map<String, Object?>? ?? {}),
         nextInvoiceDeadline:
-            Date.fromSecondsSinceEpoch(map[_key.nextInvoiceDeadline]),
-        nextInvoiceType: InvoiceType.fromString(map[_key.nextInvoiceKind]),
+            Date.fromSecondsSinceEpoch(map[_key.nextInvoiceDeadline] as int? ?? 0),
+        nextInvoiceType: InvoiceType.fromString(map[_key.nextInvoiceKind] as String? ?? ''),
         openServiceRequestCount: counts[_key.openServiceRequest] ?? 0,
         serviceRequestCompletionCount:
             counts[_key.serviceRequestCompletion] ?? 0,
         serviceRequestCount: counts[_key.serviceRequest] ?? 0);
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
-    (map[_key.counts] as Map).addAll({
+    (map[_key.counts] as Map? ?? {}).addAll({
       _key.openServiceRequest: openServiceRequestCount,
       _key.serviceRequestCompletion: serviceRequestCompletionCount,
       _key.serviceRequest: serviceRequestCount
     });
 
     map.addAll({
-      _key.lateFee: lateFee.toMap(),
-      _key.property: property.toMap(),
-      _key.nextInvoiceDeadline: nextInvoiceDeadline.secondsSinceEpoch,
-      _key.nextInvoiceKind: nextInvoiceType.toString()
+      _key.lateFee: lateFee?.toMap(),
+      _key.property: property?.toMap(),
+      _key.nextInvoiceDeadline: nextInvoiceDeadline?.secondsSinceEpoch,
+      _key.nextInvoiceKind: nextInvoiceType?.toString()
     });
 
     return map;
