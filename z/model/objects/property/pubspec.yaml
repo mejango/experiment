@@ -3,21 +3,23 @@ name: property
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ^3.7.2
+
+publish_to: none
 
 dependencies:
   flutter:
     sdk: flutter
   string_from_enum_string:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/string_from_enum_string
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/string_from_enum_string
   lease_preview:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/objects/lease_preview
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/objects/lease_preview
 
 dependency_overrides:
   frequency_type:

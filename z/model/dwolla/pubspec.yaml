@@ -10,9 +10,9 @@ dependencies:
     sdk: flutter
   dwolla_types:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/dwolla
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/dwolla
 
 dependency_overrides:
   dwolla_types:

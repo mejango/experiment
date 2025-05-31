@@ -3,31 +3,33 @@ name: billing
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ^3.7.2
+
+publish_to: none
 
 dependencies:
   flutter:
     sdk: flutter
   billing_status_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/billing_status
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/billing_status
   billing_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/billing
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/billing
   mappable:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/mixins/mappable
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/mixins/mappable
   key:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/key
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/key
 
 dev_dependencies:
   flutter_test:

@@ -3,7 +3,9 @@ name: name_defining_object
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ^3.7.2
+
+publish_to: none
 
 dependencies:
   flutter:
@@ -11,24 +13,24 @@ dependencies:
   strings: ^0.1.0
   name_user:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/name_user
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/name_user
   name_context:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/name_context
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/name_context
   user_reference:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/user_reference
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/user_reference
   stub:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/objects/stub
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/objects/stub
 
 dev_dependencies:
   flutter_test:

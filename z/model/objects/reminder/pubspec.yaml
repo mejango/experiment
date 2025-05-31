@@ -3,16 +3,18 @@ name: reminder
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ^3.7.2
+
+publish_to: none
 
 dependencies:
   flutter:
     sdk: flutter
   task:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/abstract/task
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/abstract/task
 
 dev_dependencies:
   flutter_test:

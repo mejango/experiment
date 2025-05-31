@@ -3,26 +3,28 @@ name: name_contract_domain
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ^3.7.2
+
+publish_to: none
 
 dependencies:
   flutter:
     sdk: flutter
   context_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/context
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/context
   key:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/key
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/key
   name_domain:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/name_domain
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/name_domain
 
 dev_dependencies:
   flutter_test:

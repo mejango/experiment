@@ -3,81 +3,83 @@ name: transfer
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ^3.7.2
+
+publish_to: none
 
 dependencies:
   flutter:
     sdk: flutter
   one_to_one_transaction:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/abstract/one_to_one_transaction
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/abstract/one_to_one_transaction
   fee_payer_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/fee_payer
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/fee_payer
   privacy_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/privacy
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/privacy
   transfer_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/transfer
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/transfer
   transfer_status_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/transfer_status
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/transfer_status
   expense:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/objects/expense
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/objects/expense
   task_reference:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/task_reference
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/task_reference
   user_reference:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/user_reference
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/user_reference
   domain:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/abstract/domain
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/abstract/domain
   contract:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/abstract/contract
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/abstract/contract
   name_user:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/name_user
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/name_user
   bank_owner_reference:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/bank_owner_reference
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/bank_owner_reference
   stub:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/objects/stub
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/objects/stub
   key:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/key
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/key
 
 dev_dependencies:
   flutter_test:

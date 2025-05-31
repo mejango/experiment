@@ -3,61 +3,63 @@ name: comment
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ^3.7.2
+
+publish_to: none
 
 dependencies:
   flutter:
     sdk: flutter
   fee_payer_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/fee_payer
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/fee_payer
   privacy_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/privacy
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/privacy
   feed_object:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/abstract/feed_object
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/abstract/feed_object
   user_reference:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/user_reference
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/user_reference
   name_defining_object:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/mixins/name_defining_object
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/mixins/name_defining_object
   name_user:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/name_user
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/name_user
   name_formatter:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/name_formatter
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/name_formatter
   commentable_object_reference:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/commentable_object_reference
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/commentable_object_reference
   stub:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/objects/stub
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/objects/stub
   key:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/key
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/key
 
 dev_dependencies:
   flutter_test:

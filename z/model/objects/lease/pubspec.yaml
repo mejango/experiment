@@ -3,61 +3,63 @@ name: lease
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ^3.7.2
+
+publish_to: none
 
 dependencies:
   flutter:
     sdk: flutter
   contract:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/abstract/contract
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/abstract/contract
   fee_payer_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/fee_payer
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/fee_payer
   invoice_options:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/invoice
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/invoice
   contract_user:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/contract_user
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/contract_user
   name_contract_domain:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/name_contract_domain
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/name_contract_domain
   name_property:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/name_property
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/name_property
   late_fee:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/late_fee
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/late_fee
   schedule:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/schedule
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/schedule
   date:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/date
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/date
   key:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/key
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/key
 
 dev_dependencies:
   flutter_test:

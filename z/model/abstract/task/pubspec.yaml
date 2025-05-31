@@ -3,86 +3,88 @@ name: task
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ^3.7.2
+
+publish_to: none
 
 dependencies:
   flutter:
     sdk: flutter
   fee_payer_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/fee_payer
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/fee_payer
   assignment_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/assignment
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/assignment
   key:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/key
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/key
   name_defining_object:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/mixins/name_defining_object
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/mixins/name_defining_object
   user_reference:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/user_reference
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/user_reference
   completion_count:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/completion_count
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/completion_count
   commentable_object:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/abstract/commentable_object
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/abstract/commentable_object
   task_reference:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/task_reference
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/task_reference
   date:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/date
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/date
   schedule:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/schedule
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/schedule
   context:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/abstract/context
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/abstract/context
   name_user:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/name_user
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/name_user
   date_parts:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/date_parts
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/date_parts
   name_formatter:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/name_formatter
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/name_formatter
   stub:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/objects/stub
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/objects/stub
 
 dev_dependencies:
   flutter_test:

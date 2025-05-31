@@ -3,66 +3,68 @@ name: user
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ^3.7.2
+
+publish_to: none
 
 dependencies:
   flutter:
     sdk: flutter
   privacy_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/privacy
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/privacy
   notification_category_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/notification_category
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/notification_category
   email_category_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/email_category
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/email_category
   model_object:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/abstract/model_object
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/abstract/model_object
   name_domain:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/name_domain
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/name_domain
   name_contract:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/name_contract
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/name_contract
   name_payment_profile:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/name_payment_profile
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/name_payment_profile
   billing:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/billing
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/billing
   payment_default:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/properties/payment_default
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/properties/payment_default
   key:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: model/key
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/key
   date:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/date
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/date
 
 dev_dependencies:
   flutter_test:
