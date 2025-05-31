@@ -8,9 +8,9 @@ class PublicCompletion {
   final String note;
 
   PublicCompletion(
-      {@required this.who,
-      @required this.name,
-      @required this.roof,
+      {required this.who,
+      required this.name,
+      required this.roof,
       this.note});
 
   factory PublicCompletion.fromMap(Map<String, Object> map) {
@@ -30,7 +30,7 @@ class PublicExpense {
   final String note;
   final String roof;
 
-  PublicExpense({@required this.who, @required this.roof, @required this.note});
+  PublicExpense({required this.who, required this.roof, required this.note});
 
   factory PublicExpense.fromMap(Map<String, Object> map) {
     assert(map != null);
@@ -50,9 +50,9 @@ class PublicTransfer {
   final String roof;
 
   PublicTransfer(
-      {@required this.payer,
-      @required this.receiver,
-      @required this.roof,
+      {required this.payer,
+      required this.receiver,
+      required this.roof,
       this.note});
 
   factory PublicTransfer.fromMap(Map<String, Object> map) {
@@ -75,11 +75,11 @@ class PublicLandlordTransfer {
   final String landlord;
 
   PublicLandlordTransfer(
-      {@required this.who,
-      @required this.home,
-      @required this.name,
-      @required this.landlord,
-      @required this.note});
+      {required this.who,
+      required this.home,
+      required this.name,
+      required this.landlord,
+      required this.note});
 
   factory PublicLandlordTransfer.fromMap(Map<String, Object> map) {
     assert(map != null);
@@ -101,10 +101,10 @@ class PublicMaintenanceRequest {
   final String note;
 
   PublicMaintenanceRequest(
-      {@required this.who,
-      @required this.home,
-      @required this.name,
-      @required this.note});
+      {required this.who,
+      required this.home,
+      required this.name,
+      required this.note});
 
   factory PublicMaintenanceRequest.fromMap(Map<String, Object> map) {
     assert(map != null);

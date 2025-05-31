@@ -7,29 +7,29 @@ import 'package:name_context/index.dart';
 import 'package:key/index.dart' as _key;
 
 class DomainObject extends ModelObject with NameDefiningObject {
-  final Set<NameUser> contractDomainUsers;
-  final Set<NameUser> contractUsers;
-  final Set<NameUser> formerContractUsers;
-  final Set<Stub> contractStubs;
-  final Set<Stub> formerContractStubs;
-  final String contractPropertyName;
-  final FeePayerType feePayerType;
+  final Set<NameUser>? contractDomainUsers;
+  final Set<NameUser>? contractUsers;
+  final Set<NameUser>? formerContractUsers;
+  final Set<Stub>? contractStubs;
+  final Set<Stub>? formerContractStubs;
+  final String? contractPropertyName;
+  final FeePayerType? feePayerType;
 
   @override
   String get allText => "Everyone";
 
   @override
   Set<NameUser> get nameUsers {
-    return contractDomainUsers
-        .followedBy(contractUsers)
-        .followedBy(formerContractUsers);
+    return contractDomainUsers?.followedBy(contractUsers as Iterable<NameUser>)
+        .followedBy(formerContractUsers as Iterable<NameUser>) as Set<NameUser>? ??
+        Set();
   }
 
   @override
   Set<NameContext> get nameContexts => Set();
 
   @override
-  Set<Stub> get stubs => contractStubs.followedBy(formerContractStubs);
+  Set<Stub> get stubs => contractStubs?.followedBy(formerContractStubs as Iterable<Stub>) as Set<Stub>? ?? Set();
 
   DomainObject(
       {this.contractDomainUsers,
@@ -65,21 +65,18 @@ class DomainObject extends ModelObject with NameDefiningObject {
         contractStubs: contractStubs.toSet(),
         formerContractStubs: formerContractStubs.toSet(),
         contractPropertyName: property[_key.name],
-        feePayerType: FeePayerType.fromString(map[_key.feePayerKind]));
+        feePayerType: FeePayerType.fromString(map[_key.feePayerKind] as String));
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
     map.addAll({
       _key.contract: {
-        _key.domainUsers: contractDomainUsers
-            .map((contractDomainUser) => contractDomainUser.toMap()),
-        _key.users: contractUsers.map((contractUser) => contractUser.toMap()),
-        _key.formerUsers: formerContractUsers
-            .map((formerContractUser) => formerContractUser.toMap()),
-        _key.stubs: contractStubs.map((contractStub) => contractStub.toMap()),
-        _key.formerStubs: formerContractStubs
-            .map((formerContractStubs) => formerContractStubs.toMap()),
+        _key.domainUsers: contractDomainUsers?.map((contractDomainUser) => contractDomainUser.toMap()),
+        _key.users: contractUsers?.map((contractUser) => contractUser.toMap()),
+        _key.formerUsers: formerContractUsers?.map((formerContractUser) => formerContractUser.toMap()),
+        _key.stubs: contractStubs?.map((contractStub) => contractStub.toMap()),
+        _key.formerStubs: formerContractStubs?.map((formerContractStubs) => formerContractStubs.toMap()),
         _key.feePayerKind: feePayerType.toString(),
         _key.property: {_key.name: contractPropertyName}
       }

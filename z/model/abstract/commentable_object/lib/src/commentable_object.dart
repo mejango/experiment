@@ -81,7 +81,7 @@ class CommentableObject extends FeedObject {
 
   String formattedSubscribers(
       {String sessionOwnerGuid,
-      @required NameDefiningObject nameDefiningObject,
+      required NameDefiningObject nameDefiningObject,
       bool firstPerson = false}) {
     return formatNames(
         guids: subscribers.map((user) => user.guid),

@@ -16,8 +16,8 @@ class Context extends ModelObject with NameDefiningObject {
     String guid,
     Date dateCreated,
     String creatorGuid,
-    @required this.unreadCommentableObjectCount,
-    @required this.pinnedCommentableObjectCount,
+    required this.unreadCommentableObjectCount,
+    required this.pinnedCommentableObjectCount,
   })  : assert(unreadCommentableObjectCount != null),
         assert(pinnedCommentableObjectCount != null),
         super(guid: guid, dateCreated: dateCreated, creatorGuid: creatorGuid);

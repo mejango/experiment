@@ -3,31 +3,31 @@ import 'package:key/index.dart' as _key;
 import 'package:contract/index.dart';
 
 class ContractUser extends NameUser {
-  final int amount;
-  final Contract contract;
+  final int? amount;
+  final Contract? contract;
 
   ContractUser(
-      {String guid,
-      String firstName,
-      String lastName,
+      {String? guid,
+      String? firstName,
+      String? lastName,
       this.contract,
       this.amount})
       : super(guid: guid, firstName: firstName, lastName: lastName);
 
-  factory ContractUser.fromMap(Map<String, Object> map) {
+  factory ContractUser.fromMap(Map<String?, Object?> map) {
     final nameUser = NameUser.fromMap(map);
     return ContractUser(
         guid: nameUser.guid,
         firstName: nameUser.firstName,
         lastName: nameUser.lastName,
-        contract: Contract.fromMap(map[_key.contract]),
-        amount: map[_key.amount]);
+        contract: Contract.fromMap(map[_key.contract] as Map<String, Object>),
+        amount: map[_key.amount] as int?);
   }
 
   @override
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
-    map.addAll({_key.contract: contract.toMap(), _key.amount: amount});
+    map.addAll({_key.contract: contract?.toMap(), _key.amount: amount});
 
     return map;
   }

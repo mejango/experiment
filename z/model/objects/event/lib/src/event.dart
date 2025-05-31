@@ -99,7 +99,7 @@ class Event extends FeedObject {
 
   String formattedActingUsers(
       {String sessionOwnerGuid,
-      @required NameDefiningObject nameDefiningObject,
+      required NameDefiningObject nameDefiningObject,
       bool firstPerson = false,
       bool useNicknames = true}) {
     return formatNames(
@@ -112,7 +112,7 @@ class Event extends FeedObject {
 
   String formattedAffectedUsers(
       {String sessionOwnerGuid,
-      @required NameDefiningObject nameDefiningObject,
+      required NameDefiningObject nameDefiningObject,
       bool firstPerson = false,
       bool useNicknames = true}) {
     return formatNames(

@@ -14,29 +14,29 @@ import 'package:bank_owner_reference/index.dart';
 import 'package:key/index.dart' as _key;
 
 class Transfer extends OneToOneTransaction {
-  final TransferType type;
-  final TransferStatusType statusType;
+  final TransferType? type;
+  final TransferStatusType? statusType;
 
   Transfer(
-      {Domain domain,
-      Contract contract,
-      Set<NameUser> contractDomainUsers,
-      Set<NameUser> contractUsers,
-      Set<NameUser> formerContractUsers,
-      Set<Stub> contractStubs,
-      Set<Stub> formerContractStubs,
-      String contractPropertyName,
-      FeePayerType feePayerType,
-      String clientReferenceId,
-      String name,
-      String note,
-      PrivacyType privacyType,
-      Set<UserReference> completingUsers,
-      TaskReference task,
-      Expense completionPrize,
-      int amount,
-      BankOwnerReference receiver,
-      BankOwnerReference sender,
+      {Domain? domain,
+      Contract? contract,
+      Set<NameUser>? contractDomainUsers,
+      Set<NameUser>? contractUsers,
+      Set<NameUser>? formerContractUsers,
+      Set<Stub>? contractStubs,
+      Set<Stub>? formerContractStubs,
+      String? contractPropertyName,
+      FeePayerType? feePayerType,
+      String? clientReferenceId,
+      String? name,
+      String? note,
+      PrivacyType? privacyType,
+      Set<UserReference>? completingUsers,
+      TaskReference? task,
+      Expense? completionPrize,
+      int? amount,
+      BankOwnerReference? receiver,
+      BankOwnerReference? sender,
       this.type,
       this.statusType})
       : super(
@@ -59,7 +59,6 @@ class Transfer extends OneToOneTransaction {
             sender: sender);
 
   factory Transfer.fromMap(Map<String, Object> map) {
-    assert(map != null);
 
     final oneToOneTransaction = OneToOneTransaction.fromMap(map);
 
@@ -79,11 +78,11 @@ class Transfer extends OneToOneTransaction {
         task: oneToOneTransaction.task,
         completionPrize: oneToOneTransaction.completionPrize,
         amount: oneToOneTransaction.amount,
-        type: TransferType.fromString(map[_key.kind]),
-        statusType: TransferStatusType.fromString(map[_key.statusKind]));
+        type: TransferType.fromString(map[_key.kind] as String),
+        statusType: TransferStatusType.fromString(map[_key.statusKind] as String));
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
     map.addAll(
         {_key.kind: type.toString(), _key.statusKind: statusType.toString()});

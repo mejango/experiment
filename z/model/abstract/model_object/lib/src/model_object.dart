@@ -16,7 +16,7 @@ class ModelObject extends Object with Mappable {
   bool operator ==(dynamic other) => other is ModelObject && guid == other.guid;
 
   const ModelObject(
-      {@required this.guid, @required this.dateCreated, this.creatorGuid})
+      {required this.guid, required this.dateCreated, this.creatorGuid})
       : assert(guid != null),
         assert(dateCreated != null);
 

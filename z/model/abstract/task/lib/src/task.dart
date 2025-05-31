@@ -158,7 +158,7 @@ class Task extends CommentableObject {
 
   String formattedAssignedUser(
       {String sessionOwnerGuid,
-      @required NameDefiningObject nameDefiningObject,
+      required NameDefiningObject nameDefiningObject,
       bool firstPerson = false}) {
     return formatNames(
         guids: assignedUsers.map((user) => user.guid),
@@ -169,7 +169,7 @@ class Task extends CommentableObject {
 
   String formattedParticipants(
       {String sessionOwnerGuid,
-      @required NameDefiningObject nameDefiningObject,
+      required NameDefiningObject nameDefiningObject,
       bool firstPerson = false}) {
     return formatNames(
         guids: participants.map((user) => user.guid),
@@ -180,7 +180,7 @@ class Task extends CommentableObject {
 
   String formattedCompletingUsers(
       {String sessionOwnerGuid,
-      @required NameDefiningObject nameDefiningObject,
+      required NameDefiningObject nameDefiningObject,
       bool firstPerson = false}) {
     return formatNames(
         guids: completingUsers.map((user) => user.guid),

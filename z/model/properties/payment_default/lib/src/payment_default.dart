@@ -4,23 +4,23 @@ import 'package:key/index.dart' as _key;
 import 'package:mappable/index.dart';
 
 class PaymentDefault with Mappable {
-  final PaymentDefaultType type;
-  final NamePaymentProfile namePaymentProfile;
-  final String contractGuid;
+  final PaymentDefaultType? type;
+  final NamePaymentProfile? namePaymentProfile;
+  final String? contractGuid;
 
   PaymentDefault({this.type, this.namePaymentProfile, this.contractGuid});
 
-  factory PaymentDefault.fromMap(Map<String, Object> map) {
+  factory PaymentDefault.fromMap(Map<String?, Object?> map) {
     return PaymentDefault(
-        type: PaymentDefaultType.fromString(map[_key.kind]),
-        namePaymentProfile: map[_key.paymentProfile],
-        contractGuid: map[_key.contract]);
+        type: PaymentDefaultType.fromString(map[_key.kind] as String),
+        namePaymentProfile: map[_key.paymentProfile] as NamePaymentProfile?,
+        contractGuid: map[_key.contract] as String?);
   }
 
   @override
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     return {
-      _key.kind: type.toString(),
+      _key.kind: type?.toString(),
       _key.paymentProfile: namePaymentProfile,
       _key.contract: contractGuid
     };

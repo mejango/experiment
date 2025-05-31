@@ -4,16 +4,16 @@ import 'package:mappable/index.dart';
 import 'package:key/index.dart' as _key;
 
 class Billing with Mappable {
-  final String email;
-  final bool isEmailVerified;
-  final String firstName;
-  final String lastName;
-  final BillingStatusType statusType;
-  final BillingType type;
-  final String address1;
-  final String address2;
-  final String city;
-  final String postalCode;
+  final String? email;
+  final bool? isEmailVerified;
+  final String? firstName;
+  final String? lastName;
+  final BillingStatusType? statusType;
+  final BillingType? type;
+  final String? address1;
+  final String? address2;
+  final String? city;
+  final String? postalCode;
 
   Billing(
       {this.email,
@@ -27,24 +27,22 @@ class Billing with Mappable {
       this.city,
       this.postalCode});
 
-  factory Billing.fromMap(Map<String, Object> map) {
-    if (map == null) return null;
-
+  factory Billing.fromMap(Map<String?, Object?> map) {
     return Billing(
-        email: map[_key.email],
-        isEmailVerified: map[_key.isEmailVerified],
-        firstName: map[_key.firstName],
-        lastName: map[_key.lastName],
-        statusType: BillingStatusType.fromString(map[_key.statusKind]),
-        type: BillingType.fromString(map[_key.kind]),
-        address1: map[_key.address1],
-        address2: map[_key.address2],
-        city: map[_key.city],
-        postalCode: map[_key.postalCode]);
+        email: map[_key.email] as String?,
+        isEmailVerified: map[_key.isEmailVerified] as bool?,
+        firstName: map[_key.firstName] as String?,
+        lastName: map[_key.lastName] as String?,
+        statusType: BillingStatusType.fromString(map[_key.statusKind] as String),
+        type: BillingType.fromString(map[_key.kind] as String),
+        address1: map[_key.address1] as String?,
+        address2: map[_key.address2] as String?,
+        city: map[_key.city] as String?,
+        postalCode: map[_key.postalCode] as String?);
   }
 
   @override
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     return {
       _key.email: email,
       _key.isEmailVerified: isEmailVerified,

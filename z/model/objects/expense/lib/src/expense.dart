@@ -106,7 +106,7 @@ class Expense extends Transaction {
 
   String formattedPayers({
     String sessionOwnerGuid,
-    @required NameDefiningObject nameDefiningObject,
+    required NameDefiningObject nameDefiningObject,
     bool firstPerson = false,
   }) {
     return formatNames(
@@ -118,7 +118,7 @@ class Expense extends Transaction {
 
   String formattedSplitter({
     String sessionOwnerGuid,
-    @required NameDefiningObject nameDefiningObject,
+    required NameDefiningObject nameDefiningObject,
     bool firstPerson = false,
   }) {
     return formatNames(

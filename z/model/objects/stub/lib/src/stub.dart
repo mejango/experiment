@@ -10,11 +10,11 @@ class Stub extends ModelObject {
   final String objectGuid;
 
   const Stub({
-    @required String guid,
-    @required Date dateCreated,
-    @required String creatorGuid,
-    @required this.name,
-    @required this.type,
+    required String guid,
+    required Date dateCreated,
+    required String creatorGuid,
+    required this.name,
+    required this.type,
     this.objectGuid,
   })  : assert(name != null),
         assert(type != null),

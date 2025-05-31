@@ -28,18 +28,18 @@ class Domain extends Context {
   }
 
   Domain(
-      {@required String guid,
-      @required Date dateCreated,
-      @required String creatorGuid,
-      @required int unreadCommentableObjectCount,
-      @required int pinnedCommentableObjectCount,
-      @required this.name,
-      @required this.users,
-      @required this.formerUsers,
-      @required this.location,
-      @required this.expenseCount,
-      @required this.reminderCount,
-      @required this.transferCount})
+      {required String guid,
+      required Date dateCreated,
+      required String creatorGuid,
+      required int unreadCommentableObjectCount,
+      required int pinnedCommentableObjectCount,
+      required this.name,
+      required this.users,
+      required this.formerUsers,
+      required this.location,
+      required this.expenseCount,
+      required this.reminderCount,
+      required this.transferCount})
       :
         //Domains will always be user made.
         assert(creatorGuid != null),

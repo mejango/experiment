@@ -85,7 +85,7 @@ class Completion extends FeedObject {
 
   String formattedCompletingUsers({
     String sessionOwnerGuid,
-    @required NameDefiningObject nameDefiningObject,
+    required NameDefiningObject nameDefiningObject,
     bool firstPerson = false,
   }) {
     return formatNames(
