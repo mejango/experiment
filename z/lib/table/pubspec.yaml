@@ -3,6 +3,8 @@ description: Roof's table tools.
 
 version: 1.0.0+1
 
+publish_to: none
+
 environment:
   sdk: ^3.7.2
 
@@ -11,8 +13,8 @@ dependencies:
     sdk: flutter
   stream:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
+      url: git@github.com:mejango/experiment.git
+      ref: main
       path: z/lib/stream
 
 dev_dependencies:

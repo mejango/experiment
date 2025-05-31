@@ -6,19 +6,21 @@ version: 1.0.0+1
 environment:
   sdk: ^3.7.2
 
+publish_to: none
+
 dependencies:
   flutter:
     sdk: flutter
   period_type:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: types/period
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: types/period_type
   ordinal_suffix_string_from_int:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/ordinal_suffix_string_from_int
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/ordinal_suffix_string_from_int
   
 
 dev_dependencies:

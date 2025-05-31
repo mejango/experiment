@@ -5,19 +5,21 @@ version: 1.0.0+1
 environment:
   sdk: ^3.7.2
 
+publish_to: none
+
 dependencies:
   flutter:
     sdk: flutter
   artboard:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/artboard
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/artboard
   typedefs:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/typedefs
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/typedefs
 
 dev_dependencies:
   flutter_test:

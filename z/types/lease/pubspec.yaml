@@ -1,0 +1,14 @@
+name: lease_status
+version: 1.0.0+1
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
