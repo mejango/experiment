@@ -10,27 +10,27 @@ import 'package:schedule/index.dart';
 import 'package:key/index.dart' as _key;
 
 class Contract extends Context {
-  final Date startDate;
-  final Date endDate;
-  final String name;
-  final int amount;
-  final Set<ContractUser> users;
-  final Set<ContractUser> formerUsers;
-  final Schedule schedule;
-  final NameContractDomain domain;
-  final int invoiceCount;
-  final FeePayerType feePayerType;
-  final bool monthToMonth;
+  final Date? startDate;
+  final Date? endDate;
+  final String? name;
+  final int? amount;
+  final Set<ContractUser>? users;
+  final Set<ContractUser>? formerUsers;
+  final Schedule? schedule;
+  final NameContractDomain? domain;
+  final int? invoiceCount;
+  final FeePayerType? feePayerType;
+  final bool? monthToMonth;
 
   @override
-  Set<String> get userGuids => users.map((user) => user.guid);
+  Set<String> get userGuids => users?.map((user) => user.guid) ?? Set<String>();
 
   @override
-  Set<String> get formerUserGuids => formerUsers.map((user) => user.guid);
+  Set<String> get formerUserGuids => formerUsers?.map((user) => user.guid);
 
   @override
   Set<NameUser> get nameUsers {
-    return users.followedBy(formerUsers).toSet();
+    return users?.followedBy(formerUsers).toSet();
   }
 
   @override
@@ -73,7 +73,7 @@ class Contract extends Context {
           pinnedCommentableObjectCount: pinnedCommentableObjectCount,
         );
 
-  factory Contract.fromMap(Map<String, Object> map) {
+  factory Contract.fromMap(Map<String?, Object?> map) {
     final context = Context.fromMap(map);
     final counts = map[_key.counts] as Map;
 
@@ -103,13 +103,13 @@ class Contract extends Context {
         monthToMonth: map[_key.monthToMonth]);
   }
 
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
     (map[_key.counts] as Map).addAll({_key.invoice: invoiceCount});
 
     map.addAll({
-      _key.startTimestamp: startDate.secondsSinceEpoch,
-      _key.endTimestamp: endDate.secondsSinceEpoch,
+      _key.startTimestamp: startDate?.secondsSinceEpoch,
+      _key.endTimestamp: endDate?.secondsSinceEpoch,
       _key.name: name,
       _key.amount: amount,
       _key.users: users.map((user) => user.toMap()),
