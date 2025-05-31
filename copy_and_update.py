@@ -53,5 +53,4 @@ def copy_and_update(src_root, dest_root):
     print(f"Done with {src_root} -> {dest_root}!\n")
 
 if __name__ == "__main__":
-    copy_and_update('lib', os.path.join('z', 'lib'))
-    copy_and_update('types', os.path.join('z', 'types'))
+    copy_and_update('model', os.path.join('z', 'model'))

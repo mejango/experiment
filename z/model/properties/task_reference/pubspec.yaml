@@ -1,0 +1,34 @@
+name: task_reference
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  task_type:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: types/task
+  mappable:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/mixins/mappable
+  key:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/key
+  date:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/date
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

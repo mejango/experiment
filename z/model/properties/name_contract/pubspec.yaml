@@ -1,0 +1,19 @@
+name: name_contract
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  name_context:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/properties/name_context
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

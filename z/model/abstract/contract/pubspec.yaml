@@ -1,0 +1,64 @@
+name: contract
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  key:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/key
+  context:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/abstract/context
+  fee_payer_type:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: types/fee_payer
+  contract_user:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/properties/contract_user
+  name_contract_domain:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/properties/name_contract_domain
+  name_user:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/properties/name_user
+  location:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/properties/location
+  date:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/date
+  schedule:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/properties/schedule
+  name_context:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/properties/name_context
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

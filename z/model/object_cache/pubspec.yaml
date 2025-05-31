@@ -1,0 +1,24 @@
+name: model_object_cache
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  model_object:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: model/abstract/model_object
+  disk:
+    git:
+      url: git@github.com:RoofVillage/roof-x.git
+      ref: master
+      path: lib/disk
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
