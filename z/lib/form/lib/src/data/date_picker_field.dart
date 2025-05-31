@@ -10,14 +10,14 @@ class FormDatePickerFieldData extends StreamableFormFieldData<Date>
 
   FormDatePickerFieldData({
     required String title,
-    Date? initialValue,
+    DateTime? initialValue,
     this.startBound,
     this.endBound,
     double? size,
     bool? isVisible,
   }) : super(
           title: title,
-          initialValue: initialValue ?? Date.now(),
+          initialValue: initialValue != null ? Date.fromDateTime(initialValue) : null,
           size: size,
           isVisible: isVisible,
         );

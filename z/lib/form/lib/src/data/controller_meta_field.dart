@@ -1,8 +1,5 @@
 import 'package:dwolla_model/index.dart';
 import 'package:form/index.dart';
-import 'package:form/src/data/date_of_birth_field.dart';
-
-import 'meta_form_field.dart';
 
 class ControllerMetaFieldData extends MetaFormFieldData<Controller> {
   static _firstName(String initialValue, bool isRequired) =>
@@ -31,27 +28,27 @@ class ControllerMetaFieldData extends MetaFormFieldData<Controller> {
       );
 
   static Future<List<StreamableFormFieldData>> _fieldsData(
-    Controller initialValue,
-    bool isRequired,
+    Controller? initialValue,
+    bool? isRequired,
   ) =>
       Future.value([
-        _firstName(initialValue?.firstName, isRequired),
-        _lastName(initialValue?.lastName, isRequired),
-        _title(initialValue?.title, isRequired),
-        _dateOfBirth(initialValue?.dateOfBirth),
-        _address(initialValue?.address, isRequired),
+        _firstName(initialValue?.firstName ?? '', isRequired ?? false),
+        _lastName(initialValue?.lastName ?? '', isRequired ?? false),
+        _title(initialValue?.title ?? '', isRequired ?? false),
+        _dateOfBirth(initialValue?.dateOfBirth ?? DateTime.now()),
+        _address(initialValue?.address ?? Address(), isRequired ?? false),
       ]);
   static final Controller Function(List<StreamableFormFieldData<dynamic>>)
       _valueFromFieldsData =
       (List<StreamableFormFieldData<dynamic>> fieldsData) => Controller(
-            firstName: (fieldsData[0] as FormFirstNameTextFieldData)?.value,
-            lastName: (fieldsData[1] as FormLastNameTextFieldData)?.value,
-            title: (fieldsData[2] as FormShortTextFieldData)?.value,
-            dateOfBirth: (fieldsData[3] as FormDateOfBirthFieldData)?.value,
-            address: (fieldsData[4] as AddressMetaFieldData)?.value,
+            firstName: (fieldsData[0] as FormFirstNameTextFieldData?)?.value,
+            lastName: (fieldsData[1] as FormLastNameTextFieldData?)?.value,
+            title: (fieldsData[2] as FormShortTextFieldData?)?.value,
+            dateOfBirth: (fieldsData[3] as FormDateOfBirthFieldData?)?.value,
+            address: (fieldsData[4] as AddressMetaFieldData?)?.value,
           );
-  static final List<String> Function(Controller) _displayValues = (
-    Controller controller,
+  static final List<String> Function(Controller?) _displayValues = (
+    Controller? controller,
   ) {
     if (controller?.firstName == null && controller?.lastName == null)
       return [];
@@ -59,20 +56,20 @@ class ControllerMetaFieldData extends MetaFormFieldData<Controller> {
     String nameString = controller?.firstName ?? '';
     if (controller?.lastName != null) {
       nameString += nameString.isNotEmpty ? ' ' : '';
-      nameString += controller.lastName;
+      nameString += controller?.lastName ?? '';
     }
 
     return [nameString];
   };
 
   ControllerMetaFieldData({
-    Controller initialValue,
-    bool isRequired,
-    bool isVisible,
+    Controller? initialValue,
+    bool? isRequired,
+    bool? isVisible,
   }) : super(
           title: 'Business Controller',
           initialValue: initialValue,
-          fieldsData: _fieldsData(initialValue, isRequired ?? false),
+          fieldsData: _fieldsData(initialValue ?? Controller(), isRequired ?? false),
           valueFromFieldsData: _valueFromFieldsData,
           displayValues: _displayValues,
           isVisible: isVisible,

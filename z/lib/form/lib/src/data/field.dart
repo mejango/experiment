@@ -49,7 +49,7 @@ abstract class StreamableFormFieldData<T> extends StreamableData {
         size = size ?? 1,
         isEnabled = isEnabled ?? true,
         _isInFocus = false,
-        super(isVisible: isVisible);
+        super(isVisible: isVisible ?? true);
 
   Future<void> validate() async {}
 

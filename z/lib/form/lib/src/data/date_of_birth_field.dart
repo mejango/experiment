@@ -1,4 +1,3 @@
-import 'package:date/index.dart';
 import 'package:form/index.dart';
 
 import 'date_picker_field.dart';
@@ -11,7 +10,7 @@ class FormDateOfBirthFieldData extends FormDatePickerFieldData {
   );
 
   FormDateOfBirthFieldData({
-    Date? initialValue,
+    DateTime? initialValue,
     DateTime? startBound,
     DateTime? endBound,
     double? size,

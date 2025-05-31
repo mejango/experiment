@@ -76,11 +76,11 @@ dependencies:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: z/icons/small
-  # dwolla_model:
-  #   git:
-  #     url: git@github.com:mejango/experiment.git
-  #     ref: main
-  #     path: z/model/dwolla
+  dwolla_model:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/model/dwolla
 
 # dependency_overrides:
 #   mask:
