@@ -10,7 +10,7 @@ publish_to: none
 dependencies:
   flutter:
     sdk: flutter
-  strings: ^0.1.0
+  strings: ^3.2.0
   name_user:
     git:
       url: git@github.com:mejango/experiment.git
