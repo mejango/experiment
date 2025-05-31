@@ -1,3 +1,3 @@
 mixin Mappable {
-  Map<String, Object> toMap();
+  Map<String, Object?> toMap();
 }
