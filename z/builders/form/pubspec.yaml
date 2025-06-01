@@ -1,0 +1,37 @@
+name: form_builder
+description: A form with information and buttons.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  button_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/button
+  form_body_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/form_body
+  button_status_option:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: options/button_status
+  semantic_theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: semantic_theme
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

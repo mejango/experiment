@@ -9,16 +9,17 @@ import 'package:date/index.dart';
 import 'package:date_picker_builder/index.dart';
 import 'package:option_picker_builder/index.dart';
 import 'package:labeled_value/index.dart';
+import 'package:standard_icon_library/index.dart';
 import 'package:icon_picker_builder/index.dart';
 import 'package:labeled_icon/index.dart';
 import 'package:time_picker_builder/index.dart';
 import 'package:interval_frequency_picker_builder/index.dart';
-import 'package:frequency/index.dart';
+import 'package:frequency_type/index.dart';
 import 'package:roller_column_picker_builder/index.dart';
 import 'package:artboard/index.dart';
 import 'package:period_type/index.dart';
 import 'package:tag_editor_builder/index.dart';
-import 'package:meta_form_artboard_builder/index.dart';
+// import 'package:meta_form_artboard_builder/index.dart';
 import 'package:semantic_theme/index.dart';
 import '_components/keyboard_accessory_buttons/index.dart';
 import '_components/standard_stream_form.dart';
@@ -43,7 +44,7 @@ mixin FormBodyBuilder implements StatefulWidget {
           BuildContext context) async =>
       Future.value([]);
 
-  Future<StreamableFormData> get initialFormData => null;
+  Future<StreamableFormData>? get initialFormData => null;
 
   String get submitButtonText;
   bool get canSubmitWithKeyboardRaised => true;
@@ -59,7 +60,7 @@ mixin FormBodyBuilder implements StatefulWidget {
   // An opportunity for forms to setup additional properties before building.
   void setupFields(
     BuildContext context, {
-    @required List<StreamableFormFieldData> fieldData,
+    required List<StreamableFormFieldData> fieldData,
   }) {}
 
   DatePickerBuilder buildDatePicker(
@@ -90,7 +91,7 @@ mixin FormBodyBuilder implements StatefulWidget {
 
   IntervalFrequencyPickerArtboardBuilder buildIntervalFrequencyPicker(
     BuildContext context, {
-    Frequency selectedSchedule,
+    FrequencyType selectedSchedule,
     List<LabeledValue<int>> intervalList,
     List<LabeledValue<PeriodType>> periodList,
   });
@@ -107,14 +108,14 @@ mixin FormBodyBuilder implements StatefulWidget {
     List<String> tags,
   });
 
-  MetaFormArtboardBuilder<T> buildMetaForm<T>(
-    BuildContext context, {
-    String title,
-    Future<List<StreamableFormFieldData>> fieldsData,
-    T Function(List<StreamableFormFieldData>) valueFromFieldsData,
-    String submitButtonText,
-    void Function() validateForm,
-  });
+  // MetaFormArtboardBuilder<T> buildMetaForm<T>(
+  //   BuildContext context, {
+  //   String title,
+  //   Future<List<StreamableFormFieldData>> fieldsData,
+  //   T Function(List<StreamableFormFieldData>) valueFromFieldsData,
+  //   String submitButtonText,
+  //   void Function() validateForm,
+  // });
 
   Future<T> goTo<T>({
     @required BuildContext context,
@@ -128,7 +129,7 @@ mixin FormBodyBuilder implements StatefulWidget {
 
   void setupFieldDataOnTapListeners(
     BuildContext context, {
-    @required List<StreamableFormFieldData> fieldData,
+    required List<StreamableFormFieldData> fieldData,
   }) async {
     for (final data in fieldData) {
       if (data is FormDatePickerFieldData)
@@ -159,22 +160,19 @@ mixin FormBodyBuilder implements StatefulWidget {
         data.addOnTapListener(
           _tagFieldOnTap(context, data),
         );
-      if (data is MetaFormFieldData)
-        data.addOnTapListener(
-          _metaFormFieldOnTap(context, data),
-        );
+      // if (data is MetaFormFieldData)
+      //   data.addOnTapListener(
+      //     _metaFormFieldOnTap(context, data),
+      //   );
     }
   }
 
   Future<void> _validateFields() async {
     await Future.wait(
-      form.formData?.fieldData
-          .where(
-            (data) => data.isVisible == true,
-          )
-          .map(
-            (data) async => await data.validate(),
-          ),
+      form.formData.fieldData
+          .where((data) => data.isVisible == true)
+          .map((data) async => await data.validate())
+          .toList(),
     );
   }
 
@@ -185,13 +183,12 @@ mixin FormBodyBuilder implements StatefulWidget {
       () async {
         final artboard = buildDatePicker(
           context,
-          selectedDate: data.value,
+          selectedDate: data.value ?? Date.now(),
         );
         final time = await goTo<Date>(
           context: context,
           artboard: artboard,
         );
-        if (time == null) return;
         data.value = time;
         form.updateFieldData(data);
       };
@@ -206,24 +203,23 @@ mixin FormBodyBuilder implements StatefulWidget {
                   label: option.label,
                   value: option.value,
                 ))
-            ?.toList();
+            .toList();
         final convertedSelectedOptions = data.selectedOptions
             ?.map((option) => LabeledValue(
                   label: option.label,
                   value: option.value,
                 ))
-            ?.toList();
+            .toList();
         final artboard = buildOptionPicker(
           context,
           title: data.title,
-          selectedOptions: convertedSelectedOptions,
-          options: convertedOptions,
+          selectedOptions: convertedSelectedOptions ?? [],
+          options: convertedOptions ?? [],
         );
         final newSelectedOptions = await goTo<List<LabeledValue>>(
           context: context,
           artboard: artboard,
         );
-        if (newSelectedOptions == null) return;
         data.selectedOptions = newSelectedOptions
             .map(
               (option) => FormLabeledValue(
@@ -243,22 +239,21 @@ mixin FormBodyBuilder implements StatefulWidget {
         final artboard = buildIconPicker(
           context,
           title: data.title,
-          options: data.options
-              .map(
-                (option) => LabeledIcon(icon: option.icon),
+          options: data.options?.map(
+                (option) => LabeledIcon(icon: option.icon ?? StandardIcon.add, label: option.label),
               )
-              .toList(),
+              .toList() ?? [],
           selectedOption: data.selectedOption != null
-              ? LabeledIcon(icon: data.selectedOption.icon)
-              : null,
+              ? LabeledIcon(icon: data.selectedOption!.icon ?? StandardIcon.add, label: data.selectedOption!.label)
+              : LabeledIcon(icon: StandardIcon.add, label: ""),
         );
         final newSelectedOption = await goTo<LabeledIcon>(
           context: context,
           artboard: artboard,
         );
-        if (newSelectedOption == null) return;
         data.selectedOption = FormLabeledIcon(
           icon: newSelectedOption.icon,
+          title: newSelectedOption.label,
         );
         form.updateFieldData(data);
       };
@@ -270,13 +265,12 @@ mixin FormBodyBuilder implements StatefulWidget {
       () async {
         final artboard = buildTimePicker(
           context,
-          selectedTime: data.value,
+          selectedTime: data.value ?? TimeOfDay.now(),
         );
         final newSelectedTime = await goTo<TimeOfDay>(
           context: context,
           artboard: artboard,
         );
-        if (newSelectedTime == null) return;
         data.value = newSelectedTime;
         form.updateFieldData(data);
       };
@@ -288,18 +282,17 @@ mixin FormBodyBuilder implements StatefulWidget {
       () async {
         final artboard = buildIntervalFrequencyPicker(
           context,
-          selectedSchedule: Frequency(
-            interval: data.value?.interval,
-            frequency: data.value?.frequency,
+          selectedSchedule: FrequencyType(
+            interval: data.value?.interval ?? 0,
+            frequency: data.value?.frequency ?? PeriodType.fromString('week'),
           ),
           periodList: data.periodList,
           intervalList: data.intervalList,
         );
-        final newSelectedSchedule = await goTo<Frequency>(
+        final newSelectedSchedule = await goTo<FrequencyType>(
           context: context,
           artboard: artboard,
         );
-        if (newSelectedSchedule == null) return;
         data.value = FormIntervalFrequencyOptionData(
           frequency: newSelectedSchedule.frequency,
           interval: newSelectedSchedule.interval,
@@ -314,7 +307,7 @@ mixin FormBodyBuilder implements StatefulWidget {
       () async {
         final artboard = buildRollerColumnPicker(
           context,
-          selectedValue: data.value,
+          selectedValue: data.value ?? LabeledValue(label: "", value: ""),
           options: data.options,
           infiniteScroll: data.infiniteScroll,
         );
@@ -322,7 +315,6 @@ mixin FormBodyBuilder implements StatefulWidget {
           context: context,
           artboard: artboard,
         );
-        if (newSelectedValue == null) return;
         data.value = newSelectedValue;
         form.updateFieldData(data);
       };
@@ -334,49 +326,48 @@ mixin FormBodyBuilder implements StatefulWidget {
       () async {
         final artboard = buildTagEditor(
           context,
-          tags: data.tags,
+          tags: data.tags ?? [],
         );
         final newSelectedValue = await goTo(
           context: context,
           artboard: artboard,
         );
-        if (newSelectedValue == null) return;
         data.tags = newSelectedValue;
         form.updateFieldData(data);
       };
 
-  Function _metaFormFieldOnTap(
-    BuildContext context,
-    MetaFormFieldData data,
-  ) =>
-      () async {
-        final artboard = buildMetaForm(
-          context,
-          title: data.title,
-          fieldsData: data.fieldsData,
-          valueFromFieldsData: data.valueFromFieldsData,
-        );
-        final newFormResult = await goTo(
-          context: context,
-          artboard: artboard,
-        );
-        if (newFormResult == null) return;
-        data.value = newFormResult;
-        form.updateFieldData(data);
-      };
+//   Function _metaFormFieldOnTap(
+//     BuildContext context,
+//     MetaFormFieldData data,
+//   ) =>
+//       () async {
+//         final artboard = buildMetaForm(
+//           context,
+//           title: data.title,
+//           fieldsData: data.fieldsData,
+//           valueFromFieldsData: data.valueFromFieldsData,
+//         );
+//         final newFormResult = await goTo(
+//           context: context,
+//           artboard: artboard,
+//         );
+//         if (newFormResult == null) return;
+//         data.value = newFormResult;
+//         form.updateFieldData(data);
+//       };
 
   void disposeOfForm() => _form.dispose();
 }
 
 mixin FormBodyBuilderState<T extends FormBodyBuilder> implements State<T> {
-  FormValidationException validationException;
-  FormSubmissionException submissionException;
+  FormValidationException? validationException;
+  FormSubmissionException? submissionException;
   FormSubmitStatus formSubmitState = FormSubmitStatus.ready;
 
   bool _hasSetUp = false;
 
   bool _shouldHideButtons = false;
-  get shouldHideButtons => _shouldHideButtons;
+  bool get shouldHideButtons => _shouldHideButtons;
   set shouldHideButtons(bool shouldHide) {
     setState(
       () => _shouldHideButtons = shouldHide,
@@ -429,15 +420,13 @@ mixin FormBodyBuilderState<T extends FormBodyBuilder> implements State<T> {
   void _load(BuildContext context) async {
     //No need to load twice. This line also allows artboards to
     //only need to define the formData that will initially be on screen
-    if (widget.form.formData != null) return;
 
     final formData = await _createInitialFormData(context);
-    if (formData == null) return;
     _setupIfNeeded(
       context,
-      fieldData: formData.fieldData,
+      fieldData: formData?.fieldData ?? [],
     );
-    widget.form.update(formData);
+    if (formData != null) widget.form.update(formData);
   }
 
   Widget _buildSubmitKeyboardAccessory(BuildContext context) {
@@ -450,7 +439,7 @@ mixin FormBodyBuilderState<T extends FormBodyBuilder> implements State<T> {
     );
   }
 
-  Future<StreamableFormData> _createInitialFormData(
+  Future<StreamableFormData?> _createInitialFormData(
     BuildContext context,
   ) async {
     final formData = await widget.initialFormData;
@@ -458,32 +447,28 @@ mixin FormBodyBuilderState<T extends FormBodyBuilder> implements State<T> {
 
     final theme = SemanticTheme.of(context);
 
-    final _sectionData = await widget.initialSectionData;
     final _builtSectionData = await widget.buildInitialSectionData(context);
-    final sectionData =
-        (_sectionData?.isNotEmpty ?? false) ? _sectionData : _builtSectionData;
+    final sectionData = _builtSectionData;
     if (sectionData.isNotEmpty) {
       return StreamableFormData(
         sectionData: sectionData,
-        fieldHorizontalSpacing: theme.distance.spacing.horizontal.min,
-        fieldVerticalSpacing: theme.distance.spacing.vertical.min,
-        sectionVerticalSpacing: theme.distance.spacing.vertical.large,
+        fieldHorizontalSpacing: theme?.distance.spacing.horizontal.min ?? 0,
+        fieldVerticalSpacing: theme?.distance.spacing.vertical.min ?? 0,
+        sectionVerticalSpacing: theme?.distance.spacing.vertical.large ?? 0,
         submitKeyboardAccessory: _buildSubmitKeyboardAccessory(context),
         canSubmitWithKeyboardRaised: widget.canSubmitWithKeyboardRaised,
       );
     }
 
-    final _fieldData = await widget.initialFieldData;
     final _builtFieldData = await widget.buildInitialFieldData(context);
-    final fieldData =
-        (_fieldData?.isNotEmpty ?? false) ? _fieldData : _builtFieldData;
+    final fieldData = _builtFieldData;
 
     if (fieldData.isNotEmpty) {
       return StreamableFormData.withFields(
         fieldData: fieldData,
-        fieldHorizontalSpacing: theme.distance.spacing.horizontal.min,
-        fieldVerticalSpacing: theme.distance.spacing.vertical.min,
-        sectionVerticalSpacing: theme.distance.spacing.vertical.large,
+        fieldHorizontalSpacing: theme?.distance.spacing.horizontal.min ?? 0,
+        fieldVerticalSpacing: theme?.distance.spacing.vertical.min ?? 0,
+        sectionVerticalSpacing: theme?.distance.spacing.vertical.large ?? 0,
         submitKeyboardAccessory: _buildSubmitKeyboardAccessory(context),
         canSubmitWithKeyboardRaised: widget.canSubmitWithKeyboardRaised,
       );
@@ -494,7 +479,7 @@ mixin FormBodyBuilderState<T extends FormBodyBuilder> implements State<T> {
 
   void _setupIfNeeded(
     BuildContext context, {
-    @required List<StreamableFormFieldData> fieldData,
+    required List<StreamableFormFieldData> fieldData,
   }) {
     if (_hasSetUp) return;
     widget.setupFieldDataOnTapListeners(context, fieldData: fieldData);
