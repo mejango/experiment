@@ -13,15 +13,15 @@ class VerticalFloatingArtboardNavigatorPanel<T> extends StatefulWidget {
   final VerticalFloatingArtboardButtonOption defaultNavButtonOption;
 
   VerticalFloatingArtboardNavigatorPanel({
-    this.artboard,
-    @required this.defaultNavButtonOption,
+    required this.artboard,
+    required this.defaultNavButtonOption,
   });
 
   @override
   State<StatefulWidget> createState() =>
       InheritedVerticalFloatingArtboardNavigatorPanel<T>();
 
-  static InheritedVerticalFloatingArtboardNavigatorPanel of(
+  static InheritedVerticalFloatingArtboardNavigatorPanel? of(
     BuildContext context, {
     bool shouldRebuild = true,
   }) {
@@ -31,7 +31,7 @@ class VerticalFloatingArtboardNavigatorPanel<T> extends StatefulWidget {
         : context.findAncestorWidgetOfExactType<
             _InheritedVerticalFloatingArtboardNavigatorPanel>();
 
-    return inheritedWidget.data;
+    return inheritedWidget?.data;
   }
 }
 
@@ -41,10 +41,10 @@ class InheritedVerticalFloatingArtboardNavigatorPanel<T>
     extends State<VerticalFloatingArtboardNavigatorPanel<T>>
     with AutomaticKeepAliveClientMixin, NavIconButtonBuilder {
   bool _wantKeepAlive = true;
-  T _result;
+  T? _result;
 
-  set result(T value) => setState(() => _result = value);
-  get result => _result;
+  set result(T? value) => setState(() => _result = value);
+  T? get result => _result;
 
   @override
   bool get wantKeepAlive => _wantKeepAlive;
@@ -65,7 +65,7 @@ class InheritedVerticalFloatingArtboardNavigatorPanel<T>
     );
 
     List<Widget> children = [flexibleColumn];
-    if (VerticalFloatingArtboardNavigator.of(context).showsNavButton) {
+    if (VerticalFloatingArtboardNavigator.of(context)?.showsNavButton ?? false) {
       final navButtonBar = _navButtonBar(context);
       children.add(navButtonBar);
     }
@@ -92,7 +92,7 @@ class InheritedVerticalFloatingArtboardNavigatorPanel<T>
     VerticalFloatingArtboardNavigator.of(
       context,
       shouldRebuild: false,
-    ).back(context);
+    )?.back(context);
   }
 
   Widget _navButtonBar(BuildContext context) {
@@ -120,13 +120,13 @@ class InheritedVerticalFloatingArtboardNavigatorPanel<T>
         onTap: () => null, // block onTap from propagating to parent
         child: Container(
           padding: EdgeInsets.symmetric(
-            horizontal: theme.distance.gutter.horizontal.medium,
+            horizontal: theme?.distance.gutter.horizontal.medium ?? 0,
           ),
           decoration: BoxDecoration(
-            color: theme.color.background.general,
+            color: theme?.color.background.general ?? Colors.transparent,
             border: Border(
               top: BorderSide(
-                color: theme.color.stroke.light,
+                color: theme?.color.stroke.light ?? Colors.transparent,
               ),
             ),
           ),
@@ -150,7 +150,7 @@ class InheritedVerticalFloatingArtboardNavigatorPanel<T>
       case VerticalFloatingArtboardButtonOption.close:
         button = buildNavIconButton(
           iconReference: NavigationIcon.downArrow,
-          onTap: () => ArtboardNavigator.of(context).pop(_result),
+          onTap: () => ArtboardNavigator.of(context)?.pop(_result),
         );
         break;
       case VerticalFloatingArtboardButtonOption.previous:
@@ -161,7 +161,7 @@ class InheritedVerticalFloatingArtboardNavigatorPanel<T>
             VerticalFloatingArtboardNavigator.of(
               context,
               shouldRebuild: false,
-            ).back(context);
+            )?.back(context);
           },
         );
         break;
@@ -175,8 +175,8 @@ class _InheritedVerticalFloatingArtboardNavigatorPanel extends InheritedWidget {
   final InheritedVerticalFloatingArtboardNavigatorPanel data;
 
   _InheritedVerticalFloatingArtboardNavigatorPanel({
-    @required this.data,
-    @required Widget child,
+    required this.data,
+    required Widget child,
   }) : super(
           child: child,
         );

@@ -14,14 +14,14 @@ class VerticalFloatingArtboardNavigator extends StatefulWidget {
   final Artboard artboard;
 
   VerticalFloatingArtboardNavigator({
-    this.artboard,
+    required this.artboard,
   });
 
   @override
   State<StatefulWidget> createState() =>
       VerticalFloatingInheritedArtboardNavigator();
 
-  static VerticalFloatingInheritedArtboardNavigator of(
+  static VerticalFloatingInheritedArtboardNavigator? of(
     BuildContext context, {
     bool shouldRebuild = false,
   }) {
@@ -31,7 +31,7 @@ class VerticalFloatingArtboardNavigator extends StatefulWidget {
         : context.findAncestorWidgetOfExactType<
             _VerticalFloatingInheritedArtboardNavigator>();
 
-    return inheritedWidget.data;
+    return inheritedWidget?.data;
   }
 }
 
@@ -44,22 +44,24 @@ class VerticalFloatingInheritedArtboardNavigator
   final _popMaxDragTimeDelta = 50;
 
   bool showsNavButton = true;
-  int _initialDragTime;
-  double _initialDragDy;
-  int _timeDelta;
-  double _downDistanceDelta;
+  int? _initialDragTime;
+  double? _initialDragDy;
+  int? _timeDelta;
+  double? _downDistanceDelta;
 
   @override
   void initState() {
-    final initialPanel = _buildPanelForArtboard(this.widget.artboard);
+    final initialPanel = _buildPanelForArtboard(this.widget.artboard as VerticalFloatingArtboard);
     _floatingArtboardPanels.add(initialPanel);
     super.initState();
   }
 
   // Must drag _popMinDragDistanceDelta in less time than _popMaxDragTimeDelta to pop
   get _shouldPop =>
-      _timeDelta < _popMaxDragTimeDelta &&
-      _downDistanceDelta > _popMinDragDistanceDelta;
+      _timeDelta != null &&
+      _timeDelta! < _popMaxDragTimeDelta &&
+      _downDistanceDelta != null &&
+      _downDistanceDelta! > _popMinDragDistanceDelta;
 
   get childrenDelegate => SliverChildBuilderDelegate((
         context,
@@ -81,7 +83,7 @@ class VerticalFloatingInheritedArtboardNavigator
       onTap: (() => Navigator.pop(context)),
       onVerticalDragStart: _onVerticalDragStart,
       onVerticalDragUpdate: (details) {
-        if (details.primaryDelta < 0) return;
+        if (details.primaryDelta == null || details.primaryDelta! < 0) return;
         _onDragDownUpdate(details);
         if (_shouldPop) Navigator.pop(context);
       },
@@ -111,8 +113,8 @@ class VerticalFloatingInheritedArtboardNavigator
     final theme = SemanticTheme.of(context);
 
     await _pageController.previousPage(
-      duration: theme.duration.medium,
-      curve: theme.curve.exit,
+      duration: theme?.duration.medium ?? Duration.zero,
+      curve: theme?.curve.exit ?? Curves.linear,
     );
     setState(
       () => _floatingArtboardPanels.removeLast(),
@@ -126,17 +128,17 @@ class VerticalFloatingInheritedArtboardNavigator
 
   Future<T> _goTo<T>(
     Artboard<T> artboard, {
-    @required BuildContext context,
+    required BuildContext context,
   }) async {
     if (artboard is VerticalFloatingArtboard) {
-      final panel = _buildPanelForArtboard<T>(artboard);
+      final panel = _buildPanelForArtboard<T>(artboard as VerticalFloatingArtboard<T>);
 
       setState(() => _floatingArtboardPanels.add(panel));
 
       final theme = SemanticTheme.of(context);
       _pageController.nextPage(
-        duration: theme.duration.medium,
-        curve: theme.curve.enter,
+        duration: theme?.duration.medium ?? Duration.zero,
+        curve: theme?.curve.enter ?? Curves.linear,
       );
     } else {
       Navigator.pop(context, artboard);
@@ -145,19 +147,20 @@ class VerticalFloatingInheritedArtboardNavigator
     return artboard.popped;
   }
 
-  bool _pop<T>([T result]) {
+  bool _pop<T>([T? result]) {
     widget.artboard.didComplete();
-    return Navigator.pop(context, result);
+    Navigator.pop(context, result);
+    return true;
   }
 
   void _onVerticalDragStart(DragStartDetails details) {
-    _initialDragTime = details.sourceTimeStamp.inMilliseconds;
+    _initialDragTime = details.sourceTimeStamp?.inMilliseconds;
     _initialDragDy = details.globalPosition.dy;
   }
 
   void _onDragDownUpdate(DragUpdateDetails details) {
-    _timeDelta = details.sourceTimeStamp.inMilliseconds - _initialDragTime;
-    _downDistanceDelta = details.globalPosition.dy - _initialDragDy;
+    _timeDelta = (details.sourceTimeStamp?.inMilliseconds ?? 0) - (_initialDragTime ?? 0);
+    _downDistanceDelta = details.globalPosition.dy - (_initialDragDy ?? 0);
   }
 
   void toggleNavButtonsHidden(bool isHidden) {
@@ -188,8 +191,8 @@ class _VerticalFloatingInheritedArtboardNavigator extends InheritedWidget {
   final VerticalFloatingInheritedArtboardNavigator data;
 
   _VerticalFloatingInheritedArtboardNavigator({
-    @required this.data,
-    @required Widget child,
+    required this.data,
+    required Widget child,
   }) : super(
           child: child,
         );

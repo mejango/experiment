@@ -18,7 +18,7 @@ class VerticalFloatingRoute<T> extends ModalRoute<T> {
   Color get barrierColor => theme.color.background.scrim;
 
   @override
-  String get barrierLabel => null;
+  String? get barrierLabel => null;
 
   @override
   bool get maintainState => false;
@@ -27,7 +27,7 @@ class VerticalFloatingRoute<T> extends ModalRoute<T> {
   Animation<double> get animation => CurvedAnimation(
         curve: theme.curve.enter,
         reverseCurve: theme.curve.exit,
-        parent: controller,
+        parent: controller!,
       );
 
   final _fadeTween = Tween<double>(
@@ -40,8 +40,8 @@ class VerticalFloatingRoute<T> extends ModalRoute<T> {
   );
 
   VerticalFloatingRoute({
-    @required this.builder,
-    @required this.theme,
+    required this.builder,
+    required this.theme,
   });
 
   @override

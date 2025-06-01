@@ -5,7 +5,7 @@ import 'package:semantic_theme/index.dart';
 import 'package:vertical_floating_artboard_button_option/index.dart';
 
 mixin VerticalFloatingArtboard<T> implements StatefulWidget, Artboard<T> {
-  VerticalFloatingArtboardButtonOption get navButtonOption => null;
+  VerticalFloatingArtboardButtonOption? get navButtonOption => null;
 }
 
 mixin VerticalFloatingArtboardState<T extends VerticalFloatingArtboard>
@@ -16,17 +16,17 @@ mixin VerticalFloatingArtboardState<T extends VerticalFloatingArtboard>
     final theme = SemanticTheme.of(context);
 
     final decoration = BoxDecoration(
-      color: theme.color.background.general,
-      borderRadius: BorderRadius.all(theme.radius.max),
+      color: theme?.color.background.general ?? Colors.transparent,
+      borderRadius: BorderRadius.all(theme?.radius.max ?? Radius.zero),
       boxShadow: [
-        theme.shadow.large,
+        theme?.shadow.large ?? BoxShadow(color: Colors.transparent),
       ],
     );
 
     final pageContent = Container(
       padding: EdgeInsets.only(
-        top: theme.distance.gutter.vertical.medium,
-        bottom: theme.distance.gutter.vertical.large * 3,
+        top: theme?.distance.gutter.vertical.medium ?? 0,
+        bottom: (theme?.distance.gutter.vertical.large ?? 0) * 3,
       ),
       child: buildBody(context),
     );
@@ -35,7 +35,7 @@ mixin VerticalFloatingArtboardState<T extends VerticalFloatingArtboard>
 
     final safeAreaMargin = EdgeInsets.only(
       top: max(
-        theme.distance.gutter.vertical.large,
+        theme?.distance.gutter.vertical.large ?? 0,
         safeArea.top,
       ),
     );
