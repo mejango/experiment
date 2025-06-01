@@ -16,9 +16,9 @@ dependencies:
       path: z/artboard_templates/vertical_floating/spaced_column
   app_data:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: app_data
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/app_data
   button_builder:
     git:
       url: git@github.com:mejango/experiment.git

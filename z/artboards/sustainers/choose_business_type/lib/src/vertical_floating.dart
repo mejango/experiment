@@ -16,28 +16,28 @@ class ChooseBusinessTypeVerticalFloatingArtboard
       (context) => [
             buildSecondaryCenterButton(
               context,
-              onTap: () => ArtboardNavigator.of(context).goTo(
+              onTap: () => ArtboardNavigator.of(context)?.goTo(
                 VerifySoleProprietorshipWalletVerticalFloatingArtboard(),
               ),
               text: "Sole proprietorship",
             ),
             buildSecondaryCenterButton(
               context,
-              onTap: () => ArtboardNavigator.of(context).goTo(
+              onTap: () => ArtboardNavigator.of(context)?.goTo(
                 VerifyBusinessWalletVerticalFloatingArtboard(),
               ),
               text: "Partnership",
             ),
             buildSecondaryCenterButton(
               context,
-              onTap: () => ArtboardNavigator.of(context).goTo(
+              onTap: () => ArtboardNavigator.of(context)?.goTo(
                 VerifyBusinessWalletVerticalFloatingArtboard(),
               ),
               text: "LLC",
             ),
             buildSecondaryCenterButton(
               context,
-              onTap: () => ArtboardNavigator.of(context).goTo(
+              onTap: () => ArtboardNavigator.of(context)?.goTo(
                 VerifyBusinessWalletVerticalFloatingArtboard(),
               ),
               text: "Corporation",
