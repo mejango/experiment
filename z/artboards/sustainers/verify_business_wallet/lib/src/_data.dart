@@ -48,14 +48,14 @@ mixin VerifyBusinessWalletArtboardData implements FormBuilder {
           text: 'Add another',
           onTap: () => form.insertFieldData(
             _beneficialOwnerField(context, removable: true),
-            after: form.formData.sectionData.last.fieldData.last,
+            after: form.formData.sectionData.last.fieldData?.last,
           ),
         ),
       );
 
   BeneficialOwnerMetaFieldData _beneficialOwnerField(
     BuildContext context, {
-    bool removable,
+    bool? removable,
   }) {
     final field = BeneficialOwnerMetaFieldData(
       isRequired: true,
@@ -69,7 +69,7 @@ mixin VerifyBusinessWalletArtboardData implements FormBuilder {
 
   Future<void> submit(BuildContext context) {
     // TODO: implement submit
-    return null;
+    return Future.value();
   }
 
   static final _firstName = FormFirstNameTextFieldData(

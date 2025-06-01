@@ -14,7 +14,7 @@ mixin VerifyPersonalWalletArtboardData implements FormBuilder {
 
   Future<void> submit(BuildContext context) {
     // TODO: implement submit
-    return null;
+    return Future.value();
   }
 
   final _firstName = FormFirstNameTextFieldData(
