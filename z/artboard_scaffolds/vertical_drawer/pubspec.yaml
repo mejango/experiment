@@ -41,6 +41,11 @@ dependencies:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: z/lib/navigator
+  nav_button_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/nav_button
 
 dev_dependencies:
   flutter_test:

@@ -13,14 +13,14 @@ class VerticalDrawerArtboardNavigator extends StatefulWidget {
   final Artboard artboard;
 
   VerticalDrawerArtboardNavigator({
-    this.artboard,
+    required this.artboard,
   });
 
   @override
   State<StatefulWidget> createState() =>
       VerticalDrawerInheritedArtboardNavigator();
 
-  static VerticalDrawerInheritedArtboardNavigator of(
+  static VerticalDrawerInheritedArtboardNavigator? of(
     BuildContext context, {
     bool shouldRebuild = false,
   }) {
@@ -30,7 +30,7 @@ class VerticalDrawerArtboardNavigator extends StatefulWidget {
         : context.findAncestorWidgetOfExactType<
             _VerticalDrawerInheritedArtboardNavigator>();
 
-    return inheritedWidget.data;
+    return inheritedWidget?.data;
   }
 }
 
@@ -44,7 +44,7 @@ class VerticalDrawerInheritedArtboardNavigator
 
   @override
   void initState() {
-    final initialPanel = _buildPanelForArtboard(this.widget.artboard);
+    final initialPanel = _buildPanelForArtboard(this.widget.artboard as VerticalDrawerArtboard);
     _floatingArtboardPanels.add(initialPanel);
     super.initState();
   }
@@ -52,15 +52,17 @@ class VerticalDrawerInheritedArtboardNavigator
   final _popMinDragDistanceDelta = 50;
   final _popMaxDragTimeDelta = 70;
 
-  int _initialDragTime;
-  double _initialDragDy;
+  int? _initialDragTime;
+  double? _initialDragDy;
 
-  int _timeDelta;
-  double _downDistanceDelta;
+  int? _timeDelta;
+  double? _downDistanceDelta;
 
-  get _shouldPop =>
-      _timeDelta < _popMinDragDistanceDelta &&
-      _downDistanceDelta > _popMaxDragTimeDelta;
+  bool get _shouldPop =>
+      _timeDelta != null &&
+      _timeDelta! < _popMinDragDistanceDelta &&
+      _downDistanceDelta != null &&
+      _downDistanceDelta! > _popMaxDragTimeDelta;
 
   get childrenDelegate => SliverChildBuilderDelegate((
         context,
@@ -82,7 +84,7 @@ class VerticalDrawerInheritedArtboardNavigator
       onTap: (() => Navigator.pop(context)),
       onVerticalDragStart: _onVerticalDragStart,
       onVerticalDragUpdate: (details) {
-        if (details.primaryDelta < 0) return;
+        if (details.primaryDelta == null || details.primaryDelta! < 0) return;
         _onDragDownUpdate(details);
         if (_shouldPop) Navigator.pop(context);
       },
@@ -112,8 +114,8 @@ class VerticalDrawerInheritedArtboardNavigator
     final theme = SemanticTheme.of(context);
 
     await _pageController.previousPage(
-      duration: theme.duration.medium,
-      curve: theme.curve.exit,
+      duration: theme?.duration.medium ?? Duration.zero,
+      curve: theme?.curve.exit ?? Curves.easeInOut,
     );
     setState(
       () => _floatingArtboardPanels.removeLast(),
@@ -127,17 +129,17 @@ class VerticalDrawerInheritedArtboardNavigator
 
   Future<T> _goTo<T>(
     Artboard<T> artboard, {
-    @required BuildContext context,
+    required BuildContext context,
   }) async {
     if (artboard is VerticalDrawerArtboard) {
-      final panel = _buildPanelForArtboard<T>(artboard);
+      final panel = _buildPanelForArtboard<T>(artboard as VerticalDrawerArtboard<T>);
 
       setState(() => _floatingArtboardPanels.add(panel));
 
       final theme = SemanticTheme.of(context);
       _pageController.nextPage(
-        duration: theme.duration.medium,
-        curve: theme.curve.enter,
+        duration: theme?.duration.medium ?? Duration.zero,
+        curve: theme?.curve.enter ?? Curves.easeInOut,
       );
     } else {
       Navigator.pop(context, artboard);
@@ -146,9 +148,10 @@ class VerticalDrawerInheritedArtboardNavigator
     return artboard.popped;
   }
 
-  bool _pop<T>([T result]) {
+  bool _pop<T>([T? result]) {
     widget.artboard.didComplete();
-    return Navigator.pop(context, result);
+    Navigator.pop(context, result);
+    return true;
   }
 
   void _onVerticalDragStart(details) {
@@ -178,8 +181,8 @@ class _VerticalDrawerInheritedArtboardNavigator extends InheritedWidget {
   final VerticalDrawerInheritedArtboardNavigator data;
 
   _VerticalDrawerInheritedArtboardNavigator({
-    @required this.data,
-    @required Widget child,
+    required this.data,
+    required Widget child,
   }) : super(
           child: child,
         );
