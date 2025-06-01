@@ -7,7 +7,7 @@ class SmShadowLibrary extends SemanticShadowLibrary {
   SmShadowLibrary(currentThemeOption) : super(currentThemeOption);
 
   @override
-  BoxShadow get small => forThemeOption({
+  BoxShadow? get small => forThemeOption({
         SmThemeOption.dark: BoxShadow(
           blurRadius: 6,
           color: Colors.black.withOpacity(.25),
@@ -16,7 +16,7 @@ class SmShadowLibrary extends SemanticShadowLibrary {
       });
 
   @override
-  BoxShadow get medium => forThemeOption({
+  BoxShadow? get medium => forThemeOption({
         SmThemeOption.dark: BoxShadow(
           blurRadius: 12,
           color: Colors.black.withOpacity(.25),
@@ -25,7 +25,7 @@ class SmShadowLibrary extends SemanticShadowLibrary {
       });
 
   @override
-  BoxShadow get large => forThemeOption({
+  BoxShadow? get large => forThemeOption({
         SmThemeOption.dark: BoxShadow(
           blurRadius: 18,
           color: Colors.black.withOpacity(.35),
@@ -34,7 +34,7 @@ class SmShadowLibrary extends SemanticShadowLibrary {
       });
 
   @override
-  BoxShadow get appBar => forThemeOption({
+  BoxShadow? get appBar => forThemeOption({
         SmThemeOption.dark: BoxShadow(
           blurRadius: 18,
           color: Colors.black.withOpacity(.35),
@@ -43,7 +43,7 @@ class SmShadowLibrary extends SemanticShadowLibrary {
       });
 
   @override
-  BoxShadow get card => forThemeOption({
+  BoxShadow? get card => forThemeOption({
         SmThemeOption.dark: BoxShadow(
           blurRadius: 3,
           color: Colors.black.withOpacity(.35),

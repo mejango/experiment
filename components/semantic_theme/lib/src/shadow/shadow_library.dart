@@ -7,9 +7,9 @@ abstract class SemanticShadowLibrary<T> extends ThemeOptionDependent<T>
     with ValueForThemeOption<T> {
   SemanticShadowLibrary(T currentThemeOption) : super(currentThemeOption);
 
-  BoxShadow get card;
-  BoxShadow get appBar;
-  BoxShadow get small;
-  BoxShadow get medium;
-  BoxShadow get large;
+  BoxShadow? get card;
+  BoxShadow? get appBar;
+  BoxShadow? get small;
+  BoxShadow? get medium;
+  BoxShadow? get large;
 }
