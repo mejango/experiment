@@ -8,13 +8,13 @@ class RollerColumnPickerVerticalFloatingArtboard<T>
     extends EmptyVerticalFloatingArtboard<LabeledValue<T>>
     with RollerColumnPickerArtboardBuilder<T> {
   final LabeledValue<T>? selectedValue;
-  final List<LabeledValue<T>> options;
-  final bool infiniteScroll;
+  final List<LabeledValue<T>>? options;
+  final bool? infiniteScroll;
 
   RollerColumnPickerVerticalFloatingArtboard({
     this.selectedValue,
-    required this.options,
-    required this.infiniteScroll,
+    this.options,
+    this.infiniteScroll,
   });
 
   _RollerColumnPickerVerticalFloatingArtboardState<T> createState() =>
