@@ -62,7 +62,7 @@ class User extends ModelObject {
         assert(billing != null),
         super(guid: guid, dateCreated: dateCreated, creatorGuid: creatorGuid);
 
-  static User fromMap(Map<String, Object> map) {
+  static User fromMap(Map<String?, Object?> map) {
     final object = ModelObject.fromMap(map);
     final name = map[_key.name] as Map;
     final nameDomains =
@@ -103,7 +103,7 @@ class User extends ModelObject {
   }
 
   @override
-  Map<String, Object> toMap() {
+  Map<String, Object?> toMap() {
     final map = super.toMap();
     map.addAll({
       _key.name: {_key.first: firstName, _key.last: lastName},
