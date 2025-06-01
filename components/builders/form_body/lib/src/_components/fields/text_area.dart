@@ -118,15 +118,15 @@ class _FieldBodyState extends State<_FieldBody> {
       hintText: widget.placeholder,
       border: OutlineInputBorder(),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: theme?.color.stroke.medium ?? Colors.black),
-        borderRadius: BorderRadius.all(theme?.radius.medium ?? Radius.circular(0)),
+        borderSide: BorderSide(color: theme?.color?.stroke?.medium ?? Colors.black),
+        borderRadius: BorderRadius.all(theme?.radius?.medium ?? Radius.circular(0)),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: theme?.color.stroke.strong ?? Colors.black),
-        borderRadius: BorderRadius.all(theme?.radius.medium ?? Radius.circular(0)),
+        borderSide: BorderSide(color: theme?.color?.stroke?.strong ?? Colors.black),
+        borderRadius: BorderRadius.all(theme?.radius?.medium ?? Radius.circular(0)),
       ),
-      hintStyle: theme?.typography.body.textStyle(
-        color: theme.color.text.inputPlaceholder,
+      hintStyle: theme?.typography?.body?.textStyle(
+        color: theme.color?.text?.inputPlaceholder ?? Colors.black,
       ),
     );
 

@@ -40,11 +40,11 @@ class _DockActionButtonState extends State<DockActionButton>
     final theme = SemanticTheme.of(context);
 
     widthAnimationController = AnimationController(
-      duration: theme?.duration.short ?? Duration.zero,
+      duration: theme?.duration?.short ?? Duration.zero,
       vsync: this,
     );
     opacityAnimationController = AnimationController(
-      duration: theme?.duration.short ?? Duration.zero,
+      duration: theme?.duration?.short ?? Duration.zero,
       vsync: this,
     );
 
@@ -59,8 +59,8 @@ class _DockActionButtonState extends State<DockActionButton>
     dock?.showSubmitButton == true ? _animateForward() : _animateReverse();
 
     final buttonDecoration = BoxDecoration(
-      border: Border.all(color: theme?.color.stroke.actionSecondary ?? Colors.transparent),
-      borderRadius: BorderRadius.all(theme?.radius.medium ?? Radius.zero),
+      border: Border.all(color: theme?.color?.stroke?.actionSecondary ?? Colors.transparent),
+      borderRadius: BorderRadius.all(theme?.radius?.medium ?? Radius.zero),
     );
 
     final animatedWidth = widthAnimation?.value ?? null;
@@ -69,7 +69,7 @@ class _DockActionButtonState extends State<DockActionButton>
 
     final containerPadding = showText
         ? EdgeInsets.symmetric(
-            horizontal: theme?.distance.padding.horizontal.small ?? 0,
+            horizontal: theme?.distance?.padding?.horizontal?.small ?? 0,
           )
         : null;
 
@@ -78,7 +78,7 @@ class _DockActionButtonState extends State<DockActionButton>
     final buttonIcon = Container(
       key: _buttonIconKey,
       child: widget.actionIconReference.buildWidget(
-        color: theme?.color.icon.action ?? Colors.transparent,
+        color: theme?.color?.icon?.action ?? Colors.transparent,
       ),
     );
 
@@ -150,7 +150,7 @@ class _DockActionButtonState extends State<DockActionButton>
 
     // minWidthToShowText ensures button children don't overflow while button is collapsing by removing the text precisely before overflow would occur. Value should be at least equal to ((width of the button icon) + (button x-axis containerPadding) + (borderWidth * 2))
     minWidthToShowText = buttonIconWidth +
-        (SemanticTheme.of(context)?.distance.padding.horizontal.small ?? 0 * 2) +
+        (SemanticTheme.of(context)?.distance?.padding?.horizontal?.small ?? 0 * 2) +
         2;
   }
 
@@ -162,14 +162,14 @@ class _DockActionButtonState extends State<DockActionButton>
 
     final widthCurve = CurvedAnimation(
       parent: widthAnimationController,
-      curve: theme?.curve.hurried ?? Curves.linear,
-      reverseCurve: theme?.curve.hurried.flipped ?? Curves.linear,
+      curve: theme?.curve?.hurried ?? Curves.linear,
+      reverseCurve: theme?.curve?.hurried?.flipped ?? Curves.linear,
     );
 
     final opacityCurve = CurvedAnimation(
       parent: opacityAnimationController,
-      curve: theme?.curve.normal ?? Curves.linear,
-      reverseCurve: theme?.curve.normal.flipped ?? Curves.linear,
+      curve: theme?.curve?.normal ?? Curves.linear,
+      reverseCurve: theme?.curve?.normal?.flipped ?? Curves.linear,
     );
 
     widthAnimation = Tween(
@@ -209,7 +209,7 @@ class _ButtonText extends StatelessWidget {
       child: Container(
         width: show == true ? null : 0,
         padding: EdgeInsets.only(
-          left: theme?.distance.padding.horizontal.small ?? 0,
+          left: theme?.distance?.padding?.horizontal?.small ?? 0,
         ),
         child: Opacity(
           opacity: opacity ?? 1,
@@ -217,8 +217,8 @@ class _ButtonText extends StatelessWidget {
             text ?? '',
             softWrap: false,
             overflow: TextOverflow.fade,
-            style: theme?.typography.button.textStyle(
-              color: theme.color.text.action,
+            style: theme?.typography?.button?.textStyle(
+              color: theme.color?.text?.action ?? Colors.black,
             ),
           ),
         ),

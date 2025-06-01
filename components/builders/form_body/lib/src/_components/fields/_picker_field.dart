@@ -24,7 +24,7 @@ class PickerField extends StatelessWidget {
     if (name != null) {
       final label = FieldLabel(labelText: name!);
       final spacer = Container(
-        width: theme?.distance.spacing.horizontal.small ?? 0,
+        width: theme?.distance?.spacing?.horizontal?.small ?? 0,
       );
       rowChildren.addAll([label, spacer]);
     }

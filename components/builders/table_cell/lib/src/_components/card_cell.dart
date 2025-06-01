@@ -34,17 +34,17 @@ class _CardCellState extends State<CardCell> with Tappable {
         opacity: tapped ? .7 : 1,
         child: Container(
           padding: EdgeInsets.symmetric(
-            horizontal: theme?.distance.padding.horizontal.medium ?? 0,
-            vertical: theme?.distance.padding.vertical.medium ?? 0,
+            horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
+            vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
           ),
           decoration: BoxDecoration(
             color:
-                widget.backgroundColor ?? theme?.color.background.raised ?? Colors.white,
-            borderRadius: BorderRadius.all(theme?.radius.medium ?? Radius.circular(0)),
+                widget.backgroundColor ?? theme?.color?.background?.raised ?? Colors.white,
+            borderRadius: BorderRadius.all(theme?.radius?.medium ?? Radius.circular(0)),
             border: widget.borderColor != null
                 ? Border.all(color: widget.borderColor!)
                 : null,
-            boxShadow: [theme?.shadow.card ?? BoxShadow(color: Colors.black)],
+            boxShadow: [theme?.shadow?.card ?? BoxShadow(color: Colors.black)],
           ),
           child: widget.child,
         ),

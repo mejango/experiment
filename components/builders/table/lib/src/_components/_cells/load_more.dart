@@ -40,7 +40,7 @@ class _LoadMoreCellState extends State<LoadMoreCell> {
     final theme = SemanticTheme.of(context);
 
     final loadMoreIcon = StandardIcon.loadMore.buildWidget(
-      color: theme?.color.icon.generalPrimary ?? Colors.black,
+      color: theme?.color?.icon?.generalPrimary ?? Colors.black,
     );
 
     final loadingIcon = CircularProgressIndicator();
@@ -50,15 +50,15 @@ class _LoadMoreCellState extends State<LoadMoreCell> {
       onTap: _onTap,
       child: Container(
         margin: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.small ?? 0,
+          top: theme?.distance?.spacing?.vertical?.small ?? 0,
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: theme?.distance.padding.horizontal.medium ?? 0,
-          vertical: theme?.distance.padding.vertical.medium ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(theme?.radius.medium ?? Radius.circular(0)),
-          color: theme?.color.background.raised ?? Colors.white,
+          borderRadius: BorderRadius.all(theme?.radius?.medium ?? Radius.circular(0)),
+          color: theme?.color?.background?.raised ?? Colors.white,
         ),
         child: Center(
           child: loading ? loadingIcon : loadMoreIcon,

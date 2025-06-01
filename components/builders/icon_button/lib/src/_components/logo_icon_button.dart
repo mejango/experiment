@@ -8,7 +8,7 @@ class LogoIconButton extends StatelessWidget with StandardIconButton {
 
   @override
   Widget buildIcon(BuildContext context) {
-    return SemanticTheme.of(context)?.logo.icon ?? const SizedBox.shrink();
+    return SemanticTheme.of(context)?.logo?.icon ?? const SizedBox.shrink();
   }
 
   LogoIconButton({required this.onTap});

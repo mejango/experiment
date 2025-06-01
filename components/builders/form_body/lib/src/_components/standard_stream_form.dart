@@ -280,7 +280,7 @@ class StandardStreamForm extends StreamForm
   }) =>
       Padding(
         padding: EdgeInsets.only(
-          top: SemanticTheme.of(context)?.distance.spacing.vertical.small ?? 0,
+          top: SemanticTheme.of(context)?.distance?.spacing?.vertical?.small ?? 0,
         ),
         child: buildSecondaryCenterButton(
           context,

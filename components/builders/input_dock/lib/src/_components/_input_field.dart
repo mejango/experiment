@@ -119,8 +119,8 @@ class _TextFieldComponent extends StatelessWidget {
     final textFieldDecoration = InputDecoration(
       contentPadding: EdgeInsets.all(0),
       hintText: _hintText,
-      hintStyle: theme?.typography.body.textStyle(
-        color: theme.color.text.inputPlaceholder,
+      hintStyle: theme?.typography?.body?.textStyle(
+        color: theme.color?.text?.inputPlaceholder ?? Colors.black,
       ),
       border: OutlineInputBorder(),
       enabledBorder: _enabledBorder,
@@ -129,8 +129,8 @@ class _TextFieldComponent extends StatelessWidget {
 
     final textField = TextField(
       maxLines: null,
-      style: theme?.typography.body.textStyle(
-        color: theme.color.text.inputActive,
+      style: theme?.typography?.body?.textStyle(
+        color: theme.color?.text?.inputActive ?? Colors.black,
       ),
       textInputAction: TextInputAction.done,
       decoration: textFieldDecoration,
@@ -177,15 +177,15 @@ class _TextCounter extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: theme?.distance.padding.vertical.min ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.min ?? 0,
       ),
       height: showTextCounter ? null : 0,
       child: Text(
         showTextCounter ? "$charCount/$charMaxCount" : "",
-        style: theme?.typography.detail.textStyle(
+        style: theme?.typography?.detail?.textStyle(
           color: showAlert == true
-              ? theme.color.text.warn
-              : theme.color.text.inputPlaceholder,
+              ? theme.color?.text?.warn ?? Colors.black
+              : theme.color?.text?.inputPlaceholder ?? Colors.black,
         ),
       ),
     );
@@ -203,16 +203,16 @@ class _SubmitButton extends StatelessWidget {
     final dock = InputDock.of(context);
     final theme = SemanticTheme.of(context);
 
-    final activeIconColor = theme?.color.background.actionPrimary ?? Colors.transparent;
-    final inactiveIconColor = theme?.color.background.actionDisabled ?? Colors.transparent;
+    final activeIconColor = theme?.color?.background?.actionPrimary ?? Colors.transparent;
+    final inactiveIconColor = theme?.color?.background?.actionDisabled ?? Colors.transparent;
     final sendIcon = StandardIcon.send;
     final activeSendIcon = sendIcon.buildWidget(color: activeIconColor);
     final inactiveSendIcon = sendIcon.buildWidget(color: inactiveIconColor);
 
     final animatedSubmitButton = AnimatedCrossFade(
-      duration: theme?.duration.short ?? Duration.zero,
-      firstCurve: theme?.curve.delayed ?? Curves.linear,
-      secondCurve: theme?.curve.hurried ?? Curves.linear,
+      duration: theme?.duration?.short ?? Duration.zero,
+      firstCurve: theme?.curve?.delayed ?? Curves.linear,
+      secondCurve: theme?.curve?.hurried ?? Curves.linear,
       crossFadeState:
           canSubmit == true ? CrossFadeState.showFirst : CrossFadeState.showSecond,
       firstChild: activeSendIcon,
@@ -236,13 +236,13 @@ class _SubmitButton extends StatelessWidget {
     return Container(
       alignment: Alignment.centerRight,
       margin: EdgeInsets.only(
-        right: theme?.distance.spacing.horizontal.medium ?? 0,
+        right: theme?.distance?.spacing?.horizontal?.medium ?? 0,
       ),
       height: dock?.baseHeight ?? 0,
       child: AnimatedOpacity(
         opacity: dock?.showSubmitButton == true ? 1 : 0,
-        duration: theme?.duration.short ?? Duration.zero,
-        curve: theme?.curve.delayed ?? Curves.linear,
+        duration: theme?.duration?.short ?? Duration.zero,
+        curve: theme?.curve?.delayed ?? Curves.linear,
         child: GestureDetector(
           onTap: tapAction,
           onTapDown: tapDownAction,

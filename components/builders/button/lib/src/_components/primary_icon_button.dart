@@ -11,7 +11,7 @@ class PrimaryIconButton extends StatelessWidget with IconStyleButton {
 
   get context => (context);
   get iconColor => (context) {
-        return SemanticTheme.of(context)?.color.icon.action;
+        return SemanticTheme.of(context)?.color?.icon?.action;
       };
 
   PrimaryIconButton({

@@ -11,7 +11,7 @@ class NavIconButton extends StatelessWidget with StandardIconButton {
   @override
   Widget buildIcon(BuildContext context) {
     return iconReference.buildWidget(
-      color: SemanticTheme.of(context)?.color.icon.nav ?? Colors.transparent,
+      color: SemanticTheme.of(context)?.color?.icon?.nav ?? Colors.transparent,
     );
   }
 

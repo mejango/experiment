@@ -33,7 +33,7 @@ mixin CenteredStyleButtonState<T extends StatefulWidget>
 
     if (button.icon != null) {
       final paddedIconWidget = Container(
-        margin: EdgeInsets.only(right: theme?.distance.spacing.horizontal.small ?? 0),
+        margin: EdgeInsets.only(right: theme?.distance?.spacing?.horizontal?.small ?? 0),
         child: button.icon?.buildWidget(color: textColor ?? Colors.black),
       );
       buttonChildren.add(paddedIconWidget);
@@ -42,7 +42,7 @@ mixin CenteredStyleButtonState<T extends StatefulWidget>
     final styledButtonText = buildVerticallyCenteredText(
       Text(
         button.text ?? '',
-        style: theme?.typography.button.textStyle(color: textColor ?? Colors.black),
+        style: theme?.typography?.button?.textStyle(color: textColor ?? Colors.black),
         textAlign: TextAlign.center,
       ),
     );
@@ -51,7 +51,7 @@ mixin CenteredStyleButtonState<T extends StatefulWidget>
     final decoration = BoxDecoration(
       border: Border.all(color: button.strokeColor(context) ?? Colors.transparent, width: 2),
       color: button.backgroundColor(context),
-      borderRadius: BorderRadius.all(theme?.radius.medium ?? Radius.zero),
+      borderRadius: BorderRadius.all(theme?.radius?.medium ?? Radius.zero),
     );
 
     return buildTappedAwareGestureDetector(

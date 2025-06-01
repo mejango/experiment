@@ -31,8 +31,8 @@ class OptionPicker<T> extends StatelessWidget {
     if (title != null && title!.isNotEmpty) {
       final titleWidget = Text(
         title!,
-        style: theme?.typography.title.textStyle(
-          color: theme.color.text.generalPrimary,
+        style: theme?.typography?.title?.textStyle(
+          color: theme.color?.text?.generalPrimary ?? Colors.black,
         ),
       );
       columnChildren.add(titleWidget);
@@ -118,7 +118,7 @@ class _OptionsColumn<T> extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: theme?.distance.padding.vertical.medium ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
       ),
       child: Column(
         children: optionsList,
@@ -151,10 +151,10 @@ class _Option<T> extends StatelessWidget {
     List<Widget> rowChildren = [];
 
     if (canToggle) {
-      final generalIconColor = theme?.color.icon.generalPrimary;
+      final generalIconColor = theme?.color?.icon?.generalPrimary;
       Widget checkedIcon = Padding(
         padding: EdgeInsets.only(
-          right: theme?.distance.padding.horizontal.medium ?? 0,
+          right: theme?.distance?.padding?.horizontal?.medium ?? 0,
         ),
         child: _checkIcon.buildWidget(
           color: generalIconColor ?? Colors.black,
@@ -162,7 +162,7 @@ class _Option<T> extends StatelessWidget {
       );
       Widget uncheckedIcon = Padding(
         padding: EdgeInsets.only(
-          right: theme?.distance.padding.horizontal.medium ?? 0,
+          right: theme?.distance?.padding?.horizontal?.medium ?? 0,
         ),
         child: _uncheckedIcon.buildWidget(color: generalIconColor ?? Colors.black),
       );
@@ -173,17 +173,17 @@ class _Option<T> extends StatelessWidget {
     final optionTitle = Text(
       name ?? "",
       style: (selected ?? false || canToggle)
-          ? theme?.typography.body.textStyle(
-              color: theme.color.text.generalPrimary,
+          ? theme?.typography?.body?.textStyle(
+              color: theme.color?.text?.generalPrimary ?? Colors.black,
             )
-          : theme?.typography.body.textStyle(
-              color: theme.color.text.generalSecondary,
+          : theme?.typography?.body?.textStyle(
+              color: theme.color?.text?.generalSecondary ?? Colors.black,
             ),
     );
 
     final optionPadding = EdgeInsets.symmetric(
-      horizontal: theme?.distance.padding.horizontal.small ?? 0,
-      vertical: theme?.distance.padding.vertical.large ?? 0,
+      horizontal: theme?.distance?.padding?.horizontal?.small ?? 0,
+      vertical: theme?.distance?.padding?.vertical?.large ?? 0,
     );
 
     rowChildren.add(optionTitle);
@@ -191,7 +191,7 @@ class _Option<T> extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          bottom: BorderSide(color: theme?.color.stroke.medium ?? Colors.black),
+          bottom: BorderSide(color: theme?.color?.stroke?.medium ?? Colors.black),
         ),
       ),
       child: GestureDetector(

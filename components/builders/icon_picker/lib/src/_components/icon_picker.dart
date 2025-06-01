@@ -27,8 +27,8 @@ class IconPicker extends StatelessWidget {
     if (title != null && title!.isNotEmpty) {
       final titleWidget = Text(
         title!,
-        style: theme?.typography.headingSecondary.textStyle(
-          color: theme.color.text.generalPrimary,
+        style: theme?.typography?.headingSecondary?.textStyle(
+          color: theme.color?.text?.generalPrimary ?? Colors.black,
         ),
       );
       columnChildren.add(titleWidget);
@@ -77,8 +77,8 @@ class _IconsGrid extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: theme?.distance.spacing.vertical.medium ?? 0,
-        horizontal: theme?.distance.spacing.horizontal.small ?? 0,
+        vertical: theme?.distance?.spacing?.vertical?.medium ?? 0,
+        horizontal: theme?.distance?.spacing?.horizontal?.small ?? 0,
       ),
       child: Column(
         children: [
@@ -103,8 +103,8 @@ class _IconOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final selectedColor = theme?.color.icon.action ?? Colors.transparent;
-    final unselectedColor = theme?.color.icon.generalPrimary ?? Colors.transparent;
+    final selectedColor = theme?.color?.icon?.action ?? Colors.transparent;
+    final unselectedColor = theme?.color?.icon?.generalPrimary ?? Colors.transparent;
 
     final iconWidget = icon?.buildWidget(
       color: selected == true ? selectedColor : unselectedColor,
@@ -116,8 +116,8 @@ class _IconOption extends StatelessWidget {
         behavior: HitTestBehavior.opaque,
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: theme?.distance.padding.horizontal.medium ?? 0,
-            vertical: theme?.distance.padding.vertical.medium ?? 0,
+            horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
+            vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
           ),
           child: iconWidget,
         ),

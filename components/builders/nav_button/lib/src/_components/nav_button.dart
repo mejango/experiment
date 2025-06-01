@@ -18,8 +18,8 @@ mixin NavButton implements StatelessWidget {
       ),
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: theme?.distance.padding.horizontal.small ?? 0,
-          vertical: theme?.distance.padding.vertical.small ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.small ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.small ?? 0,
         ),
         child: buildIcon(context),
       ),

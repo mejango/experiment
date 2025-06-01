@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:semantic_theme/index.dart';
-import 'package:small_icon_library/index.dart';
 import 'package:standard_icon_library/index.dart';
 import 'package:vertically_centered_text_builder/index.dart';
 import 'package:x_small_icon_library/index.dart';
@@ -32,10 +31,10 @@ class TitleBadgeCell extends StatelessWidget
     if (icon != null) {
       final iconWidget = Padding(
         padding: EdgeInsets.only(
-          right: theme?.distance.spacing.horizontal.medium ?? 0,
+          right: theme?.distance?.spacing?.horizontal?.medium ?? 0,
         ),
         child: icon!.buildWidget(
-          color: theme?.color.icon.generalPrimary ?? Colors.black,
+          color: theme?.color?.icon?.generalPrimary ?? Colors.black,
         ),
       );
       rowChildren.add(iconWidget);
@@ -46,14 +45,14 @@ class TitleBadgeCell extends StatelessWidget
       Padding(
         child: Text(
           title,
-          style: theme?.typography.title.textStyle(
-            color: theme.color.text.generalPrimary,
+          style: theme?.typography?.title?.textStyle(
+            color: theme.color?.text?.generalPrimary ?? Colors.black,
           ),
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
         padding: EdgeInsets.only(
-          right: theme?.distance.spacing.horizontal.small ?? 0,
+          right: theme?.distance?.spacing?.horizontal?.small ?? 0,
         ),
       ),
     );
@@ -64,12 +63,12 @@ class TitleBadgeCell extends StatelessWidget
         context,
         Padding(
           padding: EdgeInsets.only(
-            right: theme?.distance.spacing.horizontal.small ?? 0,
+            right: theme?.distance?.spacing?.horizontal?.small ?? 0,
           ),
           child: Text(
             subtitle ?? "",
-            style: theme?.typography.body.textStyle(
-              color: theme.color.text.generalSecondary,
+            style: theme?.typography?.body?.textStyle(
+              color: theme.color?.text?.generalSecondary ?? Colors.black,
             ),
             overflow: TextOverflow.ellipsis,
           ),
@@ -95,8 +94,8 @@ class TitleBadgeCell extends StatelessWidget
       final notificationText = buildVerticallyCenteredText(
         Text(
           badgeText ?? "",
-          style: theme?.typography.bodyHeavy.textStyle(
-            color: theme.color.text.generalSecondary,
+          style: theme?.typography?.bodyHeavy?.textStyle(
+            color: theme.color?.text?.generalSecondary ?? Colors.black,
           ),
         ),
       );
@@ -104,7 +103,7 @@ class TitleBadgeCell extends StatelessWidget
     }
 
     final arrow = XSmallIcon.rightArrow.buildWidget(
-      color: theme?.color.icon.generalSecondary ?? Colors.black,
+      color: theme?.color?.icon?.generalSecondary ?? Colors.black,
     );
     rowChildren.add(arrow);
 
@@ -117,7 +116,7 @@ class TitleBadgeCell extends StatelessWidget
   }
 
   Baseline _titleHeightBaseline(BuildContext context, Widget child) => Baseline(
-        baseline: SemanticTheme.of(context)?.typography.title.fontSize ?? 0,
+        baseline: SemanticTheme.of(context)?.typography?.title?.fontSize ?? 0,
         baselineType: TextBaseline.alphabetic,
         child: child,
       );

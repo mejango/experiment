@@ -114,8 +114,8 @@ class InheritedInputDock extends State<InputDock> {
 
     final Widget fieldRow = Container(
       padding: EdgeInsets.symmetric(
-        horizontal: theme?.distance.padding.horizontal.medium ?? 0,
-        vertical: theme?.distance.padding.vertical.medium ?? 0,
+        horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -126,8 +126,8 @@ class InheritedInputDock extends State<InputDock> {
 
     final safeArea = MediaQuery.of(context).padding.bottom;
     final bottomPadding = EdgeInsets.only(bottom: safeArea);
-    final backgroundColor = theme?.color.background.general ?? Colors.transparent;
-    final topBorderColor = theme?.color.stroke.medium ?? Colors.transparent;
+    final backgroundColor = theme?.color?.background?.general ?? Colors.transparent;
+    final topBorderColor = theme?.color?.stroke?.medium ?? Colors.transparent;
 
     final Widget dock = Container(
       padding: bottomPadding,

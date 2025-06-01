@@ -108,8 +108,8 @@ class _RollerColumnState<T> extends State<RollerColumn<T>> {
 
       _scrollController?.animateTo(
         targetOffset,
-        duration: theme?.duration.short ?? Duration.zero,
-        curve: theme?.curve.hurried ?? Curves.linear,
+        duration: theme?.duration?.short ?? Duration.zero,
+        curve: theme?.curve?.hurried ?? Curves.linear,
       );
     });
   }

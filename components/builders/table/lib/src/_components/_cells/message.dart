@@ -27,8 +27,8 @@ class MessageCell extends StatelessWidget with KeyValueRowBuilder {
 
     final dateWidget = Text(
       formattedDateText,
-      style: theme?.typography.detail.textStyle(
-        color: theme.color.text.generalSecondary,
+      style: theme?.typography?.detail?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ),
     );
 

@@ -15,7 +15,7 @@ dependencies:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
-      path: components/sm_theme
+      path: apps/app_1/sm_theme
   welcome_artboard:
     git:
       url: git@github.com:mejango/experiment.git
@@ -36,11 +36,11 @@ dependencies:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: components/lib/device_screen
-  # commands:
-  #   git:
-  #     url: git@github.com:mejango/experiment.git
-  #     ref: main
-  #     path: apps/app_1/commands
+  commands:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: apps/app_1/commands
 
 
 dev_dependencies:

@@ -6,7 +6,7 @@ class VerticalFullScreenRoute<T> extends PageRoute<T> {
   SemanticThemeData theme;
 
   @override
-  Duration get transitionDuration => theme.duration.long;
+  Duration get transitionDuration => theme.duration?.long ?? Duration.zero;
 
   @override
   bool get opaque => false;
@@ -21,8 +21,8 @@ class VerticalFullScreenRoute<T> extends PageRoute<T> {
   bool get maintainState => true;
 
   Animation<double> get animation => CurvedAnimation(
-        curve: theme.curve.enter,
-        reverseCurve: theme.curve.exit,
+        curve: theme.curve?.enter ?? Curves.easeInOut,
+        reverseCurve: theme.curve?.exit ?? Curves.easeInOut,
         parent: controller!,
       );
 

@@ -44,7 +44,7 @@ class RollerColumnPickerState<T> extends State<RollerColumnPicker<T>>
     );
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: theme?.distance.padding.vertical.medium ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
       ),
       child: Center(child: column),
     );

@@ -8,7 +8,7 @@ class FullLogoNavButton extends StatelessWidget with NavButton {
 
   @override
   Widget? buildIcon(BuildContext context) {
-    return SemanticTheme.of(context)?.logo.full ?? const SizedBox.shrink();
+    return SemanticTheme.of(context)?.logo?.full ?? const SizedBox.shrink();
   }
 
   FullLogoNavButton({

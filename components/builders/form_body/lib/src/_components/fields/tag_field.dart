@@ -33,20 +33,20 @@ class TagField extends StatelessWidget with TagBuilder {
 
       fieldBody = Padding(
         padding: EdgeInsets.symmetric(
-          vertical: theme?.distance.padding.vertical.min ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.min ?? 0,
         ),
         child: Wrap(
           children: tagWidgets,
-          spacing: theme?.distance.spacing.horizontal.min ?? 0,
-          runSpacing: theme?.distance.spacing.vertical.min ?? 0,
+          spacing: theme?.distance?.spacing?.horizontal?.min ?? 0,
+          runSpacing: theme?.distance?.spacing?.vertical?.min ?? 0,
           alignment: WrapAlignment.end,
         ),
       );
     } else {
       fieldBody = Text(
         placeholder ?? "",
-        style: theme?.typography.body.textStyle(
-          color: theme.color.text.inputPlaceholder,
+        style: theme?.typography?.body?.textStyle(
+          color: theme.color?.text?.inputPlaceholder ?? Colors.black,
         ),
       );
     }

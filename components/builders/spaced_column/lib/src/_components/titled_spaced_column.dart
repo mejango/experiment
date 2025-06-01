@@ -20,8 +20,8 @@ class TitledSpacedColumn extends StatelessWidget {
     stackChildren.add(
       Text(
         title,
-        style: theme?.typography.title.textStyle(
-          color: theme?.color.text.generalPrimary ?? Colors.black,
+        style: theme?.typography?.title?.textStyle(
+          color: theme.color?.text?.generalPrimary ?? Colors.black,
         ),
       ),
     );

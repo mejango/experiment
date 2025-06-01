@@ -26,14 +26,14 @@ class StandardThreadCell extends StatelessWidget {
 
     return ThreadCell(
       title: title,
-      titleTextStyle: theme?.typography.body.textStyle(
-        color: theme.color.text.generalPrimary,
+      titleTextStyle: theme?.typography?.body?.textStyle(
+        color: theme.color?.text?.generalPrimary ?? Colors.black,
       ),
       secondaryText: secondaryText,
       iconReference: iconReference,
       timestamp: timestamp,
-      timestampTextStyle: theme?.typography.body.textStyle(
-        color: theme.color.text.generalSecondary,
+      timestampTextStyle: theme?.typography?.body?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ),
       onTap: onTap,
     );

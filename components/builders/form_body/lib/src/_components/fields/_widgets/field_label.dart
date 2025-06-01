@@ -21,8 +21,8 @@ class FieldLabel extends StatelessWidget {
       softWrap: true,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
-      style: theme?.typography.label.textStyle(
-        color: theme.color.text.generalSecondary,
+      style: theme?.typography?.label?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ),
     );
   }

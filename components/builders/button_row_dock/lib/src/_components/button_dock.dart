@@ -10,11 +10,11 @@ class ButtonRowDock extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
     final padding = EdgeInsets.symmetric(
-      horizontal: theme?.distance.padding.horizontal.medium ?? 0,
-      vertical: theme?.distance.padding.vertical.medium ?? 0,
+      horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
+      vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
     );
     final spacer = Container(
-      width: theme?.distance.spacing.horizontal.medium ?? 0,
+      width: theme?.distance?.spacing?.horizontal?.medium ?? 0,
     );
 
     List<Widget> widgets = [];

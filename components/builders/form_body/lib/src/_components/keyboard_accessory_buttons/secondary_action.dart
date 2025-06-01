@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:haptics/index.dart';
 import 'package:semantic_theme/index.dart';
-import 'package:typedefs/index.dart';
 
 import 'mixins/index.dart';
 
@@ -27,12 +26,12 @@ class SecondaryActionKeyboardAccessoryButton extends StatelessWidget
     return buildButton(
       context: context,
       onTap: _onTap,
-      backgroundColor: theme?.color.background.actionSecondary ?? Colors.white,
+      backgroundColor: theme?.color?.background?.actionSecondary ?? Colors.white,
       child: Center(
         child: Text(
           title,
-          style: theme?.typography.button.textStyle(
-            color: theme.color.text.onActionSecondaryBackground,
+          style: theme?.typography?.button?.textStyle(
+            color: theme.color?.text?.onActionSecondaryBackground ?? Colors.black,
           ),
         ),
       ),

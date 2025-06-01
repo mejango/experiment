@@ -24,12 +24,12 @@ class OverdueThreadCell extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final titleTextStyle = theme?.typography.body.textStyle(
-      color: theme.color.text.action,
+    final titleTextStyle = theme?.typography?.body?.textStyle(
+      color: theme.color?.text?.action ?? Colors.black,
     );
 
-    final timestampTextStyle = theme?.typography.bodyHeavy.textStyle(
-      color: theme.color.text.warn,
+    final timestampTextStyle = theme?.typography?.bodyHeavy?.textStyle(
+      color: theme.color?.text?.warn ?? Colors.black,
     );
 
     return ThreadCell(

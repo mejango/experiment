@@ -120,13 +120,13 @@ class InheritedVerticalFloatingArtboardNavigatorPanel<T>
         onTap: () => null, // block onTap from propagating to parent
         child: Container(
           padding: EdgeInsets.symmetric(
-            horizontal: theme?.distance.gutter.horizontal.medium ?? 0,
+            horizontal: theme?.distance?.gutter?.horizontal?.medium ?? 0,
           ),
           decoration: BoxDecoration(
-            color: theme?.color.background.general ?? Colors.transparent,
+            color: theme?.color?.background?.general ?? Colors.transparent,
             border: Border(
               top: BorderSide(
-                color: theme?.color.stroke.light ?? Colors.transparent,
+                color: theme?.color?.stroke?.light ?? Colors.transparent,
               ),
             ),
           ),

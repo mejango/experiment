@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '_components/section_header.dart';
 
 mixin SectionHeaderBuilder {

@@ -27,10 +27,10 @@ class RemovableFieldContainer extends StatelessWidget {
         child: Center(
           child: Padding(
             padding: EdgeInsets.symmetric(
-              vertical: theme?.distance.padding.vertical.small ?? 0,
+              vertical: theme?.distance?.padding?.vertical?.small ?? 0,
             ),
             child: SmallIcon.x.buildWidget(
-              color: theme?.color.icon.generalSecondary ?? Colors.black,
+              color: theme?.color?.icon?.generalSecondary ?? Colors.black,
             ),
           ),
         ),
@@ -45,7 +45,7 @@ class RemovableFieldContainer extends StatelessWidget {
             padding: EdgeInsets.only(
               left:
                   _removeButtonWidth -
-                      (theme?.distance.padding.horizontal.medium ?? 0),
+                      (theme?.distance?.padding?.horizontal?.medium ?? 0),
             ),
             child: child,
           ),

@@ -39,10 +39,10 @@ class ThreadEventCell extends StatelessWidget {
       onTapDown: (details) => _fireHaptic(),
       child: Container(
         margin: EdgeInsets.symmetric(
-          vertical: theme?.distance.spacing.vertical.small ?? 0,
+          vertical: theme?.distance?.spacing?.vertical?.small ?? 0,
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: theme?.distance.padding.horizontal.small ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.small ?? 0,
         ),
         child: _Body(
           iconReference: _iconReference,
@@ -102,14 +102,14 @@ class _Icon extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final iconColor = theme?.color.icon.generalPrimary ?? Colors.black;
+    final iconColor = theme?.color?.icon?.generalPrimary ?? Colors.black;
 
     final iconWidget = iconReference?.buildWidget(color: iconColor);
 
     return Padding(
       padding: EdgeInsets.only(
-        right: theme?.distance.padding.horizontal.small ?? 0,
-        top: theme?.distance.padding.vertical.small ?? 0,
+        right: theme?.distance?.padding?.horizontal?.small ?? 0,
+        top: theme?.distance?.padding?.vertical?.small ?? 0,
       ),
       child: iconWidget,
     );
@@ -136,8 +136,8 @@ class _Content extends StatelessWidget with KeyValueBuilder, SpacedGridBuilder {
     final titleWidget = Flexible(
       child: Text(
         title ?? "",
-        style: theme?.typography.body.textStyle(
-          color: theme.color.text.generalSecondary,
+        style: theme?.typography?.body?.textStyle(
+          color: theme.color?.text?.generalSecondary ?? Colors.black,
         ),
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
@@ -149,12 +149,12 @@ class _Content extends StatelessWidget with KeyValueBuilder, SpacedGridBuilder {
 
     final timestampWidget = Padding(
       padding: EdgeInsets.only(
-        left: theme?.distance.padding.horizontal.small ?? 0,
+        left: theme?.distance?.padding?.horizontal?.small ?? 0,
       ),
       child: Text(
         formattedTimestamp,
-        style: theme?.typography.detail.textStyle(
-          color: theme.color.text.generalSecondary,
+        style: theme?.typography?.detail?.textStyle(
+          color: theme.color?.text?.generalSecondary ?? Colors.black,
         ),
       ),
     );
@@ -171,12 +171,12 @@ class _Content extends StatelessWidget with KeyValueBuilder, SpacedGridBuilder {
     if (note != null && note!.trim().isNotEmpty) {
       final noteWidget = Container(
         margin: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.min ?? 0,
+          top: theme?.distance?.spacing?.vertical?.min ?? 0,
         ),
         child: Text(
           note ?? "",
-          style: theme?.typography.body.textStyle(
-            color: theme.color.text.generalPrimary,
+          style: theme?.typography?.body?.textStyle(
+            color: theme.color?.text?.generalPrimary ?? Colors.black,
           ),
         ),
       );
@@ -187,13 +187,13 @@ class _Content extends StatelessWidget with KeyValueBuilder, SpacedGridBuilder {
     if (details != null) {
       final detailsContainer = Container(
         margin: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.small ?? 0,
+          top: theme?.distance?.spacing?.vertical?.small ?? 0,
         ),
         child: buildSpacedGrid(
           context,
           children: details ?? [],
-          horizontalSpacing: theme?.distance.spacing.horizontal.small ?? 0,
-          verticalSpacing: theme?.distance.spacing.vertical.small ?? 0,
+          horizontalSpacing: theme?.distance?.spacing?.horizontal?.small ?? 0,
+          verticalSpacing: theme?.distance?.spacing?.vertical?.small ?? 0,
         ),
       );
 
@@ -203,12 +203,12 @@ class _Content extends StatelessWidget with KeyValueBuilder, SpacedGridBuilder {
     return Flexible(
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: theme?.distance.padding.horizontal.medium ?? 0,
-          vertical: theme?.distance.padding.vertical.medium ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
         ),
         decoration: BoxDecoration(
-          color: theme?.color.background.raised ?? Colors.white,
-          borderRadius: BorderRadius.all(theme?.radius.large ?? Radius.circular(0)),
+          color: theme?.color?.background?.raised ?? Colors.white,
+          borderRadius: BorderRadius.all(theme?.radius?.large ?? Radius.circular(0)),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,

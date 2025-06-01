@@ -14,8 +14,8 @@ class CellPrimaryTitle extends StatelessWidget {
 
     return WrappingText(
       text: text,
-      style: theme?.typography.bodyHeavy.textStyle(
-        color: theme.color.text.action,
+      style: theme?.typography?.bodyHeavy?.textStyle(
+        color: theme.color?.text?.action ?? Colors.black,
       ),
     );
   }

@@ -15,8 +15,8 @@ class CellBodyTextPreview extends StatelessWidget {
 
     return Text(
       text ?? "",
-      style: theme?.typography.body.textStyle(
-        color: theme.color.text.generalSecondary,
+      style: theme?.typography?.body?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ),
       maxLines: _maxLines,
       overflow: _overflowKind,

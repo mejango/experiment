@@ -24,12 +24,12 @@ class DueSoonThreadCell extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final titleTextStyle = theme?.typography.body.textStyle(
-      color: theme.color.text.action,
+    final titleTextStyle = theme?.typography?.body?.textStyle(
+      color: theme.color?.text?.action ?? Colors.black,
     ) ?? TextStyle();
 
-    final timestampTextStyle = theme?.typography.body.textStyle(
-      color: theme.color.text.generalSecondary,
+    final timestampTextStyle = theme?.typography?.body?.textStyle(
+      color: theme.color?.text?.generalSecondary ?? Colors.black,
     ) ?? TextStyle();
 
     return ThreadCell(

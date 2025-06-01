@@ -31,11 +31,11 @@ class ThreadCommentCell extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: EdgeInsets.symmetric(
-          vertical: theme?.distance.spacing.vertical.small ?? 0,
+          vertical: theme?.distance?.spacing?.vertical?.small ?? 0,
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: theme?.distance.padding.horizontal.small ?? 0,
-          vertical: theme?.distance.padding.vertical.small ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.small ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.small ?? 0,
         ),
         child: _Body(
           creator: creator,
@@ -64,8 +64,8 @@ class _Body extends StatelessWidget {
 
     final creatorWidget = Text(
       creator ?? "",
-      style: theme?.typography.bodyHeavy.textStyle(
-        color: theme.color.text.generalPrimary,
+      style: theme?.typography?.bodyHeavy?.textStyle(
+        color: theme.color?.text?.generalPrimary ?? Colors.black,
       ),
     );
 
@@ -73,11 +73,11 @@ class _Body extends StatelessWidget {
         Date.fromSecondsSinceEpoch(timestamp ?? 0).toAdaptiveString;
 
     final timestampWidget = Container(
-      margin: EdgeInsets.only(left: theme?.distance.spacing.horizontal.small ?? 0),
+      margin: EdgeInsets.only(left: theme?.distance?.spacing?.horizontal?.small ?? 0),
       child: Text(
         formattedTimestamp,
-        style: theme?.typography.detail.textStyle(
-          color: theme.color.text.generalSecondary,
+        style: theme?.typography?.detail?.textStyle(
+          color: theme.color?.text?.generalSecondary ?? Colors.black,
         ),
       ),
     );
@@ -93,12 +93,12 @@ class _Body extends StatelessWidget {
 
     final noteWidget = Container(
       margin: EdgeInsets.only(
-        top: theme?.distance.spacing.vertical.min ?? 0,
+        top: theme?.distance?.spacing?.vertical?.min ?? 0,
       ),
       child: Text(
         note ?? "",
-        style: theme?.typography.body.textStyle(
-          color: theme.color.text.generalPrimary,
+        style: theme?.typography?.body?.textStyle(
+          color: theme.color?.text?.generalPrimary ?? Colors.black,
         ),
       ),
     );

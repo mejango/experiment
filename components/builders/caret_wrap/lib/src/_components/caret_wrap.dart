@@ -24,10 +24,10 @@ class CaretWrap extends StatelessWidget {
 
     final paddedArrowWidget = Container(
       margin: EdgeInsets.only(
-        left: theme?.distance.spacing.horizontal.min ?? 0,
+        left: theme?.distance?.spacing?.horizontal?.min ?? 0,
       ),
       child: XSmallIcon.rightArrow.buildWidget(
-        color: theme?.color.icon.generalSecondary ?? Colors.transparent,
+        color: theme?.color?.icon?.generalSecondary ?? Colors.transparent,
       ),
     );
 
@@ -55,7 +55,7 @@ class CaretWrap extends StatelessWidget {
       onTapDown: (details) => _fireHaptic(),
       onTap: onTap,
       child: Wrap(
-        runSpacing: theme?.distance.padding.vertical.small ?? 0,
+        runSpacing: theme?.distance?.padding?.vertical?.small ?? 0,
         children: wrapChildren,
         crossAxisAlignment: WrapCrossAlignment.center,
       ),

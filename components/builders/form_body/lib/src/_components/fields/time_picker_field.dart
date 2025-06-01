@@ -25,15 +25,15 @@ class TimePickerField extends StatelessWidget {
         : TimeOfDay(hour: 12, minute: 0).format(context);
 
     final verticalPadding = EdgeInsets.symmetric(
-      vertical: theme?.distance.padding.vertical.small ?? 0,
+      vertical: theme?.distance?.padding?.vertical?.small ?? 0,
     );
 
     final fieldBody = Container(
       padding: verticalPadding,
       child: Text(
         formattedValue,
-        style: theme?.typography.body.textStyle(
-          color: theme.color.text.generalPrimary,
+        style: theme?.typography?.body?.textStyle(
+          color: theme.color?.text?.generalPrimary ?? Colors.black,
         ),
         textAlign: TextAlign.right,
       ),

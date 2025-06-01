@@ -24,19 +24,19 @@ class StandardTabBar extends StatelessWidget {
       );
     }
 
-    final labelColor = theme?.color.text.generalSecondary;
-    final activeLabelColor = theme?.color.text.generalPrimary;
+    final labelColor = theme?.color?.text?.generalSecondary;
+    final activeLabelColor = theme?.color?.text?.generalPrimary;
 
     return Container(
       alignment: Alignment(-1, 0),
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: theme?.color.stroke.medium ?? Colors.black)),
+        border: Border(bottom: BorderSide(color: theme?.color?.stroke?.medium ?? Colors.black)),
       ),
       child: TabBar(
         tabs: tabWidgets,
         controller: tabController,
         isScrollable: true,
-        labelStyle: theme?.typography.detailHeavy.textStyle(
+        labelStyle: theme?.typography?.detailHeavy?.textStyle(
           color: activeLabelColor ?? Colors.black,
         ),
         // Fix for bug where TabBar with only one tab is styled as inactive
@@ -44,8 +44,8 @@ class StandardTabBar extends StatelessWidget {
         labelColor: activeLabelColor,
         indicatorColor: activeLabelColor,
         labelPadding: EdgeInsets.symmetric(
-          vertical: theme?.distance.padding.vertical.min ?? 0,
-          horizontal: theme?.distance.padding.horizontal.medium ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.min ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
         ),
       ),
     );
@@ -62,7 +62,7 @@ class StandardTabBar extends StatelessWidget {
     if (tab.title != null) {
       final Widget titleWidget = Padding(
         padding: EdgeInsets.symmetric(
-          vertical: theme?.distance.padding.vertical.min ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.min ?? 0,
         ),
         child: Text(tab.title ?? ""),
       );

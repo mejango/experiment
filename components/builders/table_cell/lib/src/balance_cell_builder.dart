@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '_cells/balance_cell.dart';
 
 mixin BalanceCellBuilder {

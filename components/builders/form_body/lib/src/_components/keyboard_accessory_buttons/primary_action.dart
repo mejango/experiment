@@ -20,12 +20,12 @@ class PrimaryActionKeyboardAccessoryButton extends StatelessWidget
     return buildButton(
       context: context,
       onTap: onTap,
-      backgroundColor: theme?.color.background.actionPrimary ?? Colors.white,
+      backgroundColor: theme?.color?.background?.actionPrimary ?? Colors.white,
       child: Center(
         child: Text(
           title,
-          style: theme?.typography.button.textStyle(
-            color: theme.color.text.onActionPrimaryBackground,
+          style: theme?.typography?.button?.textStyle(
+            color: theme.color?.text?.onActionPrimaryBackground ?? Colors.black,
           ),
         ),
       ),

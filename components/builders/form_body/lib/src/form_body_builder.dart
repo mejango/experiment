@@ -451,9 +451,9 @@ mixin FormBodyBuilderState<T extends FormBodyBuilder> implements State<T> {
     if (sectionData.isNotEmpty) {
       return StreamableFormData(
         sectionData: sectionData,
-        fieldHorizontalSpacing: theme?.distance.spacing.horizontal.min ?? 0,
-        fieldVerticalSpacing: theme?.distance.spacing.vertical.min ?? 0,
-        sectionVerticalSpacing: theme?.distance.spacing.vertical.large ?? 0,
+        fieldHorizontalSpacing: theme?.distance?.spacing?.horizontal?.min ?? 0,
+        fieldVerticalSpacing: theme?.distance?.spacing?.vertical?.min ?? 0,
+        sectionVerticalSpacing: theme?.distance?.spacing?.vertical?.large ?? 0,
         submitKeyboardAccessory: _buildSubmitKeyboardAccessory(context),
         canSubmitWithKeyboardRaised: widget.canSubmitWithKeyboardRaised,
       );
@@ -465,9 +465,9 @@ mixin FormBodyBuilderState<T extends FormBodyBuilder> implements State<T> {
     if (fieldData.isNotEmpty) {
       return StreamableFormData.withFields(
         fieldData: fieldData,
-        fieldHorizontalSpacing: theme?.distance.spacing.horizontal.min ?? 0,
-        fieldVerticalSpacing: theme?.distance.spacing.vertical.min ?? 0,
-        sectionVerticalSpacing: theme?.distance.spacing.vertical.large ?? 0,
+        fieldHorizontalSpacing: theme?.distance?.spacing?.horizontal?.min ?? 0,
+        fieldVerticalSpacing: theme?.distance?.spacing?.vertical?.min ?? 0,
+        sectionVerticalSpacing: theme?.distance?.spacing?.vertical?.large ?? 0,
         submitKeyboardAccessory: _buildSubmitKeyboardAccessory(context),
         canSubmitWithKeyboardRaised: widget.canSubmitWithKeyboardRaised,
       );

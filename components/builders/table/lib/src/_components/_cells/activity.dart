@@ -39,8 +39,8 @@ class ActivityCell extends StatelessWidget {
           // Everything in the cell is relative to the horizontal padding.
           child: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: theme?.distance.padding.horizontal.small ?? 0,
-              vertical: theme?.distance.padding.vertical.min ?? 0,
+              horizontal: theme?.distance?.padding?.horizontal?.small ?? 0,
+              vertical: theme?.distance?.padding?.vertical?.min ?? 0,
             ),
 
             ///This column contains the body of the cell, and the divider;
@@ -83,7 +83,7 @@ class _Body extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: theme?.distance.padding.vertical.small ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.small ?? 0,
       ),
       //The body of the cell contains the icon and the labels.
       child: Row(
@@ -92,10 +92,10 @@ class _Body extends StatelessWidget {
         children: <Widget>[
           Container(
             padding: EdgeInsets.only(
-              right: theme?.distance.spacing.horizontal.small ?? 0,
+              right: theme?.distance?.spacing?.horizontal?.small ?? 0,
             ),
             child: iconReference?.buildWidget(
-              color: theme?.color.icon.generalPrimary ?? Colors.black,
+              color: theme?.color?.icon?.generalPrimary ?? Colors.black,
             ),
           ),
 
@@ -118,7 +118,7 @@ class _Body extends StatelessWidget {
       list.add(
         Container(
           padding: EdgeInsets.only(
-            top: theme?.distance.padding.vertical.min ?? 0,
+            top: theme?.distance?.padding?.vertical?.min ?? 0,
           ),
           child: _DetailLabel(text: note ?? ""),
         ),
@@ -141,8 +141,8 @@ class _DetailLabel extends StatelessWidget {
 
     return Text(
       text,
-      style: theme?.typography.body.textStyle(
-        color: theme.color.text.generalSecondary,
+      style: theme?.typography?.body?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ),
     );
   }
@@ -155,10 +155,10 @@ class _CellDivider extends StatelessWidget {
 
     return Container(
       margin: EdgeInsets.only(
-        top: theme?.distance.spacing.vertical.small ?? 0,
+        top: theme?.distance?.spacing?.vertical?.small ?? 0,
       ),
       height: 1,
-      decoration: BoxDecoration(color: theme?.color.stroke.medium ?? Colors.black),
+      decoration: BoxDecoration(color: theme?.color?.stroke?.medium ?? Colors.black),
     );
   }
 }
@@ -175,13 +175,13 @@ class _TitleLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final primaryTextColor = theme?.color.text.generalPrimary ?? Colors.black;
+    final primaryTextColor = theme?.color?.text?.generalPrimary ?? Colors.black;
 
     return decoratedText.generateWidget(
       defaultStyle:
-          theme?.typography.bodyHeavy.textStyle(color: primaryTextColor) ?? TextStyle(),
-      thinStyle: theme?.typography.body.textStyle(color: primaryTextColor) ?? TextStyle(),
-      textScaleFactor: MediaQuery.of(context).textScaler.scale(theme?.typography.bodyHeavy.fontSize ?? 0),
+          theme?.typography?.bodyHeavy?.textStyle(color: primaryTextColor) ?? TextStyle(),
+      thinStyle: theme?.typography?.body?.textStyle(color: primaryTextColor) ?? TextStyle(),
+      textScaleFactor: MediaQuery.of(context).textScaler.scale(theme?.typography?.bodyHeavy?.fontSize ?? 0),
     );
   }
 }
@@ -200,8 +200,8 @@ class _TimeLabel extends StatelessWidget {
 
     final textWidget = Text(
       formattedTimestamp,
-      style: theme?.typography.detail.textStyle(
-        color: theme.color.text.generalSecondary,
+      style: theme?.typography?.detail?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ),
     );
 

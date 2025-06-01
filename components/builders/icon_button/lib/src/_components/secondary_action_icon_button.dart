@@ -11,7 +11,7 @@ class SecondaryActionIconButton extends StatelessWidget with StandardIconButton 
   @override
   Widget buildIcon(BuildContext context) {
     return iconReference.buildWidget(
-      color: SemanticTheme.of(context)?.color.icon.generalSecondary ??
+      color: SemanticTheme.of(context)?.color?.icon?.generalSecondary ??
           Colors.transparent,
     );
   }

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:blossm_command/src/utils/fake_command_response.dart';
-import 'package:flutter/material.dart';
 import 'package:network/index.dart';
 import 'package:blossm_command/index.dart';
 import 'package:blossm_command/src/utils/index.dart';
@@ -84,7 +83,7 @@ abstract class BlossmCommandDispatcher {
       tokenStore?.deleteChallengeToken();
     }
 
-    final String? cookie = response?.headers?[_cookieKey];
+    final String? cookie = response?.headers[_cookieKey];
     if (cookie != null) _handleTokenFromCookie(cookie);
 
     return Future.value(data);

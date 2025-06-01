@@ -56,9 +56,9 @@ class _TabbedContainerState extends State<TabbedContainer>
     final Widget bodyColumn = Column(children: columnChildren);
 
     return Container(
-      color: theme?.color.background.general ?? Colors.white,
+      color: theme?.color?.background?.general ?? Colors.white,
       padding: EdgeInsets.only(
-        top: theme?.distance.padding.vertical.medium ?? 0,
+        top: theme?.distance?.padding?.vertical?.medium ?? 0,
       ),
       child: bodyColumn,
     );

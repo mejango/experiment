@@ -16,8 +16,8 @@ class PageHeader extends StatelessWidget {
 
     final titleText = Text(
       text,
-      style: theme?.typography.headingPrimary.textStyle(
-        color: theme?.color.text.generalPrimary ?? Colors.black,
+      style: theme?.typography?.headingPrimary?.textStyle(
+        color: theme.color?.text?.generalPrimary ?? Colors.black,
       ),
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
@@ -32,7 +32,7 @@ class PageHeader extends StatelessWidget {
         ],
       ),
       padding: EdgeInsets.symmetric(
-        vertical: theme?.distance.padding.vertical.large ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.large ?? 0,
         horizontal: horizontalGutter ?? 0,
       ),
     );

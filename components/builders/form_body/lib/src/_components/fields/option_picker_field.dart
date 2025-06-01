@@ -93,8 +93,8 @@ class _SelectedOptionsContainer<T> extends StatelessWidget {
 
     return Text(
       _textForSelectedOptions(),
-      style: theme?.typography.body.textStyle(
-        color: theme.color.text.generalPrimary,
+      style: theme?.typography?.body?.textStyle(
+        color: theme.color?.text?.generalPrimary ?? Colors.black,
       ),
       softWrap: true,
       maxLines: _maxLines,

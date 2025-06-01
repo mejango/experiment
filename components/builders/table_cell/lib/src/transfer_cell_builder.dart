@@ -1,5 +1,4 @@
 import 'package:dwolla_types/index.dart';
-import 'package:flutter/material.dart';
 
 import '_cells/transfer_cell.dart';
 

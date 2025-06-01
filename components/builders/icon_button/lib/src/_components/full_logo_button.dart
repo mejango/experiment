@@ -8,7 +8,7 @@ class FullLogoButton extends StatelessWidget with StandardIconButton {
 
   @override
   Widget buildIcon(BuildContext context) {
-    return SemanticTheme.of(context)?.logo.full ?? const SizedBox.shrink();
+    return SemanticTheme.of(context)?.logo?.full ?? const SizedBox.shrink();
   }
 
   FullLogoButton({

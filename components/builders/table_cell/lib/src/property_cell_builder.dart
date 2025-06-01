@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:property/index.dart';
 
 import '_cells/property_cell.dart';

@@ -19,21 +19,21 @@ class PrimaryCenterButton extends StatefulWidget with CenteredStyleButton {
 
         switch (this.status) {
           case ButtonStatusOption.error:
-            return theme?.color.background.warn;
+            return theme?.color?.background?.warn;
           case ButtonStatusOption.ready:
           case ButtonStatusOption.loading:
-            return theme?.color.background.actionPrimary;
+            return theme?.color?.background?.actionPrimary;
           default:
             return null;
         }
       };
 
   get textColor => (context) {
-        return SemanticTheme.of(context)?.color.text.onActionPrimaryBackground;
+        return SemanticTheme.of(context)?.color?.text?.onActionPrimaryBackground;
       };
 
   get strokeColor => (context) {
-        return SemanticTheme.of(context)?.color.stroke.actionPrimary;
+        return SemanticTheme.of(context)?.color?.stroke?.actionPrimary;
       };
 
   PrimaryCenterButton({

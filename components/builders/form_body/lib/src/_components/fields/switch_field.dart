@@ -38,14 +38,14 @@ class _RoofSwitchFieldState extends State<RoofSwitchField>
   @override
   void didChangeDependencies() {
     controller = AnimationController(
-      duration: SemanticTheme.of(context)?.duration.short ?? Duration.zero,
+      duration: SemanticTheme.of(context)?.duration?.short ?? Duration.zero,
       vsync: this,
     );
 
     final theme = SemanticTheme.of(context);
 
-    isOnColor = theme?.color.background.actionPrimary ?? Colors.white;
-    isOffColor = theme?.color.background.actionDisabled ?? Colors.white;
+    isOnColor = theme?.color?.background?.actionPrimary ?? Colors.white;
+    isOffColor = theme?.color?.background?.actionDisabled ?? Colors.white;
 
     animation = ColorTween(
       begin: isOffColor,
@@ -53,7 +53,7 @@ class _RoofSwitchFieldState extends State<RoofSwitchField>
     )
         .chain(
           CurveTween(
-            curve: theme?.curve.hurried ?? Curves.linear,
+            curve: theme?.curve?.hurried ?? Curves.linear,
           ),
         )
         .animate(controller)
@@ -120,7 +120,7 @@ class _RoofAnimatedSwitch extends StatelessWidget {
       width: _width,
       height: _height,
       margin: EdgeInsets.only(
-        left: theme?.distance.spacing.horizontal.medium ?? 0,
+        left: theme?.distance?.spacing?.horizontal?.medium ?? 0,
       ),
       decoration: BoxDecoration(
         border: Border.all(color: color!),
@@ -139,8 +139,8 @@ class _RoofAnimatedSwitch extends StatelessWidget {
             ),
           ),
           alignment: isOn != null ? Alignment(1.0, 0.0) : Alignment(-1.0, 0.0),
-          curve: theme?.curve.hurried ?? Curves.linear,
-          duration: theme?.duration.short ?? Duration.zero,
+          curve: theme?.curve?.hurried ?? Curves.linear,
+          duration: theme?.duration?.short ?? Duration.zero,
         ),
       ),
     );

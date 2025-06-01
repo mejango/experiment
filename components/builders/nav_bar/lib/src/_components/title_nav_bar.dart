@@ -31,7 +31,7 @@ class TitleNavBar extends StatelessWidget with NavBar {
       navigationWidgets.add(
         Padding(
           padding: EdgeInsets.only(
-            right: theme?.distance.spacing.horizontal.small ?? 0,
+            right: theme?.distance?.spacing?.horizontal?.small ?? 0,
           ),
           child: navButton,
         ),
@@ -41,10 +41,10 @@ class TitleNavBar extends StatelessWidget with NavBar {
     if (icon != null) {
       final paddedIconWidget = Container(
         margin: EdgeInsets.only(
-          right: theme?.distance.spacing.horizontal.medium ?? 0,
+          right: theme?.distance?.spacing?.horizontal?.medium ?? 0,
         ),
         child: icon?.buildWidget(
-          color: theme?.color.icon.logo ?? Colors.black,
+          color: theme?.color?.icon?.logo ?? Colors.black,
         ),
       );
       navigationWidgets.add(paddedIconWidget);
@@ -65,15 +65,15 @@ class TitleNavBar extends StatelessWidget with NavBar {
     if (title != null) {
       final titleWidget = Text(
         title ?? '',
-        style: theme?.typography.title.textStyle(
-          color: theme.color.text.brand,
+        style: theme?.typography?.title?.textStyle(
+          color: theme.color?.text?.brand ?? Colors.black,
         ),
         overflow: TextOverflow.ellipsis,
       );
       titleColumnChildren.add(
         NavTitleBaseline(
           text: titleWidget,
-          baseline: theme?.typography.title.fontSize ?? 0,
+          baseline: theme?.typography?.title?.fontSize ?? 0,
         ),
       );
     }
@@ -81,8 +81,8 @@ class TitleNavBar extends StatelessWidget with NavBar {
     if (subtitle != null) {
       final subtitleWidget = Text(
         subtitle ?? '',
-        style: theme?.typography.subtitle.textStyle(
-          color: theme.color.text.generalSecondary,
+        style: theme?.typography?.subtitle?.textStyle(
+          color: theme.color?.text?.generalSecondary ?? Colors.black,
         ),
         overflow: TextOverflow.ellipsis,
       );

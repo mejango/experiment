@@ -23,12 +23,12 @@ class RollerColumnBody<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final activeStyle = theme?.typography.bodyHeavy.textStyle(
-      color: theme.color.text.generalPrimary,
+    final activeStyle = theme?.typography?.bodyHeavy?.textStyle(
+      color: theme.color?.text?.generalPrimary ?? Colors.black,
     );
 
-    final inactiveStyle = theme?.typography.body.textStyle(
-      color: theme.color.text.generalSecondary,
+    final inactiveStyle = theme?.typography?.body?.textStyle(
+      color: theme.color?.text?.generalSecondary ?? Colors.black,
     );
 
     final widgetsLength = children.length * segmentCount;

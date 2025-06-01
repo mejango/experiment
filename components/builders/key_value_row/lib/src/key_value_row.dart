@@ -27,13 +27,13 @@ class KeyValueRow extends StatelessWidget {
         minWidth: _minTitleWidth,
       ),
       margin: EdgeInsets.only(
-        right: theme?.distance.spacing.horizontal.medium ?? 0,
+        right: theme?.distance?.spacing?.horizontal?.medium ?? 0,
       ),
       child: Text(
         title ?? '',
         style: titleStyle ??
-            theme?.typography.label.textStyle(
-              color: theme.color.text.generalSecondary,
+            theme?.typography?.label?.textStyle(
+              color: theme.color?.text?.generalSecondary ?? Colors.black,
             ),
         overflow: TextOverflow.ellipsis,
       ),
@@ -43,8 +43,8 @@ class KeyValueRow extends StatelessWidget {
       child: Text(
         value ?? '',
         style: valueStyle ??
-            theme?.typography.body.textStyle(
-              color: theme.color.text.generalPrimary,
+            theme?.typography?.body?.textStyle(
+              color: theme.color?.text?.generalPrimary ?? Colors.black,
             ),
         textAlign: rightAlignValue == true ? TextAlign.right : TextAlign.start,
         maxLines: 2,

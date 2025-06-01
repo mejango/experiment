@@ -45,7 +45,7 @@ class PaymentCell extends StatelessWidget with KeyValueRowBuilder {
 
     final statusTag = Container(
       margin: EdgeInsets.only(
-        left: theme?.distance.spacing.horizontal.small ?? 0,
+        left: theme?.distance?.spacing?.horizontal?.small ?? 0,
       ),
       child: _StatusTag(paymentStatus ?? PaymentStatus.manual),
     );
@@ -64,12 +64,12 @@ class PaymentCell extends StatelessWidget with KeyValueRowBuilder {
     if (note != null && note!.isNotEmpty) {
       final messageRow = Container(
         margin: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.small ?? 0,
+          top: theme?.distance?.spacing?.vertical?.small ?? 0,
         ),
         child: Text(
           note ?? "",
-          style: theme?.typography.body.textStyle(
-            color: theme.color.text.generalSecondary,
+          style: theme?.typography?.body?.textStyle(
+            color: theme.color?.text?.generalSecondary ?? Colors.black,
           ),
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
@@ -82,8 +82,8 @@ class PaymentCell extends StatelessWidget with KeyValueRowBuilder {
       context,
       title: "Date",
       value: dateText,
-      valueStyle: theme?.typography.bodyHeavy.textStyle(
-        color: theme.color.text.generalPrimary,
+      valueStyle: theme?.typography?.bodyHeavy?.textStyle(
+        color: theme.color?.text?.generalPrimary ?? Colors.black,
       ),
     );
     columnChildren.add(dateRow);
@@ -111,18 +111,18 @@ class PaymentCell extends StatelessWidget with KeyValueRowBuilder {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: theme?.distance.padding.horizontal.medium ?? 0,
-          vertical: theme?.distance.padding.vertical.medium ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
         ),
         margin: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.small ?? 0,
+          top: theme?.distance?.spacing?.vertical?.small ?? 0,
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(
-            theme?.radius.medium ?? Radius.circular(0),
+            theme?.radius?.medium ?? Radius.circular(0),
           ),
-          border: Border.all(color: theme?.color.stroke.medium ?? Colors.black),
-          color: theme?.color.background.raised ?? Colors.white,
+          border: Border.all(color: theme?.color?.stroke?.medium ?? Colors.black),
+          color: theme?.color?.background?.raised ?? Colors.white,
         ),
         child: bodyColumn,
       ),

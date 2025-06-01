@@ -15,15 +15,15 @@ class PrimaryLeftButton extends StatefulWidget with LeftStyleButton {
   final bool hasArrow;
 
   get backgroundColor => (context) {
-        return SemanticTheme.of(context)?.color.background.actionSecondary;
+        return SemanticTheme.of(context)?.color?.background?.actionSecondary;
       };
 
   get textColor => (context) {
-        return SemanticTheme.of(context)?.color.text.onActionSecondaryBackground;
+        return SemanticTheme.of(context)?.color?.text?.onActionSecondaryBackground;
       };
 
   get arrowColor => (context) {
-        return SemanticTheme.of(context)?.color.icon.generalSecondary;
+        return SemanticTheme.of(context)?.color?.icon?.generalSecondary;
       };
 
   PrimaryLeftButton({

@@ -31,11 +31,11 @@ class TransferCell extends StatelessWidget
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final textStyle = theme?.typography.body.textStyle(
-      color: theme?.color.text.generalSecondary ?? Colors.black,
+    final textStyle = theme?.typography?.body?.textStyle(
+      color: theme.color?.text?.generalSecondary ?? Colors.black,
     );
-    final heavyTextStyle = theme?.typography.bodyHeavy.textStyle(
-      color: theme.color.text.generalSecondary,
+    final heavyTextStyle = theme?.typography?.bodyHeavy?.textStyle(
+      color: theme.color?.text?.generalSecondary ?? Colors.black,
     );
 
     Color? amountColor;
@@ -51,7 +51,7 @@ class TransferCell extends StatelessWidget
 
     switch ("${sender != null} ${receiver != null}") {
       case 'true true':
-        amountColor = theme?.color.text.generalPrimary ?? Colors.black;
+        amountColor = theme?.color?.text?.generalPrimary ?? Colors.black;
         formattedMoneyString = moneyString;
         participantsTextSpan = TextSpan(
           children: [
@@ -63,7 +63,7 @@ class TransferCell extends StatelessWidget
         );
         break;
       case 'true false':
-        amountColor = theme?.color.text.good ?? Colors.black;
+        amountColor = theme?.color?.text?.good ?? Colors.black;
         formattedMoneyString = moneyString;
         participantsTextSpan = TextSpan(
           children: [
@@ -74,7 +74,7 @@ class TransferCell extends StatelessWidget
         );
         break;
       case 'false true':
-        amountColor = theme?.color.text.bad ?? Colors.black;
+        amountColor = theme?.color?.text?.bad ?? Colors.black;
         formattedMoneyString = "-$moneyString";
         participantsTextSpan = TextSpan(
           children: [
@@ -91,26 +91,26 @@ class TransferCell extends StatelessWidget
       children: [
         Text(
           Date.fromDateTime(date ?? DateTime.now()).toAgoString,
-          style: theme?.typography.detail.textStyle(
-            color: theme.color.text.generalSecondary,
+          style: theme?.typography?.detail?.textStyle(
+            color: theme.color?.text?.generalSecondary ?? Colors.black,
           ),
         )
       ],
     );
 
     if (transferStatus == TransferStatus.failed)
-      amountColor = theme?.color.text.generalSecondary ?? Colors.black;
+      amountColor = theme?.color?.text?.generalSecondary ?? Colors.black;
 
     final participantsText = Padding(
       padding: EdgeInsets.only(
-        right: theme?.distance.spacing.horizontal.medium ?? 0,
+        right: theme?.distance?.spacing?.horizontal?.medium ?? 0,
       ),
       child: RichText(text: participantsTextSpan ?? TextSpan()),
     );
 
     final amountText = Text(
       formattedMoneyString ?? "",
-      style: theme?.typography.bodyHeavy.textStyle(
+      style: theme?.typography?.bodyHeavy?.textStyle(
         color: amountColor ?? Colors.black,
       ),
     );
@@ -129,8 +129,8 @@ class TransferCell extends StatelessWidget
     if (domain != null && domain!.isNotEmpty) {
       final domainText = Text(
         domain!,
-        style: theme?.typography.detailHeavy.textStyle(
-          color: theme.color.text.generalSecondary,
+        style: theme?.typography?.detailHeavy?.textStyle(
+          color: theme.color?.text?.generalSecondary ?? Colors.black,
         ),
       );
       secondRowChildren.add(domainText);
@@ -148,32 +148,32 @@ class TransferCell extends StatelessWidget
         case TransferStatus.pending:
           paymentStatusText = Text(
             'pending',
-            style: theme?.typography.detailHeavy.textStyle(
-              color: theme.color.text.generalSecondary,
+            style: theme?.typography?.detailHeavy?.textStyle(
+              color: theme.color?.text?.generalSecondary ?? Colors.black,
             ),
           );
           break;
         case TransferStatus.manual:
           paymentStatusText = Text(
             'manual',
-            style: theme?.typography.detailHeavy.textStyle(
-              color: theme.color.text.generalSecondary,
+            style: theme?.typography?.detailHeavy?.textStyle(
+              color: theme.color?.text?.generalSecondary ?? Colors.black,
             ),
           );
           break;
         case TransferStatus.cancelled:
           paymentStatusText = Text(
             'cancelled',
-            style: theme?.typography.detailHeavy.textStyle(
-              color: theme.color.text.generalSecondary,
+            style: theme?.typography?.detailHeavy?.textStyle(
+              color: theme.color?.text?.generalSecondary ?? Colors.black,
             ),
           );
           break;
         case TransferStatus.failed:
           paymentStatusText = Text(
             'failed',
-            style: theme?.typography.detailHeavy.textStyle(
-              color: theme.color.text.bad,
+            style: theme?.typography?.detailHeavy?.textStyle(
+              color: theme.color?.text?.bad ?? Colors.black,
             ),
           );
           break;
@@ -191,7 +191,7 @@ class TransferCell extends StatelessWidget
       children: secondRowChildren,
     );
 
-    final rowSpacer = Container(height: theme?.distance.spacing.vertical.min ?? 0);
+    final rowSpacer = Container(height: theme?.distance?.spacing?.vertical?.min ?? 0);
     final columnChildren = <Widget>[
       mainRow,
       rowSpacer,
@@ -204,12 +204,12 @@ class TransferCell extends StatelessWidget
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                vertical: theme?.distance.padding.vertical.small ?? 0,
+                vertical: theme?.distance?.padding?.vertical?.small ?? 0,
               ),
               child: Text(
                 note ?? "",
-                style: theme?.typography.body.textStyle(
-                  color: theme.color.text.generalPrimary,
+                style: theme?.typography?.body?.textStyle(
+                  color: theme.color?.text?.generalPrimary ?? Colors.black,
                 ),
               ),
             ),

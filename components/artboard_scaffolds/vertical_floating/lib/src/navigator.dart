@@ -113,8 +113,8 @@ class VerticalFloatingInheritedArtboardNavigator
     final theme = SemanticTheme.of(context);
 
     await _pageController.previousPage(
-      duration: theme?.duration.medium ?? Duration.zero,
-      curve: theme?.curve.exit ?? Curves.linear,
+      duration: theme?.duration?.medium ?? Duration.zero,
+      curve: theme?.curve?.exit ?? Curves.linear,
     );
     setState(
       () => _floatingArtboardPanels.removeLast(),
@@ -137,8 +137,8 @@ class VerticalFloatingInheritedArtboardNavigator
 
       final theme = SemanticTheme.of(context);
       _pageController.nextPage(
-        duration: theme?.duration.medium ?? Duration.zero,
-        curve: theme?.curve.enter ?? Curves.linear,
+        duration: theme?.duration?.medium ?? Duration.zero,
+        curve: theme?.curve?.enter ?? Curves.linear,
       );
     } else {
       Navigator.pop(context, artboard);

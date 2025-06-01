@@ -25,27 +25,27 @@ class CalDatePicker extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final headerStyle = theme?.typography.headingSecondary.textStyle(
-      color: theme.color.text.brand,
+    final headerStyle = theme?.typography?.headingSecondary?.textStyle(
+      color: theme.color?.text?.brand ?? Colors.black,
     );
 
-    final daysPrimaryStyle = theme?.typography.bodyHeavy.textStyle(
-      color: theme.color.text.generalPrimary,
+    final daysPrimaryStyle = theme?.typography?.bodyHeavy?.textStyle(
+      color: theme.color?.text?.generalPrimary ?? Colors.black,
     );
 
-    final inactiveTextStyle = theme?.typography.body.textStyle(
-      color: theme.color.text.generalSecondary,
+    final inactiveTextStyle = theme?.typography?.body?.textStyle(
+      color: theme.color?.text?.generalSecondary ?? Colors.black,
     );
 
-    final smallTextStyle = theme?.typography.body.textStyle(
-      color: theme.color.text.brand,
+    final smallTextStyle = theme?.typography?.body?.textStyle(
+      color: theme.color?.text?.brand ?? Colors.black,
     );
 
-    final todayTextStyle = theme?.typography.bodyHeavy.textStyle(
-      color: theme.color.text.action,
+    final todayTextStyle = theme?.typography?.bodyHeavy?.textStyle(
+      color: theme.color?.text?.action ?? Colors.black,
     );
 
-    final arrowIconColor = theme?.color.text.brand ?? Colors.transparent;
+    final arrowIconColor = theme?.color?.text?.brand ?? Colors.transparent;
 
     final leftIcon = StandardIcon.leftArrow.buildWidget(
       color: arrowIconColor,
@@ -67,13 +67,13 @@ class CalDatePicker extends StatelessWidget {
         todayBorderColor: Colors.transparent,
         selectedDayTextStyle: daysPrimaryStyle,
         todayTextStyle: todayTextStyle,
-        selectedDayButtonColor: theme?.color.background.actionPrimary ?? Colors.transparent,
+        selectedDayButtonColor: theme?.color?.background?.actionPrimary ?? Colors.transparent,
         inactiveDaysTextStyle: inactiveTextStyle,
         nextDaysTextStyle: inactiveTextStyle,
         prevDaysTextStyle: inactiveTextStyle,
         headerTextStyle: headerStyle,
         weekdayTextStyle: smallTextStyle,
-        iconColor: theme?.color.icon.logo ?? Colors.transparent,
+        iconColor: theme?.color?.icon?.logo ?? Colors.transparent,
         weekFormat: false,
         daysHaveCircularBorder: true,
         height: _height,

@@ -29,25 +29,25 @@ class AlertCell extends StatelessWidget with VerticallyCenteredTextBuilder {
 
     switch (type) {
       case AlertType.good:
-        textColor = theme?.color.text.good ?? Colors.black;
-        iconColor = theme?.color.icon.good ?? Colors.black;
-        strokeColor = theme?.color.stroke.good ?? Colors.black;
+        textColor = theme?.color?.text?.good ?? Colors.black;
+        iconColor = theme?.color?.icon?.good ?? Colors.black;
+        strokeColor = theme?.color?.stroke?.good ?? Colors.black;
         break;
       case AlertType.warn:
-        textColor = theme?.color.text.warn ?? Colors.black;
-        iconColor = theme?.color.icon.warn ?? Colors.black;
-        strokeColor = theme?.color.stroke.warn ?? Colors.black;
+        textColor = theme?.color?.text?.warn ?? Colors.black;
+        iconColor = theme?.color?.icon?.warn ?? Colors.black;
+        strokeColor = theme?.color?.stroke?.warn ?? Colors.black;
         break;
       case AlertType.bad:
-        textColor = theme?.color.text.bad ?? Colors.black;
-        iconColor = theme?.color.icon.bad ?? Colors.black;
-        strokeColor = theme?.color.stroke.bad ?? Colors.black;
+        textColor = theme?.color?.text?.bad ?? Colors.black;
+        iconColor = theme?.color?.icon?.bad ?? Colors.black;
+        strokeColor = theme?.color?.stroke?.bad ?? Colors.black;
         break;
       case AlertType.neutral:
       default:
-        textColor = theme?.color.text.generalSecondary ?? Colors.black;
-        iconColor = theme?.color.icon.generalSecondary ?? Colors.black;
-        strokeColor = theme?.color.stroke.medium ?? Colors.black;
+        textColor = theme?.color?.text?.generalSecondary ?? Colors.black;
+        iconColor = theme?.color?.icon?.generalSecondary ?? Colors.black;
+        strokeColor = theme?.color?.stroke?.medium ?? Colors.black;
         break;
     }
 
@@ -55,7 +55,7 @@ class AlertCell extends StatelessWidget with VerticallyCenteredTextBuilder {
       child: buildVerticallyCenteredText(
         Text(
           text,
-          style: theme?.typography.detailHeavy.textStyle(color: textColor),
+          style: theme?.typography?.detailHeavy?.textStyle(color: textColor),
         ),
       ),
     );
@@ -68,7 +68,7 @@ class AlertCell extends StatelessWidget with VerticallyCenteredTextBuilder {
       rowChildren.add(
         Padding(
           padding: EdgeInsets.only(
-            left: theme?.distance.spacing.horizontal.small ?? 0,
+            left: theme?.distance?.spacing?.horizontal?.small ?? 0,
           ),
           child: iconWidget,
         ),

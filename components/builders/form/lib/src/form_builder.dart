@@ -46,11 +46,11 @@ mixin FormBuilderState<T extends FormBuilder>
     addFocusChangedListeners();
     final theme = SemanticTheme.of(context);
 
-    final headerStyle = theme?.typography.title.textStyle(
-      color: theme.color.text.generalPrimary,
+    final headerStyle = theme?.typography?.title?.textStyle(
+      color: theme.color?.text?.generalPrimary ?? Colors.black,
     );
-    final subtitleStyle = theme?.typography.subtitle.textStyle(
-      color: theme.color.text.generalSecondary,
+    final subtitleStyle = theme?.typography?.subtitle?.textStyle(
+      color: theme.color?.text?.generalSecondary ?? Colors.black,
     );
 
     final formWidgets = <Widget>[];
@@ -74,7 +74,7 @@ mixin FormBuilderState<T extends FormBuilder>
       headerWidgets.add(
         Padding(
           padding: EdgeInsets.all(
-            theme?.distance.spacing.vertical.medium ?? 0,
+            theme?.distance?.spacing?.vertical?.medium ?? 0,
           ),
           child: subtitleTextWidget,
         ),
@@ -84,7 +84,7 @@ mixin FormBuilderState<T extends FormBuilder>
     if (headerWidgets.isNotEmpty) {
       formWidgets.add(
         Padding(
-          padding: EdgeInsets.only(top: theme?.distance.gutter.vertical.medium ?? 0),
+          padding: EdgeInsets.only(top: theme?.distance?.gutter?.vertical?.medium ?? 0),
           child: Column(
             children: headerWidgets,
           ),
@@ -95,8 +95,8 @@ mixin FormBuilderState<T extends FormBuilder>
     formWidgets.add(
       Padding(
         padding: EdgeInsets.symmetric(
-          vertical: theme?.distance.spacing.vertical.large ?? 0,
-          horizontal: theme?.distance.gutter.horizontal.medium ?? 0,
+          vertical: theme?.distance?.spacing?.vertical?.large ?? 0,
+          horizontal: theme?.distance?.gutter?.horizontal?.medium ?? 0,
         ),
         child: buildFormBody(context),
       ),
@@ -106,12 +106,12 @@ mixin FormBuilderState<T extends FormBuilder>
       formWidgets.add(
         Container(
           margin: EdgeInsets.symmetric(
-            vertical: theme?.distance.spacing.vertical.medium ?? 0,
+            vertical: theme?.distance?.spacing?.vertical?.medium ?? 0,
           ),
           child: Text(
             validationException!.message,
-            style: theme?.typography.detailHeavy.textStyle(
-              color: theme.color.text.warn,
+            style: theme?.typography?.detailHeavy?.textStyle(
+              color: theme.color?.text?.warn ?? Colors.black,
             ),
           ),
         ),
@@ -122,12 +122,12 @@ mixin FormBuilderState<T extends FormBuilder>
       formWidgets.add(
         Container(
           margin: EdgeInsets.symmetric(
-            vertical: theme?.distance.spacing.vertical.medium ?? 0,
+            vertical: theme?.distance?.spacing?.vertical?.medium ?? 0,
           ),
           child: Text(
             submissionException!.message,
-            style: theme?.typography.detailHeavy.textStyle(
-              color: theme.color.text.warn,
+            style: theme?.typography?.detailHeavy?.textStyle(
+              color: theme.color?.text?.warn ?? Colors.black,
             ),
           ),
         ),
@@ -138,7 +138,7 @@ mixin FormBuilderState<T extends FormBuilder>
       formWidgets.add(
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: theme?.distance.padding.horizontal.medium ?? 0,
+            horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
           ),
           child: submitButton,
         ),

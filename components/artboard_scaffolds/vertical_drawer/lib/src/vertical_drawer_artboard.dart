@@ -94,7 +94,7 @@ mixin VerticalDrawerArtboardState<T extends VerticalDrawerArtboard>
     );
 
     final scaffold = Scaffold(
-      backgroundColor: theme?.color.background.raised ?? Colors.transparent,
+      backgroundColor: theme?.color?.background?.raised ?? Colors.transparent,
       body: SafeArea(
         top: false,
         child: stack,

@@ -34,7 +34,7 @@ mixin LeftButtonState<T extends StatefulWidget>
 
     if (button.iconReference != null) {
       final iconPadding = button.text != null
-          ? EdgeInsets.only(right: theme?.distance.padding.horizontal.small ?? 0)
+          ? EdgeInsets.only(right: theme?.distance?.padding?.horizontal?.small ?? 0)
           : EdgeInsets.all(0);
 
       final buttonIcon = Container(
@@ -48,7 +48,7 @@ mixin LeftButtonState<T extends StatefulWidget>
     final styledButtonText = buildVerticallyCenteredText(
       Text(
         button.text ?? '',
-        style: theme?.typography.button.textStyle(color: textColor ?? Colors.black),
+        style: theme?.typography?.button?.textStyle(color: textColor ?? Colors.black),
         textAlign: TextAlign.center,
       ),
     );
@@ -66,7 +66,7 @@ mixin LeftButtonState<T extends StatefulWidget>
     final decoration = BoxDecoration(
       color: button.backgroundColor(context)?.withValues(alpha: (tapped ? .7 : 1) * 255),
       borderRadius: BorderRadius.all(
-        theme?.radius.medium ?? Radius.zero,
+        theme?.radius?.medium ?? Radius.zero,
       ),
     );
 

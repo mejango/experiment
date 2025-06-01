@@ -48,7 +48,7 @@ class PropertyCell extends StatelessWidget
         leasesSections.isNotEmpty
             ? Container(
                 margin: EdgeInsets.only(
-                  top: theme?.distance.spacing.vertical.small ?? 0,
+                  top: theme?.distance?.spacing?.vertical?.small ?? 0,
                 ),
                 child: upcomingLeasesSection,
               )
@@ -59,7 +59,7 @@ class PropertyCell extends StatelessWidget
     if (leasesSections.isNotEmpty) {
       final leasesSectionsColumn = Container(
         margin: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.medium ?? 0,
+          top: theme?.distance?.spacing?.vertical?.medium ?? 0,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +72,7 @@ class PropertyCell extends StatelessWidget
     if (property.tags?.isNotEmpty ?? false) {
       final tagsSection = Container(
         margin: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.medium ?? 0,
+          top: theme?.distance?.spacing?.vertical?.medium ?? 0,
         ),
         child: _buildTagsWrap(
           context,
@@ -99,8 +99,8 @@ class PropertyCell extends StatelessWidget
 
     return Text(
       addressString ?? "",
-      style: theme?.typography.title.textStyle(
-        color: theme.color.text.action,
+      style: theme?.typography?.title?.textStyle(
+        color: theme.color?.text?.action ?? Colors.black,
       ),
       overflow: TextOverflow.ellipsis,
       maxLines: 2,
@@ -116,12 +116,12 @@ class PropertyCell extends StatelessWidget
 
     final activeLeasesSectionTitle = Container(
       margin: EdgeInsets.only(
-        bottom: theme?.distance.spacing.vertical.min ?? 0,
+        bottom: theme?.distance?.spacing?.vertical?.min ?? 0,
       ),
       child: Text(
         sectionTitle,
-        style: theme?.typography.detailHeavy.textStyle(
-          color: theme.color.text.generalSecondary,
+        style: theme?.typography?.detailHeavy?.textStyle(
+          color: theme.color?.text?.generalSecondary ?? Colors.black,
         ),
       ),
     );
@@ -149,8 +149,8 @@ class PropertyCell extends StatelessWidget
     return leases?.map((lease) {
       final leaseName = Text(
         lease.name ?? "",
-        style: theme?.typography.body.textStyle(
-          color: theme.color.text.generalPrimary,
+        style: theme?.typography?.body?.textStyle(
+          color: theme.color?.text?.generalPrimary ?? Colors.black,
         ),
       );
 
@@ -161,15 +161,15 @@ class PropertyCell extends StatelessWidget
           
           context: context,
         ),
-        style: theme?.typography.bodyHeavy.textStyle(
-          color: theme.color.text.generalPrimary,
+        style: theme?.typography?.bodyHeavy?.textStyle(
+          color: theme.color?.text?.generalPrimary ?? Colors.black,
         ),
       );
 
       final leaseDate = Text(
         "${Date.fromDateTime(lease.start ?? DateTime.now()).toFullDigits} - ${Date.fromDateTime(lease.end ?? DateTime.now()).toFullDigits}",
-        style: theme?.typography.detail.textStyle(
-          color: theme.color.text.generalSecondary,
+        style: theme?.typography?.detail?.textStyle(
+          color: theme.color?.text?.generalSecondary ?? Colors.black,
         ),
       );
 
@@ -179,7 +179,7 @@ class PropertyCell extends StatelessWidget
           leaseAmount,
           leaseDate,
         ],
-        spacing: theme?.distance.spacing.horizontal.small ?? 0,
+        spacing: theme?.distance?.spacing?.horizontal?.small ?? 0,
         crossAxisAlignment: WrapCrossAlignment.end,
       );
     }).toList() ?? [];
@@ -198,8 +198,8 @@ class PropertyCell extends StatelessWidget
 
     return Wrap(
       children: tagsWidgets,
-      spacing: theme?.distance.spacing.horizontal.min ?? 0,
-      runSpacing: theme?.distance.spacing.vertical.min ?? 0,
+      spacing: theme?.distance?.spacing?.horizontal?.min ?? 0,
+      runSpacing: theme?.distance?.spacing?.vertical?.min ?? 0,
     );
   }
 }

@@ -28,8 +28,8 @@ abstract class NavVerticalDrawerArtboard extends StatefulWidget
 
     return ListView(
       padding: EdgeInsets.symmetric(
-        vertical: theme?.distance.padding.vertical.large ?? 0,
-        horizontal: theme?.distance.padding.horizontal.medium ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.large ?? 0,
+        horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
       ),
       children: buttons,
     );

@@ -21,11 +21,11 @@ class DockFilePreviewState extends State<DockFilePreview>
   void didChangeDependencies() {
     final theme = SemanticTheme.of(context);
 
-    Future.delayed(theme?.duration.short ?? Duration.zero, () {
+    Future.delayed(theme?.duration?.short ?? Duration.zero, () {
       _listViewController.animateTo(
         _listViewController.position.maxScrollExtent,
-        duration: theme?.duration.short ?? Duration.zero,
-        curve: theme?.curve.hurried ?? Curves.linear,
+        duration: theme?.duration?.short ?? Duration.zero,
+        curve: theme?.curve?.hurried ?? Curves.linear,
       );
     });
     super.didChangeDependencies();
@@ -55,7 +55,7 @@ class DockFilePreviewState extends State<DockFilePreview>
       child: ListView(
         controller: _listViewController,
         padding: EdgeInsets.symmetric(
-          horizontal: theme?.distance.padding.horizontal.medium ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
         ),
         scrollDirection: Axis.horizontal,
         children: previews,
@@ -63,8 +63,8 @@ class DockFilePreviewState extends State<DockFilePreview>
     );
 
     return AnimatedSize(
-      curve: theme?.curve.hurried ?? Curves.linear,
-      duration: theme?.duration.short ?? Duration.zero,
+      curve: theme?.curve?.hurried ?? Curves.linear,
+      duration: theme?.duration?.short ?? Duration.zero,
       child: previewRow,
     );
   }
@@ -101,7 +101,7 @@ class _FilePreviewState extends State<_FilePreview>
     if (widget.animateOnRemove) {
       setState(() => _show = false);
       Future.delayed(
-        theme?.duration.short ?? Duration.zero,
+        theme?.duration?.short ?? Duration.zero,
         () {
           widget.removeFile();
         },
@@ -124,7 +124,7 @@ class _FilePreviewState extends State<_FilePreview>
       child: Container(
         width: _show ? null : 0,
         padding: EdgeInsets.all(
-          theme?.distance.padding.horizontal.small ?? 0,
+          theme?.distance?.padding?.horizontal?.small ?? 0,
         ),
         child: removeIcon,
       ),
@@ -152,14 +152,14 @@ class _FilePreviewState extends State<_FilePreview>
     );
 
     final imageWidget = ClipRRect(
-      borderRadius: BorderRadius.all(theme?.radius.small ?? Radius.zero),
+      borderRadius: BorderRadius.all(theme?.radius?.small ?? Radius.zero),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: thumbnail,
     );
 
     final animatedWidthContainer = AnimatedSize(
-      curve: theme?.curve.hurried ?? Curves.linear,
-      duration: theme?.duration.short ?? Duration.zero,
+      curve: theme?.curve?.hurried ?? Curves.linear,
+      duration: theme?.duration?.short ?? Duration.zero,
       alignment: Alignment.topLeft,
       child: Container(
         width: _show ? widget.previewWidth : 0,
@@ -169,13 +169,13 @@ class _FilePreviewState extends State<_FilePreview>
 
     return AnimatedOpacity(
       opacity: _show ? 1 : 0,
-      curve: theme?.curve.hurried ?? Curves.linear,
-      duration: theme?.duration.short ?? Duration.zero,
+      curve: theme?.curve?.hurried ?? Curves.linear,
+      duration: theme?.duration?.short ?? Duration.zero,
       child: Container(
         margin: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.medium ?? 0,
+          top: theme?.distance?.spacing?.vertical?.medium ?? 0,
           right:
-              widget.isRightPadded ? theme?.distance.spacing.horizontal.min ?? 0 : 0,
+              widget.isRightPadded ? theme?.distance?.spacing?.horizontal?.min ?? 0 : 0,
         ),
         child: Stack(
           children: [

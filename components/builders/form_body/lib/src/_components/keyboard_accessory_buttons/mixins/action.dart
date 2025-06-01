@@ -26,15 +26,15 @@ mixin ActionKeyboardAccessoryButton implements StatelessWidget {
         onTap: onTap,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: theme?.color.background.raised ?? Colors.white,
-            boxShadow: [theme?.shadow.small ?? BoxShadow(color: Colors.black, blurRadius: 0)],
+            color: theme?.color?.background?.raised ?? Colors.white,
+            boxShadow: [theme?.shadow?.small ?? BoxShadow(color: Colors.black, blurRadius: 0)],
           ),
           child: Container(
             child: child,
             padding: EdgeInsets.symmetric(
-              vertical: theme?.distance.padding.vertical.medium ?? 0,
+              vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
             ),
-            color: backgroundColor ?? theme?.color.background.general ?? Colors.white,
+            color: backgroundColor ?? theme?.color?.background?.general ?? Colors.white,
           ),
         ),
       ),

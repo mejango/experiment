@@ -113,7 +113,7 @@ class _AnimatedTitleNavBarState extends State<AnimatedTitleNavBar> {
 
     if (widget.navButton != null) {
       final spacedNavButton = Padding(
-        padding: EdgeInsets.only(right: theme?.distance.spacing.horizontal.min ?? 0),
+        padding: EdgeInsets.only(right: theme?.distance?.spacing?.horizontal?.min ?? 0),
         child: widget.navButton,
       );
 
@@ -123,17 +123,17 @@ class _AnimatedTitleNavBarState extends State<AnimatedTitleNavBar> {
     if (widget.title != null) {
       final opacityTitle = AnimatedOpacity(
         opacity: _titleVisible ? 1 : 0,
-        curve: theme?.curve.normal ?? Curves.easeInOut,
-        duration: theme?.duration.medium ?? Duration(milliseconds: 300),
+        curve: theme?.curve?.normal ?? Curves.easeInOut,
+        duration: theme?.duration?.medium ?? Duration(milliseconds: 300),
         child: NavTitleBaseline(
           text: Text(
             widget.title ?? '',
-            style: theme?.typography.title.textStyle(
-              color: theme.color.text.generalPrimary,
+            style: theme?.typography?.title?.textStyle(
+              color: theme.color?.text?.generalPrimary ?? Colors.black,
             ),
             overflow: TextOverflow.ellipsis,
           ),
-          baseline: theme?.typography.title.fontSize ?? 0,
+          baseline: theme?.typography?.title?.fontSize ?? 0,
         ),
       );
 
@@ -152,7 +152,7 @@ class _AnimatedTitleNavBarState extends State<AnimatedTitleNavBar> {
             (button) => Padding(
               child: button,
               padding: EdgeInsets.only(
-                left: theme?.distance.spacing.horizontal.min ?? 0,
+                left: theme?.distance?.spacing?.horizontal?.min ?? 0,
               ),
             ),
           )
@@ -172,7 +172,7 @@ class _AnimatedTitleNavBarState extends State<AnimatedTitleNavBar> {
 
     final safeAreaTop = MediaQuery.of(context).padding.top;
 
-    final shadow = theme?.shadow.appBar;
+    final shadow = theme?.shadow?.appBar;
 
     List<BoxShadow>? opacityAdjustedShadow;
     if (shadow != null) {
@@ -190,13 +190,13 @@ class _AnimatedTitleNavBarState extends State<AnimatedTitleNavBar> {
     return Container(
       key: _containerKey,
       padding: EdgeInsets.fromLTRB(
-        theme?.distance.gutter.horizontal.small ?? 0,
-        (theme?.distance.gutter.vertical.small ?? 0) + safeAreaTop,
-        theme?.distance.gutter.horizontal.small ?? 0,
-        theme?.distance.gutter.vertical.small ?? 0,
+        theme?.distance?.gutter?.horizontal?.small ?? 0,
+        (theme?.distance?.gutter?.vertical?.small ?? 0) + safeAreaTop,
+        theme?.distance?.gutter?.horizontal?.small ?? 0,
+        theme?.distance?.gutter?.vertical?.small ?? 0,
       ),
       decoration: BoxDecoration(
-        color: theme?.color.background.general ?? Colors.white,
+        color: theme?.color?.background?.general ?? Colors.white,
         boxShadow: opacityAdjustedShadow,
       ),
       child: itemRow,

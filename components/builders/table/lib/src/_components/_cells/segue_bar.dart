@@ -27,17 +27,17 @@ class SegueBar extends StatelessWidget {
     final theme = SemanticTheme.of(context);
 
     final iconWidget = iconReference?.buildWidget(
-      color: theme?.color.icon.nav ?? Colors.black,
+      color: theme?.color?.icon?.nav ?? Colors.black,
     );
 
-    final titleTextStyle = theme?.typography.bodyHeavy.textStyle(
-      color: theme.color.text.generalPrimary,
+    final titleTextStyle = theme?.typography?.bodyHeavy?.textStyle(
+      color: theme.color?.text?.generalPrimary ?? Colors.black,
     );
 
     final paddedTitleWidget = Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-          left: theme?.distance.padding.horizontal.small ?? 0,
+          left: theme?.distance?.padding?.horizontal?.small ?? 0,
         ),
         child: Text(title ?? "", style: titleTextStyle),
       ),
@@ -51,7 +51,7 @@ class SegueBar extends StatelessWidget {
     if (auxiliaryText != null) {
       final auxiliaryTextWidget = _AuxiliaryTextWidget(
         text: auxiliaryText ?? "",
-        leftMargin: theme?.distance.spacing.horizontal.small ?? 0,
+        leftMargin: theme?.distance?.spacing?.horizontal?.small ?? 0,
       );
 
       rowChildren.add(auxiliaryTextWidget);
@@ -62,8 +62,8 @@ class SegueBar extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: theme?.distance.padding.horizontal.small ?? 0,
-          vertical: theme?.distance.padding.vertical.small ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.small ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.small ?? 0,
         ),
         child: Row(
           children: rowChildren,
@@ -92,8 +92,8 @@ class _AuxiliaryTextWidget extends StatelessWidget {
 
     final textWidget = Text(
       text ?? "",
-      style: theme?.typography.bodyHeavy.textStyle(
-        color: theme.color.text.action,
+      style: theme?.typography?.bodyHeavy?.textStyle(
+        color: theme.color?.text?.action ?? Colors.black,
       ),
     );
 
@@ -101,10 +101,10 @@ class _AuxiliaryTextWidget extends StatelessWidget {
       height: _height,
       margin: EdgeInsets.only(left: leftMargin ?? 0),
       padding: EdgeInsets.symmetric(
-        horizontal: theme?.distance.padding.horizontal.small ?? 0,
+        horizontal: theme?.distance?.padding?.horizontal?.small ?? 0,
       ),
       decoration: BoxDecoration(
-        color: theme?.color.background.raised ?? Colors.white,
+        color: theme?.color?.background?.raised ?? Colors.white,
         borderRadius: BorderRadius.all(
           Radius.circular(borderRadius),
         ),

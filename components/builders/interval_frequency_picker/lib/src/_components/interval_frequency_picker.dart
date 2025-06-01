@@ -41,7 +41,7 @@ class IntervalFrequencyPickerState extends State<IntervalFrequencyPicker>
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final double columnSpacing = theme?.distance.spacing.horizontal.large ?? 0;
+    final double columnSpacing = theme?.distance?.spacing?.horizontal?.large ?? 0;
 
     final Widget intervalColumn = Flexible(
       child: Container(
@@ -75,7 +75,7 @@ class IntervalFrequencyPickerState extends State<IntervalFrequencyPicker>
 
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: theme?.distance.padding.vertical.medium ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -97,7 +97,7 @@ class IntervalFrequencyPickerState extends State<IntervalFrequencyPicker>
 
   LabeledValue<PeriodType>? _rollerColumnDataFromFrequency(PeriodType val) {
     for (LabeledValue<PeriodType> data in widget.periodList ?? []) {
-      if (data.value.toString() == val?.toString()) return data;
+      if (data.value.toString() == val.toString()) return data;
     }
     return null;
   }

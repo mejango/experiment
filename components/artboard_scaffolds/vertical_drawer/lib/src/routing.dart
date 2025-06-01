@@ -6,7 +6,7 @@ class VerticalDrawerRoute<T> extends PageRoute<T> {
   SemanticThemeData theme;
 
   @override
-  Duration get transitionDuration => theme.duration.short;
+  Duration get transitionDuration => theme.duration?.short ?? Duration.zero;
 
   @override
   bool get opaque => false;
@@ -21,8 +21,8 @@ class VerticalDrawerRoute<T> extends PageRoute<T> {
   bool get maintainState => true;
 
   Animation<double> get animation => CurvedAnimation(
-        curve: theme.curve.hurried,
-        reverseCurve: theme.curve.hurried,
+        curve: theme.curve?.hurried ?? Curves.easeInOut,
+        reverseCurve: theme.curve?.hurried ?? Curves.easeInOut,
         parent: controller!,
       );
 

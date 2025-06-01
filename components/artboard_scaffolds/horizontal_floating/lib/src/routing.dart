@@ -6,7 +6,7 @@ class HorizontalFloatingRoute<T> extends ModalRoute<T> {
   SemanticThemeData theme;
 
   @override
-  Duration get transitionDuration => theme.duration.short;
+  Duration get transitionDuration => theme.duration?.short ?? Duration.zero;
 
   @override
   bool get opaque => false;
@@ -15,7 +15,7 @@ class HorizontalFloatingRoute<T> extends ModalRoute<T> {
   bool get barrierDismissible => false;
 
   @override
-  Color get barrierColor => theme.color.background.scrim;
+  Color get barrierColor => theme.color?.background?.scrim ?? Colors.black;
 
   @override
   String? get barrierLabel => null;
@@ -25,8 +25,8 @@ class HorizontalFloatingRoute<T> extends ModalRoute<T> {
 
   @override
   Animation<double> get animation => CurvedAnimation(
-        curve: theme.curve.hurried,
-        reverseCurve: theme.curve.hurried,
+        curve: theme.curve?.hurried ?? Curves.easeInOut,
+        reverseCurve: theme.curve?.hurried ?? Curves.easeInOut,
         parent: controller!,
       );
 

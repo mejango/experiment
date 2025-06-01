@@ -23,15 +23,15 @@ class BalanceCell extends StatelessWidget with CardCellBuilder, TagBuilder {
         text: balance.toString(),
         context: context,
       ),
-      style: theme?.typography.title.textStyle(
-        color: theme.color.text.generalPrimary,
+      style: theme?.typography?.title?.textStyle(
+        color: theme.color?.text?.generalPrimary ?? Colors.black,
       ),
     );
 
     final subtitleText = Text(
       'Balance',
-      style: theme?.typography.subtitle.textStyle(
-        color: theme.color.text.generalSecondary,
+      style: theme?.typography?.subtitle?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ),
     );
 
@@ -41,7 +41,7 @@ class BalanceCell extends StatelessWidget with CardCellBuilder, TagBuilder {
         balanceText,
         Padding(
           padding: EdgeInsets.only(
-            top: theme?.distance.spacing.vertical.small ?? 0,
+            top: theme?.distance?.spacing?.vertical?.small ?? 0,
           ),
           child: subtitleText,
         ),

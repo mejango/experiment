@@ -54,8 +54,8 @@ class ThreadCell extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: theme?.distance.padding.horizontal.small ?? 0,
-          vertical: theme?.distance.padding.vertical.medium ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.small ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
         ),
         child: Row(
           children: <Widget>[
@@ -81,7 +81,7 @@ class _IconWidget extends StatelessWidget {
     final theme = SemanticTheme.of(context);
 
     return iconReference?.buildWidget(
-      color: theme?.color.icon.generalPrimary ?? Colors.black,
+      color: theme?.color?.icon?.generalPrimary ?? Colors.black,
     ) ?? const SizedBox.shrink();
   }
 }
@@ -112,22 +112,22 @@ class _PaddedBody extends StatelessWidget {
     columnChildren.add(titleWidget);
 
     if (secondaryText != null) {
-      final TextStyle defaulTextStyle = theme?.typography.detailHeavy.textStyle(
-        color: theme.color.text.generalSecondary,
+      final TextStyle defaulTextStyle = theme?.typography?.detailHeavy?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ) ?? TextStyle();
-      final TextStyle thinTextStyle = theme?.typography.detail.textStyle(
-        color: theme.color.text.generalSecondary,
+      final TextStyle thinTextStyle = theme?.typography?.detail?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ) ?? TextStyle();
 
       final secondaryTextWidget = secondaryText?.generateWidget(
         defaultStyle: defaulTextStyle,
         thinStyle: thinTextStyle,
-        textScaleFactor: MediaQuery.of(context).textScaler.scale(theme?.typography.detailHeavy.fontSize ?? 0),
+        textScaleFactor: MediaQuery.of(context).textScaler.scale(theme?.typography?.detailHeavy?.fontSize ?? 0),
       );
 
       final paddedSecondaryTextWidget = Padding(
         padding: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.min ?? 0,
+          top: theme?.distance?.spacing?.vertical?.min ?? 0,
         ),
         child: secondaryTextWidget,
       );
@@ -138,7 +138,7 @@ class _PaddedBody extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: theme?.distance.padding.horizontal.small ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.small ?? 0,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

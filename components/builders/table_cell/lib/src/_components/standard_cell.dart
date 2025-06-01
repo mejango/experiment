@@ -30,13 +30,13 @@ class _StandardCellState extends State<StandardCell> with Tappable {
         opacity: tapped ? .7 : 1,
         child: Container(
           padding: EdgeInsets.symmetric(
-            horizontal: theme?.distance.gutter.horizontal.medium ?? 0,
-            vertical: theme?.distance.gutter.vertical.medium ?? 0,
+            horizontal: theme?.distance?.gutter?.horizontal?.medium ?? 0,
+            vertical: theme?.distance?.gutter?.vertical?.medium ?? 0,
           ),
           child: widget.child,
           decoration: BoxDecoration(
             border: Border(
-              bottom: BorderSide(color: theme?.color.stroke.medium ?? Colors.black),
+              bottom: BorderSide(color: theme?.color?.stroke?.medium ?? Colors.black),
             ),
           ),
         ),

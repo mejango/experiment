@@ -20,8 +20,8 @@ class SectionHeader extends StatelessWidget {
 
     final titleText = Text(
       title,
-      style: theme?.typography.title.textStyle(
-        color: theme.color.text.generalSecondary,
+      style: theme?.typography?.title?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ),
     );
 
@@ -30,12 +30,12 @@ class SectionHeader extends StatelessWidget {
     if (subtitle?.isNotEmpty ?? false) {
       final subtitleText = Padding(
         padding: EdgeInsets.symmetric(
-          vertical: theme?.distance.spacing.vertical.small ?? 0,
+          vertical: theme?.distance?.spacing?.vertical?.small ?? 0,
         ),
         child: Text(
-          subtitle ?? '',
-          style: theme?.typography.subtitle.textStyle(
-            color: theme.color.text.generalSecondary,
+          subtitle ?? "",
+          style: theme?.typography?.subtitle?.textStyle(
+            color: theme.color?.text?.generalSecondary ?? Colors.black,
           ),
         ),
       );
@@ -50,9 +50,9 @@ class SectionHeader extends StatelessWidget {
       ),
       padding: EdgeInsets.only(
         top: (withPadding ?? true)
-            ? theme?.distance.spacing.vertical.max ?? 0
-            : theme?.distance.spacing.vertical.small ?? 0,
-        bottom: theme?.distance.spacing.vertical.small ?? 0,
+            ? theme?.distance?.spacing?.vertical?.max ?? 0
+            : theme?.distance?.spacing?.vertical?.small ?? 0,
+        bottom: theme?.distance?.spacing?.vertical?.small ?? 0,
         left: horizontalGutter ?? 0,
         right: horizontalGutter ?? 0,
       ),

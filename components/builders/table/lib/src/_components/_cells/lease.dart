@@ -43,7 +43,7 @@ class LeaseCell extends StatelessWidget {
 
     final statusWidget = Container(
       margin: EdgeInsets.only(
-        left: theme?.distance.spacing.horizontal.small ?? 0,
+        left: theme?.distance?.spacing?.horizontal?.small ?? 0,
       ),
       child: _StatusTag(leaseStatus),
     );
@@ -64,12 +64,12 @@ class LeaseCell extends StatelessWidget {
 
     final rentWidget = Container(
       margin: EdgeInsets.only(
-        right: theme?.distance.spacing.horizontal.small ?? 0,
+        right: theme?.distance?.spacing?.horizontal?.small ?? 0,
       ),
       child: Text(
         formattedAmount,
-        style: theme?.typography.bodyHeavy.textStyle(
-          color: theme.color.text.generalPrimary,
+        style: theme?.typography?.bodyHeavy?.textStyle(
+          color: theme.color?.text?.generalPrimary ?? Colors.black,
         ),
       ),
     );
@@ -81,7 +81,7 @@ class LeaseCell extends StatelessWidget {
 
     final statsRow = Container(
       margin: EdgeInsets.only(
-        top: theme?.distance.spacing.vertical.large ?? 0,
+        top: theme?.distance?.spacing?.vertical?.large ?? 0,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -98,7 +98,7 @@ class LeaseCell extends StatelessWidget {
     if (tenants != null) {
       final tenantsSection = Container(
         margin: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.large ?? 0,
+          top: theme?.distance?.spacing?.vertical?.large ?? 0,
         ),
         child: _Tenants(tenants ?? []),
       );
@@ -115,16 +115,16 @@ class LeaseCell extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: theme?.distance.padding.horizontal.medium ?? 0,
-          vertical: theme?.distance.padding.vertical.medium ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
         ),
         margin: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.small ?? 0,
+          top: theme?.distance?.spacing?.vertical?.small ?? 0,
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(theme?.radius.medium ?? Radius.circular(0)),
-          border: Border.all(color: theme?.color.stroke.medium ?? Colors.black),
-          color: theme?.color.background.raised ?? Colors.white,
+          borderRadius: BorderRadius.all(theme?.radius?.medium ?? Radius.circular(0)),
+          border: Border.all(color: theme?.color?.stroke?.medium ?? Colors.black),
+          color: theme?.color?.background?.raised ?? Colors.white,
         ),
         child: bodyColumn,
       ),
@@ -151,8 +151,8 @@ class _Tenants extends StatelessWidget {
 
     return Text(
       tenantString,
-      style: theme?.typography.body.textStyle(
-        color: theme?.color.text.generalPrimary ?? Colors.black,
+      style: theme?.typography?.body?.textStyle(
+        color: theme.color?.text?.generalPrimary ?? Colors.black,
       ),
     );
   }
@@ -179,8 +179,8 @@ class _DateRange extends StatelessWidget {
 
     return Text(
       formattedDateString,
-      style: theme?.typography.detail.textStyle(
-        color: theme.color.text.generalSecondary,
+      style: theme?.typography?.detail?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ),
     );
   }

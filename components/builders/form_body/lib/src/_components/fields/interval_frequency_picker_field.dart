@@ -35,12 +35,12 @@ class IntervalFrequencyPickerField extends StatelessWidget {
 
     final fieldBody = Padding(
       padding: EdgeInsets.symmetric(
-        vertical: theme?.distance.padding.vertical.small ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.small ?? 0,
       ),
       child: Text(
         formattedValue,
-        style: theme?.typography.body.textStyle(
-          color: theme.color.text.generalPrimary,
+        style: theme?.typography?.body?.textStyle(
+          color: theme.color?.text?.generalPrimary ?? Colors.black,
         ),
         textAlign: TextAlign.right,
       ),

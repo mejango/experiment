@@ -64,7 +64,7 @@ class InheritedVerticalDrawerArtboardNavigatorPanel<T>
           ),
           child: widget.artboard,
           decoration: BoxDecoration(
-            boxShadow: [theme?.shadow.large ?? BoxShadow(color: Colors.transparent)],
+            boxShadow: [theme?.shadow?.large ?? BoxShadow(color: Colors.transparent)],
           ),
         )
       ],

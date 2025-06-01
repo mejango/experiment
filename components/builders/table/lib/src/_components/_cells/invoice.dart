@@ -97,6 +97,7 @@ class _StatusTag extends StatelessWidget with TagBuilder {
       case InvoiceStatusOption.overdue:
         return TagKindOption.error;
       case InvoiceStatusOption.unpaid:
+        return TagKindOption.normal;
     }
   }
 

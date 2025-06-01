@@ -29,15 +29,15 @@ class _SpacedColumnVerticalFloatingArtboardState
     if (widget.title != null) {
       final title = Text(
         widget.title ?? '',
-        style: theme?.typography.title.textStyle(
-          color: theme.color.text.generalPrimary,
+        style: theme?.typography?.title?.textStyle(
+          color: theme.color?.text?.generalPrimary ?? Colors.black,
         ),
       );
       children.add(
         Padding(
           child: title,
           padding: EdgeInsets.symmetric(
-            vertical: theme?.distance.spacing.vertical.medium ?? 0,
+            vertical: theme?.distance?.spacing?.vertical?.medium ?? 0,
           ),
         ),
       );

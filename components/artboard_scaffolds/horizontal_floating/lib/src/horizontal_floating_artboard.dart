@@ -14,27 +14,27 @@ mixin HorizontalFloatingArtboardState<T extends HorizontalFloatingArtboard>
     final theme = SemanticTheme.of(context);
 
     final decoration = BoxDecoration(
-      color: theme?.color.background.general,
-      borderRadius: BorderRadius.all(theme?.radius.large ?? Radius.zero),
+      color: theme?.color?.background?.general ?? Colors.white,
+      borderRadius: BorderRadius.all(theme?.radius?.large ?? Radius.zero),
       boxShadow: [
-        theme?.shadow.large ?? BoxShadow(color: Colors.transparent),
+        theme?.shadow?.large ?? BoxShadow(color: Colors.transparent),
       ],
     );
 
     final pageContent = Container(
       padding: EdgeInsets.symmetric(
-        horizontal: theme?.distance.gutter.horizontal.medium ?? 0,
-        vertical: theme?.distance.gutter.vertical.medium ?? 0,
+        horizontal: theme?.distance?.gutter?.horizontal?.medium ?? 0,
+        vertical: theme?.distance?.gutter?.vertical?.medium ?? 0,
       ),
       child: buildBody(context),
     );
 
     final safeArea = MediaQuery.of(context).padding;
     final margin = EdgeInsets.fromLTRB(
-      theme?.distance.gutter.horizontal.large ?? 0,
-      theme?.distance.gutter.vertical.medium ?? 0,
-      theme?.distance.gutter.horizontal.medium ?? 0,
-      theme?.distance.gutter.vertical.medium ?? 0,
+      theme?.distance?.gutter?.horizontal?.large ?? 0,
+      theme?.distance?.gutter?.vertical?.medium ?? 0,
+      theme?.distance?.gutter?.horizontal?.medium ?? 0,
+      theme?.distance?.gutter?.vertical?.medium ?? 0,
     );
     final safeAreaMargin = EdgeInsets.fromLTRB(
       margin.left,

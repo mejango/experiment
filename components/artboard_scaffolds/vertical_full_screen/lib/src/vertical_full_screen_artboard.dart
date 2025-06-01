@@ -167,7 +167,7 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
       right: 0,
       height: _statusBarScrimHeight,
       child: Container(
-        color: theme?.color.background.general.withValues(alpha: 0.85),
+        color: theme?.color?.background?.general?.withValues(alpha: 0.85) ?? Colors.transparent,
       ),
     );
     stackChildren.add(statusBarScrim);
@@ -190,7 +190,7 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
     );
 
     final scaffold = Scaffold(
-      backgroundColor: theme?.color.background.general,
+      backgroundColor: theme?.color?.background?.general ?? Colors.transparent,
       body: SafeArea(
         top: false,
         child: stack,

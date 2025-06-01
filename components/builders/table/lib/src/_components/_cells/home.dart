@@ -50,7 +50,7 @@ class HomeCell extends StatelessWidget {
       columnChildren.addAll([
         _SectionTitle(
           "Active leases",
-          topMargin: theme?.distance.spacing.vertical.large ?? 0,
+          topMargin: theme?.distance?.spacing?.vertical?.large ?? 0,
         ),
         activeLeasesColumn,
       ]);
@@ -62,7 +62,7 @@ class HomeCell extends StatelessWidget {
       columnChildren.addAll([
         _SectionTitle(
           "Inactive leases",
-          topMargin: theme?.distance.spacing.vertical.large ?? 0,
+          topMargin: theme?.distance?.spacing?.vertical?.large ?? 0,
         ),
         inactiveLeasesColumn,
       ]);
@@ -71,7 +71,7 @@ class HomeCell extends StatelessWidget {
     if (tags != null) {
       final tagsSection = Container(
         margin: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.large ?? 0,
+          top: theme?.distance?.spacing?.vertical?.large ?? 0,
         ),
         child: _TagsSection(tags: tags ?? []),
       );
@@ -89,14 +89,14 @@ class HomeCell extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: theme?.distance.padding.horizontal.medium ?? 0,
-          vertical: theme?.distance.padding.vertical.medium ?? 0,
+          horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
         ),
-        margin: EdgeInsets.only(top: theme?.distance.spacing.vertical.large ?? 0),
+        margin: EdgeInsets.only(top: theme?.distance?.spacing?.vertical?.large ?? 0),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(theme?.radius.medium ?? Radius.circular(0)),
-          border: Border.all(color: theme?.color.stroke.medium ?? Colors.black),
-          color: theme?.color.background.raised ?? Colors.white,
+          borderRadius: BorderRadius.all(theme?.radius?.medium ?? Radius.circular(0)),
+          border: Border.all(color: theme?.color?.stroke?.medium ?? Colors.black),
+          color: theme?.color?.background?.raised ?? Colors.white,
         ),
         child: bodyColumn,
       ),
@@ -125,10 +125,10 @@ class _TitleRow extends StatelessWidget {
 
     final homeIconWidget = Padding(
       padding: EdgeInsets.only(
-        right: theme?.distance.spacing.horizontal.small ?? 0,
+        right: theme?.distance?.spacing?.horizontal?.small ?? 0,
       ),
       child: homeIcon.buildWidget(
-        color: theme?.color.icon.generalPrimary ?? Colors.black,
+        color: theme?.color?.icon?.generalPrimary ?? Colors.black,
       ),
     );
 
@@ -171,7 +171,7 @@ class _LeasePreviewsColumn extends StatelessWidget {
         height: _indicatorSize,
         width: _indicatorSize,
         margin: EdgeInsets.only(
-          right: theme?.distance.spacing.horizontal.small ?? 0,
+          right: theme?.distance?.spacing?.horizontal?.small ?? 0,
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(_indicatorSize / 2)),
@@ -187,12 +187,12 @@ class _LeasePreviewsColumn extends StatelessWidget {
 
       final amountWidget = Container(
         margin: EdgeInsets.only(
-          right: theme?.distance.spacing.horizontal.small ?? 0,
+          right: theme?.distance?.spacing?.horizontal?.small ?? 0,
         ),
         child: Text(
           formattedAmount,
-          style: theme?.typography.bodyHeavy.textStyle(
-            color: theme?.color.text.generalPrimary ?? Colors.black,
+          style: theme?.typography?.bodyHeavy?.textStyle(
+            color: theme.color?.text?.generalPrimary ?? Colors.black,
           ),
         ),
       );
@@ -207,8 +207,8 @@ class _LeasePreviewsColumn extends StatelessWidget {
 
       final dateWidget = Text(
         formattedDateString,
-        style: theme?.typography.detail.textStyle(
-          color: theme.color.text.generalSecondary,
+        style: theme?.typography?.detail?.textStyle(
+          color: theme.color?.text?.generalSecondary ?? Colors.black,
         ),
       );
 
@@ -222,7 +222,7 @@ class _LeasePreviewsColumn extends StatelessWidget {
         margin: lease == leases.last
             ? null
             : EdgeInsets.only(
-                bottom: theme?.distance.spacing.vertical.small ?? 0,
+                bottom: theme?.distance?.spacing?.vertical?.small ?? 0,
               ),
         child: Row(
           children: <Widget>[
@@ -262,8 +262,8 @@ class _TagsSection extends StatelessWidget with TagBuilder {
     }
 
     return Wrap(
-      spacing: theme?.distance.spacing.horizontal.small ?? 0,
-      runSpacing: theme?.distance.spacing.vertical.small ?? 0,
+      spacing: theme?.distance?.spacing?.horizontal?.small ?? 0,
+      runSpacing: theme?.distance?.spacing?.vertical?.small ?? 0,
       children: tagWidgets,
     );
   }
@@ -285,12 +285,12 @@ class _SectionTitle extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(
         top: topMargin ?? 0,
-        bottom: theme?.distance.spacing.vertical.small ?? 0,
+        bottom: theme?.distance?.spacing?.vertical?.small ?? 0,
       ),
       child: Text(
         text ?? "",
-        style: theme?.typography.title.textStyle(
-          color: theme.color.text.generalSecondary,
+        style: theme?.typography?.title?.textStyle(
+          color: theme.color?.text?.generalSecondary ?? Colors.black,
         ),
       ),
     );

@@ -17,7 +17,7 @@ class SpacedColumn extends StatelessWidget {
         Padding(
           child: child,
           padding: EdgeInsets.only(
-            top: theme?.distance.spacing.vertical.medium ?? 0,
+            top: theme?.distance?.spacing?.vertical?.medium ?? 0,
           ),
         ),
       );
@@ -25,8 +25,8 @@ class SpacedColumn extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: theme?.distance.gutter.horizontal.medium ?? 0,
-        vertical: theme?.distance.padding.vertical.large ?? 0,
+        horizontal: theme?.distance?.gutter?.horizontal?.medium ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.large ?? 0,
       ),
       child: Column(children: stackChildren),
     );

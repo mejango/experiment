@@ -20,10 +20,10 @@ class Breadcrumb extends StatelessWidget {
     if (iconReference != null) {
       final iconWidget = Container(
         margin: EdgeInsets.symmetric(
-          horizontal: theme?.distance.spacing.horizontal.small ?? 0,
+          horizontal: theme?.distance?.spacing?.horizontal?.small ?? 0,
         ),
         child: iconReference?.buildWidget(
-          color: theme?.color.icon.generalSecondary ?? Colors.transparent,
+          color: theme?.color?.icon?.generalSecondary ?? Colors.transparent,
         ),
       );
 
@@ -33,8 +33,8 @@ class Breadcrumb extends StatelessWidget {
     final textWidget = Flexible(
       child: Text(
         title ?? '',
-        style: theme?.typography.label.textStyle(
-          color: theme.color.text.generalSecondary,
+        style: theme?.typography?.label?.textStyle(
+          color: theme.color?.text?.generalSecondary ?? Colors.black,
         ),
       ),
     );

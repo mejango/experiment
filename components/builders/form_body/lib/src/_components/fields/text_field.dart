@@ -156,8 +156,8 @@ class _FieldBodyState extends State<_FieldBody> {
       focusedBorder: UnderlineInputBorder(
         borderSide: BorderSide(color: Colors.transparent),
       ),
-      hintStyle: theme?.typography.body.textStyle(
-        color: theme.color.text.inputPlaceholder,
+      hintStyle: theme?.typography?.body?.textStyle(
+        color: theme.color?.text?.inputPlaceholder ?? Colors.black,
       ),
     );
 
@@ -167,13 +167,13 @@ class _FieldBodyState extends State<_FieldBody> {
         obscureText: widget.isPassword ?? false,
         textInputAction: widget.textInputAction,
         keyboardType: widget.keyboardType,
-        style: theme?.typography.body.textStyle(
-          color: theme.color.text.inputActive,
+        style: theme?.typography?.body?.textStyle(
+          color: theme.color?.text?.inputActive ?? Colors.black,
         ),
         textAlign: TextAlign.right,
         decoration: decoration,
         focusNode: widget.focusNode,
-        keyboardAppearance: theme?.systemUiStyle.keyboardBrightness.value ?? Brightness.light,
+        keyboardAppearance: theme?.systemUiStyle?.keyboardBrightness?.value ?? Brightness.light,
         onSubmitted: (value) => widget.onSubmitted?.call(value, context),
         onTap: widget.onTap as GestureTapCallback?,
         controller: _controller,

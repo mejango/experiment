@@ -41,14 +41,14 @@ mixin NavBar implements StatelessWidget {
 
     return Container(
       padding: EdgeInsets.fromLTRB(
-        theme?.distance.gutter.horizontal.small ?? 0,
-        (theme?.distance.gutter.vertical.small ?? 0) + safeAreaTop,
-        theme?.distance.gutter.horizontal.small ?? 0,
-        theme?.distance.gutter.vertical.small ?? 0,
+        theme?.distance?.gutter?.horizontal?.small ?? 0,
+        (theme?.distance?.gutter?.vertical?.small ?? 0) + safeAreaTop,
+        theme?.distance?.gutter?.horizontal?.small ?? 0,
+        theme?.distance?.gutter?.vertical?.small ?? 0,
       ),
       decoration: BoxDecoration(
-        color: theme?.color.background.general ?? Colors.white,
-        boxShadow: [theme?.shadow.medium ?? BoxShadow(color: Colors.black, blurRadius: 0)],
+        color: theme?.color?.background?.general ?? Colors.white,
+        boxShadow: [theme?.shadow?.medium ?? BoxShadow(color: Colors.black, blurRadius: 0)],
       ),
       child: itemRow,
     );

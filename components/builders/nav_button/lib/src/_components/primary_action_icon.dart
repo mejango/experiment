@@ -11,7 +11,7 @@ class PrimaryActionIconNavButton extends StatelessWidget with NavButton {
   @override
   Widget? buildIcon(BuildContext context) {
     return iconReference.buildWidget(
-      color: SemanticTheme.of(context)?.color.icon.action ?? Colors.transparent,
+      color: SemanticTheme.of(context)?.color?.icon?.action ?? Colors.transparent,
     );
   }
 

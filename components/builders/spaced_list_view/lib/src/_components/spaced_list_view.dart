@@ -28,7 +28,7 @@ class _SpacedListViewState extends State<SpacedListView> {
           (child) => Container(
             child: child,
             margin: EdgeInsets.only(
-              bottom: theme?.distance.gutter.vertical.medium ?? 0,
+              bottom: theme?.distance?.gutter?.vertical?.medium ?? 0,
             ),
           ),
         )
@@ -38,8 +38,8 @@ class _SpacedListViewState extends State<SpacedListView> {
       final paddedButton = Container(
         child: widget.button,
         margin: widget.buttonIsLast == true
-            ? EdgeInsets.only(top: theme?.distance.spacing.vertical.medium ?? 0)
-            : EdgeInsets.only(bottom: theme?.distance.spacing.vertical.medium ?? 0),
+            ? EdgeInsets.only(top: theme?.distance?.spacing?.vertical?.medium ?? 0)
+            : EdgeInsets.only(bottom: theme?.distance?.spacing?.vertical?.medium ?? 0),
       );
 
       spacedChildren = widget.buttonIsLast == true
@@ -49,13 +49,13 @@ class _SpacedListViewState extends State<SpacedListView> {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: theme?.distance.gutter.horizontal.medium ?? 0,
+        horizontal: theme?.distance?.gutter?.horizontal?.medium ?? 0,
       ),
-      color: theme?.color.background.general ?? Colors.transparent,
+      color: theme?.color?.background?.general ?? Colors.transparent,
       child: ListView(
         controller: widget.scrollController,
         padding: EdgeInsets.only(
-          bottom: theme?.distance.gutter.vertical.medium ?? 0,
+          bottom: theme?.distance?.gutter?.vertical?.medium ?? 0,
         ),
         children: spacedChildren ?? [],
       ),

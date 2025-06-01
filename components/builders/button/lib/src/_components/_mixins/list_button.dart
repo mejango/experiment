@@ -30,7 +30,7 @@ mixin ListButtonState<T extends StatefulWidget> on Tappable<T> {
 
     if (button.iconReference != null) {
       final iconPadding = button.text != null
-          ? EdgeInsets.only(right: theme?.distance.spacing.horizontal.medium ?? 0)
+          ? EdgeInsets.only(right: theme?.distance?.spacing?.horizontal?.medium ?? 0)
           : EdgeInsets.all(0);
 
       final buttonIcon = Container(
@@ -41,7 +41,7 @@ mixin ListButtonState<T extends StatefulWidget> on Tappable<T> {
       buttonChildren.add(buttonIcon);
     }
 
-    final textDecoration = theme?.typography.button.textStyle(color: textColor ?? Colors.black);
+    final textDecoration = theme?.typography?.button?.textStyle(color: textColor ?? Colors.black);
 
     final styledButtonText = Text(
       button.text ?? '',
@@ -55,7 +55,7 @@ mixin ListButtonState<T extends StatefulWidget> on Tappable<T> {
     if (button.badgeText != null) {
       final badgeText = Text(
         button.badgeText ?? '',
-        style: theme?.typography.bodyHeavy.textStyle(
+        style: theme?.typography?.bodyHeavy?.textStyle(
           color: button.badgeTextColor(context) ?? Colors.black,
         ),
       );
@@ -74,7 +74,7 @@ mixin ListButtonState<T extends StatefulWidget> on Tappable<T> {
           color: Colors.transparent,
           height: _height,
           padding: EdgeInsets.symmetric(
-            horizontal: theme?.distance.padding.horizontal.medium ?? 0,
+            horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -24,7 +24,7 @@ class MetaFormField extends StatelessWidget with TagBuilder {
 
     final label = Padding(
       padding: EdgeInsets.only(
-        right: theme?.distance.spacing.horizontal.small ?? 0,
+        right: theme?.distance?.spacing?.horizontal?.small ?? 0,
       ),
       child: FieldLabel(labelText: title!),
     );
@@ -34,8 +34,8 @@ class MetaFormField extends StatelessWidget with TagBuilder {
           ?.map(
             (value) => Text(
               value,
-              style: theme?.typography.body.textStyle(
-                color: theme.color.text.inputActive,
+              style: theme?.typography?.body?.textStyle(
+                color: theme.color?.text?.inputActive ?? Colors.black,
               ),
               textAlign: TextAlign.right,
             ),
@@ -45,8 +45,8 @@ class MetaFormField extends StatelessWidget with TagBuilder {
     } else {
       final emptyText = Text(
         'Not set',
-        style: theme?.typography.body.textStyle(
-          color: theme.color.text.inputPlaceholder,
+        style: theme?.typography?.body?.textStyle(
+          color: theme.color?.text?.inputPlaceholder ?? Colors.black,
         ),
         textAlign: TextAlign.right,
       );
@@ -55,10 +55,10 @@ class MetaFormField extends StatelessWidget with TagBuilder {
 
     final rightArrow = Padding(
       padding: EdgeInsets.only(
-        left: theme?.distance.spacing.horizontal.small ?? 0,
+        left: theme?.distance?.spacing?.horizontal?.small ?? 0,
       ),
       child: XSmallIcon.rightArrow.buildWidget(
-        color: theme?.color.icon.generalSecondary ?? Colors.black,
+        color: theme?.color?.icon?.generalSecondary ?? Colors.black,
       ),
     );
 
@@ -84,7 +84,7 @@ class MetaFormField extends StatelessWidget with TagBuilder {
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: theme?.distance.padding.vertical.small ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.small ?? 0,
         ),
         child: fieldBody,
       ),

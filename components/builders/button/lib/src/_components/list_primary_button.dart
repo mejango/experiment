@@ -14,15 +14,15 @@ class PrimaryListButton extends StatefulWidget with ListStyleButton {
 
   @override
   get textColor =>
-      (context) => SemanticTheme.of(context)?.color.text.generalPrimary;
+      (context) => SemanticTheme.of(context)?.color?.text?.generalPrimary;
 
   @override
   get badgeTextColor =>
-      (context) => SemanticTheme.of(context)?.color.text.action;
+      (context) => SemanticTheme.of(context)?.color?.text?.action;
 
   @override
   get iconColor =>
-      (context) => SemanticTheme.of(context)?.color.icon.generalPrimary;
+      (context) => SemanticTheme.of(context)?.color?.icon?.generalPrimary;
 
   PrimaryListButton({
     required this.onTap,

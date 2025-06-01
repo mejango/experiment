@@ -34,7 +34,7 @@ class IconPickerField extends StatelessWidget {
     }
 
     final selectedIconWidget = _selectedOption?.icon.buildWidget(
-      color: theme?.color.icon.generalPrimary ?? Colors.black,
+      color: theme?.color?.icon?.generalPrimary ?? Colors.black,
     );
 
     return PickerField(
