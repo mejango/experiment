@@ -13,11 +13,11 @@ class SessionCommands extends BlossmCommandDispatcher with DispatcherConfig {
   String get domain => "session";
 
   @override
-  Future Function() get onTokenInvalid => () => redirectToWelcome(context);
+  Future Function() get onTokenInvalid => () => Future.value(); // redirectToWelcome(context);
 
   @override
   Future Function() get onChallengeIssued =>
-      () => redirectToChallengeAnswer(context);
+      () => Future.value(); // redirectToChallengeAnswer(context);
 
   Future start() async {
     // final _hasToken = await tokenStore.readToken() != null;
@@ -34,7 +34,7 @@ class SessionCommands extends BlossmCommandDispatcher with DispatcherConfig {
   }
 
   Future save({
-    @required String phoneNumber,
+    required String phoneNumber,
   }) async {
     return dispatch(
       payload: {
@@ -53,7 +53,7 @@ class SessionCommands extends BlossmCommandDispatcher with DispatcherConfig {
   }
 
   Future switchContext({
-    @required String context,
+    required String context,
   }) {
     return dispatch(
       payload: {

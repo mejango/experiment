@@ -6,13 +6,13 @@ class SMTokenStore implements TokenStore {
   static const _challengeTokenKey = "challenge_token";
 
   @override
-  void Function(String) get saveSessionToken =>
-      (String token) => save(key: _sessionTokenKey, value: token);
+  void Function(String?) get saveSessionToken =>
+      (String? token) => save(key: _sessionTokenKey, value: token ?? "");
 
   @override
-  void Function(String) get saveChallengeToken => (String token) => save(
+  void Function(String?) get saveChallengeToken => (String? token) => save(
         key: _challengeTokenKey,
-        value: token,
+        value: token ?? "",
       );
 
   @override

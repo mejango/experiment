@@ -12,14 +12,14 @@ class ChallengeCommands extends BlossmCommandDispatcher with DispatcherConfig {
   String get domain => "challenge";
 
   @override
-  Future Function() get onTokenInvalid => () => redirectToWelcome(context);
+  Future Function() get onTokenInvalid => () => Future.value(); // redirectToWelcome(context);
 
   @override
   Future Function() get onChallengeIssued =>
-      () => redirectToChallengeAnswer(context);
+      () => Future.value(); // redirectToChallengeAnswer(context);
 
   Future issue({
-    @required String phoneNumber,
+    required String phoneNumber,
   }) {
     return dispatch(
       payload: {
@@ -31,7 +31,7 @@ class ChallengeCommands extends BlossmCommandDispatcher with DispatcherConfig {
   }
 
   Future answer({
-    @required String code,
+    required String code,
   }) {
     return dispatch(
       payload: {
