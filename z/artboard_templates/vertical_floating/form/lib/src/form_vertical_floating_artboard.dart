@@ -43,8 +43,8 @@ abstract class FormVerticalFloatingArtboard<T> extends StatefulWidget
   DatePickerBuilder buildDatePicker(
     BuildContext context, {
     required Date selectedDate,
-    Date startBound,
-    Date endBound,
+    Date? startBound,
+    Date? endBound,
   }) =>
       DatePickerVerticalFloatingArtboard(
         selectedDate: selectedDate,
@@ -58,7 +58,7 @@ abstract class FormVerticalFloatingArtboard<T> extends StatefulWidget
     String title,
     String emptyText,
     List<LabeledValue> selectedOptions,
-    @required List<LabeledValue> options,
+    required List<LabeledValue> options,
     bool isMultiSelect,
   }) =>
       OptionPickerVerticalFloatingArtboard(
@@ -74,7 +74,7 @@ abstract class FormVerticalFloatingArtboard<T> extends StatefulWidget
     BuildContext context, {
     String title,
     LabeledIcon selectedOption,
-    @required List<LabeledIcon> options,
+    required List<LabeledIcon> options,
   }) =>
       IconPickerVerticalFloatingArtboard(
         title: title,
@@ -143,15 +143,15 @@ abstract class FormVerticalFloatingArtboard<T> extends StatefulWidget
 
   @override
   Future<T> goTo<T>({
-    @required BuildContext context,
-    @required Artboard<T> artboard,
+    required BuildContext context,
+    required Artboard<T> artboard,
   }) async =>
       await ArtboardNavigator.of(context).goTo<T>(artboard);
 
   @override
   void onFocusChanged({
-    @required BuildContext context,
-    @required bool isInFocus,
+    required BuildContext context,
+    required bool isInFocus,
   }) =>
       ArtboardNavigator.of(context).toggleNavButtonsHidden(isInFocus);
 }

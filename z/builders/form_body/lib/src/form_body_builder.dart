@@ -65,7 +65,7 @@ mixin FormBodyBuilder implements StatefulWidget {
 
   DatePickerBuilder buildDatePicker(
     BuildContext context, {
-    @required Date selectedDate,
+    required Date selectedDate,
   });
 
   OptionPickerArtboardBuilder buildOptionPicker(
@@ -73,7 +73,7 @@ mixin FormBodyBuilder implements StatefulWidget {
     String title,
     String emptyText,
     List<LabeledValue> selectedOptions,
-    @required List<LabeledValue> options,
+    required List<LabeledValue> options,
     bool isMultiSelect,
   });
 
@@ -118,13 +118,13 @@ mixin FormBodyBuilder implements StatefulWidget {
   });
 
   Future<T> goTo<T>({
-    @required BuildContext context,
-    @required Artboard<T> artboard,
+    required BuildContext context,
+    required Artboard<T> artboard,
   });
 
   void onFocusChanged({
-    @required BuildContext context,
-    @required bool isInFocus,
+    required BuildContext context,
+    required bool isInFocus,
   });
 
   void setupFieldDataOnTapListeners(

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:meta/meta.dart';
 import 'package:network/index.dart';
 
 import 'utils/index.dart';
