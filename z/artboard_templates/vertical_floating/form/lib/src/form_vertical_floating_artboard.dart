@@ -74,7 +74,7 @@ abstract class FormVerticalFloatingArtboard<T> extends StatefulWidget
     BuildContext context, {
     String? title,
     LabeledIcon? selectedOption,
-    required List<LabeledIcon> options,
+    List<LabeledIcon>? options,
   }) =>
       IconPickerVerticalFloatingArtboard(
         title: title ?? '',
@@ -85,36 +85,36 @@ abstract class FormVerticalFloatingArtboard<T> extends StatefulWidget
   @override
   TimePickerArtboardBuilder buildTimePicker(
     BuildContext context, {
-    TimeOfDay selectedTime,
+    TimeOfDay? selectedTime,
   }) =>
       TimePickerVerticalFloatingArtboard(
-        initialValue: selectedTime,
+        initialValue: selectedTime ?? TimeOfDay.now(),
       );
 
   @override
   IntervalFrequencyPickerArtboardBuilder buildIntervalFrequencyPicker(
     BuildContext context, {
-    Frequency selectedSchedule,
-    List<LabeledValue<int>> intervalList,
-    List<LabeledValue<PeriodType>> periodList,
+    FrequencyType? selectedSchedule,
+    List<LabeledValue<int>>? intervalList,
+    List<LabeledValue<PeriodType>>? periodList,
   }) =>
       IntervalFrequencyPickerVerticalFloatingArtboard(
-        selectedValue: selectedSchedule,
-        intervalList: intervalList,
-        periodList: periodList,
+        selectedValue: selectedSchedule ?? FrequencyType(interval: 1, frequency: PeriodType.fromString('week')),
+        intervalList: intervalList ?? [],
+        periodList: periodList ?? [],
       );
 
   @override
   RollerColumnPickerArtboardBuilder<T> buildRollerColumnPicker<T>(
     BuildContext context, {
-    LabeledValue<T> selectedValue,
-    List<LabeledValue<T>> options,
-    bool infiniteScroll,
+    LabeledValue<T>? selectedValue,
+    List<LabeledValue<T>>? options,
+    bool? infiniteScroll,
   }) =>
       RollerColumnPickerVerticalFloatingArtboard(
-        selectedValue: selectedValue,
-        options: options,
-        infiniteScroll: infiniteScroll,
+        selectedValue: selectedValue ?? LabeledValue(value: null, label: ''),
+        options: options ?? [],
+        infiniteScroll: infiniteScroll ?? false,
       );
 
   @override

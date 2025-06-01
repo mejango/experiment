@@ -7,9 +7,9 @@ import '_components/roller_column_picker.dart';
 
 mixin RollerColumnPickerArtboardBuilder<T>
     implements Artboard<LabeledValue<T>> {
-  LabeledValue<T> get selectedValue;
-  List<LabeledValue<T>> get options => [];
-  bool get infiniteScroll => false;
+  LabeledValue<T>? get selectedValue;
+  List<LabeledValue<T>>? get options => [];
+  bool? get infiniteScroll => false;
 }
 
 mixin RollerColumnPickerArtboardBuilderState<T,
