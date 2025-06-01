@@ -14,11 +14,11 @@ dependencies:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: z/artboard_templates/vertical_floating/spaced_column
-  # app_data:
-  #   git:
-  #     url: git@github.com:mejango/experiment.git
-  #     ref: main
-  #     path: z/app_data
+  app_data:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/app_data
   button_builder:
     git:
       url: git@github.com:mejango/experiment.git
