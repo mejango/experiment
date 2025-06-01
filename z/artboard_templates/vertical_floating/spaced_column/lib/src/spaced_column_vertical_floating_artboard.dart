@@ -6,11 +6,11 @@ import 'package:vertical_floating_artboard_scaffold/index.dart';
 
 abstract class SpacedColumnVerticalFloatingArtboard extends StatefulWidget
     with VerticalFloatingArtboard, Artboard, SpacedColumnBuilder {
-  String get title;
+  String? get title;
 
-  List<Widget> Function(BuildContext) get buildSpacedColumnChildren;
+  List<Widget> Function(BuildContext)? get buildSpacedColumnChildren;
 
-  List<Widget> buildBody(BuildContext context) => null;
+  List<Widget>? buildBody(BuildContext context) => null;
 
   @override
   State<StatefulWidget> createState() =>
@@ -28,8 +28,8 @@ class _SpacedColumnVerticalFloatingArtboardState
 
     if (widget.title != null) {
       final title = Text(
-        widget.title,
-        style: theme.typography.title.textStyle(
+        widget.title ?? '',
+        style: theme?.typography.title.textStyle(
           color: theme.color.text.generalPrimary,
         ),
       );
@@ -37,7 +37,7 @@ class _SpacedColumnVerticalFloatingArtboardState
         Padding(
           child: title,
           padding: EdgeInsets.symmetric(
-            vertical: theme.distance.spacing.vertical.medium,
+            vertical: theme?.distance.spacing.vertical.medium ?? 0,
           ),
         ),
       );
@@ -45,14 +45,14 @@ class _SpacedColumnVerticalFloatingArtboardState
 
     if (widget.buildBody(context) != null)
       children.addAll(
-        widget.buildBody(context).toList(),
+        widget.buildBody(context)?.toList() ?? [],
       );
 
     if (widget.buildSpacedColumnChildren != null)
       children.add(
         widget.buildSpacedColumn(
           context,
-          children: widget.buildSpacedColumnChildren(context),
+          children: widget.buildSpacedColumnChildren!(context),
         ),
       );
 
