@@ -29,7 +29,7 @@ abstract class StreamListViewVerticalFullScreenArtboard<T>
 
   Widget emptyStateWidget(BuildContext context);
 
-  List<Widget> listViewChildren(BuildContext context, T streamSnapshot);
+  List<Widget> listViewChildren(BuildContext context, T? streamSnapshot);
 
   @override
   Widget buildNavBar(BuildContext context) => buildAnimatedTitleNavBar(
@@ -44,7 +44,7 @@ abstract class StreamListViewVerticalFullScreenArtboard<T>
         stream: stream,
         loading: loadingStateWidget(context),
         empty: emptyStateWidget(context),
-        child: (BuildContext context, T streamSnapshot) => buildSpacedListView(
+        child: (BuildContext context, T? streamSnapshot) => buildSpacedListView(
           children: [
             buildPageHeader(
               text: artboardTitle,
