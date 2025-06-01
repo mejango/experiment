@@ -22,7 +22,7 @@ class SmSemanticTheme extends SemanticThemeData<SmThemeOption> {
 
   @override
   Future<SmThemeOption> loadThemeOption() async {
-    final String key = await stringForKey(themeOptionKey);
+    final String? key = await stringForKey(themeOptionKey);
 
     switch (key) {
       case "dark":

@@ -10,17 +10,17 @@ class SmLabelTypography extends SemanticTypography {
   SmLabelTypography(currentThemeOption) : super(currentThemeOption);
 
   @override
-  String get fontFamily => ff.circular;
+  String? get fontFamily => ff.circular;
 
   @override
-  List<String> get fontFamilyFallback => null;
+  List<String>? get fontFamilyFallback => null;
 
   @override
-  double get fontSize => fs.extraSmall;
+  double? get fontSize => fs.extraSmall;
 
   @override
-  FontWeight get fontWeight => fw.thick;
+  FontWeight? get fontWeight => fw.thick;
 
   @override
-  double get letterSpacing => 0;
+  double? get letterSpacing => 0;
 }

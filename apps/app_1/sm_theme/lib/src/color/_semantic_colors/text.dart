@@ -10,55 +10,55 @@ class SmTextColor extends SemanticTextColor<SmThemeOption> {
   SmTextColor(SmThemeOption currentThemeOption) : super(currentThemeOption);
 
   @override
-  Color get action => colors.brandGreen;
+  Color? get action => colors.brandGreen;
 
   @override
-  Color get actionDisabled => colors.brandGreenFade;
+  Color? get actionDisabled => colors.brandGreenFade;
 
   @override
-  Color get onActionPrimaryBackground => colors.white1;
+  Color? get onActionPrimaryBackground => colors.white1;
 
   @override
-  Color get onActionSecondaryBackground => colors.white1;
+  Color? get onActionSecondaryBackground => colors.white1;
 
   @override
-  Color get onActionDisabledBackground => colors.white2;
+  Color? get onActionDisabledBackground => colors.white2;
 
   @override
-  Color get onNotifyBackground => colors.white1;
+  Color? get onNotifyBackground => colors.white1;
 
   @override
-  Color get bad => Colors.red;
+  Color? get bad => Colors.red;
 
   @override
-  Color get brand => colors.brandGreen;
+  Color? get brand => colors.brandGreen;
 
   @override
-  Color get good => forThemeOption({
+  Color? get good => forThemeOption({
         SmThemeOption.dark: Colors.green,
       });
 
   @override
-  Color get inputActive => colors.white1;
+  Color? get inputActive => colors.white1;
 
   @override
-  Color get inputDisabled => inputActive.withOpacity(.35);
+  Color? get inputDisabled => inputActive?.withValues(alpha: 0.35 * 255);
 
   @override
-  Color get inputPlaceholder => inputActive.withOpacity(.2);
+  Color? get inputPlaceholder => inputActive?.withValues(alpha: 0.2 * 255);
 
   @override
-  Color get warn => forThemeOption({
+  Color? get warn => forThemeOption({
         SmThemeOption.dark: Colors.yellow,
       });
 
   @override
-  Color get generalPrimary => forThemeOption({
+  Color? get generalPrimary => forThemeOption({
         SmThemeOption.dark: colors.white1,
       });
 
   @override
-  Color get generalSecondary => forThemeOption({
+  Color? get generalSecondary => forThemeOption({
         SmThemeOption.dark: Colors.grey,
       });
 }

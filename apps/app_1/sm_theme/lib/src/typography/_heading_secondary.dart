@@ -10,17 +10,17 @@ class SmHeadingSecondaryTypography extends SemanticTypography {
   SmHeadingSecondaryTypography(currentThemeOption) : super(currentThemeOption);
 
   @override
-  String get fontFamily => ff.circular;
+  String? get fontFamily => ff.circular;
 
   @override
-  List<String> get fontFamilyFallback => null;
+  List<String>? get fontFamilyFallback => null;
 
   @override
-  double get fontSize => fs.large;
+  double? get fontSize => fs.large;
 
   @override
-  FontWeight get fontWeight => fw.medium;
+  FontWeight? get fontWeight => fw.medium;
 
   @override
-  double get letterSpacing => null;
+  double? get letterSpacing => null;
 }
