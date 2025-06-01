@@ -48,7 +48,7 @@ class ModelObjectCache {
   }
 
   T? read<T extends ModelObject>(
-      {String? guid, T? converter(Map<String, Object>? map)?}) {
+      {String? guid, T? converter(Map<String?, Object?> map)?}) {
     //Get the cache.
     final cache = Disk.read;
 
@@ -59,7 +59,7 @@ class ModelObjectCache {
 
     ///Get from server if null;
 
-    return converter?.call(map as Map<String, Object>?);
+    return converter?.call(map as Map<String?, Object?>);
   }
 
   Future<File>? empty({List<String>? except}) async {
