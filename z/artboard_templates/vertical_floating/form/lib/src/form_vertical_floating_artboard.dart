@@ -112,48 +112,48 @@ abstract class FormVerticalFloatingArtboard<T> extends StatefulWidget
     bool? infiniteScroll,
   }) =>
       RollerColumnPickerVerticalFloatingArtboard(
-        selectedValue: selectedValue ?? LabeledValue(value: null, label: ''),
-        options: options ?? [],
-        infiniteScroll: infiniteScroll ?? false,
+        selectedValue: selectedValue,
+        options: options,
+        infiniteScroll: infiniteScroll,
       );
 
   @override
   TagEditorArtboardBuilder buildTagEditor(
     BuildContext context, {
-    List<String> tags,
+    List<String>? tags,
   }) =>
-      TagEditorVerticalFloatingArtboard(tags: tags);
+      TagEditorVerticalFloatingArtboard(tags: tags ?? [], title: '', emptyText: '');
 
   @override
   MetaFormArtboardBuilder<T> buildMetaForm<T>(
     BuildContext context, {
-    String title,
-    Future<List<StreamableFormFieldData>> fieldsData,
-    T Function(List<StreamableFormFieldData>) valueFromFieldsData,
-    String submitButtonText,
-    void Function() validateForm,
+    String? title,
+    Future<List<StreamableFormFieldData>>? fieldsData,
+    T Function(List<StreamableFormFieldData>)? valueFromFieldsData,
+    String? submitButtonText,
+    void Function()? validateForm,
   }) =>
       MetaFormVerticalFloatingArtboard(
-        title: title,
-        fieldsData: fieldsData,
-        valueFromFieldsData: valueFromFieldsData,
-        submitButtonText: submitButtonText,
-        validateForm: validateForm,
+        title: title ?? '',
+        fieldsData: fieldsData ?? Future.value([]),
+        valueFromFieldsData: valueFromFieldsData ?? (data) => data.first.value,
+        submitButtonText: submitButtonText ?? '',
+        validateForm: validateForm ?? () {},
       );
 
   @override
-  Future<T> goTo<T>({
+  Future<T?> goTo<T>({
     required BuildContext context,
     required Artboard<T> artboard,
   }) async =>
-      await ArtboardNavigator.of(context).goTo<T>(artboard);
+      await ArtboardNavigator.of(context)?.goTo<T>(artboard);
 
   @override
   void onFocusChanged({
     required BuildContext context,
     required bool isInFocus,
   }) =>
-      ArtboardNavigator.of(context).toggleNavButtonsHidden(isInFocus);
+      ArtboardNavigator.of(context)?.toggleNavButtonsHidden(isInFocus);
 }
 
 class _FormVerticalFloatingArtboardState

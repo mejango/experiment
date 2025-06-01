@@ -117,7 +117,7 @@ mixin FormBodyBuilder implements StatefulWidget {
     void Function() validateForm,
   });
 
-  Future<T> goTo<T>({
+  Future<T?> goTo<T>({
     required BuildContext context,
     required Artboard<T> artboard,
   });
@@ -220,8 +220,7 @@ mixin FormBodyBuilder implements StatefulWidget {
           context: context,
           artboard: artboard,
         );
-        data.selectedOptions = newSelectedOptions
-            .map(
+        data.selectedOptions = newSelectedOptions?.map(
               (option) => FormLabeledValue(
                 label: option.label,
                 value: option.value,
@@ -252,8 +251,8 @@ mixin FormBodyBuilder implements StatefulWidget {
           artboard: artboard,
         );
         data.selectedOption = FormLabeledIcon(
-          icon: newSelectedOption.icon,
-          title: newSelectedOption.label,
+          icon: newSelectedOption?.icon ?? StandardIcon.add,
+          title: newSelectedOption?.label ?? "",
         );
         form.updateFieldData(data);
       };
@@ -294,8 +293,8 @@ mixin FormBodyBuilder implements StatefulWidget {
           artboard: artboard,
         );
         data.value = FormIntervalFrequencyOptionData(
-          frequency: newSelectedSchedule.frequency,
-          interval: newSelectedSchedule.interval,
+          frequency: newSelectedSchedule?.frequency ?? PeriodType.fromString('week'),
+          interval: newSelectedSchedule?.interval ?? 1,
         );
         form.updateFieldData(data);
       };
