@@ -3,7 +3,7 @@ description: Welcomes user to Sustainers Market app.
 version: 1.0.0+1
 
 environment:
-  flutter: 3.7.2
+  sdk: 3.7.2
 
 publish_to: none
 
