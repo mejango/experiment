@@ -6,9 +6,9 @@ import 'package:semantic_theme/index.dart';
 
 mixin FormBuilder implements FormBodyBuilder, PrimaryCenterButtonBuilder {
   String get title;
-  String get subtitle => null;
-  String get auxiliaryDescription => null;
-  String get auxiliaryButtonText => null;
+  String? get subtitle => null;
+  String? get auxiliaryDescription => null;
+  String? get auxiliaryButtonText => null;
 }
 
 mixin FormBuilderState<T extends FormBuilder>
@@ -30,7 +30,6 @@ mixin FormBuilderState<T extends FormBuilder>
       case FormSubmitStatus.ready:
         return ButtonStatusOption.ready;
     }
-    return null;
   }
 
   String get submitButtonText {
@@ -39,26 +38,25 @@ mixin FormBuilderState<T extends FormBuilder>
         return "Loading";
       case FormSubmitStatus.exception:
       case FormSubmitStatus.ready:
-        return widget.submitButtonText ?? "Submit";
+        return widget.submitButtonText;
     }
-    return null;
   }
 
   Widget buildForm(BuildContext context) {
     addFocusChangedListeners();
     final theme = SemanticTheme.of(context);
 
-    final headerStyle = theme.typography.title.textStyle(
+    final headerStyle = theme?.typography.title.textStyle(
       color: theme.color.text.generalPrimary,
     );
-    final subtitleStyle = theme.typography.subtitle.textStyle(
+    final subtitleStyle = theme?.typography.subtitle.textStyle(
       color: theme.color.text.generalSecondary,
     );
 
     final formWidgets = <Widget>[];
     final headerWidgets = <Widget>[];
 
-    if (widget.title != null) {
+    if (widget.title.isNotEmpty) {
       headerWidgets.add(
         Text(
           widget.title,
@@ -70,13 +68,13 @@ mixin FormBuilderState<T extends FormBuilder>
 
     if (widget.subtitle != null) {
       final subtitleTextWidget = Text(
-        widget.subtitle,
+        widget.subtitle!,
         style: subtitleStyle,
       );
       headerWidgets.add(
         Padding(
           padding: EdgeInsets.all(
-            theme.distance.spacing.vertical.medium,
+            theme?.distance.spacing.vertical.medium ?? 0,
           ),
           child: subtitleTextWidget,
         ),
@@ -86,7 +84,7 @@ mixin FormBuilderState<T extends FormBuilder>
     if (headerWidgets.isNotEmpty) {
       formWidgets.add(
         Padding(
-          padding: EdgeInsets.only(top: theme.distance.gutter.vertical.medium),
+          padding: EdgeInsets.only(top: theme?.distance.gutter.vertical.medium ?? 0),
           child: Column(
             children: headerWidgets,
           ),
@@ -97,8 +95,8 @@ mixin FormBuilderState<T extends FormBuilder>
     formWidgets.add(
       Padding(
         padding: EdgeInsets.symmetric(
-          vertical: theme.distance.spacing.vertical.large,
-          horizontal: theme.distance.gutter.horizontal.medium,
+          vertical: theme?.distance.spacing.vertical.large ?? 0,
+          horizontal: theme?.distance.gutter.horizontal.medium ?? 0,
         ),
         child: buildFormBody(context),
       ),
@@ -108,11 +106,11 @@ mixin FormBuilderState<T extends FormBuilder>
       formWidgets.add(
         Container(
           margin: EdgeInsets.symmetric(
-            vertical: theme.distance.spacing.vertical.medium,
+            vertical: theme?.distance.spacing.vertical.medium ?? 0,
           ),
           child: Text(
-            validationException.message,
-            style: theme.typography.detailHeavy.textStyle(
+            validationException!.message,
+            style: theme?.typography.detailHeavy.textStyle(
               color: theme.color.text.warn,
             ),
           ),
@@ -124,11 +122,11 @@ mixin FormBuilderState<T extends FormBuilder>
       formWidgets.add(
         Container(
           margin: EdgeInsets.symmetric(
-            vertical: theme.distance.spacing.vertical.medium,
+            vertical: theme?.distance.spacing.vertical.medium ?? 0,
           ),
           child: Text(
-            submissionException.message,
-            style: theme.typography.detailHeavy.textStyle(
+            submissionException!.message,
+            style: theme?.typography.detailHeavy.textStyle(
               color: theme.color.text.warn,
             ),
           ),
@@ -140,7 +138,7 @@ mixin FormBuilderState<T extends FormBuilder>
       formWidgets.add(
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: theme.distance.padding.horizontal.medium,
+            horizontal: theme?.distance.padding.horizontal.medium ?? 0,
           ),
           child: submitButton,
         ),

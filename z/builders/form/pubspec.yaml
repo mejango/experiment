@@ -25,12 +25,12 @@ dependencies:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
-      path: options/button_status
+      path: z/options/button_status
   semantic_theme:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
-      path: semantic_theme
+      path: z/semantic_theme
 
 dev_dependencies:
   flutter_test:
