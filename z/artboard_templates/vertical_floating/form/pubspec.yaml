@@ -80,11 +80,11 @@ dependencies:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: z/labeled_value
-  frequency:
+  frequency_type:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
-      path: z/frequency
+      path: z/types/frequency
   interval_frequency_picker_builder:
     git:
       url: git@github.com:mejango/experiment.git
