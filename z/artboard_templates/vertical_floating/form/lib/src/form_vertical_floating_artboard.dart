@@ -42,7 +42,7 @@ abstract class FormVerticalFloatingArtboard<T> extends StatefulWidget
   @override
   DatePickerBuilder buildDatePicker(
     BuildContext context, {
-    @required Date selectedDate,
+    required Date selectedDate,
     Date startBound,
     Date endBound,
   }) =>

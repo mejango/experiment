@@ -136,11 +136,11 @@ dependencies:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: z/builders/tag_editor
-  # meta_form_artboard_builder:
-  #   git:
-  #     url: git@github.com:mejango/experiment.git
-  #     ref: main
-  #     path: z/builders/meta_form
+  meta_form_artboard_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/meta_form
   icon_picker_builder:
     git:
       url: git@github.com:mejango/experiment.git

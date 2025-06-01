@@ -19,7 +19,7 @@ import 'package:roller_column_picker_builder/index.dart';
 import 'package:artboard/index.dart';
 import 'package:period_type/index.dart';
 import 'package:tag_editor_builder/index.dart';
-// import 'package:meta_form_artboard_builder/index.dart';
+import 'package:meta_form_artboard_builder/index.dart';
 import 'package:semantic_theme/index.dart';
 import '_components/keyboard_accessory_buttons/index.dart';
 import '_components/standard_stream_form.dart';
@@ -108,14 +108,14 @@ mixin FormBodyBuilder implements StatefulWidget {
     List<String> tags,
   });
 
-  // MetaFormArtboardBuilder<T> buildMetaForm<T>(
-  //   BuildContext context, {
-  //   String title,
-  //   Future<List<StreamableFormFieldData>> fieldsData,
-  //   T Function(List<StreamableFormFieldData>) valueFromFieldsData,
-  //   String submitButtonText,
-  //   void Function() validateForm,
-  // });
+  MetaFormArtboardBuilder<T> buildMetaForm<T>(
+    BuildContext context, {
+    String title,
+    Future<List<StreamableFormFieldData>> fieldsData,
+    T Function(List<StreamableFormFieldData>) valueFromFieldsData,
+    String submitButtonText,
+    void Function() validateForm,
+  });
 
   Future<T> goTo<T>({
     @required BuildContext context,
@@ -160,10 +160,10 @@ mixin FormBodyBuilder implements StatefulWidget {
         data.addOnTapListener(
           _tagFieldOnTap(context, data),
         );
-      // if (data is MetaFormFieldData)
-      //   data.addOnTapListener(
-      //     _metaFormFieldOnTap(context, data),
-      //   );
+      if (data is MetaFormFieldData)
+        data.addOnTapListener(
+          _metaFormFieldOnTap(context, data),
+        );
     }
   }
 
@@ -336,25 +336,25 @@ mixin FormBodyBuilder implements StatefulWidget {
         form.updateFieldData(data);
       };
 
-//   Function _metaFormFieldOnTap(
-//     BuildContext context,
-//     MetaFormFieldData data,
-//   ) =>
-//       () async {
-//         final artboard = buildMetaForm(
-//           context,
-//           title: data.title,
-//           fieldsData: data.fieldsData,
-//           valueFromFieldsData: data.valueFromFieldsData,
-//         );
-//         final newFormResult = await goTo(
-//           context: context,
-//           artboard: artboard,
-//         );
-//         if (newFormResult == null) return;
-//         data.value = newFormResult;
-//         form.updateFieldData(data);
-//       };
+  Function _metaFormFieldOnTap(
+    BuildContext context,
+    MetaFormFieldData data,
+  ) =>
+      () async {
+        final artboard = buildMetaForm(
+          context,
+          title: data.title,
+          fieldsData: data.fieldsData,
+          valueFromFieldsData: data.valueFromFieldsData,
+        );
+        final newFormResult = await goTo(
+          context: context,
+          artboard: artboard,
+        );
+        if (newFormResult == null) return;
+        data.value = newFormResult;
+        form.updateFieldData(data);
+      };
 
   void disposeOfForm() => _form.dispose();
 }
