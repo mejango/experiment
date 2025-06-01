@@ -13,7 +13,6 @@ class RoofTextColor {
       case RoofThemeOption.dark:
         return color.red;
     }
-    return null;
   }
 
   Color get primary {
@@ -23,7 +22,6 @@ class RoofTextColor {
       case RoofThemeOption.dark:
         return color.gray1;
     }
-    return null;
   }
 
   Color get secondary {
@@ -33,7 +31,6 @@ class RoofTextColor {
       case RoofThemeOption.dark:
         return color.gray3;
     }
-    return null;
   }
 
   Color get placeholder {
@@ -43,7 +40,6 @@ class RoofTextColor {
       case RoofThemeOption.dark:
         return color.black3;
     }
-    return null;
   }
 
   Color get fill {
@@ -53,7 +49,6 @@ class RoofTextColor {
       case RoofThemeOption.dark:
         return color.white1;
     }
-    return null;
   }
 
   Color get primaryAction {
@@ -63,7 +58,6 @@ class RoofTextColor {
       case RoofThemeOption.dark:
         return color.white1;
     }
-    return null;
   }
 
   Color get secondaryAction {
@@ -73,7 +67,6 @@ class RoofTextColor {
       case RoofThemeOption.dark:
         return color.blue;
     }
-    return null;
   }
 
   Color get inactiveAction {
@@ -83,7 +76,6 @@ class RoofTextColor {
       case RoofThemeOption.dark:
         return color.gray3;
     }
-    return null;
   }
 
   Color get alert {
@@ -93,7 +85,6 @@ class RoofTextColor {
       case RoofThemeOption.dark:
         return color.alert;
     }
-    return null;
   }
 
   Color get tagAlert {
@@ -103,7 +94,6 @@ class RoofTextColor {
       case RoofThemeOption.dark:
         return color.alert;
     }
-    return null;
   }
 
   Color get tagGood {
@@ -113,7 +103,6 @@ class RoofTextColor {
       case RoofThemeOption.dark:
         return color.lightGreen;
     }
-    return null;
   }
 
   Color get tagDefault {
@@ -123,7 +112,6 @@ class RoofTextColor {
       case RoofThemeOption.dark:
         return color.white1;
     }
-    return null;
   }
 
   RoofTextColor(this._current);

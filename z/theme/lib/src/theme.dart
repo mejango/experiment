@@ -8,7 +8,7 @@ class RoofTheme extends StatefulWidget {
   final Widget child;
   final RoofThemeOption theme;
 
-  RoofTheme(this.theme, {@required this.child});
+  RoofTheme(this.theme, {required this.child});
 
   @override
   State<StatefulWidget> createState() => RoofInheritedTheme();
@@ -16,23 +16,24 @@ class RoofTheme extends StatefulWidget {
   static RoofInheritedTheme of(BuildContext context,
       {bool shouldRebuild = true}) {
     final inheritedWidget = (shouldRebuild
-        ? context.inheritFromWidgetOfExactType(_RoofInheritedTheme)
-        : context.ancestorWidgetOfExactType(_RoofInheritedTheme));
+        ? context.dependOnInheritedWidgetOfExactType<_RoofInheritedTheme>()
+        : context.findAncestorWidgetOfExactType<_RoofInheritedTheme>());
 
     return (inheritedWidget as _RoofInheritedTheme).data;
   }
 }
 
 class RoofInheritedTheme extends State<RoofTheme> {
-  RoofThemeOption _current;
+  late RoofThemeOption _current;
 
-  get current => _current;
+  RoofThemeOption get current => _current;
+
   set current(RoofThemeOption newValue) {
     _current = newValue;
     color = RoofSemanticColor(current: newValue);
   }
 
-  RoofSemanticColor color;
+  late RoofSemanticColor color;
 
   SystemUiOverlayStyle get systemChromeStyle {
     switch (_current) {
@@ -41,7 +42,6 @@ class RoofInheritedTheme extends State<RoofTheme> {
       case RoofThemeOption.dark:
         return SystemUiOverlayStyle.light;
     }
-    return null;
   }
 
   BoxShadow get shadow {
@@ -80,7 +80,7 @@ class RoofInheritedTheme extends State<RoofTheme> {
 class _RoofInheritedTheme extends InheritedWidget {
   final RoofInheritedTheme data;
 
-  _RoofInheritedTheme({@required this.data, @required Widget child})
+  _RoofInheritedTheme({required this.data, required Widget child})
       : super(child: child);
 
   @override

@@ -13,7 +13,6 @@ class RoofBorderColor {
       case RoofThemeOption.dark:
         return Colors.transparent;
     }
-    return null;
   }
 
   Color get transitionButton {
@@ -23,7 +22,6 @@ class RoofBorderColor {
       case RoofThemeOption.dark:
         return color.blue;
     }
-    return null;
   }
 
   Color get inactiveButton {
@@ -33,7 +31,6 @@ class RoofBorderColor {
       case RoofThemeOption.dark:
         return color.blue.withAlpha(100);
     }
-    return null;
   }
 
   RoofBorderColor(this._current);

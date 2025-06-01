@@ -15,7 +15,6 @@ class RoofStrokeColor {
       case RoofThemeOption.dark:
         return color.white1.withOpacity(opacity2);
     }
-    return null;
   }
 
   Color get focus {
@@ -26,7 +25,6 @@ class RoofStrokeColor {
       case RoofThemeOption.dark:
         return color.white1.withOpacity(opacity);
     }
-    return null;
   }
 
   Color get secondaryAction {
@@ -36,7 +34,6 @@ class RoofStrokeColor {
       case RoofThemeOption.dark:
         return color.blue.withOpacity(0.1);
     }
-    return null;
   }
 
   Color get alert {
@@ -46,7 +43,6 @@ class RoofStrokeColor {
       case RoofThemeOption.dark:
         return color.alert;
     }
-    return null;
   }
 
   RoofStrokeColor(this._current);

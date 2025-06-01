@@ -13,7 +13,6 @@ class RoofIconColor {
       case RoofThemeOption.dark:
         return color.gray2;
     }
-    return null;
   }
 
   Color get general {
@@ -23,7 +22,6 @@ class RoofIconColor {
       case RoofThemeOption.dark:
         return color.gray2;
     }
-    return null;
   }
 
     Color get secondary {
@@ -33,7 +31,6 @@ class RoofIconColor {
       case RoofThemeOption.dark:
         return color.gray3;
     }
-    return null;
   }
 
   Color get logo {
@@ -43,7 +40,6 @@ class RoofIconColor {
       case RoofThemeOption.dark:
         return color.red;
     }
-    return null;
   }
 
   Color get action {
@@ -53,7 +49,6 @@ class RoofIconColor {
       case RoofThemeOption.dark:
         return color.blue;
     }
-    return null;
   }
 
   RoofIconColor(this._current);

@@ -13,7 +13,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.black1;
     }
-    return null;
   }
 
   Color get inputForeground {
@@ -23,7 +22,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.black2;
     }
-    return null;
   }
 
   Color get inputBackground {
@@ -33,7 +31,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.black1;
     }
-    return null;
   }
 
   Color get generalPrimary {
@@ -43,7 +40,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.black2;
     }
-    return null;
   }
 
   Color get generalSecondary {
@@ -53,7 +49,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.black1;
     }
-    return null;
   }
 
   Color get scrim {
@@ -63,7 +58,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return Colors.black.withOpacity(0.6);
     }
-    return null;
   }
 
   Color get primaryAction {
@@ -73,7 +67,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.blue;
     }
-    return null;
   }
 
   Color get secondaryAction {
@@ -83,7 +76,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.black1;
     }
-    return null;
   }
 
   Color get errorAction {
@@ -93,7 +85,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.alert;
     }
-    return null;
   }
 
   Color get inactiveAction {
@@ -103,7 +94,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.blue.withAlpha(100);
     }
-    return null;
   }
 
   Color get disabled {
@@ -113,7 +103,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.gray4;
     }
-    return null;
   }
 
   Color get tagDefault {
@@ -123,7 +112,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.white1.withAlpha(20);
     }
-    return null;
   }
 
   Color get tagGood {
@@ -133,7 +121,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.white1.withAlpha(20);
     }
-    return null;
   }
 
   Color get tagAlert {
@@ -143,7 +130,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.white1.withAlpha(20);
     }
-    return null;
   }
 
   Color get emergency {
@@ -153,7 +139,6 @@ class RoofBackgroundColor {
       case RoofThemeOption.dark:
         return color.emergency;
     }
-    return null;
   }
 
   RoofBackgroundColor(this._current);
