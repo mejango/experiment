@@ -7,9 +7,9 @@ import 'package:typedefs/index.dart';
 
 mixin ListStyleButton {
   ContextPasser get onTap;
-  String get text;
-  String get badgeText;
-  StandardIcon get iconReference => null;
+  String? get text;
+  String? get badgeText;
+  StandardIcon? get iconReference => null;
   ColorGetter get iconColor;
   ColorGetter get textColor;
   ColorGetter get badgeTextColor;
@@ -30,21 +30,21 @@ mixin ListButtonState<T extends StatefulWidget> on Tappable<T> {
 
     if (button.iconReference != null) {
       final iconPadding = button.text != null
-          ? EdgeInsets.only(right: theme.distance.spacing.horizontal.medium)
+          ? EdgeInsets.only(right: theme?.distance.spacing.horizontal.medium ?? 0)
           : EdgeInsets.all(0);
 
       final buttonIcon = Container(
         padding: iconPadding,
-        child: button.iconReference.buildWidget(color: textColor),
+        child: button.iconReference?.buildWidget(color: textColor),
       );
 
       buttonChildren.add(buttonIcon);
     }
 
-    final textDecoration = theme.typography.button.textStyle(color: textColor);
+    final textDecoration = theme?.typography.button.textStyle(color: textColor);
 
     final styledButtonText = Text(
-      button.text,
+      button.text ?? '',
       style: textDecoration,
     );
 
@@ -54,8 +54,8 @@ mixin ListButtonState<T extends StatefulWidget> on Tappable<T> {
 
     if (button.badgeText != null) {
       final badgeText = Text(
-        button.badgeText,
-        style: theme.typography.bodyHeavy.textStyle(
+        button.badgeText ?? '',
+        style: theme?.typography.bodyHeavy.textStyle(
           color: button.badgeTextColor(context),
         ),
       );
@@ -74,7 +74,7 @@ mixin ListButtonState<T extends StatefulWidget> on Tappable<T> {
           color: Colors.transparent,
           height: _height,
           padding: EdgeInsets.symmetric(
-            horizontal: theme.distance.padding.horizontal.medium,
+            horizontal: theme?.distance.padding.horizontal.medium ?? 0,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

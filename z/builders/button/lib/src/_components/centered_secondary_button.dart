@@ -10,13 +10,13 @@ import '_mixins/centered_button.dart';
 export '_mixins/centered_button.dart';
 
 class SecondaryCenterButton extends StatefulWidget with CenteredStyleButton {
-  final OnTap onTap;
-  final String text;
-  final XSmallIcon icon;
-  final ButtonStatusOption status;
+  final OnTap? onTap;
+  final String? text;
+  final XSmallIcon? icon;
+  final ButtonStatusOption? status;
 
   get backgroundColor => (context) {
-        return SemanticTheme.of(context).color.background.actionSecondary;
+        return SemanticTheme.of(context)?.color.background.actionSecondary;
       };
 
   get textColor => (context) {
@@ -24,21 +24,22 @@ class SecondaryCenterButton extends StatefulWidget with CenteredStyleButton {
 
         switch (this.status) {
           case ButtonStatusOption.error:
-            return theme.color.text.warn;
+            return theme?.color.text.warn;
           case ButtonStatusOption.ready:
           case ButtonStatusOption.loading:
-            return theme.color.text.onActionSecondaryBackground;
+            return theme?.color.text.onActionSecondaryBackground;
+          default:
+            return null;
         }
-        return null;
       };
 
   get strokeColor => (context) {
-        return SemanticTheme.of(context).color.stroke.actionSecondary;
+        return SemanticTheme.of(context)?.color.stroke.actionSecondary;
       };
 
   SecondaryCenterButton({
-    @required this.onTap,
-    @required this.text,
+    required this.onTap,
+    required this.text,
     this.icon,
     status,
   }) : this.status = status ?? ButtonStatusOption.ready;

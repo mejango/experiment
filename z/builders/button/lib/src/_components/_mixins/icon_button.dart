@@ -12,11 +12,11 @@ mixin IconStyleButton {
 
   Widget buildButton(BuildContext context) {
     final iconWidget = iconReference.buildWidget(
-      color: iconColor(context),
+      color: iconColor(context) ?? Colors.black,
     );
 
     return GestureDetector(
-      onTapDown: (details) => triggerHapticWith(_tapHapticOption),
+      onTapDown: (details) => triggerHaptic(_tapHapticOption),
       onTap: onTap,
       child: Container(
         child: iconWidget,

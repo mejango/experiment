@@ -28,9 +28,9 @@ dependencies:
       path: z/lib/tappable
   haptics:
     git:
-      url: git@github.com:RoofVillage/roof-x.git
-      ref: master
-      path: lib/haptics
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/haptics
   typedefs:
     git:
       url: git@github.com:mejango/experiment.git
@@ -56,8 +56,6 @@ dependencies:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: z/semantic_theme
-
-    path: ../../lib/tappable
 
 dev_dependencies:
   flutter_test:

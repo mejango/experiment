@@ -8,8 +8,8 @@ import 'package:typedefs/index.dart';
 
 mixin LeftStyleButton {
   ContextPasser get onTap;
-  String get text;
-  StandardIcon get iconReference => null;
+  String? get text;
+  StandardIcon? get iconReference => null;
   bool get hasArrow => true;
   ColorGetter get arrowColor;
   ColorGetter get backgroundColor;
@@ -34,12 +34,12 @@ mixin LeftButtonState<T extends StatefulWidget>
 
     if (button.iconReference != null) {
       final iconPadding = button.text != null
-          ? EdgeInsets.only(right: theme.distance.padding.horizontal.small)
+          ? EdgeInsets.only(right: theme?.distance.padding.horizontal.small ?? 0)
           : EdgeInsets.all(0);
 
       final buttonIcon = Container(
         padding: iconPadding,
-        child: button.iconReference.buildWidget(color: textColor),
+        child: button.iconReference?.buildWidget(color: textColor),
       );
 
       buttonChildren.add(buttonIcon);
@@ -47,8 +47,8 @@ mixin LeftButtonState<T extends StatefulWidget>
 
     final styledButtonText = buildVerticallyCenteredText(
       Text(
-        button.text,
-        style: theme.typography.button.textStyle(color: textColor),
+        button.text ?? '',
+        style: theme?.typography.button.textStyle(color: textColor),
         textAlign: TextAlign.center,
       ),
     );
@@ -64,9 +64,9 @@ mixin LeftButtonState<T extends StatefulWidget>
     buttonChildren.add(rightArrowIcon);
 
     final decoration = BoxDecoration(
-      color: button.backgroundColor(context).withOpacity(tapped ? .7 : 1),
+      color: button.backgroundColor(context).withValues(alpha: (tapped ? .7 : 1) * 255),
       borderRadius: BorderRadius.all(
-        theme.radius.medium,
+        theme?.radius.medium ?? Radius.zero,
       ),
     );
 

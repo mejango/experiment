@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-typedef ColorGetter = Color Function(BuildContext context);
+typedef ColorGetter = Color? Function(BuildContext context);

@@ -9,38 +9,38 @@ import 'package:x_small_icon_library/index.dart';
 import '_mixins/centered_button.dart';
 
 class PrimaryCenterButton extends StatefulWidget with CenteredStyleButton {
-  final OnTap onTap;
-  final String text;
-  final ButtonStatusOption status;
-  final XSmallIcon icon;
+  final OnTap? onTap;
+  final String? text;
+  final ButtonStatusOption? status;
+  final XSmallIcon? icon;
 
   get backgroundColor => (context) {
         final theme = SemanticTheme.of(context);
 
         switch (this.status) {
           case ButtonStatusOption.error:
-            return theme.color.background.warn;
+            return theme?.color.background.warn;
           case ButtonStatusOption.ready:
           case ButtonStatusOption.loading:
-            return theme.color.background.actionPrimary;
+            return theme?.color.background.actionPrimary;
+          default:
+            return null;
         }
-
-        return null;
       };
 
   get textColor => (context) {
-        return SemanticTheme.of(context).color.text.onActionPrimaryBackground;
+        return SemanticTheme.of(context)?.color.text.onActionPrimaryBackground;
       };
 
   get strokeColor => (context) {
-        return SemanticTheme.of(context).color.stroke.actionPrimary;
+        return SemanticTheme.of(context)?.color.stroke.actionPrimary;
       };
 
   PrimaryCenterButton({
-    @required this.onTap,
-    @required this.text,
+    required this.onTap,
+    required this.text,
     this.icon,
-    ButtonStatusOption status,
+    ButtonStatusOption? status,
   }) : this.status = status ?? ButtonStatusOption.ready;
 
   @override

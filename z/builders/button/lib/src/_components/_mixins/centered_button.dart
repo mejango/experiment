@@ -7,12 +7,12 @@ import 'package:x_small_icon_library/index.dart';
 import 'package:haptics/index.dart';
 
 mixin CenteredStyleButton {
-  OnTap get onTap;
-  String get text => null;
+  OnTap? get onTap;
+  String? get text => null;
   ColorGetter get backgroundColor;
   ColorGetter get strokeColor => (BuildContext context) => Colors.transparent;
   ColorGetter get textColor;
-  XSmallIcon get icon;
+  XSmallIcon? get icon;
 }
 
 mixin CenteredStyleButtonState<T extends StatefulWidget>
@@ -33,25 +33,25 @@ mixin CenteredStyleButtonState<T extends StatefulWidget>
 
     if (button.icon != null) {
       final paddedIconWidget = Container(
-        margin: EdgeInsets.only(right: theme.distance.spacing.horizontal.small),
-        child: button.icon.buildWidget(color: textColor),
+        margin: EdgeInsets.only(right: theme?.distance.spacing.horizontal.small ?? 0),
+        child: button.icon?.buildWidget(color: textColor ?? Colors.black),
       );
       buttonChildren.add(paddedIconWidget);
     }
 
     final styledButtonText = buildVerticallyCenteredText(
       Text(
-        button.text,
-        style: theme.typography.button.textStyle(color: textColor),
+        button.text ?? '',
+        style: theme?.typography.button.textStyle(color: textColor ?? Colors.black),
         textAlign: TextAlign.center,
       ),
     );
     buttonChildren.add(styledButtonText);
 
     final decoration = BoxDecoration(
-      border: Border.all(color: button.strokeColor(context), width: 2),
+      border: Border.all(color: button.strokeColor(context) ?? Colors.transparent, width: 2),
       color: button.backgroundColor(context),
-      borderRadius: BorderRadius.all(theme.radius.medium),
+      borderRadius: BorderRadius.all(theme?.radius.medium ?? Radius.zero),
     );
 
     return buildTappedAwareGestureDetector(
