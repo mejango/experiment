@@ -1,0 +1,97 @@
+name: table_builder
+description: Table functionality for artboards.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  table:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/table
+  decorated_text:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/decorated_text
+  sorting:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/sorting
+  mask:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/mask
+  standard_icon_library:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/icons/standard
+  key_value_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/key_value
+  key_value_row_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/key_value_row
+  spaced_grid_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/spaced_grid
+  haptics:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/haptics
+  date:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/date
+  tag_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/tag
+  invoice_options:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/invoice
+  request_status:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/request
+  lease_status:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/lease
+  tag_kind_option:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/options/tag_kind
+  semantic_theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/semantic_theme
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
