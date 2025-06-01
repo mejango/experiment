@@ -16,7 +16,7 @@ import 'package:icon_picker_artboard/index.dart';
 import 'package:labeled_icon/index.dart';
 import 'package:vertical_floating_artboard_scaffold/index.dart';
 import 'package:labeled_value/index.dart';
-import 'package:frequency/index.dart';
+import 'package:frequency_type/index.dart';
 import 'package:time_picker_builder/index.dart';
 import 'package:time_picker_artboard/index.dart';
 import 'package:interval_frequency_picker_artboard/index.dart';
@@ -55,29 +55,29 @@ abstract class FormVerticalFloatingArtboard<T> extends StatefulWidget
   @override
   OptionPickerArtboardBuilder buildOptionPicker(
     BuildContext context, {
-    String title,
-    String emptyText,
-    List<LabeledValue> selectedOptions,
+    String? title,
+    String? emptyText,
+    List<LabeledValue>? selectedOptions,
     required List<LabeledValue> options,
-    bool isMultiSelect,
+    bool? isMultiSelect,
   }) =>
       OptionPickerVerticalFloatingArtboard(
-        title: title,
-        emptyText: emptyText,
-        selectedOptions: selectedOptions,
+        title: title ?? '',
+        emptyText: emptyText ?? '',
+        selectedOptions: selectedOptions ?? [],
         options: options,
-        isMultiSelect: isMultiSelect,
+        isMultiSelect: isMultiSelect ?? false,
       );
 
   @override
   IconPickerArtboardBuilder buildIconPicker(
     BuildContext context, {
-    String title,
-    LabeledIcon selectedOption,
+    String? title,
+    LabeledIcon? selectedOption,
     required List<LabeledIcon> options,
   }) =>
       IconPickerVerticalFloatingArtboard(
-        title: title,
+        title: title ?? '',
         selectedOption: selectedOption,
         options: options,
       );

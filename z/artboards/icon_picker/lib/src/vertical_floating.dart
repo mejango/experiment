@@ -8,13 +8,13 @@ class IconPickerVerticalFloatingArtboard
     extends EmptyVerticalFloatingArtboard<LabeledIcon>
     with IconPickerArtboardBuilder {
   final String title;
-  final LabeledIcon selectedOption;
-  final List<LabeledIcon> options;
+  final LabeledIcon? selectedOption;
+  final List<LabeledIcon>? options;
 
   IconPickerVerticalFloatingArtboard({
     required this.title,
-    required this.selectedOption,
-    required this.options,
+    this.selectedOption,
+    this.options,
   });
 
   _IconPickerVerticalFloatingArtboardState createState() =>

@@ -7,9 +7,9 @@ import '_components/icon_picker.dart';
 
 //Icon picker must be an artboard
 mixin IconPickerArtboardBuilder implements Artboard<LabeledIcon> {
-  String get title;
-  LabeledIcon get selectedOption;
-  List<LabeledIcon> get options;
+  String? get title;
+  LabeledIcon? get selectedOption;
+  List<LabeledIcon>? get options;
 }
 
 mixin IconPickerBuilderArtboardState<U extends IconPickerArtboardBuilder>
@@ -22,7 +22,7 @@ mixin IconPickerBuilderArtboardState<U extends IconPickerArtboardBuilder>
   Widget buildIconPicker(BuildContext context) {
     return IconPicker(
       title: widget.title,
-      options: widget.options,
+      options: widget.options ?? [],
       selectedOption: selectedOption ?? widget.selectedOption,
       onChanged: _onOptionTap,
     );
