@@ -16,11 +16,11 @@ class SMTokenStore implements TokenStore {
       );
 
   @override
-  Future<String> Function() get readSessionToken =>
+  Future<String?> Function() get readSessionToken =>
       () => valueForKey(_sessionTokenKey);
 
   @override
-  Future<String> Function() get readChallengeToken =>
+  Future<String?> Function() get readChallengeToken =>
       () => valueForKey(_challengeTokenKey);
 
   @override

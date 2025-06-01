@@ -3,11 +3,11 @@ import 'dart:io' show Platform;
 import 'package:device_info/device_info.dart';
 
 class DeviceInfo {
-  final String os;
-  final String version;
-  final String hardware;
-  final String manufacturer;
-  final String id;
+  final String? os;
+  final String? version;
+  final String? hardware;
+  final String? manufacturer;
+  final String? id;
 
   DeviceInfo._internal({
     this.os,
@@ -48,11 +48,11 @@ class DeviceInfo {
 
   Map<String, String> toMap() {
     return {
-      "os": os,
-      "version": version,
-      "hardware": hardware,
-      "manufacturer": manufacturer,
-      "id": id
+      "os": os ?? "",
+      "version": version ?? "",
+      "hardware": hardware ?? "",
+      "manufacturer": manufacturer ?? "",
+      "id": id ?? "",
     };
   }
 }
