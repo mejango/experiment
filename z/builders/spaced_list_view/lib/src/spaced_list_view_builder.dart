@@ -4,10 +4,10 @@ import '_components/spaced_list_view.dart';
 
 mixin SpacedListViewBuilder {
   Widget buildSpacedListView({
-    List<Widget> children,
-    Widget button,
-    bool buttonIsLast,
-    ScrollController scrollController,
+    List<Widget>? children,
+    Widget? button,
+    bool? buttonIsLast,
+    ScrollController? scrollController,
   }) =>
       SpacedListView(
         children: children,
