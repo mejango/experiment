@@ -14,22 +14,22 @@ abstract class NavVerticalDrawerArtboard extends StatefulWidget
   Widget buildBody(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final goTo = ArtboardNavigator.of(context).goTo;
+    final goTo = ArtboardNavigator.of(context)?.goTo;
 
     final buttons = bodyNavButtons
         .map(
           (button) => buildPrimaryListButton(context,
-              onTap: (_) => goTo(button.artboard),
-              text: button.title,
-              badgeText: button.badgeText,
+              onTap: (_) => goTo?.call(button.artboard),
+              text: button.title ?? '',
+              badgeText: button.badgeText ?? '',
               iconReference: button.icon),
         )
         .toList();
 
     return ListView(
       padding: EdgeInsets.symmetric(
-        vertical: theme.distance.padding.vertical.large,
-        horizontal: theme.distance.padding.horizontal.medium,
+        vertical: theme?.distance.padding.vertical.large ?? 0,
+        horizontal: theme?.distance.padding.horizontal.medium ?? 0,
       ),
       children: buttons,
     );
@@ -38,12 +38,12 @@ abstract class NavVerticalDrawerArtboard extends StatefulWidget
 
 class ArtboardNavButtonConfig {
   final Artboard artboard;
-  final StandardIcon icon;
-  final String title;
-  final String badgeText;
+  final StandardIcon? icon;
+  final String? title;
+  final String? badgeText;
 
   ArtboardNavButtonConfig({
-    @required this.artboard,
+    required this.artboard,
     this.icon,
     this.title,
     this.badgeText,
