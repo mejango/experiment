@@ -38,7 +38,7 @@ dependencies:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
-      path: z/artboards/sustainers/choose_business_type_artboard
+      path: z/artboards/sustainers/choose_business_type
   verify_personal_wallet_artboard:
     git:
       url: git@github.com:mejango/experiment.git

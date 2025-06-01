@@ -16,13 +16,14 @@ class ChooseWalletVerificationTypeVerticalFloatingArtboard
       (context) => [
             buildSecondaryCenterButton(
               context,
-              onTap: () => ArtboardNavigator.of(context)
-                  .goTo(VerifyPersonalWalletVerticalFloatingArtboard()),
+              onTap: () => ArtboardNavigator.of(context)?.goTo(
+                VerifyPersonalWalletVerticalFloatingArtboard(),
+              ),
               text: "As a person",
             ),
             buildSecondaryCenterButton(
               context,
-              onTap: () => ArtboardNavigator.of(context).goTo(
+              onTap: () => ArtboardNavigator.of(context)?.goTo(
                 ChooseBusinessTypeVerticalFloatingArtboard(),
               ),
               text: "As a business",
