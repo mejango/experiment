@@ -5,15 +5,15 @@ import 'package:haptics/index.dart';
 import '_components/time_picker.dart';
 
 mixin TimePickerArtboardBuilder implements Artboard<TimeOfDay> {
-  TimeOfDay get initialValue;
+  TimeOfDay? get initialValue;
 }
 
 mixin TimePickerArtboardBuilderState<T extends TimePickerArtboardBuilder>
     implements ArtboardState<T> {
-  TimeOfDay _selectedTime;
+  TimeOfDay? _selectedTime;
 
-  TimeOfDay get selectedTime => _selectedTime;
-  set selectedTime(TimeOfDay newTime) => _selectedTime = newTime;
+  TimeOfDay? get selectedTime => _selectedTime;
+  set selectedTime(TimeOfDay? newTime) => _selectedTime = newTime;
 
   Widget buildTimePicker(BuildContext context) {
     return TimePicker(
@@ -23,7 +23,7 @@ mixin TimePickerArtboardBuilderState<T extends TimePickerArtboardBuilder>
   }
 
   void _onChanged(TimeOfDay newTime) {
-    triggerHapticWith(HapticOption.click);
+    triggerHaptic(HapticOption.click);
     selectedTime = newTime;
   }
 }

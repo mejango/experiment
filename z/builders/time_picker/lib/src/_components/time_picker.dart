@@ -7,8 +7,8 @@ import 'package:semantic_theme/index.dart';
 import '_clock_type.dart';
 
 class TimePicker extends StatefulWidget {
-  final TimeOfDay initialValue;
-  final Function(TimeOfDay) onChanged;
+  final TimeOfDay? initialValue;
+  final Function(TimeOfDay)? onChanged;
 
   TimePicker({
     this.initialValue,
@@ -34,9 +34,9 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
     ),
   ];
 
-  TimeOfDay _selectedTime;
-  ClockType _clockType;
-  bool _use24HourFormat;
+  late TimeOfDay _selectedTime;
+  late ClockType _clockType;
+  late bool _use24HourFormat;
 
   @override
   void initState() {
@@ -86,7 +86,7 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final columnWidth = theme.distance.spacing.horizontal.max;
+    final columnWidth = theme?.distance.spacing.horizontal.max ?? 0;
 
     final selectedHour = _rollerColumnDataFromHour(_selectedTime.hour);
 
@@ -102,7 +102,7 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
       ),
     );
 
-    final timeDividerTextStyle = theme.typography.body.textStyle(
+    final timeDividerTextStyle = theme?.typography.body.textStyle(
       color: theme.color.text.generalSecondary,
     );
     final Widget timeDivider = Flexible(
@@ -154,7 +154,7 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
 
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: theme.distance.padding.vertical.medium,
+        vertical: theme?.distance.padding.vertical.medium ?? 0,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -168,14 +168,14 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
     return hour < 11 ? ClockType.am : ClockType.pm;
   }
 
-  LabeledValue<int> _rollerColumnDataFromMinute(int val) {
+  LabeledValue<int>? _rollerColumnDataFromMinute(int val) {
     for (LabeledValue<int> data in _minutesList) {
       if ((data.value - val).abs() < _minutesSpacing / 2) return data;
     }
     return null;
   }
 
-  LabeledValue<int> _rollerColumnDataFromHour(int val) {
+  LabeledValue<int>? _rollerColumnDataFromHour(int val) {
     int _val = _use24HourFormat ? val : val % 12;
 
     for (LabeledValue<int> data in _hoursList) {
@@ -184,7 +184,7 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
     return null;
   }
 
-  LabeledValue<ClockType> _rollerColumnDataFromClockType(ClockType val) {
+  LabeledValue<ClockType>? _rollerColumnDataFromClockType(ClockType val) {
     for (LabeledValue<ClockType> data in _clockTypeList) {
       if (val == data.value) return data;
     }
@@ -199,7 +199,7 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
           minute: newVal.value,
         );
       });
-      widget.onChanged(_selectedTime);
+      widget.onChanged?.call(_selectedTime);
     }
   }
 
@@ -212,7 +212,7 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
       setState(() {
         _selectedTime = TimeOfDay(hour: hour, minute: _selectedTime.minute);
       });
-      widget.onChanged(_selectedTime);
+      widget.onChanged?.call(_selectedTime);
     }
   }
 
@@ -226,7 +226,7 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
         _clockType = newVal.value;
         _selectedTime = newSelectedTime;
       });
-      widget.onChanged(_selectedTime);
+      widget.onChanged?.call(_selectedTime);
     }
   }
 }
