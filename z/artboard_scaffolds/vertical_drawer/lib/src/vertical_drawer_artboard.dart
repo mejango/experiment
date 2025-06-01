@@ -4,9 +4,9 @@ import 'package:semantic_theme/index.dart';
 import 'package:artboard/index.dart';
 
 mixin VerticalDrawerArtboard<T> implements StatefulWidget, Artboard<T> {
-  Widget buildHeader(BuildContext context);
-  Widget buildBody(BuildContext context);
-  Widget buildDock(BuildContext context);
+  Widget? buildHeader(BuildContext context);
+  Widget? buildBody(BuildContext context);
+  Widget? buildDock(BuildContext context);
 
   @override
   State<StatefulWidget> createState() => _VerticalDrawerArtboardState();
@@ -14,8 +14,8 @@ mixin VerticalDrawerArtboard<T> implements StatefulWidget, Artboard<T> {
 
 mixin VerticalDrawerArtboardState<T extends VerticalDrawerArtboard>
     implements State<T> {
-  double _headerHeight;
-  double _dockHeight;
+  double? _headerHeight;
+  double? _dockHeight;
   final _headerContainerKey = GlobalKey();
   final _dockContainerKey = GlobalKey();
 
@@ -34,10 +34,10 @@ mixin VerticalDrawerArtboardState<T extends VerticalDrawerArtboard>
 
     setState(() {
       if (headerContext != null) {
-        _headerHeight = headerContext.size.height ?? 0;
+        _headerHeight = headerContext.size?.height ?? 0;
       }
       if (dockContext != null) {
-        _dockHeight = dockContext.size.height ?? 0;
+        _dockHeight = dockContext.size?.height ?? 0;
       }
     });
   }
@@ -94,7 +94,7 @@ mixin VerticalDrawerArtboardState<T extends VerticalDrawerArtboard>
     );
 
     final scaffold = Scaffold(
-      backgroundColor: theme.color.background.raised,
+      backgroundColor: theme?.color.background.raised ?? Colors.transparent,
       body: SafeArea(
         top: false,
         child: stack,

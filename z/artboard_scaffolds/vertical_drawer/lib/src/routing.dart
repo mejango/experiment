@@ -12,10 +12,10 @@ class VerticalDrawerRoute<T> extends PageRoute<T> {
   bool get opaque => false;
 
   @override
-  Color get barrierColor => null;
+  Color? get barrierColor => null;
 
   @override
-  String get barrierLabel => null;
+  String? get barrierLabel => null;
 
   @override
   bool get maintainState => true;
@@ -23,7 +23,7 @@ class VerticalDrawerRoute<T> extends PageRoute<T> {
   Animation<double> get animation => CurvedAnimation(
         curve: theme.curve.hurried,
         reverseCurve: theme.curve.hurried,
-        parent: controller,
+        parent: controller!,
       );
 
   final _fadeTween = Tween<double>(
@@ -36,8 +36,8 @@ class VerticalDrawerRoute<T> extends PageRoute<T> {
   );
 
   VerticalDrawerRoute({
-    @required this.builder,
-    @required this.theme,
+    required this.builder,
+    required this.theme,
   });
 
   @override

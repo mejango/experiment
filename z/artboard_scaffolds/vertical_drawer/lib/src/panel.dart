@@ -10,14 +10,14 @@ class VerticalDrawerArtboardNavigatorPanel<T> extends StatefulWidget {
   final VerticalDrawerArtboard artboard;
 
   VerticalDrawerArtboardNavigatorPanel({
-    this.artboard,
+    required this.artboard,
   });
 
   @override
   State<StatefulWidget> createState() =>
       InheritedVerticalDrawerArtboardNavigatorPanel<T>();
 
-  static InheritedVerticalDrawerArtboardNavigatorPanel of(
+  static InheritedVerticalDrawerArtboardNavigatorPanel? of(
     BuildContext context, {
     bool shouldRebuild = true,
   }) {
@@ -27,7 +27,7 @@ class VerticalDrawerArtboardNavigatorPanel<T> extends StatefulWidget {
         : context.findAncestorWidgetOfExactType<
             _InheritedVerticalDrawerArtboardNavigatorPanel>();
 
-    return inheritedWidget.data;
+    return inheritedWidget?.data;
   }
 }
 
@@ -37,10 +37,10 @@ class InheritedVerticalDrawerArtboardNavigatorPanel<T>
     extends State<VerticalDrawerArtboardNavigatorPanel<T>>
     with AutomaticKeepAliveClientMixin, IconNavButtonBuilder {
   bool _wantKeepAlive = true;
-  T _result;
+  T? _result;
 
-  set result(T value) => setState(() => _result = value);
-  get result => _result;
+  set result(T? value) => setState(() => _result = value);
+  T? get result => _result;
 
   @override
   bool get wantKeepAlive => _wantKeepAlive;
@@ -64,7 +64,7 @@ class InheritedVerticalDrawerArtboardNavigatorPanel<T>
           ),
           child: widget.artboard,
           decoration: BoxDecoration(
-            boxShadow: [theme.shadow.large],
+            boxShadow: [theme?.shadow.large ?? BoxShadow(color: Colors.transparent)],
           ),
         )
       ],
@@ -88,8 +88,8 @@ class _InheritedVerticalDrawerArtboardNavigatorPanel extends InheritedWidget {
   final InheritedVerticalDrawerArtboardNavigatorPanel data;
 
   _InheritedVerticalDrawerArtboardNavigatorPanel({
-    @required this.data,
-    @required Widget child,
+    required this.data,
+    required Widget child,
   }) : super(
           child: child,
         );
