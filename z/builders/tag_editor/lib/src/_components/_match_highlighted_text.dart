@@ -6,10 +6,10 @@ import 'package:semantic_theme/index.dart';
 class MatchHighlightedText extends StatelessWidget {
   final String text;
   final String compareTo;
-  final void Function(String) onTap;
+  final void Function(String)? onTap;
 
   MatchHighlightedText({
-    @required this.text,
+    required this.text,
     compareTo,
     this.onTap,
   }) : this.compareTo = compareTo ?? "";
@@ -25,7 +25,7 @@ class MatchHighlightedText extends StatelessWidget {
     );
   }
 
-  List<TextSpan> _buildTextSpans(SemanticThemeData theme) {
+  List<TextSpan> _buildTextSpans(SemanticThemeData? theme) {
     String prematch = "";
     String match = "";
     String postmatch = "";
@@ -51,13 +51,13 @@ class MatchHighlightedText extends StatelessWidget {
       }
     }
 
-    final matchColor = theme.color.text.generalPrimary;
-    final unmatchColor = theme.color.text.generalSecondary;
+    final matchColor = theme?.color.text.generalPrimary ?? Colors.black;
+    final unmatchColor = theme?.color.text.generalSecondary ?? Colors.black;
 
     final color = isMatch ? matchColor : unmatchColor;
 
-    final matchedTextStyle = theme.typography.bodyHeavy.textStyle(color: color);
-    final unmatchedTextStyle = theme.typography.body.textStyle(color: color);
+    final matchedTextStyle = theme?.typography.bodyHeavy.textStyle(color: color);
+    final unmatchedTextStyle = theme?.typography.body.textStyle(color: color);
 
     final prematchTextSpan = TextSpan(
       text: prematch,

@@ -9,10 +9,10 @@ import '_filtered_options_column.dart';
 typedef TagPasser = void Function(List<String>);
 
 class TagEditor extends StatefulWidget {
-  final String title;
-  final String hintText;
-  final List<String> tags;
-  final TagPasser onTagEdited;
+  final String? title;
+  final String? hintText;
+  final List<String>? tags;
+  final TagPasser? onTagEdited;
 
   TagEditor({
     this.title,
@@ -27,8 +27,8 @@ class TagEditor extends StatefulWidget {
 
 class _TagEditorState extends State<TagEditor>
     with SingleTickerProviderStateMixin {
-  List<String> _tags;
-  List<String> _options;
+  List<String>? _tags;
+  List<String>? _options;
   List<String> _filteredOptions = [];
   final TextEditingController _controller = TextEditingController();
 
@@ -36,7 +36,7 @@ class _TagEditorState extends State<TagEditor>
   void initState() {
     _tags = widget.tags ?? [];
     _options = _getTags();
-    _filteredOptions = _options;
+    _filteredOptions = _options ?? [];
     _controller.addListener(_filterOptions);
     super.initState();
   }
@@ -52,9 +52,8 @@ class _TagEditorState extends State<TagEditor>
     final theme = SemanticTheme.of(context);
 
     final animatedTagsWrap = AnimatedSize(
-      vsync: this,
-      curve: theme.curve.delayed,
-      duration: theme.duration.short,
+      curve: theme?.curve.delayed ?? Curves.easeInOut,
+      duration: theme?.duration.short ?? Duration.zero,
       alignment: Alignment.topCenter,
       child: Row(
         children: [
@@ -87,8 +86,8 @@ class _TagEditorState extends State<TagEditor>
 
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: theme.distance.padding.horizontal.medium,
-        vertical: theme.distance.padding.vertical.medium,
+        horizontal: theme?.distance.padding.horizontal.medium ?? 0,
+        vertical: theme?.distance.padding.vertical.medium ?? 0,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,22 +101,22 @@ class _TagEditorState extends State<TagEditor>
 
   void _removeTag(String tag) {
     setState(() {
-      _tags.remove(tag);
+      _tags?.remove(tag);
       _filterOptions();
     });
-    widget.onTagEdited(_tags);
+    widget.onTagEdited?.call(_tags ?? []);
   }
 
   void _addTag(String tag) {
-    triggerHapticWith(HapticOption.light);
+    triggerHaptic(HapticOption.light);
 
     setState(() {
-      _tags.add(tag);
+      _tags?.add(tag);
       _filterOptions();
     });
 
     _controller.clear();
-    widget.onTagEdited(_tags);
+    widget.onTagEdited?.call(_tags ?? []);
   }
 
   void _filterOptions() {
@@ -127,7 +126,7 @@ class _TagEditorState extends State<TagEditor>
       final List<String> matchedOptions = [];
       final List<String> unmatchedOptions = [];
 
-      for (String option in _options) {
+      for (String option in _options ?? []) {
         if (option.toLowerCase().contains(_controller.text.toLowerCase()))
           matchedOptions.add(option);
         else
@@ -140,11 +139,11 @@ class _TagEditorState extends State<TagEditor>
       newFilteredOptions.addAll(matchedOptions);
       newFilteredOptions.addAll(unmatchedOptions);
     } else {
-      newFilteredOptions.addAll(_options);
+      newFilteredOptions.addAll(_options ?? []);
       newFilteredOptions.sort();
     }
 
-    _tags.forEach((tag) => newFilteredOptions.remove(tag));
+    _tags?.forEach((tag) => newFilteredOptions.remove(tag));
 
     setState(() {
       _filteredOptions = newFilteredOptions;

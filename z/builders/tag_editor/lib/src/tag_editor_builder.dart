@@ -11,7 +11,7 @@ mixin TagEditorArtboardBuilder implements Artboard<List<String>> {
 
 mixin TagEditorArtboardBuilderState<T extends TagEditorArtboardBuilder>
     implements ArtboardState<T> {
-  List<String> _tags;
+  late List<String> _tags;
 
   List<String> get tags => _tags;
   set tags(List<String> newTags) => _tags = newTags;

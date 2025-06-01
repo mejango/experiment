@@ -71,7 +71,7 @@ class _RemoveableAnimatedTagState extends State<_RemoveableAnimatedTag>
   bool _show = true;
 
   _remove() {
-    triggerHapticWith(HapticOption.light);
+    triggerHaptic(HapticOption.light);
 
     Future.delayed(SemanticTheme.of(context).duration.short, () {
       widget.removeCallback();

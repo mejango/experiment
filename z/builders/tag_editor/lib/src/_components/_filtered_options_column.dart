@@ -4,9 +4,9 @@ import 'package:semantic_theme/index.dart';
 import '_match_highlighted_text.dart';
 
 class OptionsColumn extends StatelessWidget {
-  final List<String> options;
-  final String searchValue;
-  final void Function(String) onTap;
+  final List<String>? options;
+  final String? searchValue;
+  final void Function(String)? onTap;
 
   OptionsColumn({
     this.options,
@@ -17,11 +17,10 @@ class OptionsColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: options
-          .map(
+      children: options?.map(
             (option) => _buildMatchedOption(option, context),
           )
-          .toList(),
+          .toList() ?? [],
     );
   }
 
@@ -30,10 +29,10 @@ class OptionsColumn extends StatelessWidget {
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: () => onTap(option),
+      onTap: () => onTap?.call(option),
       child: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: theme.distance.padding.vertical.medium,
+          vertical: theme?.distance.padding.vertical.medium ?? 0,
         ),
         child: Row(
           mainAxisSize: MainAxisSize.max,
