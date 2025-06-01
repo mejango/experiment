@@ -1,0 +1,27 @@
+name: tag_builder
+description: Tag widget builder.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+  
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  tag_kind_option:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/options/tag_kind
+  semantic_theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/semantic_theme
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

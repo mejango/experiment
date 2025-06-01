@@ -10,7 +10,7 @@ class IntervalFrequencyPicker extends StatefulWidget {
   final Frequency selectedValue;
   final List<LabeledValue<int>> intervalList;
   final List<LabeledValue<PeriodType>> periodList;
-  final Function(Frequency) onChanged;
+  final Function(Frequency)? onChanged;
 
   IntervalFrequencyPicker({
     this.selectedValue,
@@ -103,20 +103,26 @@ class IntervalFrequencyPickerState extends State<IntervalFrequencyPicker>
   }
 
   void _onIntervalChange(LabeledValue<int> newVal) {
-    if (_selectedSchedule.interval != newVal.value) {
+    if (_selectedSchedule?.interval != newVal.value) {
       setState(() {
-        _selectedSchedule.interval = newVal.value;
+        _selectedSchedule = FrequencyType(
+          interval: newVal.value,
+          frequency: _selectedSchedule?.frequency ?? PeriodType.fromString('week'),
+        );
       });
-      widget.onChanged(_selectedSchedule);
+      widget.onChanged?.call(_selectedSchedule!);
     }
   }
 
   void _onFrequencyChange(LabeledValue<PeriodType> newVal) {
-    if (_selectedSchedule.frequency != newVal.value) {
+    if (_selectedSchedule?.frequency != newVal.value) {
       setState(() {
-        _selectedSchedule.frequency = newVal.value;
+        _selectedSchedule = FrequencyType(
+          interval: _selectedSchedule?.interval ?? 0,
+          frequency: newVal.value,
+        );
       });
-      widget.onChanged(_selectedSchedule);
+      widget.onChanged?.call(_selectedSchedule!);
     }
   }
 }

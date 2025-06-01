@@ -1,5 +1,5 @@
-name: interval_frequency_picker_builder
-description: Component for selecting a schedule interval and frequency
+name: meta_form_artboard_builder
+description: Form vertical floating artboard that can return a form result as a fieldData.
 
 version: 1.0.0+1
 
@@ -11,46 +11,51 @@ publish_to: none
 dependencies:
   flutter:
     sdk: flutter
-  artboard:
+  form_vertical_floating_artboard_template:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
-      path: z/lib/artboard
-  period_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: z/types/period
+      path: z/artboard_templates/vertical_floating/form
   haptics:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: z/lib/haptics
-  interval:
+  small_icon_library:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
-      path: z/lib/interval
-  frequency_type:
+      path: z/icons/small
+  artboard:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
-      path: z/types/frequency
-  labeled_value:
+      path: z/lib/artboard
+  navigator:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
-      path: z/labeled_value
-  roller_column_builder:
+      path: z/lib/navigator
+  labeled_icon:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
-      path: z/builders/roller_column
+      path: z/labeled_icon
+  tag_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/tag
   semantic_theme:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: z/semantic_theme
+  form_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/form
 
 dev_dependencies:
   flutter_test:
