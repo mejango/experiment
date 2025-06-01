@@ -10,53 +10,53 @@ class SmIconColor extends SemanticIconColor<SmThemeOption> {
   SmIconColor(SmThemeOption currentThemeOption) : super(currentThemeOption);
 
   @override
-  Color get action => colors.brandGreen;
+  Color? get action => colors.brandGreen;
 
   @override
-  Color get onActionPrimaryBackground => colors.brandGreen;
+  Color? get onActionPrimaryBackground => colors.brandGreen;
 
   @override
-  Color get onActionSecondaryBackground => colors.brandGreen;
+  Color? get onActionSecondaryBackground => colors.brandGreen;
 
   @override
-  Color get onActionDisabledBackground => colors.white2;
+  Color? get onActionDisabledBackground => colors.white2;
 
   @override
-  Color get actionDisabled => forThemeOption({
+  Color? get actionDisabled => forThemeOption({
         SmThemeOption.dark: Colors.grey,
       });
 
   @override
-  Color get inactive => forThemeOption({
+  Color? get inactive => forThemeOption({
         SmThemeOption.dark: Colors.grey,
       });
 
   @override
-  Color get logo => colors.brandGreen;
+  Color? get logo => colors.brandGreen;
 
   @override
-  Color get nav => colors.brandGreenFade;
+  Color? get nav => colors.brandGreenFade;
 
   @override
-  Color get generalPrimary => forThemeOption({
+  Color? get generalPrimary => forThemeOption({
         SmThemeOption.dark: colors.white2,
       });
 
   @override
-  Color get generalSecondary => forThemeOption({
+  Color? get generalSecondary => forThemeOption({
         SmThemeOption.dark: Colors.grey,
       });
 
   @override
-  Color get good => forThemeOption({
+  Color? get good => forThemeOption({
         SmThemeOption.dark: Colors.green,
       });
 
   @override
-  Color get bad => Colors.red;
+  Color? get bad => Colors.red;
 
   @override
-  Color get warn => forThemeOption({
+  Color? get warn => forThemeOption({
         SmThemeOption.dark: Colors.yellow,
       });
 }

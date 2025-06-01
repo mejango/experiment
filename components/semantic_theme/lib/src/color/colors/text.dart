@@ -9,11 +9,11 @@ abstract class SemanticTextColor<T> extends SemanticColor<T>
     with NotifyColors, GeneralColors, ForegroundActionColors {
   SemanticTextColor(T currentThemeOption) : super(currentThemeOption);
 
-  Color get brand;
+  Color? get brand;
 
-  Color get onNotifyBackground;
+  Color? get onNotifyBackground;
 
-  Color get inputActive;
-  Color get inputDisabled;
-  Color get inputPlaceholder;
+  Color? get inputActive;
+  Color? get inputDisabled;
+  Color? get inputPlaceholder;
 }

@@ -8,7 +8,7 @@ abstract class SemanticStrokeColor<T> extends SemanticColor<T>
     with NotifyColors, BackgroundActionColors {
   SemanticStrokeColor(T currentThemeOption) : super(currentThemeOption);
 
-  Color get light;
-  Color get medium;
-  Color get strong;
+  Color? get light;
+  Color? get medium;
+  Color? get strong;
 }

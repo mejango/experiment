@@ -9,10 +9,10 @@ abstract class SemanticBackgroundColor<T> extends SemanticColor<T>
     with NotifyColors, BackgroundActionColors, InactiveColors {
   SemanticBackgroundColor(T currentThemeOption) : super(currentThemeOption);
 
-  Color get general;
-  Color get raised;
-  Color get neutralContrast;
+  Color? get general;
+  Color? get raised;
+  Color? get neutralContrast;
 
-  Color get brand;
-  Color get scrim;
+  Color? get brand;
+  Color? get scrim;
 }

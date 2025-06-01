@@ -10,6 +10,6 @@ abstract class SemanticIconColor<T> extends SemanticColor<T>
     with InactiveColors, GeneralColors, NotifyColors, ForegroundActionColors {
   SemanticIconColor(T currentThemeOption) : super(currentThemeOption);
   
-  Color get nav;
-  Color get logo;
+  Color? get nav;
+  Color? get logo;
 }
