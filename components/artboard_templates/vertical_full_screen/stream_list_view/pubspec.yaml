@@ -1,0 +1,46 @@
+name: stream_list_view_vertical_full_screen_artboard_template
+description: A vertical full screen frame with a list view and animated title nav header.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  artboard:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/artboard
+  vertical_full_screen_artboard_scaffold:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/artboard_scaffolds/vertical_full_screen
+  header_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/builders/header
+  nav_bar_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/builders/nav_bar
+  view_stream_builder_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/builders/view_stream_builder
+  spaced_list_view_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/builders/spaced_list_view
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

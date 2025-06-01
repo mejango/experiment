@@ -1,0 +1,86 @@
+name: invoice
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  task:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/abstract/task
+  context:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/abstract/context
+  fee_payer_type:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/types/fee_payer
+  assignment_type:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/types/assignment
+  invoice_options:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/types/invoice
+  user_reference:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/user_reference
+  name_user:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/name_user
+  completion_count:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/completion_count
+  date_parts:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/date_parts
+  payer:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/payer
+  schedule:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/schedule
+  stub:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/objects/stub
+  date:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/date
+  key:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/key
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

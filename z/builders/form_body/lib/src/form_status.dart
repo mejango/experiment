@@ -1,1 +1,0 @@
-enum FormSubmitStatus { ready, loading, exception }

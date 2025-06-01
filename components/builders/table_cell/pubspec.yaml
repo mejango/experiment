@@ -1,0 +1,87 @@
+name: table_cell_builder
+description: Library of builders for table cells.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  semantic_theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/semantic_theme
+  x_small_icon_library:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/icons/x_small
+  small_icon_library:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/icons/small
+  standard_icon_library:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/icons/standard
+  haptics:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/haptics
+  tappable:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/tappable
+  vertically_centered_text_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/builders/vertically_centered_text
+  dwolla_types:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/types/dwolla
+  mask:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/mask
+  tag_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/builders/tag
+  property:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/objects/property
+  lease_preview:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/objects/lease_preview
+  frequency_type:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/types/frequency
+  date:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/date
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

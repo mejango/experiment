@@ -1,0 +1,46 @@
+name: nav_vertical_drawer_artboard_template
+description: A vertical drawer frame that builds a column of nav buttons.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  artboard:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/artboard
+  vertical_drawer_artboard_scaffold:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/artboard_scaffolds/vertical_drawer
+  button_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/builders/button
+  navigator:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/navigator
+  standard_icon_library:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/icons/standard
+  semantic_theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/semantic_theme
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

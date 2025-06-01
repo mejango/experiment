@@ -1,0 +1,66 @@
+name: contract
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  key:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/key
+  context:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/abstract/context
+  fee_payer_type:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/types/fee_payer
+  contract_user:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/contract_user
+  name_contract_domain:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/name_contract_domain
+  name_user:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/name_user
+  location:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/location
+  date:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/date
+  schedule:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/schedule
+  name_context:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/name_context
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

@@ -1,0 +1,22 @@
+name: table
+description: Roof's table tools.
+
+version: 1.0.0+1
+
+publish_to: none
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  stream:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/stream
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

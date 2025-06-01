@@ -1,0 +1,28 @@
+name: keyboard_accessory_bar_builder
+description: Keyboard accessory bar functionality for artboards.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  multi_image_picker: ^4.6.1
+  flutter:
+    sdk: flutter
+  haptics:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/haptics
+  semantic_theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/semantic_theme
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

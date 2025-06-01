@@ -1,0 +1,43 @@
+name: date_picker_builder
+description: Date picker functionality for artboards.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_calendar_carousel: ^2.5.3
+  haptics:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/haptics
+  date:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/date
+  standard_icon_library:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/icons/standard
+  artboard:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/artboard
+  semantic_theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/semantic_theme
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

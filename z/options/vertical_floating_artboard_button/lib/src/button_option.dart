@@ -1,1 +1,0 @@
-enum VerticalFloatingArtboardButtonOption { close, previous }

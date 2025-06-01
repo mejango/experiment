@@ -1,0 +1,31 @@
+name: name_contract_domain
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  context_type:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/types/context
+  key:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/key
+  name_domain:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/name_domain
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

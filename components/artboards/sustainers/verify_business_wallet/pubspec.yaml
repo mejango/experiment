@@ -1,0 +1,61 @@
+name: verify_business_wallet_artboard
+description: Form for verifying a non-sole-proprietorship business wallet with Dwolla. Includes controller and beneficial owner.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  form_vertical_floating_artboard_template:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/artboard_templates/vertical_floating/form
+  app_data:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/app_data
+  button_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/builders/button
+  navigator:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/navigator
+  spaced_column_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/builders/spaced_column
+  labeled_value:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/labeled_value
+  dwolla_model:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/dwolla
+  meta_form_artboard:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/artboards/meta_form
+  meta_form_artboard_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/builders/meta_form
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

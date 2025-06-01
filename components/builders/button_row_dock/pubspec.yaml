@@ -1,0 +1,22 @@
+name: button_row_dock_builder
+description: Button dock that arranges two buttons horizontally at the bottom of the screen.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  semantic_theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/semantic_theme
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

@@ -1,0 +1,47 @@
+name: icon_picker_builder
+description: Icon selector functionality for artboards.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  haptics:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/haptics
+  standard_icon_library:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/icons/standard
+  artboard:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/artboard
+  navigator:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/navigator
+  labeled_icon:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/labeled_icon
+  semantic_theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/semantic_theme
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

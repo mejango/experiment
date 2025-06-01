@@ -1,0 +1,27 @@
+name: name_formatter
+description: A tool to help objects create sentences out of names.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  stringify_names:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/stringify_names
+  name_defining_object:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/mixins/name_defining_object
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

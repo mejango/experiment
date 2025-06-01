@@ -1,0 +1,32 @@
+name: view_stream_builder_builder
+description: Builds a widget from a stream data source with loading and empty states.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/theme
+  haptics:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/haptics
+  typedefs:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/typedefs
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

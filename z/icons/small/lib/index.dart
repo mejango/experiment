@@ -1,1 +1,0 @@
-export 'src/small_icon.dart';

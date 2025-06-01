@@ -1,1 +1,0 @@
-enum RoofThemeOption { light, dark }

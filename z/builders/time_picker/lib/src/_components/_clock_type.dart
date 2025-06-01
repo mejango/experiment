@@ -1,1 +1,0 @@
-enum ClockType { am, pm }

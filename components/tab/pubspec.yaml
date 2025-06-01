@@ -1,0 +1,22 @@
+name: tab
+description: Tab view data.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  standard_icon_library:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/icons/standard
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

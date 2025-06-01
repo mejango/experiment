@@ -1,0 +1,36 @@
+name: payment_default
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  payment_default_type:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/types/payment_default
+  mappable:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/mixins/mappable
+  name_payment_profile:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/properties/name_payment_profile
+  key:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/model/key
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

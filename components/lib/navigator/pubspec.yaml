@@ -1,0 +1,26 @@
+name: navigator
+description: Defines how the app's artboards change focus.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  artboard:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/artboard
+  typedefs:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/typedefs
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
