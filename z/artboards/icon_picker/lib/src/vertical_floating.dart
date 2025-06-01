@@ -7,12 +7,12 @@ import 'package:icon_picker_builder/index.dart';
 class IconPickerVerticalFloatingArtboard
     extends EmptyVerticalFloatingArtboard<LabeledIcon>
     with IconPickerArtboardBuilder {
-  final String title;
+  final String? title;
   final LabeledIcon? selectedOption;
   final List<LabeledIcon>? options;
 
   IconPickerVerticalFloatingArtboard({
-    required this.title,
+    this.title,
     this.selectedOption,
     this.options,
   });
