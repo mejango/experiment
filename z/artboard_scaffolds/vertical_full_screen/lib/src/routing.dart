@@ -12,10 +12,10 @@ class VerticalFullScreenRoute<T> extends PageRoute<T> {
   bool get opaque => false;
 
   @override
-  Color get barrierColor => null;
+  Color? get barrierColor => null;
 
   @override
-  String get barrierLabel => null;
+  String? get barrierLabel => null;
 
   @override
   bool get maintainState => true;
@@ -23,7 +23,7 @@ class VerticalFullScreenRoute<T> extends PageRoute<T> {
   Animation<double> get animation => CurvedAnimation(
         curve: theme.curve.enter,
         reverseCurve: theme.curve.exit,
-        parent: controller,
+        parent: controller!,
       );
 
   final _fadeTween = Tween<double>(
@@ -36,8 +36,8 @@ class VerticalFullScreenRoute<T> extends PageRoute<T> {
   );
 
   VerticalFullScreenRoute({
-    @required this.builder,
-    @required this.theme,
+    required this.builder,
+    required this.theme,
   });
 
   @override

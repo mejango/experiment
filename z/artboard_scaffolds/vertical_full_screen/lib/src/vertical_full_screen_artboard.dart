@@ -9,15 +9,15 @@ mixin VerticalFullScreenArtboard implements StatefulWidget, Artboard {
   // TODO make all build functions not resolve to null
   /// buildBody is deprecated. Pass body content as slivers by overriding buildBodySlivers()
   @deprecated
-  Widget buildBody(BuildContext context) => null;
-  List<Widget> buildBodySlivers(BuildContext context) => null;
-  Widget buildNavBar(BuildContext context) => null;
-  Widget buildDock(BuildContext context) => null;
+  Widget? buildBody(BuildContext context) => null;
+  List<Widget>? buildBodySlivers(BuildContext context) => null;
+  Widget? buildNavBar(BuildContext context) => null;
+  Widget? buildDock(BuildContext context) => null;
 
   bool get hideNavBarOnScroll => false;
 
   /// `bodyScrollController` makes VerticalFullScreenArtboard aware of body content scroll behavior. This is required to enable hideNavBarOnScroll.
-  ScrollController get bodyScrollController => null;
+  ScrollController? get bodyScrollController => null;
 
   @override
   State<StatefulWidget> createState() => _VerticalFullScreenArtboardState();
@@ -46,7 +46,7 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
         'If hideNavBarOnScroll == true, bodyScrollController cannot be null.',
       );
 
-      widget.bodyScrollController.addListener(
+      widget.bodyScrollController?.addListener(
         () => _updateNavBarExpandedOnScroll(),
       );
     }
@@ -54,15 +54,15 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
 
   void _updateNavBarExpandedOnScroll() {
     final controller = widget.bodyScrollController;
-    final scrollPosition = controller.offset;
+    final scrollPosition = controller?.offset ?? 0;
     final scrollDelta = scrollPosition - _lastBodyScrollPosition;
 
-    double _newNavBarOffset;
+    double? _newNavBarOffset;
 
-    if (controller.position.extentBefore <= 0) {
+    if ((controller?.position.extentBefore ?? 0) <= 0) {
       // At beginning of scroll range
       _newNavBarOffset = 0;
-    } else if (controller.position.extentAfter <= 0) {
+    } else if ((controller?.position.extentAfter ?? 0) <= 0) {
       // At end of scroll range
       _newNavBarOffset = -_navBarHeight;
     } else if (scrollDelta > 0 && _navBarOffset > -_navBarHeight) {
@@ -89,10 +89,10 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
 
     setState(() {
       if (navBarContext != null) {
-        _navBarHeight = navBarContext.size.height ?? 0;
+        _navBarHeight = navBarContext.size?.height ?? 0;
       }
       if (dockContext != null) {
-        _dockHeight = dockContext.size.height ?? 0;
+        _dockHeight = dockContext.size?.height ?? 0;
       }
     });
   }
@@ -118,7 +118,7 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
 
       final sliverList = [
         navBarSpacer,
-        ...widget.buildBodySlivers(context),
+        ...widget.buildBodySlivers(context) ?? [],
         dockSpacer,
       ];
 
@@ -128,7 +128,10 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
             widget.hideNavBarOnScroll ? widget.bodyScrollController : null,
       );
     } else {
-      body = widget.buildBody(context);
+      body = CustomScrollView(
+        slivers: widget.buildBodySlivers(context) ?? [const SliverToBoxAdapter(child: SizedBox.shrink())],
+        controller: widget.hideNavBarOnScroll ? widget.bodyScrollController : null,
+      );
     }
 
     final navBar = widget.buildNavBar(context);
@@ -164,7 +167,7 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
       right: 0,
       height: _statusBarScrimHeight,
       child: Container(
-        color: theme.color.background.general?.withOpacity(.85),
+        color: theme?.color.background.general.withValues(alpha: 0.85),
       ),
     );
     stackChildren.add(statusBarScrim);
@@ -187,7 +190,7 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
     );
 
     final scaffold = Scaffold(
-      backgroundColor: theme.color.background.general,
+      backgroundColor: theme?.color.background.general,
       body: SafeArea(
         top: false,
         child: stack,

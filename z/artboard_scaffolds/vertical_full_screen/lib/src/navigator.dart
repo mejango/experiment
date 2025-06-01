@@ -15,13 +15,13 @@ import 'routing.dart';
 class VerticalFullScreenArtboardNavigator extends StatefulWidget {
   final Artboard artboard;
 
-  VerticalFullScreenArtboardNavigator({this.artboard});
+  VerticalFullScreenArtboardNavigator({required this.artboard});
 
   @override
   State<StatefulWidget> createState() =>
       VerticalFullScreenInheritedArtboardNavigator();
 
-  static VerticalFullScreenInheritedArtboardNavigator of(
+  static VerticalFullScreenInheritedArtboardNavigator? of(
     BuildContext context, {
     bool shouldRebuild = true,
   }) {
@@ -31,7 +31,7 @@ class VerticalFullScreenArtboardNavigator extends StatefulWidget {
         : context.findAncestorWidgetOfExactType<
             _VerticalFullScreenInheritedArtboardNavigator>();
 
-    return inheritedWidget.data;
+    return inheritedWidget?.data;
   }
 }
 
@@ -40,21 +40,23 @@ class VerticalFullScreenInheritedArtboardNavigator
   final _popMinDragDistanceDelta = 30;
   final _popMaxDragTimeDelta = 60;
 
-  int _initialDragTime;
-  double _initialDragDy;
-  int _timeDelta;
-  double _downDistanceDelta;
+  int? _initialDragTime;
+  double? _initialDragDy;
+  int? _timeDelta;
+  double? _downDistanceDelta;
 
   // Must drag _popMinDragDistanceDelta in less time than _popMaxDragTimeDelta to pop
   get _shouldPop =>
-      _timeDelta < _popMaxDragTimeDelta &&
-      _downDistanceDelta > _popMinDragDistanceDelta;
+      _timeDelta != null &&
+      _downDistanceDelta != null &&
+      _timeDelta! < _popMaxDragTimeDelta &&
+      _downDistanceDelta! > _popMinDragDistanceDelta;
 
   Widget build(BuildContext context) {
     final swipablePage = GestureDetector(
       onHorizontalDragStart: _onHorizontalDragStart,
       onHorizontalDragUpdate: (details) {
-        if (!Platform.isIOS || details.primaryDelta < 0) return;
+        if (!Platform.isIOS || details.primaryDelta == null || details.primaryDelta! < 0) return;
         _onDragRightUpdate(details);
         if (_shouldPop) Navigator.maybePop(context);
       },
@@ -75,19 +77,23 @@ class VerticalFullScreenInheritedArtboardNavigator
   }
 
   void _onHorizontalDragStart(DragStartDetails details) {
-    _initialDragTime = details.sourceTimeStamp.inMilliseconds;
+    _initialDragTime = details.sourceTimeStamp?.inMilliseconds;
     _initialDragDy = details.globalPosition.dx;
   }
 
   void _onDragRightUpdate(DragUpdateDetails details) {
-    _timeDelta = details.sourceTimeStamp.inMilliseconds - _initialDragTime;
-    _downDistanceDelta = details.globalPosition.dx - _initialDragDy;
+    _timeDelta = (details.sourceTimeStamp?.inMilliseconds ?? 0) - (_initialDragTime ?? 0);
+    _downDistanceDelta = details.globalPosition.dx - (_initialDragDy ?? 0);
   }
 
   Future<T> _goTo<T>(
     Artboard artboard, {
-    @required BuildContext context,
+    required BuildContext context,
   }) async {
+
+    final theme = SemanticTheme.of(context);
+    if (theme == null) throw Exception('Theme cannot be null');
+
     if (artboard is VerticalFloatingArtboard) {
       final floatingNavigator = VerticalFloatingArtboardNavigator(
         artboard: artboard,
@@ -96,7 +102,7 @@ class VerticalFullScreenInheritedArtboardNavigator
       final result = await Navigator.of(context).push<dynamic>(
         VerticalFloatingRoute(
           builder: (context) => floatingNavigator,
-          theme: SemanticTheme.of(context),
+          theme: theme,
         ),
       );
 
@@ -118,7 +124,7 @@ class VerticalFullScreenInheritedArtboardNavigator
       final result = await Navigator.of(context).push<dynamic>(
         VerticalDrawerRoute(
           builder: (context) => drawerNavigator,
-          theme: SemanticTheme.of(context),
+          theme: theme,
         ),
       );
 
@@ -137,10 +143,12 @@ class VerticalFullScreenInheritedArtboardNavigator
         artboard: artboard,
       );
 
+      final theme = SemanticTheme.of(context);
+      if (theme == null) throw Exception('Theme cannot be null');
       final result = await Navigator.of(context).push<dynamic>(
         HorizontalFloatingRoute(
           builder: (context) => floatingNavigator,
-          theme: SemanticTheme.of(context),
+          theme: theme,
         ),
       );
 
@@ -155,28 +163,35 @@ class VerticalFullScreenInheritedArtboardNavigator
 
       return Future.value();
     } else {
-      return await Navigator.of(context).push<T>(
+      final theme = SemanticTheme.of(context);
+      if (theme == null) throw Exception('Theme cannot be null');
+      final result = await Navigator.of(context).push<T>(
         VerticalFullScreenRoute(
           builder: (context) {
             return VerticalFullScreenArtboardNavigator(
               artboard: artboard,
             );
           },
-          theme: SemanticTheme.of(context),
+          theme: theme,
         ),
       );
+      if (result == null) throw Exception('Navigation result cannot be null');
+      return result;
     }
   }
 
-  bool _pop<T>([T result]) => Navigator.pop(context, result);
+  bool _pop<T>([T? result]) {
+    Navigator.pop(context, result);
+    return true;
+  }
 }
 
 class _VerticalFullScreenInheritedArtboardNavigator extends InheritedWidget {
   final VerticalFullScreenInheritedArtboardNavigator data;
 
   _VerticalFullScreenInheritedArtboardNavigator({
-    @required this.data,
-    @required Widget child,
+    required this.data,
+    required Widget child,
   }) : super(child: child);
 
   @override
