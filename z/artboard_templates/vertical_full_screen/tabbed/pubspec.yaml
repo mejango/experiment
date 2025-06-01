@@ -1,0 +1,61 @@
+name: tabbed_fullscreen_artboard_template
+description: A frame with a titled nav bar, a breadcrumb builder, an info row builder, and a tabbed container view.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  artboard:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/artboard
+  vertical_full_screen_artboard_scaffold:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/artboard_scaffolds/vertical_full_screen
+  nav_bar_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/nav_bar
+  input_dock_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/input_dock
+  table_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/table
+  key_value_row_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/key_value_row
+  caret_wrap_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/caret_wrap
+  tabbed_container_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/tabbed_container
+  tab:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/tab
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
