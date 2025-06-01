@@ -1,0 +1,75 @@
+name: app_1
+description: Whatchu know about this 
+
+version: 1.0.0+1
+
+environment:
+  sdk: 3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sm_theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/sm_theme
+  welcome_artboard:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: apps/app_1/artboards/welcome
+  vertical_full_screen_artboard_scaffold:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/artboard_scaffolds/vertical_full_screen
+  artboard:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/artboard
+  device_screen:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/device_screen
+  # commands:
+  #   git:
+  #     url: git@github.com:mejango/experiment.git
+  #     ref: main
+  #     path: apps/app_1/commands
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  fonts:
+    - family: RoofXSmallIcons
+      fonts:
+        - asset: components/icons/x_small/lib/ttf/RoofXSmallIcons.ttf
+    - family: RoofSmallIcons
+      fonts:
+        - asset: components/icons/small/lib/ttf/RoofSmallIcons.ttf
+    - family: RoofStandardIcons
+      fonts:
+        - asset: components/icons/standard/lib/ttf/RoofStandardIcons.ttf
+    - family: RoofNavigationIcons
+      fonts:
+        - asset: components/icons/navigation/lib/ttf/RoofNavigationIcons.ttf
+    - family: circular
+      fonts:
+        - asset: packages/sm_theme/fonts/circular/CircularStd-Book.otf
+          weight: 100
+        - asset: packages/sm_theme/fonts/circular/CircularStd-Book.otf
+          weight: 200
+        - asset: packages/sm_theme/fonts/circular/CircularStd-Medium.otf
+          weight: 300
+        - asset: packages/sm_theme/fonts/circular/CircularStd-Bold.otf
+          weight: 400
+        - asset: packages/sm_theme/fonts/circular/CircularStd-Black.otf
+          weight: 500
