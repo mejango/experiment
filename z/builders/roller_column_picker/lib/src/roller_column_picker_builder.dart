@@ -14,14 +14,14 @@ mixin RollerColumnPickerArtboardBuilder<T>
 
 mixin RollerColumnPickerArtboardBuilderState<T,
     U extends RollerColumnPickerArtboardBuilder> implements ArtboardState<U> {
-  LabeledValue<T> _selectedValue;
+  LabeledValue<T>? _selectedValue;
 
-  LabeledValue<T> get selectedValue => _selectedValue;
-  set selectedValue(LabeledValue<T> newValue) => _selectedValue = newValue;
+  LabeledValue<T>? get selectedValue => _selectedValue;
+  set selectedValue(LabeledValue<T>? newValue) => _selectedValue = newValue;
 
   Widget buildRollerColumnPicker(BuildContext context) => RollerColumnPicker<T>(
-        selectedValue: widget.selectedValue,
-        options: widget.options,
+        selectedValue: widget.selectedValue as LabeledValue<T>?,
+        options: widget.options as List<LabeledValue<T>>?,
         infiniteScroll: widget.infiniteScroll,
         onChanged: _onChanged,
       );

@@ -5,16 +5,16 @@ import 'package:roller_column_builder/index.dart';
 import 'package:semantic_theme/index.dart';
 
 class RollerColumnPicker<T> extends StatefulWidget {
-  final LabeledValue<T> selectedValue;
-  final List<LabeledValue<T>> options;
-  final Function(LabeledValue<T>) onChanged;
-  final bool infiniteScroll;
+  final LabeledValue<T>? selectedValue;
+  final List<LabeledValue<T>>? options;
+  final Function(LabeledValue<T>)? onChanged;
+  final bool? infiniteScroll;
 
   RollerColumnPicker({
     this.selectedValue,
     this.options,
     this.onChanged,
-    bool infiniteScroll,
+    bool? infiniteScroll,
   }) : this.infiniteScroll = infiniteScroll ?? false;
 
   RollerColumnPickerState<T> createState() => RollerColumnPickerState<T>();
@@ -22,11 +22,11 @@ class RollerColumnPicker<T> extends StatefulWidget {
 
 class RollerColumnPickerState<T> extends State<RollerColumnPicker<T>>
     with RollerColumnBuilder {
-  LabeledValue<T> _selectedValue;
+  LabeledValue<T>? _selectedValue;
 
   @override
   void initState() {
-    _selectedValue = widget.selectedValue ?? widget.options.first;
+    _selectedValue = widget.selectedValue ?? widget.options?.first;
 
     super.initState();
   }
@@ -37,14 +37,14 @@ class RollerColumnPickerState<T> extends State<RollerColumnPicker<T>>
 
     final Widget column = buildRollerColumn<T>(
       context,
-      list: widget.options,
+      list: widget.options ?? [],
       selectedValue: _selectedValue,
       onChange: _onChange,
       infiniteScroll: widget.infiniteScroll,
     );
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: theme.distance.padding.vertical.medium,
+        vertical: theme?.distance.padding.vertical.medium ?? 0,
       ),
       child: Center(child: column),
     );
@@ -55,7 +55,7 @@ class RollerColumnPickerState<T> extends State<RollerColumnPicker<T>>
       setState(() {
         _selectedValue = newVal;
       });
-      widget.onChanged(_selectedValue);
+      widget.onChanged?.call(_selectedValue!);
     }
   }
 }
