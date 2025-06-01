@@ -6,6 +6,6 @@ abstract class SemanticLogoLibrary<T> extends ThemeOptionDependent<T>
     with ValueForThemeOption<T> {
   SemanticLogoLibrary(T currentThemeOption) : super(currentThemeOption);
 
-  Widget get full;
-  Widget get icon;
+  Widget? get full;
+  Widget? get icon;
 }

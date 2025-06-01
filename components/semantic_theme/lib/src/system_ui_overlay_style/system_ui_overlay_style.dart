@@ -7,5 +7,5 @@ abstract class SemanticSystemUiOverlayStyle<T> extends ThemeOptionDependent<T>
   SemanticSystemUiOverlayStyle(T currentThemeOption)
       : super(currentThemeOption);
 
-  SystemUiOverlayStyle get value;
+  SystemUiOverlayStyle? get value;
 }

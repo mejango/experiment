@@ -10,17 +10,17 @@ class SmBodyHeavyTypography extends SemanticTypography {
   SmBodyHeavyTypography(currentThemeOption) : super(currentThemeOption);
 
   @override
-  String get fontFamily => ff.circular;
+  String? get fontFamily => ff.circular;
 
   @override
-  List<String> get fontFamilyFallback => null;
+  List<String>? get fontFamilyFallback => null;
 
   @override
-  double get fontSize => fs.small;
+  double? get fontSize => fs.small;
 
   @override
-  FontWeight get fontWeight => fw.thick;
+  FontWeight? get fontWeight => fw.thick;
 
   @override
-  double get letterSpacing => null;
+  double? get letterSpacing => null;
 }

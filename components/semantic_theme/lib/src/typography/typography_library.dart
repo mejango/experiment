@@ -5,32 +5,32 @@ abstract class SemanticTypographyLibrary<T> extends ThemeOptionDependent<T> {
   SemanticTypographyLibrary(T currentThemeOption) : super(currentThemeOption);
 
   /// Header for high-level pages.
-  SemanticTypography get headingPrimary;
+  SemanticTypography? get headingPrimary;
 
   /// Header for main section or modal.
-  SemanticTypography get headingSecondary;
+  SemanticTypography? get headingSecondary;
 
   /// Title for forms, cards, or subsections.
-  SemanticTypography get title;
+  SemanticTypography? get title;
 
   /// Subtitle for forms, cards, or subsections.
-  SemanticTypography get subtitle;
+  SemanticTypography? get subtitle;
 
   /// Label for input fields and controls.
-  SemanticTypography get label;
+  SemanticTypography? get label;
 
   /// General body typography.
-  SemanticTypography get body;
+  SemanticTypography? get body;
 
   /// Heavy body typography.
-  SemanticTypography get bodyHeavy;
+  SemanticTypography? get bodyHeavy;
 
   /// Typography for buttons.
-  SemanticTypography get button;
+  SemanticTypography? get button;
 
   /// Typography for captions, tooltips, and small helper text.
-  SemanticTypography get detail;
+  SemanticTypography? get detail;
 
   /// Heavy typography for captions, tooltips, and small helper text.
-  SemanticTypography get detailHeavy;
+  SemanticTypography? get detailHeavy;
 }

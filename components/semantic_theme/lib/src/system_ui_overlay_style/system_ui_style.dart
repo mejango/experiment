@@ -6,6 +6,6 @@ abstract class SemanticSystemUiStyle<T> extends ThemeOptionDependent<T> {
   SemanticSystemUiStyle(T currentThemeOption)
       : super(currentThemeOption);
 
-  SemanticSystemUiOverlayStyle get systemUiOverlayStyle;
-  SemanticKeyboardBrightness get keyboardBrightness;
+  SemanticSystemUiOverlayStyle? get systemUiOverlayStyle;
+  SemanticKeyboardBrightness? get keyboardBrightness;
 }

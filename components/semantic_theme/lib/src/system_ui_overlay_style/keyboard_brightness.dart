@@ -7,5 +7,5 @@ abstract class SemanticKeyboardBrightness<T> extends ThemeOptionDependent<T>
   SemanticKeyboardBrightness(T currentThemeOption)
       : super(currentThemeOption);
 
-  Brightness get value;
+  Brightness? get value;
 }

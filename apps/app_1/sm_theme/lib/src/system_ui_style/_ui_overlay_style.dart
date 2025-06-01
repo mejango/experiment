@@ -6,7 +6,7 @@ class SmSystemUiOverlayStyle extends SemanticSystemUiOverlayStyle {
   SmSystemUiOverlayStyle(currentThemeOption) : super(currentThemeOption);
 
   @override
-  SystemUiOverlayStyle get value => forThemeOption({
+  SystemUiOverlayStyle? get value => forThemeOption({
         SmThemeOption.dark: SystemUiOverlayStyle.light,
       });
 }

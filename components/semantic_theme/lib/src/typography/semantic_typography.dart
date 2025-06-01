@@ -6,11 +6,11 @@ abstract class SemanticTypography<T> extends ThemeOptionDependent<T>
     with ValueForThemeOption<T> {
   SemanticTypography(T currentThemeOption) : super(currentThemeOption);
 
-  double get fontSize;
-  FontWeight get fontWeight;
-  String get fontFamily;
-  List<String> get fontFamilyFallback;
-  double get letterSpacing;
+  double? get fontSize;
+  FontWeight? get fontWeight;
+  String? get fontFamily;
+  List<String>? get fontFamilyFallback;
+  double? get letterSpacing;
 
   TextStyle textStyle({
     required Color color,
