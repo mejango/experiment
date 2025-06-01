@@ -7,10 +7,10 @@ import '_components/list_primary_button.dart';
 mixin PrimaryListButtonBuilder {
   PrimaryListButton buildPrimaryListButton(
     BuildContext context, {
-    @required ContextPasser onTap,
-    @required String text,
-    @required String badgeText,
-    StandardIcon iconReference,
+    required ContextPasser onTap,
+    required String text,
+    required String badgeText,
+    StandardIcon? iconReference,
   }) =>
       PrimaryListButton(
         onTap: onTap,

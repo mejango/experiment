@@ -39,7 +39,7 @@ mixin LeftButtonState<T extends StatefulWidget>
 
       final buttonIcon = Container(
         padding: iconPadding,
-        child: button.iconReference?.buildWidget(color: textColor),
+        child: button.iconReference?.buildWidget(color: textColor ?? Colors.black),
       );
 
       buttonChildren.add(buttonIcon);
@@ -48,7 +48,7 @@ mixin LeftButtonState<T extends StatefulWidget>
     final styledButtonText = buildVerticallyCenteredText(
       Text(
         button.text ?? '',
-        style: theme?.typography.button.textStyle(color: textColor),
+        style: theme?.typography.button.textStyle(color: textColor ?? Colors.black),
         textAlign: TextAlign.center,
       ),
     );
@@ -58,13 +58,13 @@ mixin LeftButtonState<T extends StatefulWidget>
     buttonChildren.add(textContainer);
 
     final rightArrowIcon = StandardIcon.upArrow.buildWidget(
-      color: button.arrowColor(context),
+      color: button.arrowColor(context) ?? Colors.black,
     );
 
     buttonChildren.add(rightArrowIcon);
 
     final decoration = BoxDecoration(
-      color: button.backgroundColor(context).withValues(alpha: (tapped ? .7 : 1) * 255),
+      color: button.backgroundColor(context)?.withValues(alpha: (tapped ? .7 : 1) * 255),
       borderRadius: BorderRadius.all(
         theme?.radius.medium ?? Radius.zero,
       ),

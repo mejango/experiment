@@ -35,13 +35,13 @@ mixin ListButtonState<T extends StatefulWidget> on Tappable<T> {
 
       final buttonIcon = Container(
         padding: iconPadding,
-        child: button.iconReference?.buildWidget(color: textColor),
+        child: button.iconReference?.buildWidget(color: textColor ?? Colors.black),
       );
 
       buttonChildren.add(buttonIcon);
     }
 
-    final textDecoration = theme?.typography.button.textStyle(color: textColor);
+    final textDecoration = theme?.typography.button.textStyle(color: textColor ?? Colors.black);
 
     final styledButtonText = Text(
       button.text ?? '',
@@ -56,7 +56,7 @@ mixin ListButtonState<T extends StatefulWidget> on Tappable<T> {
       final badgeText = Text(
         button.badgeText ?? '',
         style: theme?.typography.bodyHeavy.textStyle(
-          color: button.badgeTextColor(context),
+          color: button.badgeTextColor(context) ?? Colors.black,
         ),
       );
 

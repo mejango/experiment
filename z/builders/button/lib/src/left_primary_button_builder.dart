@@ -7,10 +7,10 @@ import '_components/left_primary_button.dart';
 mixin PrimaryLeftButtonBuilder {
   PrimaryLeftButton buildPrimaryLeftButton(
     BuildContext context, {
-    @required ContextPasser onTap,
-    @required String text,
-    StandardIcon iconReference,
-    bool hasArrow,
+    required ContextPasser onTap,
+    required String text,
+    StandardIcon? iconReference,
+    bool hasArrow = true,
   }) {
     return PrimaryLeftButton(
       onTap: onTap,

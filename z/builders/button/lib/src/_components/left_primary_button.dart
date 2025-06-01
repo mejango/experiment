@@ -27,8 +27,8 @@ class PrimaryLeftButton extends StatefulWidget with LeftStyleButton {
       };
 
   PrimaryLeftButton({
-    @required this.onTap,
-    @required this.text,
+    required this.onTap,
+    required this.text,
     this.iconReference,
     this.hasArrow = true,
   });

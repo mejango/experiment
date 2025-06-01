@@ -7,10 +7,10 @@ import '_components/left_secondary_button.dart';
 mixin SecondaryLeftButtonBuilder {
   SecondaryLeftButton buildSecondaryLeftButton(
     BuildContext context, {
-    @required ContextPasser onTap,
-    @required String text,
-    StandardIcon iconReference,
-    bool hasArrow,
+    required ContextPasser onTap,
+    required String text,
+    StandardIcon? iconReference,
+    bool hasArrow = true,
   }) {
     return SecondaryLeftButton(
       onTap: onTap,

@@ -10,25 +10,25 @@ export '_mixins/left_button.dart';
 
 class SecondaryLeftButton extends StatefulWidget with LeftStyleButton {
   final ContextPasser onTap;
-  final String text;
-  final StandardIcon iconReference;
+  final String? text;
+  final StandardIcon? iconReference;
   final bool hasArrow;
 
   get backgroundColor => (context) {
-        return SemanticTheme.of(context).color.background.actionSecondary;
+        return SemanticTheme.of(context)?.color.background.actionSecondary;
       };
 
   get textColor => (context) {
-        return SemanticTheme.of(context).color.text.onActionSecondaryBackground;
+        return SemanticTheme.of(context)?.color.text.onActionSecondaryBackground;
       };
 
   get arrowColor => (context) {
-        return SemanticTheme.of(context).color.icon.generalSecondary;
+        return SemanticTheme.of(context)?.color.icon.generalSecondary;
       };
 
   SecondaryLeftButton({
-    @required this.onTap,
-    @required this.text,
+    required this.onTap,
+    required this.text,
     this.iconReference,
     this.hasArrow = true,
   });

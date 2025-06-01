@@ -7,8 +7,8 @@ import '_components/primary_icon_button.dart';
 mixin PrimaryIconButtonBuilder {
   PrimaryIconButton buildPrimaryIconButton(
     BuildContext context, {
-    @required OnTap onTap,
-    StandardIcon iconReference,
+    required OnTap onTap,
+    required StandardIcon iconReference,
   }) {
     return PrimaryIconButton(
       onTap: onTap,

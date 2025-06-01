@@ -8,25 +8,25 @@ import '_mixins/list_button.dart';
 
 class PrimaryListButton extends StatefulWidget with ListStyleButton {
   final ContextPasser onTap;
-  final String text;
-  final String badgeText;
-  final StandardIcon iconReference;
+  final String? text;
+  final String? badgeText;
+  final StandardIcon? iconReference;
 
   @override
   get textColor =>
-      (context) => SemanticTheme.of(context).color.text.generalPrimary;
+      (context) => SemanticTheme.of(context)?.color.text.generalPrimary;
 
   @override
   get badgeTextColor =>
-      (context) => SemanticTheme.of(context).color.text.action;
+      (context) => SemanticTheme.of(context)?.color.text.action;
 
   @override
   get iconColor =>
-      (context) => SemanticTheme.of(context).color.icon.generalPrimary;
+      (context) => SemanticTheme.of(context)?.color.icon.generalPrimary;
 
   PrimaryListButton({
-    @required this.onTap,
-    @required this.text,
+    required this.onTap,
+    required this.text,
     this.iconReference,
     this.badgeText,
   });

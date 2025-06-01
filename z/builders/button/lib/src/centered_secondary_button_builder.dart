@@ -8,10 +8,10 @@ import '_components/centered_secondary_button.dart';
 mixin SecondaryCenterButtonBuilder {
   SecondaryCenterButton buildSecondaryCenterButton(
     BuildContext context, {
-    @required OnTap onTap,
-    @required String text,
-    XSmallIcon icon,
-    ButtonStatusOption status,
+    required OnTap onTap,
+    required String text,
+    XSmallIcon? icon,
+    ButtonStatusOption? status,
   }) {
     return SecondaryCenterButton(
       onTap: onTap,

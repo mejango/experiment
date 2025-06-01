@@ -8,10 +8,10 @@ import '_components/centered_primary_button.dart';
 mixin PrimaryCenterButtonBuilder {
   PrimaryCenterButton buildPrimaryCenterButton(
     BuildContext context, {
-    @required OnTap onTap,
-    @required String text,
-    XSmallIcon icon,
-    ButtonStatusOption status,
+    required OnTap onTap,
+    required String text,
+    XSmallIcon? icon,
+    ButtonStatusOption? status,
   }) {
     return PrimaryCenterButton(
       onTap: onTap,
