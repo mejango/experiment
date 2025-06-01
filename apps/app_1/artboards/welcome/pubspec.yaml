@@ -49,7 +49,7 @@ dependencies:
     git:
       url: git@github.com:mejango/experiment.git
       ref: main
-      path: components/navigator
+      path: components/lib/navigator
   button_row_dock_builder:
     git:
       url: git@github.com:mejango/experiment.git

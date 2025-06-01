@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:button_builder/index.dart';
 import 'package:button_row_dock_builder/index.dart';
 import 'package:empty_table_vertical_full_screen_artboard_template/index.dart';
-import 'package:log_in_artboard/index.dart';
+// import 'package:log_in_artboard/index.dart';
 import 'package:navigator/index.dart';
-import 'package:create_service_artboard/index.dart';
-import 'package:register_artboard/index.dart';
+// import 'package:create_service_artboard/index.dart';
+// import 'package:register_artboard/index.dart';
 import 'package:semantic_theme/index.dart';
 import 'package:spaced_column_builder/index.dart';
 
@@ -24,13 +24,13 @@ class WelcomeVerticalFullScreenArtboard
     final theme = SemanticTheme.of(context);
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: theme.distance.gutter.horizontal.medium,
+        horizontal: theme!.distance.gutter!.horizontal!.medium!,
       ),
       child: Center(
         child: Text(
           "Welcome to Sustainer's Market",
-          style: theme.typography.headingPrimary.textStyle(
-            color: theme.color.text.generalPrimary,
+          style: theme?.typography.headingPrimary?.textStyle(
+            color: theme?.color.text?.generalPrimary ?? Colors.black,
           ),
           textAlign: TextAlign.center,
         ),

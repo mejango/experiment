@@ -15,13 +15,13 @@ abstract class SemanticThemeData<T> extends ThemeOptionDependent<T> {
   /// This method can be overridden to return a stored theme option preference.
   Future<T>? loadThemeOption() => null;
 
-  SemanticColorLibrary get color;
-  SemanticCurveLibrary get curve;
-  SemanticDistanceLibrary get distance;
-  SemanticDurationLibrary get duration;
-  SemanticRadiusLibrary get radius;
-  SemanticShadowLibrary get shadow;
-  SemanticTypographyLibrary get typography;
-  SemanticSystemUiStyle get systemUiStyle;
-  SemanticLogoLibrary get logo;
+  SemanticColorLibrary? get color;
+  SemanticCurveLibrary? get curve;
+  SemanticDistanceLibrary? get distance;
+  SemanticDurationLibrary? get duration;
+  SemanticRadiusLibrary? get radius;
+  SemanticShadowLibrary? get shadow;
+  SemanticTypographyLibrary? get typography;
+  SemanticSystemUiStyle? get systemUiStyle;
+  SemanticLogoLibrary? get logo;
 }
