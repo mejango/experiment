@@ -20,26 +20,26 @@ const _jwtOwnerKey = 'owner';
 
 const _expiredSecondsBuffer = 20;
 
-Future<String?>? get token async {
+Future<String?> get token async {
   return await _sessionToken ?? _verificationToken;
 }
 
-Future<String?>? get _sessionToken async {
+Future<String?> get _sessionToken async {
   return await _tokenForKey(_sessionTokenKey);
 }
 
-Future<String?>? get _verificationToken async {
+Future<String?> get _verificationToken async {
   return await _tokenForKey(_verificationTokenKey);
 }
 
-Future<String?>? get refreshToken async {
+Future<String?> get refreshToken async {
   return await _tokenForKey(_refreshTokenKey);
 }
 
-Future<String?>? get ownerGuid async {
+Future<String?> get ownerGuid async {
   final _token = await token;
 
-  if (token == null) throw Exception("No session token");
+  if (_token == null) throw Exception("No session token");
 
   final jwt = Jwt().parse(_token);
 
@@ -48,10 +48,10 @@ Future<String?>? get ownerGuid async {
   return ownerGuid;
 }
 
-Future<bool>? get isSessionExpired async {
+Future<bool> get isSessionExpired async {
   final _token = await token;
 
-  if (token == null) throw Exception("No session token");
+  if (_token == null) throw Exception("No session token");
 
   final jwt = Jwt().parse(_token);
 
@@ -70,15 +70,15 @@ Future<bool>? get isSessionExpired async {
   return DateTime.now().isAfter(expirationDateToCompare);
 }
 
-Future<String?>? get currentContextGuid async {
+Future<String?> get currentContextGuid async {
   return await _cache.stringForKey(_contextKey);
 }
 
-Future<String?>? get currentSyncId async {
+Future<String?> get currentSyncId async {
   return await _cache.stringForKey(_syncIdKey);
 }
 
-Future<User?>? get owner async {
+Future<User?> get owner async {
   final _ownerGuid = await ownerGuid;
   if (_ownerGuid == null) return null;
 
@@ -86,7 +86,7 @@ Future<User?>? get owner async {
       .read<User>(guid: _ownerGuid, converter: User.fromMap);
 }
 
-Future<Context?>? get currentContext async {
+Future<Context?> get currentContext async {
   final _currentContextGuid = await currentContextGuid;
   if (_currentContextGuid == null) return null;
 
@@ -94,13 +94,13 @@ Future<Context?>? get currentContext async {
       .read<Context>(guid: _currentContextGuid, converter: Context.fromMap);
 }
 
-Future? setCurrentContext(String? contextGuid) async {
+Future setCurrentContext(String? contextGuid) async {
   if (await currentContextGuid == contextGuid) return;
 
   List<String> except = [];
   final _ownerGuid = await ownerGuid;
 
-  if (ownerGuid != null) except.add(_ownerGuid!);
+  if (_ownerGuid != null) except.add(_ownerGuid);
   if (contextGuid != null) except.add(contextGuid);
 
   ModelObjectCache().empty(except: except);
@@ -122,7 +122,10 @@ void standby({required String verificationToken}) {
 
 void end() async {
   _terminateSession();
-  Future.wait([setCurrentContext(null), _removeTokenForKey(_sessionTokenKey)]);
+  await Future.wait([
+    setCurrentContext(null),
+    _removeTokenForKey(_sessionTokenKey)
+  ]);
 }
 
 Future _terminateSession() async {
