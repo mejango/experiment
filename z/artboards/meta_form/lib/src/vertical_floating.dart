@@ -13,17 +13,17 @@ class MetaFormVerticalFloatingArtboard<T>
   final void Function() validateForm;
 
   MetaFormVerticalFloatingArtboard({
-    @required this.valueFromFieldsData,
-    @required this.fieldsData,
-    this.title,
-    String submitButtonText,
-    this.validateForm,
+    required this.valueFromFieldsData,
+    required this.fieldsData,
+    required this.title,
+    String? submitButtonText,
+    required this.validateForm,
   }) : this.submitButtonText = submitButtonText ?? "Done";
 
   @override
   submit(BuildContext context) async {
     final newResult = valueFromFieldsData(await fieldsData);
-    VerticalFloatingArtboardNavigatorPanel.of(context).completeWith(newResult);
+    VerticalFloatingArtboardNavigatorPanel.of(context)?.completeWith(newResult);
   }
 
   @override

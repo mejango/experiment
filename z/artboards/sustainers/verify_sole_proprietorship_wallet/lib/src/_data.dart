@@ -12,9 +12,8 @@ mixin VerifySoleProprietorshipWalletArtboardData implements FormBuilder {
         _last4Ssn,
       ];
 
-  Future<void> submit(BuildContext context) {
+  Future<void> submit(BuildContext context) async {
     // TODO: implement submit
-    return null;
   }
 
   final _firstName = FormFirstNameTextFieldData(
