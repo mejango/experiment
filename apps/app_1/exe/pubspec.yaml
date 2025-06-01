@@ -1,5 +1,5 @@
 name: app_1
-description: Whatchu know about this 
+description: App template #1
 
 version: 1.0.0+1
 
@@ -63,13 +63,13 @@ flutter:
         - asset: components/icons/navigation/lib/ttf/RoofNavigationIcons.ttf
     - family: circular
       fonts:
-        - asset: packages/sm_theme/fonts/circular/CircularStd-Book.otf
+        - asset: apps/app_1/sm_theme/lib/fonts/circular/CircularStd-Book.otf
           weight: 100
-        - asset: packages/sm_theme/fonts/circular/CircularStd-Book.otf
+        - asset: apps/app_1/sm_theme/lib/fonts/circular/CircularStd-Book.otf
           weight: 200
-        - asset: packages/sm_theme/fonts/circular/CircularStd-Medium.otf
+        - asset: apps/app_1/sm_theme/lib/fonts/circular/CircularStd-Medium.otf
           weight: 300
-        - asset: packages/sm_theme/fonts/circular/CircularStd-Bold.otf
+        - asset: apps/app_1/sm_theme/lib/fonts/circular/CircularStd-Bold.otf
           weight: 400
-        - asset: packages/sm_theme/fonts/circular/CircularStd-Black.otf
+        - asset: apps/app_1/sm_theme/lib/fonts/circular/CircularStd-Black.otf
           weight: 500
