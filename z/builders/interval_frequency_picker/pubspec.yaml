@@ -1,0 +1,57 @@
+name: interval_frequency_picker_builder
+description: Component for selecting a schedule interval and frequency
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+  artboard:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/artboard
+  period_type:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/types/period
+  haptics:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/haptics
+  interval:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/interval
+  frequency:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/lib/frequency
+  labeled_value:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/labeled_value
+  roller_column_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/builders/roller_column
+  semantic_theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: z/semantic_theme
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

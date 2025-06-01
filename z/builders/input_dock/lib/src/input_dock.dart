@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:multi_image_picker/asset.dart';
+import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 import 'package:semantic_theme/index.dart';
 
 import '_components/_file_preview.dart';
 import '_components/_input_field.dart';
 
 class DockSubmitData {
-  String text;
-  List<String> files;
+  String? text;
+  List<String>? files;
 
   DockSubmitData({
     this.text,
@@ -18,9 +18,9 @@ class DockSubmitData {
 typedef DockDataHandler = void Function(DockSubmitData data);
 
 class InputDock extends StatefulWidget {
-  final Widget actionButton;
-  final DockDataHandler onSubmit;
-  final List<Widget> auxiliaryWidgets;
+  final Widget? actionButton;
+  final DockDataHandler? onSubmit;
+  final List<Widget>? auxiliaryWidgets;
 
   InputDock({
     this.actionButton,
@@ -31,7 +31,7 @@ class InputDock extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => InheritedInputDock();
 
-  static InheritedInputDock of(
+  static InheritedInputDock? of(
     BuildContext context, {
     bool shouldRebuild = true,
   }) {
@@ -39,7 +39,7 @@ class InputDock extends StatefulWidget {
         ? context.dependOnInheritedWidgetOfExactType<_InheritedInputDock>()
         : context.findAncestorWidgetOfExactType<_InheritedInputDock>());
 
-    return inheritedWidget.data;
+    return inheritedWidget?.data;
   }
 }
 
@@ -49,13 +49,13 @@ class InheritedInputDock extends State<InputDock> {
   final double previewWidth = 140;
 
   String _text = '';
-  List<Asset> files = [];
+  List<AssetEntity> files = [];
 
   bool get showSubmitButton => _text.isNotEmpty || files.isNotEmpty;
   set text(String text) => setState(() => _text = text);
 
-  void addFiles(List<Asset> newFiles) => setState(() => files.addAll(newFiles));
-  void removeFile(Asset file) => setState(() => files.remove(file));
+  void addFiles(List<AssetEntity> newFiles) => setState(() => files.addAll(newFiles));
+  void removeFile(AssetEntity file) => setState(() => files.remove(file));
 
   void onSubmit() {
     _showDialogDev();
@@ -65,7 +65,7 @@ class InheritedInputDock extends State<InputDock> {
       text: _text,
       // files: _files,
     );
-    widget.onSubmit(data);
+    widget.onSubmit?.call(data);
 
     _resetDock();
   }
@@ -105,17 +105,17 @@ class InheritedInputDock extends State<InputDock> {
     final rowChildren = <Widget>[];
 
     if (widget.auxiliaryWidgets != null) {
-      rowChildren.addAll(widget.auxiliaryWidgets);
+      rowChildren.addAll(widget.auxiliaryWidgets!);
     }
 
     rowChildren.add(DockInputField(onSubmit: onSubmit));
 
-    if (widget.actionButton != null) rowChildren.add(widget.actionButton);
+    if (widget.actionButton != null) rowChildren.add(widget.actionButton!);
 
     final Widget fieldRow = Container(
       padding: EdgeInsets.symmetric(
-        horizontal: theme.distance.padding.horizontal.medium,
-        vertical: theme.distance.padding.vertical.medium,
+        horizontal: theme?.distance.padding.horizontal.medium ?? 0,
+        vertical: theme?.distance.padding.vertical.medium ?? 0,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -126,8 +126,8 @@ class InheritedInputDock extends State<InputDock> {
 
     final safeArea = MediaQuery.of(context).padding.bottom;
     final bottomPadding = EdgeInsets.only(bottom: safeArea);
-    final backgroundColor = theme.color.background.general;
-    final topBorderColor = theme.color.stroke.medium;
+    final backgroundColor = theme?.color.background.general ?? Colors.transparent;
+    final topBorderColor = theme?.color.stroke.medium ?? Colors.transparent;
 
     final Widget dock = Container(
       padding: bottomPadding,
@@ -150,8 +150,8 @@ class _InheritedInputDock extends InheritedWidget {
   final InheritedInputDock data;
 
   _InheritedInputDock({
-    @required this.data,
-    @required Widget child,
+    required this.data,
+    required Widget child,
   }) : super(child: child);
 
   @override

@@ -6,9 +6,9 @@ import 'package:haptics/index.dart';
 import '../input_dock.dart';
 
 class DockInputField extends StatefulWidget {
-  final Function onSubmit;
+  final Function? onSubmit;
 
-  DockInputField({@required this.onSubmit});
+  DockInputField({this.onSubmit});
 
   @override
   _DockInputFieldState createState() => _DockInputFieldState();
@@ -21,15 +21,15 @@ class _DockInputFieldState extends State<DockInputField> {
 
   final _textController = TextEditingController();
 
-  InheritedInputDock _dock;
+  InheritedInputDock? _dock;
 
   _textChanged() {
-    _dock.text = _textController.text;
-    InputDock.of(context, shouldRebuild: false).text = _textController.text;
+    _dock?.text = _textController.text;
+    InputDock.of(context, shouldRebuild: false)?.text = _textController.text;
   }
 
   _resetText() {
-    InputDock.of(context, shouldRebuild: false).text = _textController.text;
+    InputDock.of(context, shouldRebuild: false)?.text = _textController.text;
   }
 
   @override
@@ -67,7 +67,7 @@ class _DockInputFieldState extends State<DockInputField> {
     final constrainedInputStack = ConstrainedBox(
       constraints: BoxConstraints(
         maxHeight: _maxHeight,
-        minHeight: _dock.baseHeight,
+        minHeight: _dock?.baseHeight ?? 0,
       ),
       child: Stack(
         alignment: AlignmentDirectional.bottomCenter,
@@ -88,15 +88,15 @@ class _DockInputFieldState extends State<DockInputField> {
 
   void _onSubmit() {
     _resetText();
-    widget.onSubmit(_textController.text);
+    widget.onSubmit?.call(_textController.text);
   }
 }
 
 class _TextFieldComponent extends StatelessWidget {
-  final InheritedInputDock dock;
-  final TextEditingController controller;
-  final int charShowCount;
-  final int maxCharCount;
+  final InheritedInputDock? dock;
+  final TextEditingController? controller;
+  final int? charShowCount;
+  final int? maxCharCount;
 
   _TextFieldComponent({
     this.dock,
@@ -119,7 +119,7 @@ class _TextFieldComponent extends StatelessWidget {
     final textFieldDecoration = InputDecoration(
       contentPadding: EdgeInsets.all(0),
       hintText: _hintText,
-      hintStyle: theme.typography.body.textStyle(
+      hintStyle: theme?.typography.body.textStyle(
         color: theme.color.text.inputPlaceholder,
       ),
       border: OutlineInputBorder(),
@@ -129,7 +129,7 @@ class _TextFieldComponent extends StatelessWidget {
 
     final textField = TextField(
       maxLines: null,
-      style: theme.typography.body.textStyle(
+      style: theme?.typography.body.textStyle(
         color: theme.color.text.inputActive,
       ),
       textInputAction: TextInputAction.done,
@@ -142,7 +142,7 @@ class _TextFieldComponent extends StatelessWidget {
     final paddingWithoutBuffer = EdgeInsets.all(0);
 
     return Padding(
-      padding: dock.showSubmitButton ? paddingWithBuffer : paddingWithoutBuffer,
+      padding: dock?.showSubmitButton == true ? paddingWithBuffer : paddingWithoutBuffer,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
@@ -150,7 +150,7 @@ class _TextFieldComponent extends StatelessWidget {
         children: [
           Flexible(child: textField),
           _TextCounter(
-            charCount: controller.text.length,
+            charCount: controller?.text.length,
             charShowCount: charShowCount,
             charMaxCount: maxCharCount,
           )
@@ -161,29 +161,29 @@ class _TextFieldComponent extends StatelessWidget {
 }
 
 class _TextCounter extends StatelessWidget {
-  final int charCount;
-  final int charShowCount;
-  final int charMaxCount;
+  final int? charCount;
+  final int? charShowCount;
+  final int? charMaxCount;
 
-  _TextCounter({Key key, this.charCount, this.charShowCount, this.charMaxCount})
+  _TextCounter({Key? key, this.charCount, this.charShowCount, this.charMaxCount})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final bool showTextCounter = charCount > charShowCount;
-    final bool showAlert = charCount > charMaxCount;
+    final bool showTextCounter = charCount != null && charShowCount != null && charCount! > charShowCount!;
+    final bool showAlert = charCount != null && charMaxCount != null && charCount! > charMaxCount!;
 
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: theme.distance.padding.vertical.min,
+        vertical: theme?.distance.padding.vertical.min ?? 0,
       ),
       height: showTextCounter ? null : 0,
       child: Text(
         showTextCounter ? "$charCount/$charMaxCount" : "",
-        style: theme.typography.detail.textStyle(
-          color: showAlert
+        style: theme?.typography.detail.textStyle(
+          color: showAlert == true
               ? theme.color.text.warn
               : theme.color.text.inputPlaceholder,
         ),
@@ -193,8 +193,8 @@ class _TextCounter extends StatelessWidget {
 }
 
 class _SubmitButton extends StatelessWidget {
-  final VoidCallback submitCallback;
-  final bool canSubmit;
+  final VoidCallback? submitCallback;
+  final bool? canSubmit;
 
   _SubmitButton({this.submitCallback, this.canSubmit});
 
@@ -203,46 +203,46 @@ class _SubmitButton extends StatelessWidget {
     final dock = InputDock.of(context);
     final theme = SemanticTheme.of(context);
 
-    final activeIconColor = theme.color.background.actionPrimary;
-    final inactiveIconColor = theme.color.background.actionDisabled;
+    final activeIconColor = theme?.color.background.actionPrimary ?? Colors.transparent;
+    final inactiveIconColor = theme?.color.background.actionDisabled ?? Colors.transparent;
     final sendIcon = StandardIcon.send;
     final activeSendIcon = sendIcon.buildWidget(color: activeIconColor);
     final inactiveSendIcon = sendIcon.buildWidget(color: inactiveIconColor);
 
     final animatedSubmitButton = AnimatedCrossFade(
-      duration: theme.duration.short,
-      firstCurve: theme.curve.delayed,
-      secondCurve: theme.curve.hurried,
+      duration: theme?.duration.short ?? Duration.zero,
+      firstCurve: theme?.curve.delayed ?? Curves.linear,
+      secondCurve: theme?.curve.hurried ?? Curves.linear,
       crossFadeState:
-          canSubmit ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          canSubmit == true ? CrossFadeState.showFirst : CrossFadeState.showSecond,
       firstChild: activeSendIcon,
       secondChild: inactiveSendIcon,
     );
 
     void onTap() {
-      triggerHapticWith(HapticOption.light);
-      submitCallback();
+      triggerHaptic(HapticOption.light);
+      submitCallback?.call();
     }
 
     void inactiveTap() {
-      triggerHapticWith(HapticOption.click);
+      triggerHaptic(HapticOption.click);
     }
 
-    final tapAction = dock.showSubmitButton && canSubmit ? onTap : null;
+    final tapAction = dock?.showSubmitButton == true && canSubmit == true ? onTap : null;
 
     final tapDownAction =
-        dock.showSubmitButton && !canSubmit ? (details) => inactiveTap() : null;
+        dock?.showSubmitButton == true && canSubmit == false ? (details) => inactiveTap() : null;
 
     return Container(
       alignment: Alignment.centerRight,
       margin: EdgeInsets.only(
-        right: theme.distance.spacing.horizontal.medium,
+        right: theme?.distance.spacing.horizontal.medium ?? 0,
       ),
-      height: dock.baseHeight,
+      height: dock?.baseHeight ?? 0,
       child: AnimatedOpacity(
-        opacity: dock.showSubmitButton ? 1 : 0,
-        duration: theme.duration.short,
-        curve: theme.curve.delayed,
+        opacity: dock?.showSubmitButton == true ? 1 : 0,
+        duration: theme?.duration.short ?? Duration.zero,
+        curve: theme?.curve.delayed ?? Curves.linear,
         child: GestureDetector(
           onTap: tapAction,
           onTapDown: tapDownAction,

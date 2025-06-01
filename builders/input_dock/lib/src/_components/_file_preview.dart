@@ -1,7 +1,8 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:multi_image_picker/asset.dart';
+import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 import 'package:semantic_theme/index.dart';
 import 'package:standard_icon_library/index.dart';
 import 'package:haptics/index.dart';
@@ -71,21 +72,20 @@ class DockFilePreviewState extends State<DockFilePreview>
 }
 
 class _FilePreview extends StatefulWidget {
-  final Asset file;
+  final AssetEntity file;
   final bool isRightPadded;
   final bool animateOnRemove;
   final double previewWidth;
   final VoidCallback removeFile;
 
   _FilePreview({
-    Key key,
-    @required this.file,
-    @required this.isRightPadded,
-    @required this.animateOnRemove,
-    @required this.previewWidth,
-    @required this.removeFile,
-  })  : assert(file.thumbData != null),
-        super(key: key);
+    Key? key,
+    required this.file,
+    required this.isRightPadded,
+    required this.animateOnRemove,
+    required this.previewWidth,
+    required this.removeFile,
+  }) : super(key: key);
 
   _FilePreviewState createState() => _FilePreviewState();
 }
@@ -97,20 +97,18 @@ class _FilePreviewState extends State<_FilePreview>
   _remove() {
     final theme = SemanticTheme.of(context);
 
-    triggerHapticWith(HapticOption.click);
+    triggerHaptic(HapticOption.click);
 
     if (widget.animateOnRemove) {
       setState(() => _show = false);
       Future.delayed(
-        theme.duration.short,
+        theme?.duration.short ?? Duration.zero,
         () {
           widget.removeFile();
-          widget.file.release();
         },
       );
     } else {
       widget.removeFile();
-      widget.file.release();
     }
   }
 
@@ -127,28 +125,42 @@ class _FilePreviewState extends State<_FilePreview>
       child: Container(
         width: _show ? null : 0,
         padding: EdgeInsets.all(
-          theme.distance.padding.horizontal.small,
+          theme?.distance.padding.horizontal.small ?? 0,
         ),
         child: removeIcon,
       ),
     );
 
-    final thumbnail = Image.memory(
-      widget.file.thumbData.buffer.asUint8List(),
-      fit: BoxFit.cover,
-      gaplessPlayback: true,
+    final thumbnail = FutureBuilder<Uint8List?>(
+      future: widget.file.thumbnailData,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return Container(
+            width: widget.previewWidth,
+            height: widget.previewWidth,
+            color: Colors.grey[200],
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+        return Image.memory(
+          snapshot.data!,
+          fit: BoxFit.cover,
+          gaplessPlayback: true,
+        );
+      },
     );
 
     final imageWidget = ClipRRect(
-      borderRadius: BorderRadius.all(theme.radius.small),
+      borderRadius: BorderRadius.all(theme?.radius.small ?? Radius.zero),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: thumbnail,
     );
 
     final animatedWidthContainer = AnimatedSize(
-      vsync: this,
-      curve: theme.curve.hurried,
-      duration: theme.duration.short,
+      curve: theme?.curve.hurried ?? Curves.linear,
+      duration: theme?.duration.short ?? Duration.zero,
       alignment: Alignment.topLeft,
       child: Container(
         width: _show ? widget.previewWidth : 0,
@@ -158,13 +170,12 @@ class _FilePreviewState extends State<_FilePreview>
 
     return AnimatedOpacity(
       opacity: _show ? 1 : 0,
-      curve: theme.curve.hurried,
-      duration: theme.duration.short,
+      curve: theme?.curve.hurried ?? Curves.linear,
+      duration: theme?.duration.short ?? Duration.zero,
       child: Container(
         margin: EdgeInsets.only(
-          top: theme.distance.spacing.vertical.medium,
-          right:
-              widget.isRightPadded ? theme.distance.spacing.horizontal.min : 0,
+          top: theme?.distance.spacing.vertical.medium ?? 0,
+          right: widget.isRightPadded ? theme?.distance.spacing.horizontal.min ?? 0 : 0,
         ),
         child: Stack(
           children: [
