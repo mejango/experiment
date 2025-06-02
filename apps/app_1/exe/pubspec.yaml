@@ -51,25 +51,25 @@ flutter:
   fonts:
     - family: RoofXSmallIcons
       fonts:
-        - asset: components/icons/x_small/lib/ttf/RoofXSmallIcons.ttf
+        - asset: ../../../components/icons/x_small/lib/ttf/RoofXSmallIcons.ttf
     - family: RoofSmallIcons
       fonts:
-        - asset: components/icons/small/lib/ttf/RoofSmallIcons.ttf
+        - asset: ../../../components/icons/small/lib/ttf/RoofSmallIcons.ttf
     - family: RoofStandardIcons
       fonts:
-        - asset: components/icons/standard/lib/ttf/RoofStandardIcons.ttf
+        - asset: ../../../components/icons/standard/lib/ttf/RoofStandardIcons.ttf
     - family: RoofNavigationIcons
       fonts:
-        - asset: components/icons/navigation/lib/ttf/RoofNavigationIcons.ttf
+        - asset: ../../../components/icons/navigation/lib/ttf/RoofNavigationIcons.ttf
     - family: circular
       fonts:
-        - asset: apps/app_1/sm_theme/lib/fonts/circular/CircularStd-Book.otf
+        - asset: ../sm_theme/lib/fonts/circular/CircularStd-Book.otf
           weight: 100
-        - asset: apps/app_1/sm_theme/lib/fonts/circular/CircularStd-Book.otf
+        - asset: ../sm_theme/lib/fonts/circular/CircularStd-Book.otf
           weight: 200
-        - asset: apps/app_1/sm_theme/lib/fonts/circular/CircularStd-Medium.otf
+        - asset: ../sm_theme/lib/fonts/circular/CircularStd-Medium.otf
           weight: 300
-        - asset: apps/app_1/sm_theme/lib/fonts/circular/CircularStd-Bold.otf
+        - asset: ../sm_theme/lib/fonts/circular/CircularStd-Bold.otf
           weight: 400
-        - asset: apps/app_1/sm_theme/lib/fonts/circular/CircularStd-Black.otf
+        - asset: ../sm_theme/lib/fonts/circular/CircularStd-Black.otf
           weight: 500

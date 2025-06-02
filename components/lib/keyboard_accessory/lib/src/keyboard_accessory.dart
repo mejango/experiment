@@ -20,7 +20,7 @@ class KeyboardAccessory extends StatefulWidget {
 }
 
 class InheritedKeyboardAccessory extends State<KeyboardAccessory> {
-  late Widget? _child;
+  Widget? _child;
 
   bool _isHidden = false;
 

@@ -17,7 +17,7 @@ class _SustainersMarket extends StatelessWidget {
       themeData: SmSemanticTheme(SmThemeOption.dark),
       child: MaterialApp(
         title: 'Sustainers Market',
-        debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: true,
         home: BlocProvider(
           bloc: AppBloc(),
           child: app.RootWidget(),
