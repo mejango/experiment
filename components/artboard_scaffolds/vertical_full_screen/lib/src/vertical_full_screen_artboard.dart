@@ -116,14 +116,14 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
         ),
       );
 
-      final sliverList = [
+      final sliverList = <Widget>[
         navBarSpacer,
         ...widget.buildBodySlivers(context) ?? [],
         dockSpacer,
       ];
 
       body = CustomScrollView(
-        slivers: sliverList.cast<Widget>(),
+        slivers: sliverList,
         controller:
             widget.hideNavBarOnScroll ? widget.bodyScrollController : null,
       );
