@@ -13,7 +13,8 @@ publish_to: none
 dependencies:
   flutter:
     sdk: flutter
-  flutter_calendar_carousel: ^2.5.3
+  # flutter_calendar_carousel: ^2.5.3
+  calendar_date_picker2: ^2.2.0
   haptics:
     git:
       url: git@github.com:mejango/experiment.git
