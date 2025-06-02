@@ -16,19 +16,19 @@ class KeyValue extends StatelessWidget {
 
     final titleWidget = Text(
       title.toUpperCase(),
-      style: theme?.typography.label.textStyle(
-        color: theme.color.text.generalSecondary,
+      style: theme?.typography?.label?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ),
     );
 
     final valueWidget = Container(
       margin: EdgeInsets.only(
-        top: theme?.distance.spacing.vertical.min ?? 0,
+        top: theme?.distance?.spacing?.vertical?.min ?? 0,
       ),
       child: Text(
         value,
-        style: theme?.typography.body.textStyle(
-          color: theme.color.text.generalPrimary,
+        style: theme?.typography?.body?.textStyle(
+          color: theme.color?.text?.generalPrimary ?? Colors.black,
         ),
         softWrap: true,
       ),
