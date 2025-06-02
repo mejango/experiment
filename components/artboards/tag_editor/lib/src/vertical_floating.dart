@@ -31,7 +31,7 @@ class _TagEditorVerticalFloatingArtboardState
           ?.result ?? [];
 
   @override
-  set tags(List<String> newTags) {
+  set tags(List<String>? newTags) {
     VerticalFloatingArtboardNavigatorPanel.of(context)?.result = newTags;
   }
 

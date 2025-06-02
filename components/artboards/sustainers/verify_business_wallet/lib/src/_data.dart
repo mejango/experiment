@@ -48,7 +48,7 @@ mixin VerifyBusinessWalletArtboardData implements FormBuilder {
           text: 'Add another',
           onTap: () => form.insertFieldData(
             _beneficialOwnerField(context, removable: true),
-            after: form.formData.sectionData.last.fieldData?.last,
+            after: form.formData?.sectionData.last.fieldData?.last,
           ),
         ),
       );

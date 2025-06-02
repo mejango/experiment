@@ -38,7 +38,7 @@ class StandardStreamForm extends StreamForm
   final _focusNodeManager = _FocusNodeManager();
 
   List<FormCompositionFieldData> get _allCompositionFieldData {
-    final allFieldData = bloc.formData.fieldData;
+    final allFieldData = bloc.formData?.fieldData ?? [];
     final allTextFieldData = allFieldData
         .where((data) => data.isVisible)
         .whereType<FormTextFieldData>()

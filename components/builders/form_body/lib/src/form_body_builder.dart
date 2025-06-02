@@ -169,7 +169,7 @@ mixin FormBodyBuilder implements StatefulWidget {
 
   Future<void> _validateFields() async {
     await Future.wait(
-      form.formData.fieldData
+      (form.formData?.fieldData ?? [])
           .where((data) => data.isVisible == true)
           .map((data) async => await data.validate())
           .toList(),
