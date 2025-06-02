@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:commands/index.dart';
 import 'package:form_builder/index.dart';
 import 'package:form_validation_exception/index.dart';
-import 'package:navigator/index.dart';
-import 'package:services_artboard/index.dart';
+// import 'package:navigator/index.dart';
+// import 'package:services_artboard/index.dart';
 
 mixin CreateServiceArtboardData implements FormBuilder {
   @override
@@ -15,7 +15,7 @@ mixin CreateServiceArtboardData implements FormBuilder {
 
   @override
   Future<void> validate() {
-    if (_serviceNameFieldData.value.isEmpty) {
+    if (_serviceNameFieldData.value?.isEmpty ?? true) {
       throw FormValidationException.emptyNotAllowed(
         fieldTitle: _serviceNameFieldData.title,
       );
@@ -28,16 +28,16 @@ mixin CreateServiceArtboardData implements FormBuilder {
     final serviceName = _serviceNameFieldData.value;
 
     await ServiceCommands(context).register(
-      serviceName: serviceName,
+      serviceName: serviceName ?? "",
     );
 
-    ArtboardNavigator.of(context).goTo(
-      ServicesVerticalFloatingArtboard(
-        pendingServiceNames: [
-          serviceName,
-        ],
-      ),
-    );
+    // ArtboardNavigator.of(context).goTo(
+    //   ServicesVerticalFloatingArtboard(
+    //     pendingServiceNames: [
+    //       serviceName,
+    //     ],
+    //   ),
+    // );
   }
 
   @override
