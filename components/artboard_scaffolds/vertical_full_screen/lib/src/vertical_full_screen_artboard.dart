@@ -123,7 +123,7 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
       ];
 
       body = CustomScrollView(
-        slivers: sliverList,
+        slivers: sliverList.cast<Widget>(),
         controller:
             widget.hideNavBarOnScroll ? widget.bodyScrollController : null,
       );
