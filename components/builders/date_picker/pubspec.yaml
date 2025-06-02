@@ -14,7 +14,7 @@ dependencies:
   flutter:
     sdk: flutter
   # flutter_calendar_carousel: ^2.5.3
-  calendar_date_picker2: ^2.2.0
+  calendar_date_picker2: ^2.0.1
   haptics:
     git:
       url: git@github.com:mejango/experiment.git
