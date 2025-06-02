@@ -43,9 +43,9 @@ class WelcomeVerticalFullScreenArtboard
         buildPrimaryCenterButton(
           context,
           text: "Join service",
-          onTap: () => { } // ArtboardNavigator.of(context)?.goTo(
-          //   CreateServiceVerticalFloatingArtboard(),
-          // ),
+          onTap: () => ArtboardNavigator.of(context)?.goTo(
+            CreateServiceVerticalFloatingArtboard(),
+          ),
         ),
         buildPrimaryCenterButton(
           context,

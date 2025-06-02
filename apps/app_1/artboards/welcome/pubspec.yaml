@@ -77,11 +77,11 @@ dependencies:
   #     url: git@github.com:mejango/experiment.git
   #     ref: main
   #     path: apps/app_1/artboards/log_in
-  # create_service_artboard:
-  #   git:
-  #     url: git@github.com:mejango/experiment.git
-  #     ref: main
-  #     path: apps/app_1/artboards/create_service
+  create_service_artboard:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: apps/app_1/artboards/create_service
   # register_artboard:
   #   git:
   #     url: git@github.com:mejango/experiment.git
