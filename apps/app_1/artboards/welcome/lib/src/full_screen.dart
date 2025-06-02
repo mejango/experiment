@@ -3,7 +3,7 @@ import 'package:button_builder/index.dart';
 import 'package:button_row_dock_builder/index.dart';
 import 'package:empty_table_vertical_full_screen_artboard_template/index.dart';
 // import 'package:log_in_artboard/index.dart';
-// import 'package:navigator/index.dart';
+import 'package:navigator/index.dart';
 import 'package:create_service_artboard/index.dart';
 // import 'package:register_artboard/index.dart';
 import 'package:semantic_theme/index.dart';
