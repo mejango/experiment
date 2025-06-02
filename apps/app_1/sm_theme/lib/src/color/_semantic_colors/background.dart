@@ -44,7 +44,7 @@ class SmBackgroundColor extends SemanticBackgroundColor<SmThemeOption> {
 
   @override
   Color? get scrim => forThemeOption({
-        SmThemeOption.dark: Colors.black.withOpacity(0.8),
+        SmThemeOption.dark: Colors.black.withValues(alpha: 0.8 * 255),
       });
 
   @override

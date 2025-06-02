@@ -26,12 +26,12 @@ class _DockActionButtonState extends State<DockActionButton>
   final _tapHapticOption = HapticOption.light;
 
   double minWidthToShowText = 0;
-  late double maxButtonWidth;
-  late double buttonIconWidth;
-  late Animation<double>? widthAnimation;
-  late Animation<double>? opacityAnimation;
-  late AnimationController widthAnimationController;
-  late AnimationController opacityAnimationController;
+  double? maxButtonWidth;
+  double? buttonIconWidth;
+  Animation<double>? widthAnimation;
+  Animation<double>? opacityAnimation;
+  AnimationController? widthAnimationController;
+  AnimationController? opacityAnimationController;
 
   @override
   void initState() {
@@ -111,13 +111,13 @@ class _DockActionButtonState extends State<DockActionButton>
   }
 
   void _animateForward() {
-    widthAnimationController.forward();
-    opacityAnimationController.forward();
+    widthAnimationController?.forward();
+    opacityAnimationController?.forward();
   }
 
   void _animateReverse() {
-    widthAnimationController.reverse();
-    opacityAnimationController.reverse();
+    widthAnimationController?.reverse();
+    opacityAnimationController?.reverse();
   }
 
   void _onTap() {
@@ -134,7 +134,7 @@ class _DockActionButtonState extends State<DockActionButton>
 
   void _buildButtonAnimation(_) {
     _calculateComponentSizes();
-    _buildAnimationFromMaxButtonWidth(maxButtonWidth);
+    _buildAnimationFromMaxButtonWidth(maxButtonWidth ?? 0);
   }
 
   void _calculateComponentSizes() {
@@ -149,7 +149,7 @@ class _DockActionButtonState extends State<DockActionButton>
     buttonIconWidth = actionButtonIconRenderBox.size.width;
 
     // minWidthToShowText ensures button children don't overflow while button is collapsing by removing the text precisely before overflow would occur. Value should be at least equal to ((width of the button icon) + (button x-axis containerPadding) + (borderWidth * 2))
-    minWidthToShowText = buttonIconWidth +
+    minWidthToShowText = (buttonIconWidth ?? 0) +
         (SemanticTheme.of(context)?.distance?.padding?.horizontal?.small ?? 0 * 2) +
         2;
   }
@@ -161,13 +161,13 @@ class _DockActionButtonState extends State<DockActionButton>
     final double minButtonWidth = dock?.baseHeight ?? 0;
 
     final widthCurve = CurvedAnimation(
-      parent: widthAnimationController,
+      parent: widthAnimationController ?? AnimationController(duration: Duration.zero, vsync: this),
       curve: theme?.curve?.hurried ?? Curves.linear,
       reverseCurve: theme?.curve?.hurried?.flipped ?? Curves.linear,
     );
 
     final opacityCurve = CurvedAnimation(
-      parent: opacityAnimationController,
+      parent: opacityAnimationController ?? AnimationController(duration: Duration.zero, vsync: this),
       curve: theme?.curve?.normal ?? Curves.linear,
       reverseCurve: theme?.curve?.normal?.flipped ?? Curves.linear,
     );

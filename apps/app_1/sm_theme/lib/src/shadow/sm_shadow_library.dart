@@ -10,7 +10,7 @@ class SmShadowLibrary extends SemanticShadowLibrary {
   BoxShadow? get small => forThemeOption({
         SmThemeOption.dark: BoxShadow(
           blurRadius: 6,
-          color: Colors.black.withOpacity(.25),
+          color: Colors.black.withValues(alpha: 0.25 * 255),
           offset: Offset(0, 0),
         ),
       });
@@ -19,7 +19,7 @@ class SmShadowLibrary extends SemanticShadowLibrary {
   BoxShadow? get medium => forThemeOption({
         SmThemeOption.dark: BoxShadow(
           blurRadius: 12,
-          color: Colors.black.withOpacity(.25),
+          color: Colors.black.withValues(alpha: 0.25 * 255),
           offset: Offset(0, 0),
         ),
       });
@@ -28,7 +28,7 @@ class SmShadowLibrary extends SemanticShadowLibrary {
   BoxShadow? get large => forThemeOption({
         SmThemeOption.dark: BoxShadow(
           blurRadius: 18,
-          color: Colors.black.withOpacity(.35),
+          color: Colors.black.withValues(alpha: 0.35 * 255),
           offset: Offset(0, 2),
         ),
       });
@@ -37,7 +37,7 @@ class SmShadowLibrary extends SemanticShadowLibrary {
   BoxShadow? get appBar => forThemeOption({
         SmThemeOption.dark: BoxShadow(
           blurRadius: 18,
-          color: Colors.black.withOpacity(.35),
+          color: Colors.black.withValues(alpha: 0.35 * 255),
           offset: Offset(0, 2),
         ),
       });
@@ -46,7 +46,7 @@ class SmShadowLibrary extends SemanticShadowLibrary {
   BoxShadow? get card => forThemeOption({
         SmThemeOption.dark: BoxShadow(
           blurRadius: 3,
-          color: Colors.black.withOpacity(.35),
+          color: Colors.black.withValues(alpha: 0.35 * 255),
           offset: Offset(0, 1),
         ),
       });

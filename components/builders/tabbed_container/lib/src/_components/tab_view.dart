@@ -17,10 +17,10 @@ class StandardTabView extends StatefulWidget {
 }
 
 class _StandardTabViewState extends State<StandardTabView> with InputDockBuilder {
-  late TabController _controller;
-  late PageController _pageController;
-  late List<Widget> _children;
-  late int _currentIndex;
+  TabController? _controller;
+  PageController? _pageController;
+  List<Widget>? _children;
+  int? _currentIndex;
   int _warpUnderwayCount = 0;
 
   List<Widget> _buildTabViews() {
@@ -54,7 +54,7 @@ class _StandardTabViewState extends State<StandardTabView> with InputDockBuilder
 
   void _updateTabController() {
     _controller = widget.controller;
-    _controller.animation?.addListener(_handleTabControllerAnimationTick);
+    _controller?.animation?.addListener(_handleTabControllerAnimationTick);
   }
 
   @override
@@ -67,21 +67,21 @@ class _StandardTabViewState extends State<StandardTabView> with InputDockBuilder
   void didChangeDependencies() {
     super.didChangeDependencies();
     _updateTabController();
-    _currentIndex = _controller.index;
-    _pageController = PageController(initialPage: _currentIndex);
+    _currentIndex = _controller?.index;
+    _pageController = PageController(initialPage: _currentIndex ?? 0);
   }
 
   @override
   void dispose() {
-    _controller.animation?.removeListener(_handleTabControllerAnimationTick);
+    _controller?.animation?.removeListener(_handleTabControllerAnimationTick);
     super.dispose();
   }
 
   void _handleTabControllerAnimationTick() {
-    if (_warpUnderwayCount > 0 || !_controller.indexIsChanging) return;
+    if (_warpUnderwayCount > 0 || !(_controller?.indexIsChanging ?? false)) return;
 
-    if (_controller.index != _currentIndex) {
-      _currentIndex = _controller.index;
+    if (_controller?.index != _currentIndex) {
+      _currentIndex = _controller?.index;
       _warpToCurrentIndex();
     }
   }
@@ -89,31 +89,31 @@ class _StandardTabViewState extends State<StandardTabView> with InputDockBuilder
   Future<void> _warpToCurrentIndex() async {
     if (!mounted) return Future<void>.value();
 
-    if (_pageController.page == _currentIndex.toDouble())
+    if (_pageController?.page == _currentIndex?.toDouble())
       return Future<void>.value();
 
-    final int previousIndex = _controller.previousIndex;
-    if ((_currentIndex - previousIndex).abs() == 1)
-      return _pageController.animateToPage(_currentIndex,
+    final int previousIndex = _controller?.previousIndex ?? 0;
+    if (((_currentIndex ?? 0) - previousIndex).abs() == 1)
+      return _pageController?.animateToPage(_currentIndex ?? 0,
           duration: kTabScrollDuration, curve: Curves.ease);
 
-    assert((_currentIndex - previousIndex).abs() > 1);
+    assert(((_currentIndex ?? 0) - previousIndex).abs() > 1);
     int? initialPage;
     setState(() {
       _warpUnderwayCount += 1;
       _children = List<Widget>.from(_buildTabViews(), growable: false);
-      if (_currentIndex > previousIndex) {
-        _children[_currentIndex - 1] = _children[previousIndex];
-        initialPage = _currentIndex - 1;
+      if (_currentIndex != null && (_currentIndex ?? 0) > previousIndex) {
+        _children?[_currentIndex! - 1] = _children![previousIndex];
+        initialPage = _currentIndex! - 1;
       } else {
-        _children[_currentIndex + 1] = _children[previousIndex];
-        initialPage = _currentIndex + 1;
+        _children?[_currentIndex! + 1] = _children![previousIndex];
+        initialPage = _currentIndex! + 1;
       }
     });
 
-    _pageController.jumpToPage(initialPage ?? 0);
+    _pageController?.jumpToPage(initialPage ?? 0);
 
-    await _pageController.animateToPage(_currentIndex,
+    await _pageController?.animateToPage(_currentIndex ?? 0,
         duration: kTabScrollDuration, curve: Curves.ease);
     if (!mounted) return Future<void>.value();
 
@@ -131,16 +131,16 @@ class _StandardTabViewState extends State<StandardTabView> with InputDockBuilder
 
     _warpUnderwayCount += 1;
     if (notification is ScrollUpdateNotification &&
-        !_controller.indexIsChanging) {
-      if ((_pageController.page ?? 0 - _controller.index).abs() > 1.0) {
-        _controller.index = (_pageController.page ?? 0).floor();
-        _currentIndex = _controller.index;
+        !(_controller?.indexIsChanging ?? false)) {
+      if ((_pageController?.page ?? 0 - (_controller?.index ?? 0)).abs() > 1.0) {
+        _controller?.index = (_pageController?.page ?? 0).floor();
+        _currentIndex = _controller?.index;
       }
-      _controller.offset =
-          (_pageController.page ?? 0 - _controller.index).clamp(-1.0, 1.0).toDouble();
+      _controller?.offset =
+          (_pageController?.page ?? 0 - (_controller?.index ?? 0)).clamp(-1.0, 1.0).toDouble();
     } else if (notification is ScrollEndNotification) {
-      _controller.index = (_pageController.page ?? 0).round();
-      _currentIndex = _controller.index;
+      _controller?.index = (_pageController?.page ?? 0).round();
+      _currentIndex = _controller?.index;
     }
     _warpUnderwayCount -= 1;
 
@@ -155,7 +155,7 @@ class _StandardTabViewState extends State<StandardTabView> with InputDockBuilder
         dragStartBehavior: DragStartBehavior.start,
         controller: _pageController,
         physics: ScrollPhysics(),
-        children: _children,
+        children: _children ?? [],
       ),
     );
   }

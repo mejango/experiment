@@ -1,3 +1,3 @@
 mixin TimeSortable {
-  late int timestamp;
+  int? timestamp;
 }

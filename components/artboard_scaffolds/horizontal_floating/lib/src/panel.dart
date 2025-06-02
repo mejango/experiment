@@ -31,10 +31,10 @@ class InheritedHorizontalFloatingArtboardNavigatorPanel<T>
     extends State<HorizontalFloatingArtboardNavigatorPanel<T>>
     with AutomaticKeepAliveClientMixin {
   bool _wantKeepAlive = true;
-  late T _result;
+  T? _result;
 
-  set result(T value) => setState(() => _result = value);
-  T get result => _result;
+  set result(T? value) => setState(() => _result = value);
+  T? get result => _result;
 
   @override
   bool get wantKeepAlive => _wantKeepAlive;

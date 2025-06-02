@@ -23,12 +23,12 @@ class RoofSwitchField extends StatefulWidget {
 
 class _RoofSwitchFieldState extends State<RoofSwitchField>
     with SingleTickerProviderStateMixin {
-  late bool? isOn;
-  late int labelMaxLines;
-  late Animation<Color?> animation;
-  late AnimationController controller;
-  late Color isOnColor;
-  late Color isOffColor;
+   bool? isOn;
+   int? labelMaxLines;
+   Animation<Color?>? animation;
+   AnimationController? controller;
+   Color? isOnColor;
+   Color? isOffColor;
 
   initState() {
     isOn = widget.initialValue;
@@ -56,7 +56,7 @@ class _RoofSwitchFieldState extends State<RoofSwitchField>
             curve: theme?.curve?.hurried ?? Curves.linear,
           ),
         )
-        .animate(controller)
+        .animate(controller!)
           ..addListener(() {
             setState(() {});
           });
@@ -66,13 +66,13 @@ class _RoofSwitchFieldState extends State<RoofSwitchField>
 
   @override
   Widget build(BuildContext context) {
-    isOn != null ? controller.forward() : controller.reverse();
+    isOn != null ? controller?.forward() : controller?.reverse();
 
     final labelContainer = Expanded(
       child: FieldLabel(labelText: widget.title ?? ""),
     );
 
-    final switchColor = animation.value;
+    final switchColor = animation?.value;
     final switchButton = _RoofAnimatedSwitch(isOn: isOn ?? false, color: switchColor!);
 
     return GestureDetector(

@@ -11,10 +11,10 @@ mixin TagEditorArtboardBuilder implements Artboard<List<String>> {
 
 mixin TagEditorArtboardBuilderState<T extends TagEditorArtboardBuilder>
     implements ArtboardState<T> {
-  late List<String> _tags;
+  List<String>? _tags;
 
-  List<String> get tags => _tags;
-  set tags(List<String> newTags) => _tags = newTags;
+  List<String>? get tags => _tags;
+  set tags(List<String>? newTags) => _tags = newTags;
 
   Widget buildTagEditor(BuildContext context) {
     return TagEditor(

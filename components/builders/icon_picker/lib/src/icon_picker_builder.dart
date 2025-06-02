@@ -14,7 +14,7 @@ mixin IconPickerArtboardBuilder implements Artboard<LabeledIcon> {
 
 mixin IconPickerBuilderArtboardState<U extends IconPickerArtboardBuilder>
     implements ArtboardState<U> {
-  late LabeledIcon? _selectedOption;
+  LabeledIcon? _selectedOption;
 
   LabeledIcon? get selectedOption => _selectedOption;
   set selectedOption(LabeledIcon? newOption) => _selectedOption = newOption;

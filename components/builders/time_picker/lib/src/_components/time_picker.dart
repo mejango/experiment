@@ -34,15 +34,15 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
     ),
   ];
 
-  late TimeOfDay _selectedTime;
-  late ClockType _clockType;
-  late bool _use24HourFormat;
+  TimeOfDay? _selectedTime;
+  ClockType? _clockType;
+  bool? _use24HourFormat;
 
   @override
   void initState() {
     _selectedTime = widget.initialValue ?? TimeOfDay(hour: 12, minute: 0);
 
-    _clockType = _clockTypeFromHour(_selectedTime.hour);
+    _clockType = _clockTypeFromHour(_selectedTime?.hour ?? 12);
 
     super.initState();
   }
@@ -61,11 +61,11 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
     }
 
     // Generate _hoursList
-    int hoursLength = _use24HourFormat ? 24 : 12;
+    int hoursLength = _use24HourFormat ?? false ? 24 : 12;
     for (int i = 0; i < hoursLength; i++) {
       String label;
 
-      if (_use24HourFormat) {
+      if (_use24HourFormat ?? false) {
         label = i.toString();
       } else {
         label = i == 0 ? "12" : i.toString();
@@ -88,7 +88,7 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
 
     final columnWidth = theme?.distance?.spacing?.horizontal?.max ?? 0;
 
-    final selectedHour = _rollerColumnDataFromHour(_selectedTime.hour);
+    final selectedHour = _rollerColumnDataFromHour(_selectedTime?.hour ?? 12);
 
     final Widget hoursColumn = Flexible(
       child: Container(
@@ -123,7 +123,7 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
         child: buildRollerColumn(
           context,
           list: _minutesList,
-          selectedValue: _rollerColumnDataFromMinute(_selectedTime.minute),
+          selectedValue: _rollerColumnDataFromMinute(_selectedTime?.minute ?? 0),
           onChange: _onMinutesChange,
         ),
       ),
@@ -135,8 +135,8 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
       minutesColumn,
     ];
 
-    if (!_use24HourFormat) {
-      final ClockType clockType = _clockTypeFromHour(_selectedTime.hour);
+    if (!(_use24HourFormat ?? false)) {
+      final ClockType clockType = _clockTypeFromHour(_selectedTime?.hour ?? 12);
 
       final Widget clockTypeColumn = Flexible(
         child: Container(
@@ -176,7 +176,7 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
   }
 
   LabeledValue<int>? _rollerColumnDataFromHour(int val) {
-    int _val = _use24HourFormat ? val : val % 12;
+    int _val = (_use24HourFormat ?? false) ? val : val % 12;
 
     for (LabeledValue<int> data in _hoursList) {
       if (_val == data.value) return data;
@@ -192,41 +192,41 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
   }
 
   void _onMinutesChange(LabeledValue<int> newVal) {
-    if (_selectedTime.minute != newVal.value) {
+    if (_selectedTime?.minute != newVal.value) {
       setState(() {
         _selectedTime = TimeOfDay(
-          hour: _selectedTime.hour,
+          hour: _selectedTime?.hour ?? 12,
           minute: newVal.value,
         );
       });
-      widget.onChanged?.call(_selectedTime);
+      widget.onChanged?.call(_selectedTime ?? TimeOfDay(hour: 12, minute: 0));
     }
   }
 
   _onHoursChange(LabeledValue<int> newVal) {
-    if (_selectedTime.hour != newVal.value) {
-      int hour = _use24HourFormat
+    if (_selectedTime?.hour != newVal.value) {
+      int hour = (_use24HourFormat ?? false)
           ? newVal.value
           : newVal.value + (_clockType == ClockType.pm ? 12 : 0);
 
       setState(() {
-        _selectedTime = TimeOfDay(hour: hour, minute: _selectedTime.minute);
+        _selectedTime = TimeOfDay(hour: hour, minute: _selectedTime?.minute ?? 0);
       });
-      widget.onChanged?.call(_selectedTime);
+      widget.onChanged?.call(_selectedTime ?? TimeOfDay(hour: 12, minute: 0));
     }
   }
 
   _onClockTypeChange(LabeledValue<ClockType> newVal) {
     if (_clockType != newVal.value) {
       final newSelectedTime = TimeOfDay(
-        hour: _selectedTime.hour + (newVal.value == ClockType.am ? -12 : 12),
-        minute: _selectedTime.minute,
+        hour: _selectedTime?.hour ?? 12 + (newVal.value == ClockType.am ? -12 : 12),
+        minute: _selectedTime?.minute ?? 0,
       );
       setState(() {
         _clockType = newVal.value;
         _selectedTime = newSelectedTime;
       });
-      widget.onChanged?.call(_selectedTime);
+      widget.onChanged?.call(_selectedTime ?? TimeOfDay(hour: 12, minute: 0));
     }
   }
 }

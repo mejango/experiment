@@ -24,16 +24,16 @@ class RoofTheme extends StatefulWidget {
 }
 
 class RoofInheritedTheme extends State<RoofTheme> {
-  late RoofThemeOption _current;
+  RoofThemeOption? _current;
 
-  RoofThemeOption get current => _current;
+  RoofThemeOption? get current => _current;
 
-  set current(RoofThemeOption newValue) {
+  set current(RoofThemeOption? newValue) {
     _current = newValue;
-    color = RoofSemanticColor(current: newValue);
+    color = RoofSemanticColor(current: newValue ?? widget.theme);
   }
 
-  late RoofSemanticColor color;
+  RoofSemanticColor? color;
 
   SystemUiOverlayStyle get systemChromeStyle {
     switch (_current) {
@@ -41,6 +41,8 @@ class RoofInheritedTheme extends State<RoofTheme> {
         return SystemUiOverlayStyle.dark;
       case RoofThemeOption.dark:
         return SystemUiOverlayStyle.light;
+      default:
+        return SystemUiOverlayStyle.dark;
     }
   }
 
@@ -56,9 +58,13 @@ class RoofInheritedTheme extends State<RoofTheme> {
         blurRadius = 16;
         opacity = 0.1;
         break;
+      default:
+        blurRadius = 16;
+        opacity = 0.1;
+        break;
     }
     return BoxShadow(
-        color: color.background.scrim.withOpacity(opacity),
+        color: color?.background?.scrim.withValues(alpha: opacity * 255) ?? Colors.transparent,
         blurRadius: blurRadius,
         offset: Offset(0, 5));
   }

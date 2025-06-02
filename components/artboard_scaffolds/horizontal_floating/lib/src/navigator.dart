@@ -47,15 +47,17 @@ class HorizontalFloatingInheritedArtboardNavigator
   final _popMinDragDistanceDelta = 50;
   final _popMaxDragTimeDelta = 70;
 
-  late int _initialDragTime;
-  late double _initialDragDx;
+  int? _initialDragTime;
+  double? _initialDragDx;
 
-  late int _timeDelta;
-  late double _rightDistanceDelta;
+  int? _timeDelta;
+  double? _rightDistanceDelta;
 
   get _shouldPop =>
-      _timeDelta < _popMinDragDistanceDelta &&
-      _rightDistanceDelta > _popMaxDragTimeDelta;
+      _timeDelta != null &&
+      _rightDistanceDelta != null &&
+      _timeDelta! < _popMinDragDistanceDelta &&
+      _rightDistanceDelta! > _popMaxDragTimeDelta;
 
   get childrenDelegate => SliverChildBuilderDelegate((context, position) {
         if (position >= _floatingArtboardPanels.length) return Container();

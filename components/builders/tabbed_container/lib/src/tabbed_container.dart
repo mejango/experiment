@@ -17,7 +17,7 @@ class TabbedContainer extends StatefulWidget {
 
 class _TabbedContainerState extends State<TabbedContainer>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController;
+  TabController? _tabController;
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ class _TabbedContainerState extends State<TabbedContainer>
 
   @override
   void dispose() {
-    _tabController.dispose();
+    _tabController?.dispose();
     super.dispose();
   }
 
@@ -42,13 +42,13 @@ class _TabbedContainerState extends State<TabbedContainer>
     final tabBar = Container(
       child: StandardTabBar(
         tabs: widget.tabs,
-        tabController: _tabController,
+        tabController: _tabController ?? TabController(length: widget.tabs.length, vsync: this),
       ),
     );
     final tabView = Expanded(
       child: StandardTabView(
         tabs: widget.tabs,
-        controller: _tabController,
+        controller: _tabController ?? TabController(length: widget.tabs.length, vsync: this),
       ),
     );
     List<Widget> columnChildren = [tabBar, tabView];

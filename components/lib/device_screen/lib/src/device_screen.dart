@@ -26,8 +26,8 @@ class DeviceScreen extends StatefulWidget {
 }
 
 class InheritedDeviceScreen extends State<DeviceScreen> {
-  late DeviceScreenOption _current;
-  DeviceScreenOption get current => _current;
+  DeviceScreenOption? _current;
+  DeviceScreenOption? get current => _current;
 
   DeviceScreenOption _deviceScreenOf(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);

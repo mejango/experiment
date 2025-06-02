@@ -11,9 +11,9 @@ class RoofStrokeColor {
     final opacity2 = 0.04;
     switch (_current) {
       case RoofThemeOption.light:
-        return color.black1.withOpacity(opacity1);
+        return color.black1.withValues(alpha: opacity1 * 255);
       case RoofThemeOption.dark:
-        return color.white1.withOpacity(opacity2);
+        return color.white1.withValues(alpha: opacity2 * 255);
     }
   }
 
@@ -21,9 +21,9 @@ class RoofStrokeColor {
     final opacity = 0.2;
     switch (_current) {
       case RoofThemeOption.light:
-        return color.black1.withOpacity(opacity);
+        return color.black1.withValues(alpha: opacity * 255);
       case RoofThemeOption.dark:
-        return color.white1.withOpacity(opacity);
+        return color.white1.withValues(alpha: opacity * 255);
     }
   }
 
@@ -32,7 +32,7 @@ class RoofStrokeColor {
       case RoofThemeOption.light:
         return color.white1;
       case RoofThemeOption.dark:
-        return color.blue.withOpacity(0.1);
+        return color.blue.withValues(alpha: 0.1 * 255);
     }
   }
 
