@@ -31,20 +31,20 @@ class TagsWrap extends StatelessWidget {
 
     final emptyText = Text(
       _emptyText,
-      style: theme?.typography.body.textStyle(
-        color: theme.color.text.generalSecondary,
+      style: theme?.typography?.body?.textStyle(
+        color: theme.color?.text?.generalSecondary ?? Colors.black,
       ),
     );
 
     return Container(
       margin: EdgeInsets.only(
-        bottom: theme?.distance.spacing.vertical.medium ?? 0,
+        bottom: theme?.distance?.spacing?.vertical?.medium ?? 0,
       ),
       child: tags?.isNotEmpty ?? false
           ? Wrap(
               children: selectedTagWidgets,
-              runSpacing: theme?.distance.spacing.vertical.small ?? 0,
-              spacing: theme?.distance.spacing.horizontal.small ?? 0,
+              runSpacing: theme?.distance?.spacing?.vertical?.small ?? 0,
+              spacing: theme?.distance?.spacing?.horizontal?.small ?? 0,
             )
           : emptyText,
     );
@@ -72,7 +72,7 @@ class _RemoveableAnimatedTagState extends State<_RemoveableAnimatedTag>
   _remove() {
     triggerHaptic(HapticOption.light);
 
-    Future.delayed(SemanticTheme.of(context)?.duration.short ?? Duration.zero, () {
+    Future.delayed(SemanticTheme.of(context)?.duration?.short ?? Duration.zero, () {
       widget.removeCallback?.call();
     });
     setState(() => _show = false);
@@ -85,22 +85,22 @@ class _RemoveableAnimatedTagState extends State<_RemoveableAnimatedTag>
     final theme = SemanticTheme.of(context);
 
     final removeIcon = SmallIcon.x.buildWidget(
-      color: theme?.color.icon.generalPrimary ?? Colors.black,
+      color: theme?.color?.icon?.generalPrimary ?? Colors.black,
     );
 
     final textWidget = Text(
       widget.label ?? "",
-      style: theme?.typography.detail.textStyle(
-        color: theme.color.text.generalPrimary,
+      style: theme?.typography?.detail?.textStyle(
+        color: theme.color?.text?.generalPrimary ?? Colors.black,
       ),
       overflow: TextOverflow.fade,
     );
 
-    final backgroundColor = theme?.color.background.raised ?? Colors.white;
+    final backgroundColor = theme?.color?.background?.raised ?? Colors.white;
 
     final animatedTextContainer = AnimatedSize(
-      curve: theme?.curve.delayed ?? Curves.easeInOut,
-      duration: theme?.duration.short ?? Duration.zero,
+      curve: theme?.curve?.delayed ?? Curves.easeInOut,
+      duration: theme?.duration?.short ?? Duration.zero,
       alignment: Alignment.centerLeft,
       child: Container(
         width: _show ? null : 0,
@@ -115,14 +115,14 @@ class _RemoveableAnimatedTagState extends State<_RemoveableAnimatedTag>
 
     final animatedOpacityContainer = AnimatedOpacity(
       opacity: _show ? 1 : 0,
-      curve: theme?.curve.hurried ?? Curves.easeInOut,
-      duration: theme?.duration.short ?? Duration.zero,
+      curve: theme?.curve?.hurried ?? Curves.easeInOut,
+      duration: theme?.duration?.short ?? Duration.zero,
       child: Container(
         height: _height,
         padding: _show
             ? EdgeInsets.only(
-                left: theme?.distance.padding.horizontal.min ?? 0,
-                right: theme?.distance.padding.horizontal.small ?? 0,
+                left: theme?.distance?.padding?.horizontal?.min ?? 0,
+                right: theme?.distance?.padding?.horizontal?.small ?? 0,
               )
             : EdgeInsets.all(0),
         decoration: BoxDecoration(

@@ -52,8 +52,8 @@ class _TagEditorState extends State<TagEditor>
     final theme = SemanticTheme.of(context);
 
     final animatedTagsWrap = AnimatedSize(
-      curve: theme?.curve.delayed ?? Curves.easeInOut,
-      duration: theme?.duration.short ?? Duration.zero,
+      curve: theme?.curve?.delayed ?? Curves.easeInOut,
+      duration: theme?.duration?.short ?? Duration.zero,
       alignment: Alignment.topCenter,
       child: Row(
         children: [
@@ -86,8 +86,8 @@ class _TagEditorState extends State<TagEditor>
 
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: theme?.distance.padding.horizontal.medium ?? 0,
-        vertical: theme?.distance.padding.vertical.medium ?? 0,
+        horizontal: theme?.distance?.padding?.horizontal?.medium ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

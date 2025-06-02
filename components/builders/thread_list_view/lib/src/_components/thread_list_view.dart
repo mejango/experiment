@@ -37,7 +37,7 @@ class _ThreadListViewState extends State<ThreadListView> {
     if (widget.button != null) {
       final paddedButton = Container(
         margin: EdgeInsets.only(
-          top: theme?.distance.spacing.vertical.small ?? 0,
+          top: theme?.distance?.spacing?.vertical?.small ?? 0,
         ),
         child: widget.button,
       );
@@ -49,14 +49,14 @@ class _ThreadListViewState extends State<ThreadListView> {
     return Container(
       alignment: Alignment.bottomCenter,
       padding: EdgeInsets.symmetric(
-        horizontal: theme?.distance.padding.horizontal.small ?? 0,
+        horizontal: theme?.distance?.padding?.horizontal?.small ?? 0,
       ),
-      color: theme?.color.background.general ?? Colors.white,
+      color: theme?.color?.background?.general ?? Colors.white,
       child: ListView(
         reverse: true,
         controller: _controller,
         padding: EdgeInsets.only(
-          bottom: theme?.distance.padding.vertical.medium ?? 0,
+          bottom: theme?.distance?.padding?.vertical?.medium ?? 0,
         ),
         children: listChildren,
       ),

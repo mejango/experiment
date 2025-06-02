@@ -51,13 +51,13 @@ class MatchHighlightedText extends StatelessWidget {
       }
     }
 
-    final matchColor = theme?.color.text.generalPrimary ?? Colors.black;
-    final unmatchColor = theme?.color.text.generalSecondary ?? Colors.black;
+    final matchColor = theme?.color?.text?.generalPrimary ?? Colors.black;
+    final unmatchColor = theme?.color?.text?.generalSecondary ?? Colors.black;
 
     final color = isMatch ? matchColor : unmatchColor;
 
-    final matchedTextStyle = theme?.typography.bodyHeavy.textStyle(color: color);
-    final unmatchedTextStyle = theme?.typography.body.textStyle(color: color);
+    final matchedTextStyle = theme?.typography?.bodyHeavy?.textStyle(color: color);
+    final unmatchedTextStyle = theme?.typography?.body?.textStyle(color: color);
 
     final prematchTextSpan = TextSpan(
       text: prematch,

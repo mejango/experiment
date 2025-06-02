@@ -86,7 +86,7 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    final columnWidth = theme?.distance.spacing.horizontal.max ?? 0;
+    final columnWidth = theme?.distance?.spacing?.horizontal?.max ?? 0;
 
     final selectedHour = _rollerColumnDataFromHour(_selectedTime.hour);
 
@@ -102,8 +102,8 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
       ),
     );
 
-    final timeDividerTextStyle = theme?.typography.body.textStyle(
-      color: theme.color.text.generalSecondary,
+    final timeDividerTextStyle = theme?.typography?.body?.textStyle(
+      color: theme.color?.text?.generalSecondary ?? Colors.black,
     );
     final Widget timeDivider = Flexible(
       child: Container(
@@ -154,7 +154,7 @@ class TimePickerState extends State<TimePicker> with RollerColumnBuilder {
 
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: theme?.distance.padding.vertical.medium ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

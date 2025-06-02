@@ -26,8 +26,8 @@ class TextFieldWithAddButton extends StatelessWidget {
       focusedBorder: UnderlineInputBorder(
         borderSide: BorderSide(color: Colors.transparent),
       ),
-      hintStyle: theme?.typography.body.textStyle(
-        color: theme.color.text.inputPlaceholder,
+      hintStyle: theme?.typography?.body?.textStyle(
+        color: theme.color?.text?.inputPlaceholder ?? Colors.black,
       ),
     );
 
@@ -36,8 +36,8 @@ class TextFieldWithAddButton extends StatelessWidget {
         child: TextField(
           autofocus: true,
           controller: controller,
-          style: theme?.typography.body.textStyle(
-            color: theme.color.text.inputActive,
+          style: theme?.typography?.body?.textStyle(
+            color: theme.color?.text?.inputActive ?? Colors.black,
           ),
           decoration: decoration,
         ),
@@ -54,16 +54,16 @@ class TextFieldWithAddButton extends StatelessWidget {
         onTap: canCreateTag ? () => addTagCallback(controller.text) : null,
         child: Container(
           padding: EdgeInsets.only(
-            left: theme?.distance.padding.horizontal.medium ?? 0,
-            top: theme?.distance.padding.vertical.small ?? 0,
-            bottom: theme?.distance.padding.vertical.small ?? 0,
+            left: theme?.distance?.padding?.horizontal?.medium ?? 0,
+            top: theme?.distance?.padding?.vertical?.small ?? 0,
+            bottom: theme?.distance?.padding?.vertical?.small ?? 0,
           ),
           child: Text(
             "Create tag",
-            style: theme?.typography.button.textStyle(
+            style: theme?.typography?.button?.textStyle(
               color: canCreateTag
-                  ? theme.color.text.action
-                  : theme.color.text.actionDisabled,
+                  ? theme.color?.text?.action ?? Colors.black
+                  : theme.color?.text?.actionDisabled ?? Colors.black,
             ),
           ),
         ),
@@ -74,14 +74,14 @@ class TextFieldWithAddButton extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.only(
-        bottom: theme?.distance.padding.vertical.small ?? 0,
+        bottom: theme?.distance?.padding?.vertical?.small ?? 0,
       ),
       margin: EdgeInsets.symmetric(
-        vertical: theme?.distance.spacing.horizontal.small ?? 0,
+        vertical: theme?.distance?.spacing?.horizontal?.small ?? 0,
       ),
       decoration: BoxDecoration(
         border: Border(
-          bottom: BorderSide(color: theme?.color.stroke.medium ?? Colors.black),
+          bottom: BorderSide(color: theme?.color?.stroke?.medium ?? Colors.black),
         ),
       ),
       child: Row(

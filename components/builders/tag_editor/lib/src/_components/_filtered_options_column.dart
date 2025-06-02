@@ -32,7 +32,7 @@ class OptionsColumn extends StatelessWidget {
       onTap: () => onTap?.call(option),
       child: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: theme?.distance.padding.vertical.medium ?? 0,
+          vertical: theme?.distance?.padding?.vertical?.medium ?? 0,
         ),
         child: Row(
           mainAxisSize: MainAxisSize.max,

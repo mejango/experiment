@@ -15,21 +15,21 @@ class StandardTag extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = SemanticTheme.of(context);
 
-    Color _textColor = theme?.color.text.generalPrimary ?? Colors.black;
-    Color _backgroundColor = theme?.color.background.neutralContrast ?? Colors.white;
+    Color _textColor = theme?.color?.text?.generalPrimary ?? Colors.black;
+    Color _backgroundColor = theme?.color?.background?.neutralContrast ?? Colors.white;
 
     switch (kind) {
       case TagKindOption.error:
-        _textColor = theme?.color.text.onNotifyBackground ?? Colors.black;
-        _backgroundColor = theme?.color.background.warn ?? Colors.white;
+        _textColor = theme?.color?.text?.onNotifyBackground ?? Colors.black;
+        _backgroundColor = theme?.color?.background?.warn ?? Colors.white;
         break;
       case TagKindOption.good:
-        _textColor = theme?.color.text.onNotifyBackground ?? Colors.black;
-        _backgroundColor = theme?.color.background.good ?? Colors.white;
+        _textColor = theme?.color?.text?.onNotifyBackground ?? Colors.black;
+        _backgroundColor = theme?.color?.background?.good ?? Colors.white;
         break;
       case TagKindOption.emergency:
-        _textColor = theme?.color.text.onNotifyBackground ?? Colors.black;
-        _backgroundColor = theme?.color.background.bad ?? Colors.white;
+        _textColor = theme?.color?.text?.onNotifyBackground ?? Colors.black;
+        _backgroundColor = theme?.color?.background?.bad ?? Colors.white;
         break;
       case TagKindOption.normal:
         break;
@@ -37,7 +37,7 @@ class StandardTag extends StatelessWidget {
         break;
     }
 
-    final textStyle = theme?.typography.detail.textStyle(
+    final textStyle = theme?.typography?.detail?.textStyle(
       color: _textColor,
     );
 
@@ -48,12 +48,12 @@ class StandardTag extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: theme?.distance.padding.horizontal.min ?? 0,
-        vertical: theme?.distance.padding.vertical.min ?? 0,
+        horizontal: theme?.distance?.padding?.horizontal?.min ?? 0,
+        vertical: theme?.distance?.padding?.vertical?.min ?? 0,
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(
-          theme?.radius.min ?? Radius.circular(0),
+          theme?.radius?.min ?? Radius.circular(0),
         ),
         color: _backgroundColor,
       ),
