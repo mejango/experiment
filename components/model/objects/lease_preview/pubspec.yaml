@@ -5,6 +5,8 @@ version: 1.0.0+1
 environment:
   sdk: ^3.7.2
 
+resolution: workspace
+
 publish_to: none
 
 dependencies:
@@ -25,10 +27,6 @@ dependencies:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: components/types/frequency
-
-dependency_overrides:
-  frequency_type:
-    path: ../../../types/frequency
 
 dev_dependencies:
   flutter_test:

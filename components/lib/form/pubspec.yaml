@@ -6,6 +6,8 @@ version: 1.0.0+1
 environment:
   sdk: ^3.7.2
 
+resolution: workspace
+
 publish_to: none
 
 dependencies:
@@ -81,18 +83,6 @@ dependencies:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: components/model/dwolla
-
-# dependency_overrides:
-#   mask:
-#     path: ../../z/lib/mask
-#   dwolla_types:
-#     path: ../../z/types/dwolla
-#   # dwolla_model:
-#   #   path: ../../model/dwolla
-#   us_state_options:
-#     path: ../../z/types/us_state
-#   form_validation_exception:
-#     path: ../../z/lib/form_validation_exception
 
 dev_dependencies:
   flutter_test:

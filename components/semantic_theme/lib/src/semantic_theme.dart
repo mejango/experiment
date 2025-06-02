@@ -41,10 +41,10 @@ class SemanticTheme<T> extends StatefulWidget {
 }
 
 class SemanticInheritedTheme<T> extends State<SemanticTheme<T>> {
-  late T _currentThemeOption;
+  T? _currentThemeOption;
 
   SemanticThemeData<T> get themeData =>
-      widget.themeData.build(_currentThemeOption);
+      widget.themeData.build(_currentThemeOption ?? widget.themeData.currentThemeOption);
 
   void _initializeCurrentThemeOption() async {
     print('initialize');

@@ -5,6 +5,8 @@ version: 1.0.0+1
 environment:
   sdk: ^3.7.2
 
+resolution: workspace
+
 publish_to: none
 
 dependencies:
@@ -20,12 +22,6 @@ dependencies:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: components/model/objects/lease_preview
-
-dependency_overrides:
-  frequency_type:
-    path: ../../../types/frequency
-  lease_preview:
-    path: ../lease_preview
 
 dev_dependencies:
   flutter_test:
