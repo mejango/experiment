@@ -43,6 +43,37 @@ dependencies:
       url: git@github.com:mejango/experiment.git
       ref: main
       path: apps/app_1/commands
+  #more
+  theme:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/theme
+  vertical_full_screen_artboard_scaffold:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/artboard_scaffolds/vertical_full_screen
+  artboard:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/artboard
+  device_screen:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/lib/device_screen
+  table_builder:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/builders/table
+  standard_icon_library:
+    git:
+      url: git@github.com:mejango/experiment.git
+      ref: main
+      path: components/icons/standard
 
 
 dev_dependencies:

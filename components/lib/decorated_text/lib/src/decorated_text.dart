@@ -24,9 +24,9 @@ class StyleDecoratedText extends _DecoratedText {
 }
 
 class WeightDecoratedText extends _DecoratedText {
-  final TextStyle thinStyle;
+  final TextStyle? thinStyle;
 
-  WeightDecoratedText({required String text, required this.thinStyle}) : super(text: text);
+  WeightDecoratedText({String? text, this.thinStyle}) : super(text: text ?? "");
 
   addSection({required String text, bool thin = false}) {
     final section = _WeightTextSection(text: text, thin: thin);
