@@ -14,7 +14,7 @@ class PublicActivityVerticalFullScreenArtboard
         PublicActivityArtboardData,
         SpacedColumnBuilder,
         PrimaryCenterButtonBuilder {
-  List<Widget> Function(BuildContext) get buildSpacedColumnButtons =>
+  List<Widget>? Function(BuildContext) get buildSpacedColumnButtons =>
       (BuildContext context) => [
             buildPrimaryCenterButton(
               context,

@@ -1,89 +1,27 @@
 name: form
 description: Form tools.
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   stream:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/stream
   mask:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/mask
   date:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/date
   form_validation_exception:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/form_validation_exception
   typedefs:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/typedefs
   ordinal_suffix_string_from_int:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/ordinal_suffix_string_from_int
   standard_icon_library:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/icons/standard
   interval:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/interval
   period_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/period
   us_state_options:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/us_state
   fee_payer_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/fee_payer
   labeled_value:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/labeled_value
   small_icon_library:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/icons/small
   dwolla_model:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/dwolla
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

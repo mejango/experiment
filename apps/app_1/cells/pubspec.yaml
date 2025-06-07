@@ -1,0 +1,17 @@
+name: app1_cells
+
+description: Data for the landing item cell.
+version: 1.0.0+1
+environment:
+  sdk: ^3.7.2
+resolution: workspace
+publish_to: none
+dependencies:
+  flutter:
+    sdk: flutter
+  table:
+  decorated_text:
+  sorting:
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

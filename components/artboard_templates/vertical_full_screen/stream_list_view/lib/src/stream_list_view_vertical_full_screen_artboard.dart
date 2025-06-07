@@ -39,7 +39,8 @@ abstract class StreamListViewVerticalFullScreenArtboard<T>
       );
 
   @override
-  Widget buildBody(BuildContext context) => buildViewStreamBuilder(
+  List<Widget>? buildBodySlivers(BuildContext context) => [
+    buildViewStreamBuilder(
         context,
         stream: stream,
         loading: loadingStateWidget(context),
@@ -57,5 +58,6 @@ abstract class StreamListViewVerticalFullScreenArtboard<T>
           ],
           scrollController: _scrollController,
         ),
-      );
+      )
+    ];
 }

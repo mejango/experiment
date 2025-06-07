@@ -17,12 +17,14 @@ abstract class TabbedFullScreenArtboard extends StatefulWidget
   List<RoofTab> buildTabs(BuildContext context);
 
   @override
-  Widget buildBody(BuildContext context) {
+  List<Widget>? buildBodySlivers(BuildContext context) {
     final tabs = buildTabs(context);
 
-    return buildTabbedContainer(
-      context,
-      tabs,
-    );
+    return [
+      buildTabbedContainer(
+        context,
+        tabs,
+      ),
+    ];
   }
 }

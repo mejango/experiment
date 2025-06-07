@@ -13,7 +13,9 @@ abstract class FullLogoTableVerticalFullScreenArtboard extends StatefulWidget
         FullLogoNavBarBuilder,
         IconNavButtonBuilder {
   @override
-  Widget buildBody(BuildContext context) => buildTable(context);
+  List<Widget> buildBodySlivers(BuildContext context) => [
+        buildTable(context)
+      ];
   @override
   Widget buildNavBar(BuildContext context) => buildFullLogoNavBar(context);
 }

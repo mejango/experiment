@@ -27,7 +27,9 @@ class StreamTableBloc implements BlocBase {
   }
 
   void update(StreamableTableData tableData) {
+    print("update: ${tableData.rowData.length}");
     _tableData = tableData;
+    print("made _tableData: ${_tableData}");
     _inTable.add(_tableData!);
   }
 
@@ -58,6 +60,9 @@ class StreamTableBloc implements BlocBase {
 
   void batchInsertRowData(List<StreamableTableRowData> rowData,
       {int sectionIndex = 0}) {
+    print("batchInsertRowData: ${_tableData?.rowData.length}");
+    print("rowData: ${rowData.length}");
+    print("_tableData: ${_tableData}");
     if (rowData.isEmpty) return;
 
     //Add each rowData to the table.

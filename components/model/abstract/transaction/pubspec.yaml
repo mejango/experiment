@@ -1,63 +1,21 @@
 name: transaction
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   fee_payer_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/fee_payer
   privacy_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/privacy
   key:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/key
   user_reference:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/user_reference
   task_reference:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/task_reference
   name_user:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/name_user
   stub:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/objects/stub
   expense:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/objects/expense
   completion:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/objects/completion
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -25,6 +25,7 @@ class VerticalFullScreenArtboardNavigator extends StatefulWidget {
     BuildContext context, {
     bool shouldRebuild = true,
   }) {
+    print("of: $shouldRebuild");
     final inheritedWidget = shouldRebuild
         ? context.dependOnInheritedWidgetOfExactType<
             _VerticalFullScreenInheritedArtboardNavigator>()
@@ -53,6 +54,7 @@ class VerticalFullScreenInheritedArtboardNavigator
       _downDistanceDelta! > _popMinDragDistanceDelta;
 
   Widget build(BuildContext context) {
+    print("building theeee navigator");
     final swipablePage = GestureDetector(
       onHorizontalDragStart: _onHorizontalDragStart,
       onHorizontalDragUpdate: (details) {

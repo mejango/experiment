@@ -25,27 +25,26 @@ class StreamTableBuilder<T extends StreamTableBloc> extends StatelessWidget {
       this.showsHeadersForEmptySections = false})
       : super(key: key);
 
+  @override
   Widget build(BuildContext context) {
     final T? tableBloc = BlocProvider.of<T>(context);
     return StreamBuilder<StreamableTableData>(
         stream: tableBloc?.outTable,
         builder: (context, snapshot) {
-          if (!snapshot.hasData) return Container();
+          if (!snapshot.hasData) return SliverToBoxAdapter(child: Container());
 
-          return _createTable(context: context, tableData: snapshot.data);
+          return _createTableSlivers(context: context, tableData: snapshot.data);
         });
   }
 
-  Widget _createTable(
-      {required BuildContext context,
-       StreamableTableData? tableData}) {
+  Widget _createTableSlivers({required BuildContext context, StreamableTableData? tableData}) {
     final slivers = <Widget>[];
 
     final shouldShowHeader = tableData?.headerData != null &&
         (tableData?.sectionData.isNotEmpty ?? false) &&
         buildTableHeader != null;
 
-    //Add the table header if needed.
+    // Add the table header if needed.
     if (shouldShowHeader) {
       final header = buildTableHeader!(headerData: tableData!.headerData!);
       if (header != null) slivers.add(header);
@@ -56,13 +55,16 @@ class StreamTableBuilder<T extends StreamTableBloc> extends StatelessWidget {
 
     slivers.add(sliverList);
 
-    final table = CustomScrollView(
-        scrollDirection: tableData?.scrollDirection ?? Axis.vertical,
-        reverse: tableData?.reverse ?? false,
-        slivers: slivers,
-        key: PageStorageKey(tableData?.key ?? ''));
-
-    return table;
+    // If only one sliver, return it directly. Otherwise, wrap in a MultiSliver or Column.
+    if (slivers.length == 1) {
+      return slivers.first;
+    } else {
+      // MultiSliver is not a standard Flutter widget, so use a Column of slivers via SliverList or SliverToBoxAdapter.
+      // But since we are in a sliver context, just return a SliverList with children if needed.
+      return SliverList(
+        delegate: SliverChildListDelegate(slivers),
+      );
+    }
   }
 
   SliverChildBuilderDelegate _sliverListDelegateForTableData(
@@ -84,7 +86,7 @@ class StreamTableBuilder<T extends StreamTableBloc> extends StatelessWidget {
             sectionData: data.sectionData ?? StreamableTableSectionData(),
             sectionIndex: data.sectionIndex);
       case _SliverListChildDataType.row:
-        return buildRow.call(
+        return buildRow(
             rowData: data.rowData ?? StreamableTableRowData(),
             rowIndex: data.rowIndex ?? 0,
             sectionIndex: data.sectionIndex);
@@ -101,12 +103,12 @@ class StreamTableBuilder<T extends StreamTableBloc> extends StatelessWidget {
       final sectionData = tableData!.sectionData[i];
 
       final sectionHeaderRowData = _SliverListChildData.forHeader(
-          key: sectionData.key, sectionData: sectionData, sectionIndex: i);
+          key: sectionData?.key ?? '', sectionData: sectionData ?? StreamableTableSectionData(), sectionIndex: i);
 
       childData.add(sectionHeaderRowData);
 
       final sectionRows =
-          _rowDataForSectionData(sectionData: sectionData, sectionIndex: i);
+          _rowDataForSectionData(sectionData: sectionData ?? StreamableTableSectionData(), sectionIndex: i);
       childData.addAll(sectionRows);
     }
 
@@ -120,8 +122,8 @@ class StreamTableBuilder<T extends StreamTableBloc> extends StatelessWidget {
     for (var i = 0; i < sectionData.rowData.length; i++) {
       final rowData = sectionData.rowData[i];
       final data = _SliverListChildData.forRow(
-          key: rowData.key,
-          rowData: rowData,
+          key: rowData?.key ?? '',
+          rowData: rowData ?? StreamableTableRowData(),
           rowIndex: i,
           sectionIndex: sectionIndex);
       childData.add(data);
@@ -185,7 +187,7 @@ class _SliverListChildData {
             type: _SliverListChildDataType.row);
 
   _SliverListChildData.forHeader(
-      {required StreamableTableSectionData sectionData,
+      {StreamableTableSectionData? sectionData,
       required String key,
       required int sectionIndex})
       : this(

@@ -64,7 +64,7 @@ class RoofInheritedTheme extends State<RoofTheme> {
         break;
     }
     return BoxShadow(
-        color: color?.background?.scrim.withValues(alpha: opacity * 255) ?? Colors.transparent,
+        color: color?.background.scrim.withValues(alpha: opacity * 255) ?? Colors.transparent,
         blurRadius: blurRadius,
         offset: Offset(0, 5));
   }

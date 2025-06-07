@@ -19,7 +19,3 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
   semantic_theme:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/semantic_theme

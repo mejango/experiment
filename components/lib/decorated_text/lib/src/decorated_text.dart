@@ -24,9 +24,7 @@ class StyleDecoratedText extends _DecoratedText {
 }
 
 class WeightDecoratedText extends _DecoratedText {
-  final TextStyle? thinStyle;
-
-  WeightDecoratedText({String? text, this.thinStyle}) : super(text: text ?? "");
+  WeightDecoratedText({String? text}) : super(text: text ?? "");
 
   addSection({required String text, bool thin = false}) {
     final section = _WeightTextSection(text: text, thin: thin);
@@ -36,7 +34,7 @@ class WeightDecoratedText extends _DecoratedText {
   RichText generateWidget(
       {required TextStyle defaultStyle,
       required TextStyle thinStyle,
-      double textScaleFactor = 1}) {
+      TextScaler? textScaler}) {
     final children = _sections.map((section) {
       return TextSpan(
           text: section.text,
@@ -46,7 +44,7 @@ class WeightDecoratedText extends _DecoratedText {
     return super._generateWidgetFromChildren(
         children: children,
         defaultStyle: defaultStyle,
-        textScaleFactor: textScaleFactor);
+        textScaler: textScaler);
   }
 }
 
@@ -60,10 +58,10 @@ abstract class _DecoratedText {
   RichText _generateWidgetFromChildren(
       {required List<TextSpan> children,
       required TextStyle defaultStyle,
-       double? textScaleFactor}) {
+      TextScaler? textScaler}) {
     final spacedChildren = _addSpaces(children);
     final richTextWidget = RichText(
-        textScaler: textScaleFactor != null ? TextScaler.linear(textScaleFactor) : TextScaler.noScaling,
+        textScaler: textScaler ?? TextScaler.noScaling,
         text:
             TextSpan(text: "", style: defaultStyle, children: spacedChildren));
     return richTextWidget;

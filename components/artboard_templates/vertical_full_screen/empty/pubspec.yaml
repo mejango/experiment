@@ -1,28 +1,15 @@
 name: empty_vertical_full_screen_artboard_template
 description: An empty vertical full screen frame for building a widget hierarchy in.
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   artboard:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/artboard
   vertical_full_screen_artboard_scaffold:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/artboard_scaffolds/vertical_full_screen
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

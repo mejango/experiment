@@ -1,49 +1,19 @@
 name: session
 description: Session parameters.
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   cache:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/cache
   secure_storage:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/secure_storage
   date:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/date
   user:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/objects/user
   context:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/abstract/context
   model_object_cache:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/object_cache
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

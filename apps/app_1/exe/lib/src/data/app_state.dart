@@ -5,6 +5,6 @@ class StreamableAppStateData extends StreamableData {
 
   StreamableAppStateData({
     this.isInSession = false,
-    String? key,
-  }) : super(key: key);
+    super.key,
+  });
 }

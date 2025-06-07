@@ -225,7 +225,9 @@ workspace:
   - components/session
   - apps/app_1/artboards/welcome
   - apps/app_1/artboards/create_service
+  - apps/app_1/artboards/landing
   - apps/app_1/sm_theme
   - apps/app_1/commands
   - apps/app_1/exe
   - apps/app_1/views
+  - apps/app_1/cells

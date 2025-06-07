@@ -1,39 +1,17 @@
 name: name_defining_object
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   strings: ^3.2.0
   name_user:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/name_user
   name_context:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/name_context
   user_reference:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/user_reference
   stub:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/objects/stub
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

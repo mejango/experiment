@@ -1,33 +1,15 @@
 name: completion_count
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   user_reference:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/user_reference
   mappable:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/mixins/mappable
   key:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/key
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

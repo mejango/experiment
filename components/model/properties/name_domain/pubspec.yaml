@@ -1,28 +1,14 @@
 name: name_domain
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   context_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/context
   name_context:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/name_context
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

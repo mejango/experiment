@@ -1,34 +1,16 @@
 name: breadcrumb_builder
 description: Row with title and optional icon.
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   x_small_icon_library:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/icons/x_small
   haptics:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/haptics
   semantic_theme:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/semantic_theme
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -6,10 +6,6 @@ import 'package:semantic_theme/index.dart';
 import 'package:artboard/index.dart';
 
 mixin VerticalFullScreenArtboard implements StatefulWidget, Artboard {
-  // TODO make all build functions not resolve to null
-  /// buildBody is deprecated. Pass body content as slivers by overriding buildBodySlivers()
-  @deprecated
-  Widget? buildBody(BuildContext context) => null;
   List<Widget>? buildBodySlivers(BuildContext context) => null;
   Widget? buildNavBar(BuildContext context) => null;
   Widget? buildDock(BuildContext context) => null;
@@ -27,7 +23,6 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
     implements State<T> {
   final _navBarContainerKey = GlobalKey();
   final _dockContainerKey = GlobalKey();
-  final double _statusBarScrimHeight = 20;
 
   double _navBarHeight = 0;
   double _navBarOffset = 0;
@@ -102,8 +97,9 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
     final theme = SemanticTheme.of(context);
 
     Widget body;
-
-    if (widget.buildBodySlivers(context) != null) {
+    print("building body");
+    List<Widget>? slivers = widget.buildBodySlivers(context);
+    if (slivers != null) {
       final navBarSpacer = SliverToBoxAdapter(
         child: Container(
           height: _navBarHeight,
@@ -118,7 +114,7 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
 
       final sliverList = <Widget>[
         navBarSpacer,
-        ...widget.buildBodySlivers(context) ?? [],
+        ...slivers,
         dockSpacer,
       ];
 
@@ -129,7 +125,7 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
       );
     } else {
       body = CustomScrollView(
-        slivers: widget.buildBodySlivers(context) ?? [const SliverToBoxAdapter(child: SizedBox.shrink())],
+        slivers: slivers ?? [const SliverToBoxAdapter(child: SizedBox.shrink())],
         controller: widget.hideNavBarOnScroll ? widget.bodyScrollController : null,
       );
     }
@@ -161,16 +157,6 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
       );
     }
 
-    final statusBarScrim = Positioned(
-      top: 0,
-      left: 0,
-      right: 0,
-      height: _statusBarScrimHeight,
-      child: Container(
-        color: theme?.color?.background?.general?.withValues(alpha: 0.85) ?? Colors.transparent,
-      ),
-    );
-    stackChildren.add(statusBarScrim);
 
     if (dock != null) {
       stackChildren.add(

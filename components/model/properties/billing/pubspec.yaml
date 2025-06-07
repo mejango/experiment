@@ -1,38 +1,16 @@
 name: billing
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   billing_status_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/billing_status
   billing_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/billing
   mappable:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/mixins/mappable
   key:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/key
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

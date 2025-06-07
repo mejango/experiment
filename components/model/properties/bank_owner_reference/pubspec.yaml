@@ -1,48 +1,18 @@
 name: bank_owner_reference
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   bank_owner_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/bank_owner
   domain_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/domain
   mappable:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/mixins/mappable
   key:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/key
   billing:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/billing
   actor_reference:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/actor_reference
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

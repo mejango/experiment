@@ -1,19 +1,19 @@
+import 'package:flutter/material.dart';
 import 'package:table/index.dart';
 import 'package:decorated_text/index.dart';
 import 'package:sorting/index.dart';
-import 'package:standard_icon_library/index.dart';
 
 class CellAData extends StreamableTableRowData with TimeSortable {
   final WeightDecoratedText title;
-  final String description;
-  final StandardIcon iconReference;
+  final String? description;
+  final Image? image;
   final int section;
   final int timestamp;
 
   CellAData({
     required this.title,
-    required this.description,
-    required this.iconReference,
+    this.description = '',
+    this.image,
     required this.timestamp,
     int? section,
     String? key,

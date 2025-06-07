@@ -15,7 +15,7 @@ class StandardStreamTable extends StreamTable<StreamableTableRowData,
     return ActivityCell(
       title: rowData?.title,
       note: "" + (rowData?.description ?? ""),
-      iconReference: rowData?.iconReference,
+      image: rowData?.image,
       timestamp: rowData?.timestamp,
     );
   }

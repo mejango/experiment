@@ -10,7 +10,7 @@ class SmShadowLibrary extends SemanticShadowLibrary {
   BoxShadow? get small => forThemeOption({
         SmThemeOption.dark: BoxShadow(
           blurRadius: 6,
-          color: Colors.black.withValues(alpha: 0.25 * 255),
+          color: Colors.black.withAlpha(300), 
           offset: Offset(0, 0),
         ),
       });
@@ -19,7 +19,7 @@ class SmShadowLibrary extends SemanticShadowLibrary {
   BoxShadow? get medium => forThemeOption({
         SmThemeOption.dark: BoxShadow(
           blurRadius: 12,
-          color: Colors.black.withValues(alpha: 0.25 * 255),
+          color: Colors.black.withAlpha(64),
           offset: Offset(0, 0),
         ),
       });

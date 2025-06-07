@@ -1,99 +1,40 @@
 name: app_1
-description: App template #1
-
+description: App template
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   sm_theme:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: apps/app_1/sm_theme
-  welcome_artboard:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: apps/app_1/artboards/welcome
+  landing_artboard:
   vertical_full_screen_artboard_scaffold:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/artboard_scaffolds/vertical_full_screen
   artboard:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/artboard
   device_screen:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/device_screen
   commands:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: apps/app_1/commands
-  #more
   theme:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/theme
-  vertical_full_screen_artboard_scaffold:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/artboard_scaffolds/vertical_full_screen
-  artboard:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/artboard
-  device_screen:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/device_screen
   table_builder:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/builders/table
   standard_icon_library:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/icons/standard
-
-
+  stream:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 flutter:
   fonts:
-    - family: RoofXSmallIcons
-      fonts:
-        - asset: ../../../components/icons/x_small/lib/ttf/RoofXSmallIcons.ttf
-    - family: RoofSmallIcons
-      fonts:
-        - asset: ../../../components/icons/small/lib/ttf/RoofSmallIcons.ttf
-    - family: RoofStandardIcons
-      fonts:
-        - asset: ../../../components/icons/standard/lib/ttf/RoofStandardIcons.ttf
-    - family: RoofNavigationIcons
-      fonts:
-        - asset: ../../../components/icons/navigation/lib/ttf/RoofNavigationIcons.ttf
+    # - family: RoofXSmallIcons
+    #   fonts:
+    #     - asset: apps/app_1/exe/components/icons/small/lib/ttf/RoofXSmallIcons.ttf
+    # - family: RoofSmallIcons
+    #   fonts:
+    #     - asset: apps/app_1/exe/components/icons/small/lib/ttf/RoofSmallIcons.ttf
+    # - family: RoofStandardIcons
+    #   fonts:
+    #     - asset: apps/app_1/exe/components/icons/standard/lib/ttf/RoofStandardIcons.ttf
+    # - family: RoofNavigationIcons
+    #   fonts:
+    #     - asset: apps/app_1/exe/components/icons/navigation/lib/ttf/RoofNavigationIcons.ttf
     - family: circular
       fonts:
         - asset: ../sm_theme/lib/fonts/circular/CircularStd-Book.otf

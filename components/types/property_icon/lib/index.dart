@@ -1,1 +1,1 @@
-export 'src/privacy_type.dart';
+export 'src/property_icon_type.dart';

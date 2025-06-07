@@ -34,25 +34,25 @@ class PublicActivity {
 }
 
 List<Object?> _streamableDataFromResponse(PostResponse response) {
-  final dataConvertedToJson = response.body;
-  final List publicActivity = dataConvertedToJson[_param.publicActivity] ?? [];
+  // final dataConvertedToJson = response.body;
+  // // final List publicActivity = dataConvertedToJson[_param.publicActivity] ?? [];
 
-  final data = publicActivity.map((json) {
-    switch (json[_param.activityType]) {
-      case _param.completion:
-        return PublicCompletion.fromMap(json);
-      case _param.expense:
-        return PublicExpense.fromMap(json);
-      case _param.transfer:
-        return PublicTransfer.fromMap(json);
-      case _param.landlordTransfer:
-        return PublicLandlordTransfer.fromMap(json);
-      case _param.maintenance:
-        return PublicMaintenanceRequest.fromMap(json);
-      default:
-        return null;
-    }
-  }).toList();
+  // final data = publicActivity.map((json) {
+  //   switch (json[_param.activityType]) {
+  //     case _param.completion:
+  //       return PublicCompletion.fromMap(json);
+  //     case _param.expense:
+  //       return PublicExpense.fromMap(json);
+  //     case _param.transfer:
+  //       return PublicTransfer.fromMap(json);
+  //     case _param.landlordTransfer:
+  //       return PublicLandlordTransfer.fromMap(json);
+  //     case _param.maintenance:
+  //       return PublicMaintenanceRequest.fromMap(json);
+  //     default:
+  //       return null;
+  //   }
+  // }).toList();
 
-  return data;
+  return [];
 }

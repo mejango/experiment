@@ -51,7 +51,7 @@ class Network {
     final decodedBodyBytes = utf8.decode(response.bodyBytes);
 
     final PostResponse postResponse = PostResponse(
-      body: (decodedBodyBytes.isNotEmpty) ? json.decode(decodedBodyBytes) : null,
+      body: decodedBodyBytes.isNotEmpty ? json.decode(decodedBodyBytes) : null,
       headers: response.headers,
       statusCode: response.statusCode,
     );

@@ -1,7 +1,7 @@
 import 'package:blossm_command/index.dart';
 import 'package:flutter/material.dart';
 import 'package:navigator/index.dart';
-import 'package:public_activity_artboard/index.dart';
+import '../../../../../../apps/app_1/artboards/landing/lib/index.dart';
 
 import 'token_storer.dart';
 

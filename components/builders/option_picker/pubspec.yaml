@@ -1,49 +1,19 @@
 name: option_picker_builder
 description: Option selector functionality for artboards.
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   haptics:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/haptics
   small_icon_library:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/icons/small
   artboard:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/artboard
   navigator:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/navigator
   labeled_value:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/labeled_value
   semantic_theme:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/semantic_theme
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

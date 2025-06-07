@@ -29,7 +29,7 @@ class AppBloc extends BlocBase {
   }
 
   void _init() async {
-    _initialAppStateData = StreamableAppStateData(isInSession: true);
+    _initialAppStateData = StreamableAppStateData();
   }
 
   @override

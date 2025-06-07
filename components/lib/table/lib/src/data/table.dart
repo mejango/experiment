@@ -13,10 +13,10 @@ class StreamableTableData extends StreamableData {
   final bool reverse;
 
   //Sections should never be changed or removed.
-  final List<StreamableTableSectionData> sectionData;
+  final List<StreamableTableSectionData?> sectionData;
 
-  List<StreamableTableRowData> get _rowData {
-    return sectionData.expand((sectionData) => sectionData.rowData).toList();
+  List<StreamableTableRowData?> get rowData {
+    return sectionData.expand((sectionData) => sectionData?.rowData ?? <StreamableTableRowData?>[]).toList();
   }
 
   StreamableTableData(
@@ -24,7 +24,7 @@ class StreamableTableData extends StreamableData {
       this.sectionData = const [],
       Axis scrollDirection = Axis.vertical,
       bool reverse = false,
-      List<StreamableTableRowData> rowData = const []})
+      List<StreamableTableRowData?>? rowData = const []})
       : reverse = reverse,
         scrollDirection = scrollDirection {
     _sortWithRowData(rowData);
@@ -34,7 +34,7 @@ class StreamableTableData extends StreamableData {
       {StreamableTableHeaderData? headerData,
       bool reverse = false,
       Axis scrollDirection = Axis.vertical,
-      List<StreamableTableRowData> rowData = const []})
+      List<StreamableTableRowData?>? rowData = const []})
       : this(
             headerData: headerData,
             sectionData: [
@@ -48,57 +48,57 @@ class StreamableTableData extends StreamableData {
   void replaceTableLocation(
       TableLocation location, StreamableTableRowData rowData) {
     final sectionData = this.sectionData[location.sectionIndex];
-    sectionData.replaceIndex(location.rowIndex, rowData);
+    sectionData?.replaceIndex(location.rowIndex, rowData);
   }
 
   void addRowData(StreamableTableRowData rowData, int index) {
     if (index < 0 || index >= this.sectionData.length) return;
 
     final sectionData = this.sectionData[index];
-    sectionData.addRowData(rowData);
+    sectionData?.addRowData(rowData);
   }
 
   void removeAtTableLocation(TableLocation location) {
     final sectionData = this.sectionData[location.sectionIndex];
-    sectionData.removeRowDataAtIndex(location.rowIndex);
+    sectionData?.removeRowDataAtIndex(location.rowIndex);
   }
 
-  StreamableTableRowData rowDataAt(TableLocation location) {
+  StreamableTableRowData? rowDataAt(TableLocation location) {
     final sectionData = this.sectionData[location.sectionIndex];
-    final rowData = sectionData.rowData[location.rowIndex];
+    final rowData = sectionData?.rowData[location.rowIndex];
     return rowData;
   }
 
   void sort() {
-    _sortWithRowData(_rowData);
+    _sortWithRowData(rowData);
   }
 
-  void _sortWithRowData(List<StreamableTableRowData> rowData) {
+  void _sortWithRowData(List<StreamableTableRowData?>? rowData) {
     //Empty all sections.
     for (var sectionData in sectionData) {
-      sectionData.rowData.removeRange(0, sectionData.rowData.length);
+      sectionData?.rowData.removeRange(0, sectionData.rowData.length);
     }
 
     //Add the rows to their correct sections.
-    for (var rowData in rowData) {
+    for (var rowData in rowData ?? <StreamableTableRowData?>[]) {
       for (final sectionData in sectionData) {
-        if (!sectionData.acceptsRow(rowData)) continue;
-        sectionData.addRowData(rowData);
+        if (!(sectionData?.acceptsRow(rowData) ?? false)) continue;
+        sectionData?.addRowData(rowData);
         break;
       }
     }
 
     //Sort the sections.
     for (var sectionData in sectionData) {
-      sectionData.sortRowData();
+      sectionData?.sortRowData();
     }
   }
 
   TableLocation? tableLocationOfRowData(StreamableTableRowData rowData) {
     for (int i = 0; i < sectionData.length; i++) {
       final sectionData = this.sectionData[i];
-      final rowIndex = sectionData.indexOfRowData(rowData);
-      if (rowIndex < 0) continue;
+      final rowIndex = sectionData?.indexOfRowData(rowData);
+      if (rowIndex == null || rowIndex < 0) continue;
 
       return TableLocation(rowIndex: rowIndex, sectionIndex: i);
     }

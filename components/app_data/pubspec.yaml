@@ -1,40 +1,18 @@
 name: app_data
 description: An interface to interact with app data.
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   device_info: ^2.0.3
   network:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/network
   synchronizer:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/synchronizer
   session:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/session
   public:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/objects/public
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

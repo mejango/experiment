@@ -1,24 +1,14 @@
 name: thread_list_view_builder
 description: Listview with horizontal and bottom padding and an action button.
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   semantic_theme:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/semantic_theme
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -6,34 +6,36 @@ import 'package:table/index.dart';
 import '_components/standard_stream_table.dart';
 
 mixin TableBuilder {
-  Future<List<StreamableTableRowData>>? get rowData => null;
-  Future<List<StreamableTableSectionData>>? get sectionData => null;
-  Future<StreamableTableData>? get tableData => null;
+  List<StreamableTableRowData?>? get rowData => null;
+  List<StreamableTableSectionData?>? get sectionData => null;
+  StreamableTableData? get tableData => null;
 
-  StreamTableBloc get table => _table.bloc;
+  StreamTableBloc get table => streamTable.bloc;
 
-  final _table = StandardStreamTable();
+  StreamTable get streamTable;
 
-  StandardStreamTable buildTable(BuildContext context) {
+  StreamTable buildTable(BuildContext context) {
     _load(context);
-    return _table;
+    return streamTable;
   }
 
   void _load(BuildContext context) async {
-    final tableData = await _createTableData(context);
-    if (tableData == null) return;
+    final tableData = _createTableData(context);
+    print("tableData: ${tableData.rowData.length}");
+    print("bout to update");
     table.update(tableData);
   }
 
-  Future<StreamableTableData>? _createTableData(BuildContext context) async {
-    final tableData = await this.tableData;
+  StreamableTableData _createTableData(BuildContext context) {
+    print("Creating table data");
+    final tableData = this.tableData;
     if (tableData != null) return tableData;
 
-    final sectionData = await this.sectionData;
-    final rowData = await this.rowData;
+    final sectionData = this.sectionData;
+    final rowData = this.rowData;
     if (sectionData?.isNotEmpty ?? false) {
       return StreamableTableData(sectionData: sectionData!, rowData: rowData!);
     }
-    return StreamableTableData.withoutSections(rowData: rowData!);
+    return StreamableTableData.withoutSections(rowData: rowData);
   }
 }

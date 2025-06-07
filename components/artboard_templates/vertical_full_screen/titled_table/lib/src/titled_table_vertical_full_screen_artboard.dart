@@ -14,14 +14,17 @@ abstract class TitledVerticalFullTableScreenArtboard extends StatefulWidget
 
   String get artboardSubtitle;
 
-  Widget artboardNavButton(BuildContext context);
+  Widget? artboardNavButton(BuildContext context);
 
-  List<Widget> artboardActionButtons(BuildContext context);
+  List<Widget>? artboardActionButtons(BuildContext context);
 
   @override
-  Widget buildBody(BuildContext context) => buildTable(context);
+  List<Widget>? buildBodySlivers(BuildContext context) => [
+        buildTable(context)
+      ];
+
   @override
-  Widget buildNavBar(BuildContext context) => buildTitledNavBar(
+  Widget? buildNavBar(BuildContext context) => buildTitledNavBar(
         context,
         title: artboardTitle,
         subtitle: artboardSubtitle,

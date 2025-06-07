@@ -1,68 +1,22 @@
 name: lease
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   contract:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/abstract/contract
   fee_payer_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/fee_payer
   invoice_options:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/invoice
   contract_user:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/contract_user
   name_contract_domain:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/name_contract_domain
   name_property:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/name_property
   late_fee:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/late_fee
   schedule:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/schedule
   date:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/date
   key:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/key
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

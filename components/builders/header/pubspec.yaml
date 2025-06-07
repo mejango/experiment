@@ -1,39 +1,17 @@
 name: header_builder
 description: Text headers.
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   haptics:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/haptics
   standard_icon_library:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/icons/standard
   nav_button_builder:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/builders/nav_button
   semantic_theme:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/semantic_theme
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,53 +1,19 @@
 name: domain_object
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   fee_payer_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/fee_payer
   key:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/key
   name_defining_object:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/mixins/name_defining_object
   name_user:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/name_user
   stub:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/objects/stub
   model_object:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/abstract/model_object
   name_context:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/name_context
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

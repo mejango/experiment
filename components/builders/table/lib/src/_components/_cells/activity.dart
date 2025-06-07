@@ -8,14 +8,14 @@ import 'package:haptics/index.dart';
 class ActivityCell extends StatelessWidget {
   final WeightDecoratedText? title;
   final int? timestamp;
-  final StandardIcon? iconReference;
+  final Image? image;
   final String? note;
   final VoidCallback? onTap;
 
   ActivityCell({
     required this.title,
     required this.timestamp,
-    required this.iconReference,
+    this.image,
     this.note,
     this.onTap,
     Key? key,
@@ -50,8 +50,8 @@ class ActivityCell extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 _Body(
-                  iconReference: iconReference ?? StandardIcon.piggyBank,
-                  title: title ?? WeightDecoratedText(text: "", thinStyle: TextStyle()),
+                  image: image,
+                  title: title ?? WeightDecoratedText(text: ""),
                   note: note ?? "", 
                 ),
                 _TimeLabel(timestamp ?? 0),
@@ -67,12 +67,12 @@ class ActivityCell extends StatelessWidget {
 
 class _Body extends StatelessWidget {
   final WeightDecoratedText? title;
-  final StandardIcon? iconReference;
+  final Image? image;
   final String? note;
 
   _Body({
     required this.title,
-    required this.iconReference,
+    required this.image,
     this.note,
     Key? key,
   }) : super(key: key);
@@ -94,9 +94,9 @@ class _Body extends StatelessWidget {
             padding: EdgeInsets.only(
               right: theme?.distance?.spacing?.horizontal?.small ?? 0,
             ),
-            child: iconReference?.buildWidget(
-              color: theme?.color?.icon?.generalPrimary ?? Colors.black,
-            ),
+            height: 100,
+            width: 100,
+            child:  image
           ),
 
           ///This child should expand to occupy remaining space.
@@ -113,7 +113,7 @@ class _Body extends StatelessWidget {
   }
 
   List<Widget> _relevantLabels(SemanticThemeData? theme) {
-    var list = <Widget>[_TitleLabel(decoratedText: title ?? WeightDecoratedText(text: "", thinStyle: TextStyle()))];
+    var list = <Widget>[_TitleLabel(decoratedText: title ?? WeightDecoratedText(text: ""))];
     if (note != null && note!.trim().isNotEmpty) {
       list.add(
         Container(
@@ -179,9 +179,9 @@ class _TitleLabel extends StatelessWidget {
 
     return decoratedText.generateWidget(
       defaultStyle:
-          theme?.typography?.bodyHeavy?.textStyle(color: primaryTextColor) ?? TextStyle(),
-      thinStyle: theme?.typography?.body?.textStyle(color: primaryTextColor) ?? TextStyle(),
-      textScaleFactor: MediaQuery.of(context).textScaler.scale(theme?.typography?.bodyHeavy?.fontSize ?? 0),
+          theme?.typography?.title?.textStyle(color: primaryTextColor) ?? TextStyle(),
+      thinStyle: theme?.typography?.title?.textStyle(color: primaryTextColor) ?? TextStyle(),
+      textScaler: MediaQuery.textScalerOf(context)
     );
   }
 }

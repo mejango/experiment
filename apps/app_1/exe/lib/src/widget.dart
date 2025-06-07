@@ -1,15 +1,17 @@
-import 'package:commands/index.dart';
 import 'package:flutter/material.dart';
 import 'package:stream/index.dart';
 import 'package:artboard/index.dart';
 import 'package:vertical_full_screen_artboard_scaffold/index.dart';
 import 'package:device_screen/index.dart';
-import 'package:welcome_artboard/index.dart';
+import 'package:landing_artboard/index.dart';
 
 import 'bloc.dart';
 import 'data/index.dart';
 
 class RootWidget extends StatelessWidget {
+  const RootWidget({super.key});
+  
+  @override
   Widget build(BuildContext context) {
     final AppBloc? tableBloc = BlocProvider.of<AppBloc>(context);
     final stream = StreamBuilder<StreamableAppStateData?>(
@@ -22,11 +24,12 @@ class RootWidget extends StatelessWidget {
 
         Artboard startingArtboard;
         if (appState.isInSession) {
-          startingArtboard = WelcomeVerticalFullScreenArtboard();
+          startingArtboard = LandingFullScreenArtboard();
         } else {
-          startingArtboard = WelcomeVerticalFullScreenArtboard();
+          startingArtboard = LandingFullScreenArtboard();
         }
 
+        print("Building navigator");
         return VerticalFullScreenArtboardNavigator(artboard: startingArtboard);
       },
     );

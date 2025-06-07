@@ -14,20 +14,21 @@ abstract class StreamTable<
   bool get showsHeaderForEmptyTable => true;
   bool get showsHeadersForEmptySections => false;
 
+  @override
   Widget build(BuildContext context) {
-    final table = StreamTableBuilder(
-      buildRow: ({required StreamableTableRowData rowData, int? rowIndex, int? sectionIndex}) => 
-          buildRow(rowData: rowData as T, rowIndex: rowIndex, sectionIndex: sectionIndex),
-      buildSectionHeader: ({required StreamableTableSectionHeaderData headerData, int? sectionIndex}) => 
-          buildSectionHeader(headerData: headerData as U, sectionIndex: sectionIndex),
-      buildTableHeader: ({required StreamableTableHeaderData headerData}) => 
-          buildTableHeader(headerData: headerData as V),
-      showsHeaderForEmptyTable: showsHeaderForEmptyTable,
-      showsHeadersForEmptySections: showsHeadersForEmptySections,
-    );
+    // Return a sliver directly
     return BlocProvider(
       bloc: bloc,
-      child: table,
+      child: StreamTableBuilder(
+        buildRow: ({required StreamableTableRowData rowData, int? rowIndex, int? sectionIndex}) => 
+            buildRow(rowData: rowData as T, rowIndex: rowIndex, sectionIndex: sectionIndex),
+        buildSectionHeader: ({required StreamableTableSectionHeaderData headerData, int? sectionIndex}) => 
+            buildSectionHeader(headerData: headerData as U, sectionIndex: sectionIndex),
+        buildTableHeader: ({required StreamableTableHeaderData headerData}) => 
+            buildTableHeader(headerData: headerData as V),
+        showsHeaderForEmptyTable: showsHeaderForEmptyTable,
+        showsHeadersForEmptySections: showsHeadersForEmptySections,
+      ),
     );
   }
 

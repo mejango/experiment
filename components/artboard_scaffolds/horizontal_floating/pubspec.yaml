@@ -1,39 +1,17 @@
 name: horizontal_floating_artboard_scaffold
 description: Tools to for scaffolding and navigating to a horizontal floating artboard.
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   keyboard_accessory:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/keyboard_accessory
   artboard:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/artboard
   navigator:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/lib/navigator
   semantic_theme:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/semantic_theme
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

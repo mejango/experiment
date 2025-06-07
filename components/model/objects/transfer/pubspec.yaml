@@ -1,88 +1,26 @@
 name: transfer
-
 version: 1.0.0+1
-
 environment:
   sdk: ^3.7.2
-
 resolution: workspace
-
 publish_to: none
-
 dependencies:
   flutter:
     sdk: flutter
   one_to_one_transaction:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/abstract/one_to_one_transaction
   fee_payer_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/fee_payer
   privacy_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/privacy
   transfer_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/transfer
   transfer_status_type:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/types/transfer_status
   expense:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/objects/expense
   task_reference:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/task_reference
   user_reference:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/user_reference
   domain:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/abstract/domain
   contract:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/abstract/contract
   name_user:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/name_user
   bank_owner_reference:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/properties/bank_owner_reference
   stub:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/objects/stub
   key:
-    git:
-      url: git@github.com:mejango/experiment.git
-      ref: main
-      path: components/model/key
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -122,7 +122,7 @@ class _PaddedBody extends StatelessWidget {
       final secondaryTextWidget = secondaryText?.generateWidget(
         defaultStyle: defaulTextStyle,
         thinStyle: thinTextStyle,
-        textScaleFactor: MediaQuery.of(context).textScaler.scale(theme?.typography?.detailHeavy?.fontSize ?? 0),
+        textScaler: MediaQuery.of(context).textScaler
       );
 
       final paddedSecondaryTextWidget = Padding(
