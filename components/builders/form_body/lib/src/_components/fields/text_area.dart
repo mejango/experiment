@@ -3,7 +3,7 @@ import 'package:semantic_theme/index.dart';
 
 import '_widgets/index.dart';
 
-class RoofTextArea extends StatelessWidget {
+class TextArea extends StatelessWidget {
   final String? fieldName;
   final String? placeholder;
   final String? initialValue;
@@ -16,7 +16,7 @@ class RoofTextArea extends StatelessWidget {
   final Function? onTap;
   final FocusNode? focusNode;
 
-  RoofTextArea({
+  TextArea({
     this.fieldName,
     this.placeholder,
     this.initialValue,
@@ -136,6 +136,9 @@ class _FieldBodyState extends State<_FieldBody> {
       maxLines: _maxLines,
       decoration: decoration,
       keyboardType: widget.keyboardType,
+      enableSuggestions: false,
+      autocorrect: false,
+      enableIMEPersonalizedLearning: false,
       onSubmitted: (value) => widget.onSubmitted?.call(value, context),
       focusNode: widget.focusNode,
       onTap: widget.onTap as GestureTapCallback?,

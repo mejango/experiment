@@ -42,10 +42,10 @@ class SmTextColor extends SemanticTextColor<SmThemeOption> {
   Color? get inputActive => colors.white1;
 
   @override
-  Color? get inputDisabled => inputActive?.withValues(alpha: 0.35 * 255);
+  Color? get inputDisabled => inputActive?.withAlpha(90);
 
   @override
-  Color? get inputPlaceholder => inputActive?.withValues(alpha: 0.2 * 255);
+  Color? get inputPlaceholder => inputActive?.withAlpha(50);
 
   @override
   Color? get warn => forThemeOption({

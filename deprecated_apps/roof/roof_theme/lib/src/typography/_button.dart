@@ -7,8 +7,8 @@ import '../_constants/_font_family.dart' as ff;
 import '../_constants/_font_size.dart' as fs;
 import '../_constants/_font_weight.dart' as fw;
 
-class RoofButtonTypography extends SemanticTypography {
-  RoofButtonTypography(currentThemeOption) : super(currentThemeOption);
+class ButtonTypography extends SemanticTypography {
+  ButtonTypography(currentThemeOption) : super(currentThemeOption);
 
   @override
   String get fontFamily => ff.azo;

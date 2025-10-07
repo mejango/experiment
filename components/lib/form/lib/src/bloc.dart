@@ -90,16 +90,6 @@ class StreamFormBloc extends BlocBase {
     _inForm.add(_formData ?? StreamableFormData(sectionData: []));
   }
 
-  @deprecated // use insertFieldData
-  void insertFieldDataBefore(
-    StreamableFormFieldData fieldData, {
-    StreamableFormFieldData? beforeFieldData,
-  }) {
-    _addValueChangedStreamToField(fieldData);
-    _formData?.addFieldDataBefore(fieldData, beforeFieldData);
-    _inForm.add(_formData ?? StreamableFormData(sectionData: []));
-  }
-
   void batchInsertFieldDataBefore(
     List<StreamableFormFieldData> fieldData, {
     StreamableFormFieldData? beforeFieldData,
@@ -107,16 +97,6 @@ class StreamFormBloc extends BlocBase {
     if (fieldData.isEmpty) return;
     for (final data in fieldData) _addValueChangedStreamToField(data);
     _formData?.batchAddFieldDataBefore(fieldData, beforeFieldData);
-    _inForm.add(_formData ?? StreamableFormData(sectionData: []));
-  }
-
-  @deprecated // use insertFieldData
-  void insertFieldDataAfter(
-    StreamableFormFieldData fieldData, {
-    StreamableFormFieldData? afterFieldData,
-  }) async {
-    _addValueChangedStreamToField(fieldData);
-    _formData?.addFieldDataAfter(fieldData, afterFieldData);
     _inForm.add(_formData ?? StreamableFormData(sectionData: []));
   }
 
@@ -211,7 +191,7 @@ class StreamFormBloc extends BlocBase {
   }
 
   void overwriteWithFieldData(List<StreamableFormFieldData> fieldData) {
-    for (final data in fieldData) _addValueChangedStreamToField(data);
+    _addValueChangedStreamToFields(fieldData);
     _formData?.sectionData.clear();
     _formData?.batchAddFieldData(fieldData);
     _inForm.add(_formData ?? StreamableFormData(sectionData: []));
@@ -251,6 +231,7 @@ class StreamFormBloc extends BlocBase {
         //If the field is resigning focus, the form had focus before.
         //Otherwise if the field is gaining focus, see if there is another field
         //currently with focus.
+        print("fieldHasFocus: $fieldHasFocus");
         final formHadFocusedFieldBefore =
             !fieldHasFocus || _hasFocusedField(ignoreFields: [fieldData]);
 

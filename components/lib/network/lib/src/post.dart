@@ -48,6 +48,8 @@ class Network {
       headers: headers,
     );
 
+    print("POST response: $response");
+
     final decodedBodyBytes = utf8.decode(response.bodyBytes);
 
     final PostResponse postResponse = PostResponse(
@@ -56,7 +58,7 @@ class Network {
       statusCode: response.statusCode,
     );
 
-    print('POST complete');
+    print('POST complete: $postResponse');
     return Future.value(postResponse);
   }
 }

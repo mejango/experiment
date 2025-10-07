@@ -22,11 +22,11 @@ class RoofTypographyLibrary extends SemanticTypographyLibrary {
       RoofHeadingSecondaryTypography(currentThemeOption);
 
   @override
-  SemanticTypography get body => RoofBodyTypography(currentThemeOption);
+  SemanticTypography get body => BodyTypography(currentThemeOption);
 
   @override
   SemanticTypography get bodyHeavy =>
-      RoofBodyHeavyTypography(currentThemeOption);
+      BodyHeavyTypography(currentThemeOption);
 
   @override
   SemanticTypography get detail => RoofDetailTypography(currentThemeOption);
@@ -45,5 +45,5 @@ class RoofTypographyLibrary extends SemanticTypographyLibrary {
   SemanticTypography get subtitle => RoofSubtitleTypography(currentThemeOption);
 
   @override
-  SemanticTypography get button => RoofButtonTypography(currentThemeOption);
+  SemanticTypography get button => ButtonTypography(currentThemeOption);
 }

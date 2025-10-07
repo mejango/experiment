@@ -64,7 +64,7 @@ mixin LeftButtonState<T extends StatefulWidget>
     buttonChildren.add(rightArrowIcon);
 
     final decoration = BoxDecoration(
-      color: button.backgroundColor(context)?.withValues(alpha: (tapped ? .7 : 1) * 255),
+      color: button.backgroundColor(context)?.withAlpha(tapped ? 178 : 255),
       borderRadius: BorderRadius.all(
         theme?.radius?.medium ?? Radius.zero,
       ),

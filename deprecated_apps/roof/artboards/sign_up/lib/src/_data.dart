@@ -35,6 +35,7 @@ mixin SignUpArtboardData implements FormBuilder {
   void setupFields(BuildContext context,
       {List<StreamableFormFieldData> fieldData}) {
     _temp2.addOnChangedListener(_toggleField);
+    super.setupFields(context, fieldData: fieldData);
   }
 
   void _toggleField(bool showing) {

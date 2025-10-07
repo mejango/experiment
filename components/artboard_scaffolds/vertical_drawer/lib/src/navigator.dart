@@ -127,7 +127,7 @@ class VerticalDrawerInheritedArtboardNavigator
     setState(() => showsNavButton = shouldShow);
   }
 
-  Future<T> _goTo<T>(
+  Future<T?> _goTo<T>(
     Artboard<T> artboard, {
     required BuildContext context,
   }) async {

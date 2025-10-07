@@ -23,18 +23,18 @@ dev_dependencies:
     sdk: flutter
 flutter:
   fonts:
-    # - family: RoofXSmallIcons
-    #   fonts:
-    #     - asset: apps/app_1/exe/components/icons/small/lib/ttf/RoofXSmallIcons.ttf
-    # - family: RoofSmallIcons
-    #   fonts:
-    #     - asset: apps/app_1/exe/components/icons/small/lib/ttf/RoofSmallIcons.ttf
-    # - family: RoofStandardIcons
-    #   fonts:
-    #     - asset: apps/app_1/exe/components/icons/standard/lib/ttf/RoofStandardIcons.ttf
-    # - family: RoofNavigationIcons
-    #   fonts:
-    #     - asset: apps/app_1/exe/components/icons/navigation/lib/ttf/RoofNavigationIcons.ttf
+    - family: RoofXSmallIcons
+      fonts:
+        - asset: packages/x_small_icon_library/ttf/RoofXSmallIcons.ttf
+    - family: RoofSmallIcons
+      fonts:
+        - asset: packages/small_icon_library/ttf/RoofSmallIcons.ttf
+    - family: RoofStandardIcons
+      fonts:
+        - asset: packages/standard_icon_library/ttf/RoofStandardIcons.ttf
+    - family: RoofNavigationIcons
+      fonts:
+        - asset: packages/navigation_icon_library/ttf/RoofNavigationIcons.ttf
     - family: circular
       fonts:
         - asset: ../sm_theme/lib/fonts/circular/CircularStd-Book.otf

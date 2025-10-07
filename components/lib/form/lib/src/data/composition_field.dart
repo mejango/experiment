@@ -35,7 +35,11 @@ abstract class FormCompositionFieldData
     bool? isVisible,
     bool? isRemovable,
     String? exceptionTitle,
-  })  : exceptionTitle = exceptionTitle ?? title,
+  })  : placeholder = placeholder ?? "",
+        keyboardType = keyboardType ?? TextInputType.text,
+        isOptional = isOptional ?? false,
+        autofocus = autofocus ?? false,
+        exceptionTitle = exceptionTitle ?? title,
         super(
           title: title,
           initialValue: initialValue ?? "",
@@ -48,7 +52,7 @@ abstract class FormCompositionFieldData
       _onSubmittedListeners.add(fn);
 
   @override
-  Future<void> validate() async {
+  void validate() {
     if (max != null && value != null && value!.length > max!) {
       throw FormValidationException.tooLongString(fieldTitle: title, max: max!);
     }

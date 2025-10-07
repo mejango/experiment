@@ -13,6 +13,7 @@ class StandardTextField extends StatelessWidget {
   final String? initialValue;
   final bool? isPassword;
   final bool? autofocus;
+  final bool? isObscured;
   final TextInputAction? textInputAction;
   final MaskOption? mask;
   final TextInputType? keyboardType;
@@ -28,6 +29,7 @@ class StandardTextField extends StatelessWidget {
     this.initialValue,
     this.isPassword = false,
     this.autofocus = false,
+    this.isObscured = false,
     this.mask,
     this.textInputAction,
     this.keyboardType = TextInputType.text,
@@ -52,7 +54,7 @@ class StandardTextField extends StatelessWidget {
       isPassword: isPassword ?? false,
       textInputAction: textInputAction ?? TextInputAction.done,
       initialValue: initialValue ?? "",
-      mask: mask as MaskOption,
+      mask: mask,
       placeholder: placeholder ?? "",
       keyboardType: keyboardType ?? TextInputType.text,
       onChanged: onChanged as Function(String),
@@ -173,7 +175,10 @@ class _FieldBodyState extends State<_FieldBody> {
         textAlign: TextAlign.right,
         decoration: decoration,
         focusNode: widget.focusNode,
-        keyboardAppearance: theme?.systemUiStyle?.keyboardBrightness?.value ?? Brightness.light,
+        keyboardAppearance: Brightness.dark, // theme?.systemUiStyle?.keyboardBrightness?.value ?? Brightness.light,
+        enableSuggestions: false,
+        autocorrect: false,
+        enableIMEPersonalizedLearning: false,
         onSubmitted: (value) => widget.onSubmitted?.call(value, context),
         onTap: widget.onTap as GestureTapCallback?,
         controller: _controller,
@@ -226,11 +231,6 @@ class _FieldBodyState extends State<_FieldBody> {
   }
 
   void _focusUpdated() {
-    final formattedText = _formattedText(
-      text: _controller.text,
-      context: context,
-    );
-    _setText(formattedText);
     widget.onFocusChanged?.call(widget.focusNode?.hasFocus ?? false);
   }
 }

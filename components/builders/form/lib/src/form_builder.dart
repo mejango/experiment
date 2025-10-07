@@ -3,6 +3,7 @@ import 'package:button_builder/index.dart';
 import 'package:form_body_builder/index.dart';
 import 'package:button_status_option/index.dart';
 import 'package:semantic_theme/index.dart';
+import 'package:form/index.dart';
 
 mixin FormBuilder implements FormBodyBuilder, PrimaryCenterButtonBuilder {
   String get title;
@@ -43,7 +44,6 @@ mixin FormBuilderState<T extends FormBuilder>
   }
 
   Widget buildForm(BuildContext context) {
-    addFocusChangedListeners();
     final theme = SemanticTheme.of(context);
 
     final headerStyle = theme?.typography?.title?.textStyle(

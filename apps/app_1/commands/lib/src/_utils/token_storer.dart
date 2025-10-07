@@ -1,7 +1,7 @@
 import 'package:blossm_command/index.dart';
 import 'package:secure_storage/index.dart';
 
-class SMTokenStore implements TokenStore {
+class DiaTokenStore implements TokenStore {
   static const _sessionTokenKey = "session_token";
   static const _challengeTokenKey = "challenge_token";
 

@@ -14,13 +14,12 @@ mixin CreateServiceArtboardData implements FormBuilder {
   String get submitButtonText => "Create";
 
   @override
-  Future<void> validate() {
+  void validate() {
     if (_serviceNameFieldData.value?.isEmpty ?? true) {
       throw FormValidationException.emptyNotAllowed(
         fieldTitle: _serviceNameFieldData.title,
       );
     }
-    return Future.value();
   }
 
   @override

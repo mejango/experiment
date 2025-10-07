@@ -31,7 +31,7 @@ class FormEinFieldData extends FormTextFieldData {
         );
 
   @override
-  Future<void> validate() async {
+  void validate() {
     if (value == null || !regEx.hasMatch(value!)) {
       throw FormValidationException.badEin();
     }

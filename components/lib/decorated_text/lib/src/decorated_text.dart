@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class StyleDecoratedText extends _DecoratedText {
   final TextStyle defaultStyle;
 
-  StyleDecoratedText({required String text, required this.defaultStyle})
-      : super(text: text);
+  StyleDecoratedText({required this.defaultStyle})
+      : super();
 
   addSection({required String text, required TextStyle style}) {
     final section = _StyleTextSection(text: text, style: style);
@@ -24,8 +24,6 @@ class StyleDecoratedText extends _DecoratedText {
 }
 
 class WeightDecoratedText extends _DecoratedText {
-  WeightDecoratedText({String? text}) : super(text: text ?? "");
-
   addSection({required String text, bool thin = false}) {
     final section = _WeightTextSection(text: text, thin: thin);
     super._addSection(section);
@@ -49,11 +47,20 @@ class WeightDecoratedText extends _DecoratedText {
 }
 
 abstract class _DecoratedText {
-  final String text;
-
   var _sections = <_TextSection>[];
 
-  _DecoratedText({required this.text});
+  _DecoratedText();
+
+  String get text {
+    // Combine base text with all sections
+    final allTexts = <String>[];
+    
+    for (final section in _sections) {
+      allTexts.add(section.text);
+    }
+    
+    return allTexts.join(' ');
+  }
 
   RichText _generateWidgetFromChildren(
       {required List<TextSpan> children,

@@ -16,9 +16,10 @@ class FormEmailTextFieldData extends FormTextFieldData {
     bool? autofocus,
     bool? isRequired,
     String? exceptionTitle,
+    String? placeholder
   }) : super(
           title: 'Email',
-          placeholder: 'address@email.com',
+          placeholder: placeholder ?? 'address@email.com',
           initialValue: initialValue,
           autofocus: autofocus,
           keyboardType: TextInputType.emailAddress,
@@ -29,7 +30,7 @@ class FormEmailTextFieldData extends FormTextFieldData {
         );
 
   @override
-  Future<void> validate() async {
+  void validate() {
     if (value == null || !regEx.hasMatch(value!)) {
       throw FormValidationException.badEmail();
     }

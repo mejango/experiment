@@ -4,6 +4,7 @@ import 'package:artboard/index.dart';
 import 'package:vertical_full_screen_artboard_scaffold/index.dart';
 import 'package:device_screen/index.dart';
 import 'package:landing_artboard/index.dart';
+import 'package:commands/index.dart';
 
 import 'bloc.dart';
 import 'data/index.dart';
@@ -29,7 +30,6 @@ class RootWidget extends StatelessWidget {
           startingArtboard = LandingFullScreenArtboard();
         }
 
-        print("Building navigator");
         return VerticalFullScreenArtboardNavigator(artboard: startingArtboard);
       },
     );

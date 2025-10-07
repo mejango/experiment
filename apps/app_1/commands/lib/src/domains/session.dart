@@ -13,17 +13,19 @@ class SessionCommands extends BlossmCommandDispatcher with DispatcherConfig {
   String get domain => "session";
 
   @override
-  Future Function() get onTokenInvalid => () => Future.value(); // redirectToWelcome(context);
+  Future Function() get onTokenInvalid => () => redirectToLanding(context);
 
   @override
   Future Function() get onChallengeIssued =>
       () => Future.value(); // redirectToChallengeAnswer(context);
 
   Future start() async {
-    // final _hasToken = await tokenStore.readToken() != null;
-    // if (_hasToken) return;
+    final _hasToken = await tokenStore.readSessionToken() != null;
+    if (_hasToken) return;
 
     final deviceInfo = await DeviceInfo.read();
+
+    print("deviceInfo: ${deviceInfo.toMap()}");
 
     return dispatch(
       route: "start",

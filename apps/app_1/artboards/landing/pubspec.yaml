@@ -21,8 +21,12 @@ dependencies:
   spaced_column_builder:
   commands:
   button_builder:
+  semantic_theme:
   app1_cells:
   vertical_full_screen_artboard_scaffold:
+  sign_up:
+  sell_artboard:
+  merchant_artboard:
 dev_dependencies:
   flutter_test:
     sdk: flutter

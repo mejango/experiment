@@ -179,7 +179,7 @@ class _AnimatedTitleNavBarState extends State<AnimatedTitleNavBar> {
       opacityAdjustedShadow = [
         BoxShadow(
           color:
-              shadow.color.withValues(alpha: shadow.color.a * _transitionValue),
+              shadow.color.withAlpha((shadow.color.a * _transitionValue).toInt()),
           blurRadius: shadow.blurRadius,
           spreadRadius: shadow.spreadRadius,
           offset: shadow.offset,

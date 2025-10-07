@@ -32,5 +32,5 @@ class FormIntegerTextFieldData extends FormTextFieldData {
           min: isRequired == true ? 1 : null,
         );
 
-  Future<void> validate() async {}
+  void validate() {}
 }

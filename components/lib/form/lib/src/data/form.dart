@@ -75,6 +75,7 @@ class StreamableFormData extends StreamableData {
   ) {
     final beforeFieldDataFormLocation =
         formLocationOfFieldData(beforeFieldData);
+
     _addFieldDataAt(
       fieldData,
       beforeFieldDataFormLocation,
@@ -103,7 +104,7 @@ class StreamableFormData extends StreamableData {
     final afterFieldDataFormLocation = formLocationOfFieldData(afterFieldData);
     final insertFormLocation = FormLocation(
       sectionIndex: afterFieldDataFormLocation?.sectionIndex ?? 0,
-      fieldIndex: afterFieldDataFormLocation?.fieldIndex ?? 0,
+      fieldIndex: (afterFieldDataFormLocation?.fieldIndex ?? 0) + 1,
     );
 
     _addFieldDataAt(fieldData, insertFormLocation);
@@ -114,7 +115,7 @@ class StreamableFormData extends StreamableData {
     final afterFieldDataFormLocation = formLocationOfFieldData(afterFieldData);
     final insertFormLocation = FormLocation(
       sectionIndex: afterFieldDataFormLocation?.sectionIndex ?? 0,
-      fieldIndex: afterFieldDataFormLocation?.fieldIndex ?? 0,
+      fieldIndex: (afterFieldDataFormLocation?.fieldIndex ?? 0) + 1,
     );
 
     _batchAddFieldDataAt(fieldData, insertFormLocation);

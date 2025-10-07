@@ -97,7 +97,6 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
     final theme = SemanticTheme.of(context);
 
     Widget body;
-    print("building body");
     List<Widget>? slivers = widget.buildBodySlivers(context);
     if (slivers != null) {
       final navBarSpacer = SliverToBoxAdapter(
@@ -177,10 +176,7 @@ mixin VerticalFullScreenArtboardState<T extends VerticalFullScreenArtboard>
 
     final scaffold = Scaffold(
       backgroundColor: theme?.color?.background?.general ?? Colors.transparent,
-      body: SafeArea(
-        top: false,
-        child: stack,
-      ),
+      body: stack,
     );
 
     return scaffold;

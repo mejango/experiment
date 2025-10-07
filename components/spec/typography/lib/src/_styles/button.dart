@@ -3,11 +3,11 @@ import 'typography_style.dart';
 import '_utils/font_size.dart' as font_size;
 import '_utils/font_weight.dart' as font_weight;
 
-class RoofButtonIos with _RoofButton, TypographyStyle {}
+class ButtonIos with _Button, TypographyStyle {}
 
-class RoofButtonAndroid with _RoofButton, TypographyStyle {}
+class ButtonAndroid with _Button, TypographyStyle {}
 
-mixin _RoofButton implements TypographyStyle {
+mixin _Button implements TypographyStyle {
   @override
   final fontSize = font_size.small;
   @override

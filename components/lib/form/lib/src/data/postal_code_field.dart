@@ -31,5 +31,5 @@ class FormPostalCodeFieldData extends FormTextFieldData {
           max: _maxLength,
         );
 
-  Future<void> validate() async {}
+  void validate() {}
 }

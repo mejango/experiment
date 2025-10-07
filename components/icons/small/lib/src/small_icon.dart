@@ -14,7 +14,6 @@ class SmallIcon extends IconReference {
   static final xCircleFilled = SmallIcon(RoofSmallIconData.x_circle_filled);
   static final x = SmallIcon(RoofSmallIconData.x);
   static final rightArrow = SmallIcon(RoofSmallIconData.right_arrow);
-  static final settings = SmallIcon(RoofStandardIconData.settings);
 
   SmallIcon(IconData iconData)
       : super(

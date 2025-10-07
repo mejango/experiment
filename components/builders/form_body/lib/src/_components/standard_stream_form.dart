@@ -25,17 +25,16 @@ import 'package:semantic_theme/index.dart';
 import 'fields/roller_column_picker_field.dart';
 import 'fields/tag_field.dart';
 
-enum KeyboardAccessoryState { hideKeyboard, submit }
-
 class StandardStreamForm extends StreamForm
     with
         KeyboardAccessoryBarBuilder,
         SectionHeaderBuilder,
         SecondaryCenterButtonBuilder {
-  static const _hideKeyboardTitle = "Hide keyboard";
+  static const _nextKeyboardTitle = "Next";
   static const _doneKeyboardTitle = "Done";
 
   final _focusNodeManager = _FocusNodeManager();
+  final Map<FormCompositionFieldData, bool> _changingFocusMap = {};
 
   List<FormCompositionFieldData> get _allCompositionFieldData {
     final allFieldData = bloc.formData?.fieldData ?? [];
@@ -51,6 +50,14 @@ class StandardStreamForm extends StreamForm
     allCompositionFieldData.addAll(allTextFieldData);
     allCompositionFieldData.addAll(allTextAreaData);
     return allCompositionFieldData;
+  }
+
+  bool _isChangingFocus(FormCompositionFieldData fieldData) {
+    return _changingFocusMap[fieldData] ?? false;
+  }
+
+  void _setChangingFocus(FormCompositionFieldData fieldData, bool value) {
+    _changingFocusMap[fieldData] = value;
   }
 
   Widget buildTextField({
@@ -70,27 +77,28 @@ class StandardStreamForm extends StreamForm
       initialValue: fieldData.value,
       keyboardType: fieldData.keyboardType,
       textInputAction: inputAction,
-      isPassword: false,
+      isPassword: fieldData.isPassword,
       mask: fieldData.mask,
       onChanged: (value) {
         _onCompositionViewChanged(fieldData, value);
+        _updateKeyboardAccessoryButton(
+          fieldData: fieldData,
+          formData: formData,
+          context: context,
+        );
       },
       onSubmitted: (value, context) {
         _onCompositionViewSubmitted(fieldData, value, context);
       },
       onFocusChanged: (isInFocus) {
         if (isInFocus) {
-          final button = _buttonFor(
+          _updateKeyboardAccessoryButton(
             fieldData: fieldData,
             formData: formData,
             context: context,
           );
-          KeyboardAccessory.of(context)?.child = buildKeybordAccessoryShortBar(
-            context,
-            children: [button],
-          );
         }
-        _onCompositionViewFocusChanged(fieldData, isInFocus);
+        _onCompositionViewFocusChanged(fieldData, isInFocus, context);
       },
       focusNode: focusNode,
     );
@@ -105,7 +113,7 @@ class StandardStreamForm extends StreamForm
   }) {
     final inputAction = _getInputActionForCompositionFieldData(fieldData);
 
-    return RoofTextArea(
+    return TextArea(
       autofocus: fieldData.autofocus,
       fieldName: fieldData.title,
       placeholder: fieldData.placeholder,
@@ -114,12 +122,24 @@ class StandardStreamForm extends StreamForm
       keyboardType: fieldData.keyboardType,
       onChanged: (value) {
         _onCompositionViewChanged(fieldData, value);
+        _updateKeyboardAccessoryButton(
+          fieldData: fieldData,
+          formData: formData,
+          context: context,
+        );
       },
       onSubmitted: (value, context) {
         _onCompositionViewSubmitted(fieldData, value, context);
       },
       onFocusChanged: (isInFocus) {
-        _onCompositionViewFocusChanged(fieldData, isInFocus);
+        if (isInFocus) {
+          _updateKeyboardAccessoryButton(
+            fieldData: fieldData,
+            formData: formData,
+            context: context,
+          );
+        }
+        _onCompositionViewFocusChanged(fieldData, isInFocus, context);
       },
       focusNode: _focusNodeManager.nodeFor(fieldData, context),
     );
@@ -130,15 +150,16 @@ class StandardStreamForm extends StreamForm
     required int fieldIndex,
     required int sectionIndex,
     required BuildContext context,
-  }) =>
-      RoofSwitchField(
+  }) {
+      return SwitchField(
         title: fieldData.title,
-        initialValue: fieldData.value,
+        initialValue: fieldData.value ?? false,
         onChanged: (value) {
           resignFocus(context);
           fieldData.onChanged(value);
         },
       );
+  }
 
   Widget buildDateField({
     required FormDatePickerFieldData fieldData,
@@ -380,7 +401,7 @@ class StandardStreamForm extends StreamForm
             onRemove: () => bloc.removeFieldData(fieldData),
           )
         : FieldContainer(
-            child: fieldBody,
+              child: fieldBody,
           );
   }
 
@@ -393,17 +414,20 @@ class StandardStreamForm extends StreamForm
     required FormCompositionFieldData fieldData,
     required BuildContext context,
   }) {
-    final nextEmptyFieldData = _nextEmptyCompositionFieldDataAfter(fieldData);
+    final nextInvalidFieldData = _nextInvalidCompositionFieldDataAfter(fieldData);
 
-    if (nextEmptyFieldData != null) {
-      final focusNode = _focusNodeManager.nodeFor(nextEmptyFieldData, context);
-      if (focusNode.canRequestFocus) FocusScope.of(context).requestFocus(focusNode);
+    if (nextInvalidFieldData != null) {
+      final focusNode = _focusNodeManager.nodeFor(nextInvalidFieldData, context);
+      if (focusNode.canRequestFocus) {
+        FocusScope.of(context).requestFocus(focusNode);
+        _setChangingFocus(fieldData, true);
+      }
     } else {
       _resignFieldFocus(fieldData: fieldData, context: context);
     }
   }
 
-  FormTextFieldData? _nextEmptyCompositionFieldDataAfter(
+  FormTextFieldData? _nextInvalidCompositionFieldDataAfter(
     FormCompositionFieldData fieldData,
   ) {
     final allCompositionFieldData = _allCompositionFieldData;
@@ -411,12 +435,12 @@ class StandardStreamForm extends StreamForm
     final index = allCompositionFieldData.indexOf(fieldData);
     for (var i = index + 1; i < allCompositionFieldData.length; i++) {
       final subsequentFieldData = allCompositionFieldData[i];
-      if (subsequentFieldData.value?.isEmpty ?? true && !(subsequentFieldData.isOptional ?? false))
+      if (subsequentFieldData.value?.isEmpty ?? true && !(subsequentFieldData.isOptional ?? false) && !(subsequentFieldData.isCurrentlyValid))
         return subsequentFieldData as FormTextFieldData?;
     }
     for (var i = 0; i < index; i++) {
       final previousFieldData = allCompositionFieldData[i];
-      if (previousFieldData.value?.isEmpty ?? true && !(previousFieldData.isOptional ?? false))
+      if (previousFieldData.value?.isEmpty ?? true && !(previousFieldData.isOptional ?? false) && !(previousFieldData.isCurrentlyValid))
         return previousFieldData as FormTextFieldData?;
     }
     return null;
@@ -426,9 +450,9 @@ class StandardStreamForm extends StreamForm
     FormCompositionFieldData? fieldData,
   ) {
     if (fieldData?.inputAction != null) return fieldData!.inputAction!;
-    final nextEmpty = _nextEmptyCompositionFieldDataAfter(fieldData!);
+    final nextInvalid = _nextInvalidCompositionFieldDataAfter(fieldData!);
 
-    return nextEmpty == null ? TextInputAction.next : TextInputAction.done;
+    return nextInvalid == null && (fieldData.value?.isNotEmpty ?? false) && fieldData.isCurrentlyValid ? TextInputAction.done : TextInputAction.next;
   }
 
   void _updateCompositionFieldData({required FormCompositionFieldData except}) {
@@ -441,8 +465,13 @@ class StandardStreamForm extends StreamForm
   void _onCompositionViewFocusChanged(
     FormCompositionFieldData fieldData,
     bool isInFocus,
+    BuildContext context,
   ) {
     fieldData.onFocusChanged(isInFocus);
+    if (!isInFocus && !_isChangingFocus(fieldData)) {
+      KeyboardAccessory.of(context)?.hide();
+    }
+    if (!isInFocus) _setChangingFocus(fieldData, false);
   }
 
   void _onCompositionViewSubmitted(
@@ -459,6 +488,7 @@ class StandardStreamForm extends StreamForm
     String value,
   ) {
     final oldValue = fieldData.value;
+    if (oldValue == value) return;
     fieldData.onChanged(value);
     //If the fieldValue is going from empty to not empty or vice versa.
     final emptyStateChanged = value.length + (oldValue?.length ?? 0) == 1;
@@ -482,8 +512,8 @@ class StandardStreamForm extends StreamForm
     required BuildContext context,
   }) {
     final _nextButton = SecondaryActionKeyboardAccessoryButton(
-        title: _hideKeyboardTitle,
-        onTap: () => _resignFieldFocus(
+        title: _nextKeyboardTitle,
+        onTap: () => _changeFocus(
               fieldData: fieldData,
               context: context,
             ));
@@ -506,8 +536,25 @@ class StandardStreamForm extends StreamForm
     }
   }
 
+  void _updateKeyboardAccessoryButton({
+    required FormCompositionFieldData fieldData,
+    required StreamableFormData formData,
+    required BuildContext context,
+  }) {
+    final button = _buttonFor(
+      fieldData: fieldData,
+      formData: formData,
+      context: context,
+    );
+    KeyboardAccessory.of(context)?.child = buildKeybordAccessoryShortBar(
+      context,
+      children: [button],
+    );
+  }
+
   void dispose() {
     _focusNodeManager.dispose();
+    _changingFocusMap.clear();
   }
 }
 

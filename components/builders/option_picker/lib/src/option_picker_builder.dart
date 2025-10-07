@@ -34,7 +34,7 @@ mixin OptionPickerArtboardBuilderState<T, U extends OptionPickerArtboardBuilder>
   }
 
   void _onChanged(List<LabeledValue<T>> newSelectedOptions) {
-    triggerHapticWith(HapticOption.click);
+    triggerHaptic(HapticOption.click);
     selectedOptions = newSelectedOptions;
   }
 }

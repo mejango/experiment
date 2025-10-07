@@ -48,23 +48,23 @@ class RoofInheritedTheme extends State<RoofTheme> {
 
   BoxShadow get shadow {
     double blurRadius;
-    double opacity;
+    int alpha;
     switch (_current) {
       case RoofThemeOption.light:
         blurRadius = 12;
-        opacity = 0.2;
+        alpha = 50;
         break;
       case RoofThemeOption.dark:
         blurRadius = 16;
-        opacity = 0.1;
+        alpha = 25;
         break;
       default:
         blurRadius = 16;
-        opacity = 0.1;
+        alpha = 25;
         break;
     }
     return BoxShadow(
-        color: color?.background.scrim.withValues(alpha: opacity * 255) ?? Colors.transparent,
+        color: color?.background.scrim.withAlpha(alpha) ?? Colors.transparent,
         blurRadius: blurRadius,
         offset: Offset(0, 5));
   }

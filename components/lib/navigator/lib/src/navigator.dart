@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:artboard/index.dart';
 import 'package:typedefs/index.dart';
 
-typedef GoToArtboard = Future<T> Function<T>(
+typedef GoToArtboard = Future<T?> Function<T>(
   Artboard<T> artboard, {
   required BuildContext context,
 });
@@ -40,7 +40,7 @@ class ArtboardNavigator extends StatefulWidget {
 }
 
 class InheritedArtboardNavigator extends State<ArtboardNavigator> {
-  Future<T> goTo<T>(Artboard<T> artboard) {
+  Future<T?> goTo<T>(Artboard<T> artboard) {
     return widget.goTo(
       artboard,
       context: context,

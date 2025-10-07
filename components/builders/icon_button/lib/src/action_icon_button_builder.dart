@@ -16,7 +16,7 @@ mixin ActionIconButtonBuilder {
   }
 
   SecondaryActionIconButton buildSecondaryActionIconButton({
-    required SmallIcon iconReference,
+    required NavigationIcon iconReference,
     required void Function() onTap,
   }) {
     return SecondaryActionIconButton(

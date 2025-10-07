@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:stream/index.dart';
 
@@ -13,12 +11,21 @@ abstract class StreamableFormFieldData<T> extends StreamableData {
       };
 
   ValueChanged<bool> get onFocusChanged => (focusValue) {
+        print("number of focus listeners: ${_onFocusChangedListeners.length}");
         for (final listener in _onFocusChangedListeners) listener(focusValue);
       };
 
   bool get isTracked => _isTracked;
   double get fieldSize => size;
   bool get isInFocus => _isInFocus;
+  bool get isCurrentlyValid {
+    try {
+      validate();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 
   List<ValueChanged<T>> _onChangedListeners = [];
   List<ValueChanged<bool>> _onFocusChangedListeners = [];
@@ -51,7 +58,7 @@ abstract class StreamableFormFieldData<T> extends StreamableData {
         _isInFocus = false,
         super(isVisible: isVisible ?? true);
 
-  Future<void> validate() async {}
+  void validate() {}
 
   void markAsTracked() {
     if (_isTracked) return;

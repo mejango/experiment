@@ -5,9 +5,11 @@ import 'composition_field.dart';
 
 abstract class FormTextFieldData extends FormCompositionFieldData {
   MaskOption? mask;
+  bool? isPassword;
 
   FormTextFieldData({
     this.mask,
+    this.isPassword,
     required String title,
     String? placeholder,
     String? initialValue,

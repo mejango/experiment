@@ -8,7 +8,7 @@ import 'text_field.dart';
 class FormCurrencyTextFieldData extends FormTextFieldData {
   FormCurrencyTextFieldData({
     String title = "Amount",
-    String placeholder = "0.00",
+    String placeholder = "\$0.00",
     String? initialValue,
     double? size,
     bool? isVisible,
@@ -28,5 +28,5 @@ class FormCurrencyTextFieldData extends FormTextFieldData {
           exceptionTitle: exceptionTitle,
         );
 
-  Future<void> validate() async {}
+  void validate() {}
 }

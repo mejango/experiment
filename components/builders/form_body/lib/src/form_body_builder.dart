@@ -26,18 +26,8 @@ import '_components/standard_stream_form.dart';
 import 'form_status.dart';
 
 mixin FormBodyBuilder implements StatefulWidget {
-  /// Use buildInitialFieldData
-  @deprecated
-  Future<List<StreamableFormFieldData>> get initialFieldData async =>
-      Future.value([]);
-
   Future<List<StreamableFormFieldData>> buildInitialFieldData(
           BuildContext context) async =>
-      Future.value([]);
-
-  /// Use buildInitialSectionData
-  @deprecated
-  Future<List<StreamableFormSectionData>> get initialSectionData async =>
       Future.value([]);
 
   Future<List<StreamableFormSectionData>> buildInitialSectionData(
@@ -54,7 +44,7 @@ mixin FormBodyBuilder implements StatefulWidget {
   final _form = StandardStreamForm();
 
   // An opportunity for forms to throw an exception before being submitted.
-  Future<void> validate() async {}
+  void validate() {}
   Future<void> submit(BuildContext context);
 
   // An opportunity for forms to setup additional properties before building.
@@ -167,13 +157,10 @@ mixin FormBodyBuilder implements StatefulWidget {
     }
   }
 
-  Future<void> _validateFields() async {
-    await Future.wait(
-      (form.formData?.fieldData ?? [])
-          .where((data) => data.isVisible == true)
-          .map((data) async => await data.validate())
-          .toList(),
-    );
+  void _validateFields() {
+    (form.formData?.fieldData ?? [])
+        .where((data) => data.isVisible == true)
+        .map((data) => data.validate());
   }
 
   Function _dateFieldOnTap(
@@ -384,8 +371,8 @@ mixin FormBodyBuilderState<T extends FormBodyBuilder> implements State<T> {
     widget.form.disableFields();
 
     try {
-      await widget._validateFields();
-      await widget.validate();
+      widget._validateFields();
+      widget.validate();
     } on FormValidationException catch (e) {
       _handleException(context, e);
       widget.form.enableFields();
@@ -423,14 +410,14 @@ mixin FormBodyBuilderState<T extends FormBodyBuilder> implements State<T> {
     final formData = await _createInitialFormData(context);
     _setupIfNeeded(
       context,
-      fieldData: formData?.fieldData ?? [],
+      formData: formData ?? StreamableFormData(sectionData: []),
     );
-    if (formData != null) widget.form.update(formData);
   }
 
   Widget _buildSubmitKeyboardAccessory(BuildContext context) {
     return PrimaryActionKeyboardAccessoryButton(
       onTap: () {
+        print("submit keyboard accessory");
         widget._form.resignFocus(context);
         onSubmitButtonTap(context);
       },
@@ -478,11 +465,13 @@ mixin FormBodyBuilderState<T extends FormBodyBuilder> implements State<T> {
 
   void _setupIfNeeded(
     BuildContext context, {
-    required List<StreamableFormFieldData> fieldData,
+    required StreamableFormData formData,
   }) {
     if (_hasSetUp) return;
-    widget.setupFieldDataOnTapListeners(context, fieldData: fieldData);
-    widget.setupFields(context, fieldData: fieldData);
+    addFocusChangedListeners();
+    widget.setupFieldDataOnTapListeners(context, fieldData: formData.fieldData);
+    widget.setupFields(context, fieldData: formData.fieldData);
+    widget.form.update(formData);
     _hasSetUp = true;
   }
 

@@ -36,17 +36,17 @@ TypographyStyle get title {
 
 TypographyStyle get body {
   if (Platform.isIOS) {
-    return RoofBodyIos();
+    return BodyIos();
   } else {
-    return RoofBodyAndroid();
+    return BodyAndroid();
   }
 }
 
 TypographyStyle get bodyThick {
   if (Platform.isIOS) {
-    return RoofBodyThickIos();
+    return BodyThickIos();
   } else {
-    return RoofBodyThickAndroid();
+    return BodyThickAndroid();
   }
 }
 
@@ -68,8 +68,8 @@ TypographyStyle get heading1 {
 
 TypographyStyle get button {
   if (Platform.isIOS) {
-    return RoofButtonIos();
+    return ButtonIos();
   } else {
-    return RoofButtonAndroid();
+    return ButtonAndroid();
   }
 }

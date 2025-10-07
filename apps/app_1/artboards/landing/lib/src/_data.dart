@@ -1,133 +1,41 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'package:table_builder/index.dart';
-import 'package:decorated_text/index.dart';
-import 'package:network/index.dart';
-import 'package:app1_cells/index.dart';
-
-class Project {
+class Merchant {
   final String? name;
   final int? createdAt;
   final String? logoUri;
+  final int section; // 0 for "Recently shopped", 1 for "Top shops around you"
+  final String? ticker; // Token ticker for this merchant
 
-  Project(
-      {this.name, this.createdAt, this.logoUri});
+  Merchant({
+    this.name, 
+    this.createdAt, 
+    this.logoUri,
+    required this.section,
+    this.ticker,
+  });
 
-  factory Project.fromMap(Map<String?, Object?> map) {
-    return Project(
+  factory Merchant.fromMap(Map<String?, Object?> map) {
+    return Merchant(
       name: map["name"] as String?,
       createdAt: map["createdAt"] as int?,
       logoUri: map["logoUri"] as String?,
+      section: map["section"] as int? ?? 0,
+      ticker: map["ticker"] as String?,
     );
   }
 }
 
-class Projects {
+class Merchants {
   Future<List<Object?>> get({
     required num pageSize,
     num pageNumber = 0,
     num startTimestamp = 0,
   }) async {
-
-    final params = {
-      "query": """
-        query MyQuery {
-          projects(orderBy: "trendingScore", orderDirection: "desc") {
-            items {
-              name,
-              createdAt,
-              logoUri
-            }
-          }
-        }
-      """
-    };
-
-    print("calling");    
-    final response = await Network.post(
-      address: "https://bendystraw.xyz/3ZLSSbdfZMTmmwtBsevou9AP/graphql",
-      params: params,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    );
-
-    return await compute<PostResponse, List<Object>>(
-      _streamableDataFromResponse,
-      response
-    );
-  }
-
-  List<Object> _streamableDataFromResponse(PostResponse response) {
-    final dataConvertedToJson = response.body;
-    final List projects = dataConvertedToJson["data"]["projects"]["items"] ?? [];
-
-    final data = projects.map((json) {
-      return Project.fromMap(json);
-    }).toList();
-
-    return data;
-  }
-}
-
-class LandingStreamTable extends StreamTable<StreamableTableRowData,
-    StreamableTableSectionHeaderData, StreamableTableHeaderData> {
-  Widget buildLandingCell({
-    LandingItemData? rowData,
-    int? rowIndex,
-    int? sectionIndex,
-  }) {
-    return LandingItemCell(
-      title: rowData?.title,
-      note: "" + (rowData?.description ?? ""),
-      image: rowData?.image,
-      timestamp: rowData?.timestamp,
-    );
-  }
-
-  @override
-  Widget? buildRow({
-    BuildContext? context,
-    StreamableTableRowData? rowData,
-    int? rowIndex,
-    int? sectionIndex,
-  }) {
-    if (rowData is LandingItemData) {
-      return buildLandingCell(
-        rowData: rowData,
-        rowIndex: rowIndex,
-        sectionIndex: sectionIndex,
-      );
-    }
-
-    return null;
+    // Return empty list since data is now in rowData
+    return [];
   }
 }
 
 
-mixin LandingArtboardData implements TableBuilder {
-    @override
-    final streamTable = LandingStreamTable();
 
-      LandingItemData dataForProject(Project project) {
-        final decoratedTitle = WeightDecoratedText();
-
-        decoratedTitle.addSection(text: project.name ?? '');
-
-        String? logoUri = project.logoUri;
-
-        if (logoUri != null) {
-          logoUri = logoUri.replaceAll("ipfs://", "https://jbm.infura-ipfs.io/ipfs/");
-        }
-
-        return LandingItemData(
-          title: decoratedTitle,
-          description: '',
-          image: logoUri != null ? Image.network(logoUri) : null,
-          section: 0,
-          timestamp: project.createdAt ?? 0,
-        );
-      }
-}

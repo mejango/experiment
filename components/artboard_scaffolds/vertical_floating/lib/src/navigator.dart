@@ -85,7 +85,27 @@ class VerticalFloatingInheritedArtboardNavigator
       onVerticalDragUpdate: (details) {
         if (details.primaryDelta == null || details.primaryDelta! < 0) return;
         _onDragDownUpdate(details);
-        if (_shouldPop) Navigator.pop(context);
+        if (_shouldPop) {
+          
+          final keyboardIsVisible = MediaQuery.of(context).viewInsets.bottom > 0;
+          if (keyboardIsVisible) {
+            print("=== UNFOCUS ATTEMPT ===");
+            
+            // Try the simplest approach first - use FocusManager directly
+            final activeFocus = FocusManager.instance.primaryFocus;
+            
+            if (activeFocus != null && activeFocus.hasFocus) {
+              print("Found active focus: ${activeFocus.debugLabel} (hash: ${activeFocus.hashCode})");
+              print("Unfocusing active focus");
+              activeFocus.unfocus();
+            } else {
+              print("No active focus found, using global unfocus");
+              FocusScope.of(context).unfocus();
+            }
+          } else {
+            Navigator.pop(context);
+          }
+        }
       },
       behavior: HitTestBehavior.opaque,
       child: pageView,
@@ -126,7 +146,7 @@ class VerticalFloatingInheritedArtboardNavigator
     setState(() => showsNavButton = shouldShow);
   }
 
-  Future<T> _goTo<T>(
+  Future<T?> _goTo<T>(
     Artboard<T> artboard, {
     required BuildContext context,
   }) async {

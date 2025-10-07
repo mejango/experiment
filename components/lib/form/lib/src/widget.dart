@@ -31,7 +31,6 @@ class StreamFormBuilder<T extends StreamFormBloc> extends StatelessWidget {
           return Container(
             child: Text("Snapshot has no data"),
           );
-
         return _createForm(
           context: context,
           formData: snapshot.data,

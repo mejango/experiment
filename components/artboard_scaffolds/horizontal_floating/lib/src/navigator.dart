@@ -101,7 +101,7 @@ class HorizontalFloatingInheritedArtboardNavigator
     );
   }
 
-  Future<T> _goTo<T>(Artboard<T> artboard,
+  Future<T?> _goTo<T>(Artboard<T> artboard,
       {required BuildContext context}) async {
     if (artboard is HorizontalFloatingArtboard) {
       final panel = _buildPanelForArtboard<T>(artboard as HorizontalFloatingArtboard<T>);

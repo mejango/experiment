@@ -2,11 +2,11 @@ import 'typography_style.dart';
 import '_utils/font_size.dart' as font_size;
 import '_utils/font_weight.dart' as font_weight;
 
-class RoofBodyThickIos with _RoofBodyThick, TypographyStyle {}
+class BodyThickIos with _BodyThick, TypographyStyle {}
 
-class RoofBodyThickAndroid with _RoofBodyThick, TypographyStyle {}
+class BodyThickAndroid with _BodyThick, TypographyStyle {}
 
-mixin _RoofBodyThick implements TypographyStyle {
+mixin _BodyThick implements TypographyStyle {
   @override
   final fontSize = font_size.small;
 

@@ -54,9 +54,9 @@ class RoofBackgroundColor {
   Color get scrim {
     switch (_current) {
       case RoofThemeOption.light:
-        return Colors.black.withValues(alpha: 0.2 * 255);
+        return Colors.black.withAlpha(50);
       case RoofThemeOption.dark:
-        return Colors.black.withValues(alpha: 0.6 * 255);
+        return Colors.black.withAlpha(150);
     }
   }
 

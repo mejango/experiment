@@ -25,7 +25,7 @@ class FormPhoneNumberTextFieldData extends FormTextFieldData {
           exceptionTitle: exceptionTitle,
         );
 
-  Future<void> validate() async {
+  void validate() {
     if (value == null || value!.length < 5) {
       throw FormValidationException.badPhoneNumber();
     }

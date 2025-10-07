@@ -50,7 +50,7 @@ class LandingItemCell extends StatelessWidget {
               children: <Widget>[
                 _Body(
                   image: image,
-                  title: title ?? WeightDecoratedText(text: ""),
+                  title: title ?? WeightDecoratedText(),
                   note: note ?? "", 
                   timestamp: timestamp,
                 ),
@@ -114,7 +114,7 @@ class _Body extends StatelessWidget {
   }
 
   List<Widget> _relevantLabels(SemanticThemeData? theme, int timestamp) {
-    var list = <Widget>[_TitleLabel(decoratedText: title ?? WeightDecoratedText(text: ""))];
+    var list = <Widget>[_TitleLabel(decoratedText: title ?? WeightDecoratedText())];
     if (note != null && note!.trim().isNotEmpty) {
       list.add(
         Container(

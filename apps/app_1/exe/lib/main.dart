@@ -13,11 +13,10 @@ void main() {
 class _App1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print("Building app");
     return SemanticTheme(
       themeData: SmSemanticTheme(SmThemeOption.dark),
       child: MaterialApp(
-        title: 'App 1',
+        title: '🥥 Coco',
         debugShowCheckedModeBanner: false,
         home: BlocProvider(
           bloc: AppBloc(),

@@ -1,16 +1,15 @@
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:form_body_builder/src/_components/fields/_widgets/index.dart';
 import 'package:haptics/index.dart';
 import 'package:semantic_theme/index.dart';
 
-class RoofSwitchField extends StatefulWidget {
+class SwitchField extends StatefulWidget {
   final String? title;
-  final bool? initialValue;
+  final bool initialValue;
   final int? labelMaxLines;
   final Function(bool)? onChanged;
 
-  const RoofSwitchField({
+  const SwitchField({
     this.title,
     this.initialValue = false,
     this.labelMaxLines = 3,
@@ -18,31 +17,34 @@ class RoofSwitchField extends StatefulWidget {
   });
 
   @override
-  _RoofSwitchFieldState createState() => _RoofSwitchFieldState();
+  _SwitchFieldState createState() => _SwitchFieldState();
 }
 
-class _RoofSwitchFieldState extends State<RoofSwitchField>
+class _SwitchFieldState extends State<SwitchField>
     with SingleTickerProviderStateMixin {
-   bool? isOn;
-   int? labelMaxLines;
-   Animation<Color?>? animation;
-   AnimationController? controller;
-   Color? isOnColor;
-   Color? isOffColor;
+   late bool isOn;
+   late Animation<Color?> animation;
+   late int labelMaxLines;
+   late AnimationController controller;
+   late Color isOnColor;
+   late Color isOffColor;
 
   initState() {
     isOn = widget.initialValue;
     super.initState();
+    controller = AnimationController(
+      duration: Duration.zero, // Will update in didChangeDependencies
+      vsync: this,
+    );
   }
 
   @override
   void didChangeDependencies() {
-    controller = AnimationController(
-      duration: SemanticTheme.of(context)?.duration?.short ?? Duration.zero,
-      vsync: this,
-    );
-
+    super.didChangeDependencies();
     final theme = SemanticTheme.of(context);
+
+    // Update duration if needed
+    controller.duration = theme?.duration?.short ?? Duration.zero;
 
     isOnColor = theme?.color?.background?.actionPrimary ?? Colors.white;
     isOffColor = theme?.color?.background?.actionDisabled ?? Colors.white;
@@ -56,24 +58,26 @@ class _RoofSwitchFieldState extends State<RoofSwitchField>
             curve: theme?.curve?.hurried ?? Curves.linear,
           ),
         )
-        .animate(controller!)
-          ..addListener(() {
-            setState(() {});
-          });
+        .animate(controller)
+      ..addListener(() {
+        setState(() {});
+      });
+  }
 
-    super.didChangeDependencies();
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    isOn != null ? controller?.forward() : controller?.reverse();
-
     final labelContainer = Expanded(
       child: FieldLabel(labelText: widget.title ?? ""),
     );
 
-    final switchColor = animation?.value;
-    final switchButton = _RoofAnimatedSwitch(isOn: isOn ?? false, color: switchColor!);
+    final switchColor = animation.value;
+    final switchButton = _AnimatedSwitch(isOn: isOn, color: switchColor!);
 
     return GestureDetector(
       onTap: () => hapticAction(
@@ -90,16 +94,17 @@ class _RoofSwitchFieldState extends State<RoofSwitchField>
   }
 
   void _setIsOn() {
-    widget.onChanged?.call(!isOn!);
     setState(() {
-      isOn = !(isOn ?? false);
+      isOn = !isOn;
+      isOn ? controller.forward() : controller.reverse();
     });
+    widget.onChanged?.call(isOn);
   }
 }
 
-class _RoofAnimatedSwitch extends StatelessWidget {
-  final bool? isOn;
-  final Color? color;
+class _AnimatedSwitch extends StatelessWidget {
+  final bool isOn;
+  final Color color;
 
   final double _width = 50;
   final double _height = 28;
@@ -110,7 +115,7 @@ class _RoofAnimatedSwitch extends StatelessWidget {
       _height - _innerSpacing * 2 - 2; // subtract 2 for border width * 2
   double get _animatedContainerRadius => _animatedContainerWidth * 0.5;
 
-  _RoofAnimatedSwitch({this.isOn, this.color});
+  _AnimatedSwitch({required this.isOn, required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +128,7 @@ class _RoofAnimatedSwitch extends StatelessWidget {
         left: theme?.distance?.spacing?.horizontal?.medium ?? 0,
       ),
       decoration: BoxDecoration(
-        border: Border.all(color: color!),
+        border: Border.all(color: color),
         borderRadius: BorderRadius.all(Radius.circular(_radius)),
       ),
       child: Padding(
@@ -138,7 +143,7 @@ class _RoofAnimatedSwitch extends StatelessWidget {
               color: color,
             ),
           ),
-          alignment: isOn != null ? Alignment(1.0, 0.0) : Alignment(-1.0, 0.0),
+          alignment: isOn ? Alignment(1.0, 0.0) : Alignment(-1.0, 0.0),
           curve: theme?.curve?.hurried ?? Curves.linear,
           duration: theme?.duration?.short ?? Duration.zero,
         ),

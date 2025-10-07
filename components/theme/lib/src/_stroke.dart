@@ -7,23 +7,20 @@ class RoofStrokeColor {
   RoofThemeOption _current;
 
   Color get light {
-    final opacity1 = 0.08;
-    final opacity2 = 0.04;
     switch (_current) {
       case RoofThemeOption.light:
-        return color.black1.withValues(alpha: opacity1 * 255);
+        return color.black1.withAlpha(20);
       case RoofThemeOption.dark:
-        return color.white1.withValues(alpha: opacity2 * 255);
+        return color.white1.withAlpha(10);
     }
   }
 
   Color get focus {
-    final opacity = 0.2;
     switch (_current) {
       case RoofThemeOption.light:
-        return color.black1.withValues(alpha: opacity * 255);
+        return color.black1.withAlpha(50);
       case RoofThemeOption.dark:
-        return color.white1.withValues(alpha: opacity * 255);
+        return color.white1.withAlpha(50);
     }
   }
 
@@ -32,7 +29,7 @@ class RoofStrokeColor {
       case RoofThemeOption.light:
         return color.white1;
       case RoofThemeOption.dark:
-        return color.blue.withValues(alpha: 0.1 * 255);
+        return color.blue.withAlpha(25);
     }
   }
 

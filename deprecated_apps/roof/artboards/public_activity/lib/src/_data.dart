@@ -98,11 +98,11 @@ mixin PublicActivityArtboardData implements TableBuilder {
   CellAData _dataForCompletion(PublicCompletion publicCompletion) {
     final decoratedTitle = WeightDecoratedText();
 
-    decoratedTitle.addSection(text: publicCompletion.who);
+    decoratedTitle.addSection(text: publicCompletion.who ?? "");
     decoratedTitle.addSection(text: 'completed', thin: true);
-    decoratedTitle.addSection(text: publicCompletion.name);
+    decoratedTitle.addSection(text: publicCompletion.name ?? "");
     decoratedTitle.addSection(text: 'at', thin: true);
-    decoratedTitle.addSection(text: publicCompletion.roof);
+    decoratedTitle.addSection(text: publicCompletion.roof ?? "");
 
     return CellAData(
       title: decoratedTitle,

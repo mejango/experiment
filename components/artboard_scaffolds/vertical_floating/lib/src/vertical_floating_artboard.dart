@@ -37,7 +37,7 @@ mixin VerticalFloatingArtboardState<T extends VerticalFloatingArtboard>
       top: max(
         theme?.distance?.gutter?.vertical?.large ?? 0,
         safeArea.top,
-      ),
+      )
     );
 
     final nonClickableSurface = GestureDetector(

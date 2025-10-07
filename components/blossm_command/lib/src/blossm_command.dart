@@ -7,7 +7,7 @@ import 'package:blossm_command/src/utils/index.dart';
 
 abstract class BlossmCommandDispatcher {
   static const _cookieKey = 'set-cookie';
-  static const _sessionTokenPrefix = 'session=';
+  static const _sessionTokenPrefix = 'access=';
   static const _challengeTokenPrefix = 'challenge=';
 
   String? get domain;
@@ -25,8 +25,8 @@ abstract class BlossmCommandDispatcher {
     Map? payload,
     bool? isChallenge,
   }) async {
-    final url = "https://command.$domain.$baseUrl/$route";
-
+    final url = "https://c.$domain.$baseUrl/$route";
+    print("url: $url");
     final Map<String, String> headers = {};
 
     final String? token = isChallenge == true
@@ -46,11 +46,15 @@ abstract class BlossmCommandDispatcher {
       },
     };
 
+    print("body: $body");
+
     final response = await Network.post(
       address: url,
       params: body,
       headers: headers,
     );
+
+    print("response: $response");
 
     return _handlePostResponse(
       response: response,
@@ -63,6 +67,8 @@ abstract class BlossmCommandDispatcher {
     bool? isChallenge,
   }) {
     final BlossmResponse data = BlossmResponse.fromMap(response?.body);
+
+    print("data: $data");
 
     switch (data.statusCode) {
       case 401:
@@ -84,6 +90,7 @@ abstract class BlossmCommandDispatcher {
     }
 
     final String? cookie = response?.headers[_cookieKey];
+    print("cookie: $cookie");
     if (cookie != null) _handleTokenFromCookie(cookie);
 
     return Future.value(data);
@@ -100,7 +107,10 @@ abstract class BlossmCommandDispatcher {
 
       onChallengeIssued();
     } else if (cookie.contains(_sessionTokenPrefix)) {
+      print("saving session token");
       final String? newSessionToken = cookie.split(_sessionTokenPrefix)[1];
+
+      print("newSessionToken: $newSessionToken");
 
       if (newSessionToken != null) tokenStore?.saveSessionToken(newSessionToken);
     }

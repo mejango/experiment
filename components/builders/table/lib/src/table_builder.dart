@@ -21,13 +21,10 @@ mixin TableBuilder {
 
   void _load(BuildContext context) async {
     final tableData = _createTableData(context);
-    print("tableData: ${tableData.rowData.length}");
-    print("bout to update");
     table.update(tableData);
   }
 
   StreamableTableData _createTableData(BuildContext context) {
-    print("Creating table data");
     final tableData = this.tableData;
     if (tableData != null) return tableData;
 

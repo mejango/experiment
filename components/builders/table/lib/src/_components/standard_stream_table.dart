@@ -22,8 +22,8 @@ class StandardStreamTable extends StreamTable<StreamableTableRowData,
 
   @override
   Widget? buildRow({
-    BuildContext? context,
-    StreamableTableRowData? rowData,
+    required BuildContext context,
+    required StreamableTableRowData rowData,
     int? rowIndex,
     int? sectionIndex,
   }) {
@@ -39,6 +39,7 @@ class StandardStreamTable extends StreamTable<StreamableTableRowData,
   }
 
   Widget? buildSectionHeader({
+    required BuildContext context,
     StreamableTableSectionHeaderData? headerData,
     int? sectionIndex,
   }) =>

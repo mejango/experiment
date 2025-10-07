@@ -223,9 +223,12 @@ workspace:
   - components/synchronizer
   - components/labeled_icon
   - components/session
-  - apps/app_1/artboards/welcome
   - apps/app_1/artboards/create_service
   - apps/app_1/artboards/landing
+  - apps/app_1/artboards/merchant
+  - apps/app_1/artboards/sell
+  - apps/app_1/artboards/buy
+  - apps/app_1/artboards/sign_up
   - apps/app_1/sm_theme
   - apps/app_1/commands
   - apps/app_1/exe

@@ -12,7 +12,7 @@ abstract class TitledVerticalFullTableScreenArtboard extends StatefulWidget
         TitledNavBarBuilder {
   String get artboardTitle;
 
-  String get artboardSubtitle;
+  String? get artboardSubtitle;
 
   Widget? artboardNavButton(BuildContext context);
 
